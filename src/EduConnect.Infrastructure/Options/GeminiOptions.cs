@@ -6,9 +6,9 @@ public sealed class GeminiOptions
 
     public string ApiKey { get; set; } = string.Empty;
 
-    public string ChatModel { get; set; } = "gemini-2.0-flash";
+    public string ChatModel { get; set; } = "gemini-2.5-flash";
 
-    public string VisionModel { get; set; } = "gemini-2.5-flash-preview-04-17";
+    public string VisionModel { get; set; } = "gemini-2.5-flash";
 
     public int MaxOutputTokens { get; set; } = 2048;
 

@@ -118,6 +118,26 @@ app.MapGet("/health", () => Results.Ok(new
     timestampUtc = DateTime.UtcNow
 }));
 
+if (app.Environment.IsDevelopment())
+{
+    app.MapGet("/api/test/chat", async (IGeminiApiService gemini, string? message) =>
+    {
+        var msg = message ?? "Merhaba, sen kimsin?";
+        var reply = await gemini.GenerateTextAsync(msg);
+        return Results.Ok(new { question = msg, reply });
+    }).AllowAnonymous();
+
+    app.MapPost("/api/test/vision", async (IGeminiApiService gemini, IFormFile image) =>
+    {
+        using var ms = new MemoryStream();
+        await image.CopyToAsync(ms);
+        var prompt = "Bu görseli analiz et ve JSON formatında yanıt ver: " +
+                     "{\"productName\": \"...\", \"category\": \"...\", \"keywords\": [...], \"description\": \"...\"}";
+        var result = await gemini.AnalyzeImageAsync(ms.ToArray(), image.ContentType!, prompt);
+        return Results.Ok(new { analysis = result });
+    }).AllowAnonymous().DisableAntiforgery();
+}
+
 app.MapControllers();
 app.MapHub<ChatHub>("/hubs/chat");
 
@@ -143,3 +163,4 @@ static async Task InitializeDatabaseAsync(WebApplication app)
         logger.LogWarning(exception, "Database migration/seed step skipped because the database is not currently reachable.");
     }
 }
+
