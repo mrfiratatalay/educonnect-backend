@@ -73,7 +73,19 @@ public sealed class ChatHub(AppDbContext dbContext, IChatbotService chatbotServi
             TimestampUtc = DateTime.UtcNow
         };
 
-        var reply = await chatbotService.GetReplyAsync(message);
+        var previousMessages = await dbContext.ChatMessages
+            .Where(m => m.SessionId == sessionId)
+            .OrderBy(m => m.TimestampUtc)
+            .Select(m => new { m.SenderType, m.Content })
+            .ToListAsync();
+
+        var history = previousMessages
+            .Select(m => (
+                Role: m.SenderType == SenderType.User ? "user" : "assistant",
+                m.Content))
+            .ToArray();
+
+        var reply = await chatbotService.GetReplyAsync(message, history);
 
         var botMessage = new ChatMessage
         {

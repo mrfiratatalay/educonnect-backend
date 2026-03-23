@@ -4,5 +4,8 @@ namespace EduConnect.Application.Interfaces;
 
 public interface IChatbotService
 {
-    Task<ChatbotReply> GetReplyAsync(string message, CancellationToken cancellationToken = default);
+    Task<ChatbotReply> GetReplyAsync(
+        string message,
+        IReadOnlyCollection<(string Role, string Content)>? conversationHistory = null,
+        CancellationToken cancellationToken = default);
 }

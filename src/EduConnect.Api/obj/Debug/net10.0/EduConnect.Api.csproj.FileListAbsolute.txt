@@ -170,3 +170,10 @@ C:\Users\FIRAT\Desktop\Tubitak-Tez\backend\src\EduConnect.Api\bin\Debug\net10.0\
 C:\Users\FIRAT\Desktop\Tubitak-Tez\backend\src\EduConnect.Api\bin\Debug\net10.0\tr\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
 C:\Users\FIRAT\Desktop\Tubitak-Tez\backend\src\EduConnect.Api\bin\Debug\net10.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
 C:\Users\FIRAT\Desktop\Tubitak-Tez\backend\src\EduConnect.Api\bin\Debug\net10.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+C:\Users\FIRAT\Desktop\Tubitak-Tez\backend\src\EduConnect.Api\bin\Debug\net10.0\Google.Apis.dll
+C:\Users\FIRAT\Desktop\Tubitak-Tez\backend\src\EduConnect.Api\bin\Debug\net10.0\Google.Apis.Auth.dll
+C:\Users\FIRAT\Desktop\Tubitak-Tez\backend\src\EduConnect.Api\bin\Debug\net10.0\Google.Apis.Core.dll
+C:\Users\FIRAT\Desktop\Tubitak-Tez\backend\src\EduConnect.Api\bin\Debug\net10.0\Google.GenAI.dll
+C:\Users\FIRAT\Desktop\Tubitak-Tez\backend\src\EduConnect.Api\bin\Debug\net10.0\Microsoft.Extensions.AI.Abstractions.dll
+C:\Users\FIRAT\Desktop\Tubitak-Tez\backend\src\EduConnect.Api\bin\Debug\net10.0\System.Management.dll
+C:\Users\FIRAT\Desktop\Tubitak-Tez\backend\src\EduConnect.Api\bin\Debug\net10.0\runtimes\win\lib\net7.0\System.Management.dll

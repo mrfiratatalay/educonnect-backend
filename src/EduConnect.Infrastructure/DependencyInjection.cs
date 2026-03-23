@@ -13,6 +13,7 @@ public static class DependencyInjection
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
         services.Configure<JwtOptions>(configuration.GetSection(JwtOptions.SectionName));
+        services.Configure<GeminiOptions>(configuration.GetSection(GeminiOptions.SectionName));
 
         services.AddHttpContextAccessor();
 
@@ -25,6 +26,8 @@ public static class DependencyInjection
         services.AddScoped<IJwtTokenService, JwtTokenService>();
         services.AddScoped<IPasswordHashService, PasswordHashService>();
         services.AddScoped<IEmailService, EmailService>();
+
+        services.AddSingleton<IGeminiApiService, GeminiApiService>();
         services.AddScoped<IChatbotService, ChatbotService>();
         services.AddScoped<IVisualSearchService, VisualSearchService>();
 

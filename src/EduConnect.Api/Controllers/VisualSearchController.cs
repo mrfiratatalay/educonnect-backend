@@ -5,28 +5,75 @@ using EduConnect.Domain.Entities;
 using EduConnect.Infrastructure.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.EntityFrameworkCore;
 
 namespace EduConnect.Api.Controllers;
 
 [ApiController]
 [Authorize]
+[EnableRateLimiting("gemini")]
 [Route("api/[controller]")]
 public sealed class VisualSearchController(
     AppDbContext dbContext,
     ICurrentUserService currentUserService,
     IVisualSearchService visualSearchService) : ControllerBase
 {
+    private static readonly HashSet<string> AllowedMimeTypes =
+        ["image/jpeg", "image/jpg", "image/png", "image/webp"];
+
+    [HttpPost("analyze")]
+    [RequestSizeLimit(10 * 1024 * 1024)]
+    public async Task<ActionResult<VisualSearchAnalysisResponse>> SearchByImage(
+        IFormFile image,
+        [FromQuery] int maxResults = 8,
+        CancellationToken cancellationToken = default)
+    {
+        var userId = currentUserService.UserId;
+        if (userId is null) return Unauthorized();
+
+        if (image is null || image.Length == 0)
+            return BadRequest("Görsel yüklenmedi.");
+
+        if (!AllowedMimeTypes.Contains(image.ContentType?.ToLower() ?? ""))
+            return BadRequest("Desteklenmeyen format. JPEG, PNG veya WEBP kullanın.");
+
+        using var ms = new MemoryStream();
+        await image.CopyToAsync(ms, cancellationToken);
+        var imageBytes = ms.ToArray();
+
+        var result = await visualSearchService.SearchByImageAsync(
+            imageBytes, image.ContentType!, maxResults, cancellationToken);
+
+        var history = new VisualSearchHistory
+        {
+            UserId = userId.Value,
+            QueryImageUrl = $"uploaded:{image.FileName}",
+            ResultCount = result.TotalFound
+        };
+
+        history.Results = result.Products
+            .Select(p => new VisualSearchResult
+            {
+                ProductId = p.ProductId,
+                SimilarityScore = p.SimilarityScore,
+                Rank = p.Rank
+            })
+            .ToArray();
+
+        dbContext.VisualSearchHistories.Add(history);
+        await dbContext.SaveChangesAsync(cancellationToken);
+
+        return Ok(result);
+    }
+
     [HttpPost]
     public async Task<ActionResult<IReadOnlyCollection<VisualSearchResultResponse>>> Search(
         [FromBody] VisualSearchRequest request,
         CancellationToken cancellationToken)
     {
         var userId = currentUserService.UserId;
-        if (userId is null)
-        {
-            return Unauthorized();
-        }
+        if (userId is null) return Unauthorized();
 
         var products = await dbContext.Products
             .AsNoTracking()
@@ -94,10 +141,7 @@ public sealed class VisualSearchController(
     public async Task<ActionResult<IReadOnlyCollection<VisualSearchHistoryResponse>>> GetHistory(CancellationToken cancellationToken)
     {
         var userId = currentUserService.UserId;
-        if (userId is null)
-        {
-            return Unauthorized();
-        }
+        if (userId is null) return Unauthorized();
 
         var history = await dbContext.VisualSearchHistories
             .AsNoTracking()

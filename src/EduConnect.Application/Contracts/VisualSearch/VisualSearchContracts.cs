@@ -58,3 +58,27 @@ public sealed class VisualSearchHistoryResponse
 
     public IReadOnlyCollection<VisualSearchResultResponse> Results { get; init; } = [];
 }
+
+public sealed class GeminiImageAnalysis
+{
+    public string ProductName { get; set; } = string.Empty;
+
+    public string Category { get; set; } = string.Empty;
+
+    public List<string> Keywords { get; set; } = [];
+
+    public string Description { get; set; } = string.Empty;
+
+    public string EstimatedPriceRange { get; set; } = string.Empty;
+
+    public string Condition { get; set; } = string.Empty;
+}
+
+public sealed class VisualSearchAnalysisResponse
+{
+    public GeminiImageAnalysis Analysis { get; init; } = new();
+
+    public IReadOnlyCollection<VisualSearchResultResponse> Products { get; init; } = [];
+
+    public int TotalFound { get; init; }
+}

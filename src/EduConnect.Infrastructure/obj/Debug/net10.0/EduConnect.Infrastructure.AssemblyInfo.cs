@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EduConnect.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+42ff11943e1e9a1a4ba940010a74510813134322")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+88688448ed607b5f546179b8575a45db470b878c")]
 [assembly: System.Reflection.AssemblyProductAttribute("EduConnect.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EduConnect.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
