@@ -9,7 +9,7 @@ using EduConnect.Infrastructure.Options;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi;
 
 var builder = WebApplication.CreateBuilder(args);
 var jwtOptions = builder.Configuration.GetSection(JwtOptions.SectionName).Get<JwtOptions>() ?? new JwtOptions();
@@ -81,19 +81,10 @@ builder.Services.AddSwaggerGen(options =>
         In = ParameterLocation.Header,
         Type = SecuritySchemeType.Http,
         Scheme = JwtBearerDefaults.AuthenticationScheme,
-        Description = "Bearer token kullanın.",
-        Reference = new OpenApiReference
-        {
-            Type = ReferenceType.SecurityScheme,
-            Id = JwtBearerDefaults.AuthenticationScheme
-        }
+        Description = "Bearer token kullanın."
     };
 
-    options.AddSecurityDefinition(jwtSecurityScheme.Reference.Id, jwtSecurityScheme);
-    options.AddSecurityRequirement(new OpenApiSecurityRequirement
-    {
-        [jwtSecurityScheme] = []
-    });
+    options.AddSecurityDefinition(JwtBearerDefaults.AuthenticationScheme, jwtSecurityScheme);
 });
 
 var app = builder.Build();

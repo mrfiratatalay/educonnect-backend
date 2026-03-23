@@ -42,7 +42,9 @@ public class CreateProductRequest
     public IReadOnlyCollection<string> ImageUrls { get; init; } = [];
 }
 
-public sealed class UpdateProductRequest : CreateProductRequest;
+public sealed class UpdateProductRequest : CreateProductRequest
+{
+}
 
 public sealed class ProductResponse
 {

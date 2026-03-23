@@ -1,0 +1,16 @@
+C:\Users\FIRAT\Desktop\Tubitak-Tez\backend\src\EduConnect.Application\bin\Debug\net10.0\EduConnect.Application.deps.json
+C:\Users\FIRAT\Desktop\Tubitak-Tez\backend\src\EduConnect.Application\bin\Debug\net10.0\EduConnect.Application.dll
+C:\Users\FIRAT\Desktop\Tubitak-Tez\backend\src\EduConnect.Application\bin\Debug\net10.0\EduConnect.Application.pdb
+C:\Users\FIRAT\Desktop\Tubitak-Tez\backend\src\EduConnect.Application\bin\Debug\net10.0\EduConnect.Domain.dll
+C:\Users\FIRAT\Desktop\Tubitak-Tez\backend\src\EduConnect.Application\bin\Debug\net10.0\EduConnect.Domain.pdb
+C:\Users\FIRAT\Desktop\Tubitak-Tez\backend\src\EduConnect.Application\obj\Debug\net10.0\EduConnect.Application.csproj.AssemblyReference.cache
+C:\Users\FIRAT\Desktop\Tubitak-Tez\backend\src\EduConnect.Application\obj\Debug\net10.0\EduConnect.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\FIRAT\Desktop\Tubitak-Tez\backend\src\EduConnect.Application\obj\Debug\net10.0\EduConnect.Application.AssemblyInfoInputs.cache
+C:\Users\FIRAT\Desktop\Tubitak-Tez\backend\src\EduConnect.Application\obj\Debug\net10.0\EduConnect.Application.AssemblyInfo.cs
+C:\Users\FIRAT\Desktop\Tubitak-Tez\backend\src\EduConnect.Application\obj\Debug\net10.0\EduConnect.Application.csproj.CoreCompileInputs.cache
+C:\Users\FIRAT\Desktop\Tubitak-Tez\backend\src\EduConnect.Application\obj\Debug\net10.0\EduConnect.Application.sourcelink.json
+C:\Users\FIRAT\Desktop\Tubitak-Tez\backend\src\EduConnect.Application\obj\Debug\net10.0\EduConne.C17027AE.Up2Date
+C:\Users\FIRAT\Desktop\Tubitak-Tez\backend\src\EduConnect.Application\obj\Debug\net10.0\EduConnect.Application.dll
+C:\Users\FIRAT\Desktop\Tubitak-Tez\backend\src\EduConnect.Application\obj\Debug\net10.0\refint\EduConnect.Application.dll
+C:\Users\FIRAT\Desktop\Tubitak-Tez\backend\src\EduConnect.Application\obj\Debug\net10.0\EduConnect.Application.pdb
+C:\Users\FIRAT\Desktop\Tubitak-Tez\backend\src\EduConnect.Application\obj\Debug\net10.0\ref\EduConnect.Application.dll

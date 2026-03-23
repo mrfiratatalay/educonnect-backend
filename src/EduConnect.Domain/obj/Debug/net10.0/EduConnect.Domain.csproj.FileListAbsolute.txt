@@ -1,0 +1,12 @@
+C:\Users\FIRAT\Desktop\Tubitak-Tez\backend\src\EduConnect.Domain\bin\Debug\net10.0\EduConnect.Domain.deps.json
+C:\Users\FIRAT\Desktop\Tubitak-Tez\backend\src\EduConnect.Domain\bin\Debug\net10.0\EduConnect.Domain.dll
+C:\Users\FIRAT\Desktop\Tubitak-Tez\backend\src\EduConnect.Domain\bin\Debug\net10.0\EduConnect.Domain.pdb
+C:\Users\FIRAT\Desktop\Tubitak-Tez\backend\src\EduConnect.Domain\obj\Debug\net10.0\EduConnect.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\FIRAT\Desktop\Tubitak-Tez\backend\src\EduConnect.Domain\obj\Debug\net10.0\EduConnect.Domain.AssemblyInfoInputs.cache
+C:\Users\FIRAT\Desktop\Tubitak-Tez\backend\src\EduConnect.Domain\obj\Debug\net10.0\EduConnect.Domain.AssemblyInfo.cs
+C:\Users\FIRAT\Desktop\Tubitak-Tez\backend\src\EduConnect.Domain\obj\Debug\net10.0\EduConnect.Domain.csproj.CoreCompileInputs.cache
+C:\Users\FIRAT\Desktop\Tubitak-Tez\backend\src\EduConnect.Domain\obj\Debug\net10.0\EduConnect.Domain.sourcelink.json
+C:\Users\FIRAT\Desktop\Tubitak-Tez\backend\src\EduConnect.Domain\obj\Debug\net10.0\EduConnect.Domain.dll
+C:\Users\FIRAT\Desktop\Tubitak-Tez\backend\src\EduConnect.Domain\obj\Debug\net10.0\refint\EduConnect.Domain.dll
+C:\Users\FIRAT\Desktop\Tubitak-Tez\backend\src\EduConnect.Domain\obj\Debug\net10.0\EduConnect.Domain.pdb
+C:\Users\FIRAT\Desktop\Tubitak-Tez\backend\src\EduConnect.Domain\obj\Debug\net10.0\ref\EduConnect.Domain.dll
