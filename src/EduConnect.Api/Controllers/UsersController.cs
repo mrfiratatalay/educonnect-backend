@@ -108,13 +108,115 @@ public sealed class UsersController(AppDbContext dbContext, ICurrentUserService 
         return Ok(user.ToResponse());
     }
 
+    [HttpPost("me/avatar/upload")]
+    public async Task<ActionResult<UserProfileResponse>> UploadAvatarFile(
+        [FromForm(Name = "file")] IFormFile file,
+        [FromServices] IUserAvatarStorageService userAvatarStorageService,
+        CancellationToken cancellationToken)
+    {
+        var userId = currentUserService.UserId;
+        if (userId is null)
+        {
+            return Unauthorized();
+        }
+
+        if (file is null)
+        {
+            return BadRequest(new { message = "Yuklenecek dosya bulunamadi." });
+        }
+
+        var user = await dbContext.Users
+            .Include(x => x.StudentProfile)
+            .Include(x => x.University)
+            .FirstOrDefaultAsync(x => x.Id == userId.Value, cancellationToken);
+
+        if (user is null)
+        {
+            return NotFound();
+        }
+
+        if (user.StudentProfile is null)
+        {
+            user.StudentProfile = new StudentProfile
+            {
+                UserId = user.Id,
+                Department = string.Empty,
+                Year = 1
+            };
+        }
+
+        await using var fileStream = file.OpenReadStream();
+        user.StudentProfile.AvatarUrl = await userAvatarStorageService.SaveAvatarAsync(
+            user.Id,
+            fileStream,
+            file.FileName,
+            file.ContentType,
+            cancellationToken);
+
+        await dbContext.SaveChangesAsync(cancellationToken);
+
+        user = await QueryUsers().FirstAsync(x => x.Id == userId.Value, cancellationToken);
+        return Ok(user.ToResponse());
+    }
+
+    [HttpPost("me/cover/upload")]
+    public async Task<ActionResult<UserProfileResponse>> UploadCoverFile(
+        [FromForm(Name = "file")] IFormFile file,
+        [FromServices] IUserAvatarStorageService userAvatarStorageService,
+        CancellationToken cancellationToken)
+    {
+        var userId = currentUserService.UserId;
+        if (userId is null)
+        {
+            return Unauthorized();
+        }
+
+        if (file is null)
+        {
+            return BadRequest(new { message = "Yuklenecek dosya bulunamadi." });
+        }
+
+        var user = await dbContext.Users
+            .Include(x => x.StudentProfile)
+            .Include(x => x.University)
+            .FirstOrDefaultAsync(x => x.Id == userId.Value, cancellationToken);
+
+        if (user is null)
+        {
+            return NotFound();
+        }
+
+        if (user.StudentProfile is null)
+        {
+            user.StudentProfile = new StudentProfile
+            {
+                UserId = user.Id,
+                Department = string.Empty,
+                Year = 1
+            };
+        }
+
+        await using var fileStream = file.OpenReadStream();
+        user.StudentProfile.CoverImageUrl = await userAvatarStorageService.SaveCoverAsync(
+            user.Id,
+            fileStream,
+            file.FileName,
+            file.ContentType,
+            cancellationToken);
+
+        await dbContext.SaveChangesAsync(cancellationToken);
+
+        user = await QueryUsers().FirstAsync(x => x.Id == userId.Value, cancellationToken);
+        return Ok(user.ToResponse());
+    }
+
     [HttpGet("{id:guid}")]
-    public async Task<ActionResult<UserProfileResponse>> GetById(Guid id, CancellationToken cancellationToken)
+    public async Task<ActionResult<PublicUserProfileResponse>> GetById(Guid id, CancellationToken cancellationToken)
     {
         var user = await QueryUsers()
             .FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
 
-        return user is null ? NotFound() : Ok(user.ToResponse());
+        return user is null ? NotFound() : Ok(user.ToPublicResponse());
     }
 
     private IQueryable<User> QueryUsers()

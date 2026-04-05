@@ -14,5 +14,7 @@ public sealed class StudentProfile : AuditableEntity
 
     public string? AvatarUrl { get; set; }
 
+    public string? CoverImageUrl { get; set; }
+
     public User User { get; set; } = null!;
 }

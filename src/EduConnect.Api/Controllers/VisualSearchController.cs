@@ -22,117 +22,67 @@ public sealed class VisualSearchController(
     private static readonly HashSet<string> AllowedMimeTypes =
         ["image/jpeg", "image/jpg", "image/png", "image/webp"];
 
-    [HttpPost("analyze")]
+    [AllowAnonymous]
+    [HttpPost("searches")]
     [RequestSizeLimit(10 * 1024 * 1024)]
-    public async Task<ActionResult<VisualSearchAnalysisResponse>> SearchByImage(
-        IFormFile image,
-        [FromQuery] int maxResults = 8,
+    public async Task<ActionResult<VisualSearchSearchResponse>> Search(
+        [FromForm] IFormFile image,
+        [FromForm] VisualSearchSearchRequest request,
         CancellationToken cancellationToken = default)
     {
-        var userId = currentUserService.UserId;
-        if (userId is null) return Unauthorized();
-
         if (image is null || image.Length == 0)
-            return BadRequest("Görsel yüklenmedi.");
-
-        if (!AllowedMimeTypes.Contains(image.ContentType?.ToLower() ?? ""))
-            return BadRequest("Desteklenmeyen format. JPEG, PNG veya WEBP kullanın.");
-
-        using var ms = new MemoryStream();
-        await image.CopyToAsync(ms, cancellationToken);
-        var imageBytes = ms.ToArray();
-
-        var result = await visualSearchService.SearchByImageAsync(
-            imageBytes, image.ContentType!, maxResults, cancellationToken);
-
-        var history = new VisualSearchHistory
         {
-            UserId = userId.Value,
-            QueryImageUrl = $"uploaded:{image.FileName}",
-            ResultCount = result.TotalFound
-        };
+            return BadRequest("Gorsel yuklenmedi.");
+        }
 
-        history.Results = result.Products
-            .Select(p => new VisualSearchResult
-            {
-                ProductId = p.ProductId,
-                SimilarityScore = p.SimilarityScore,
-                Rank = p.Rank
-            })
-            .ToArray();
+        if (!AllowedMimeTypes.Contains(image.ContentType?.ToLowerInvariant() ?? string.Empty))
+        {
+            return BadRequest("Desteklenmeyen format. JPEG, PNG veya WEBP kullanin.");
+        }
 
-        dbContext.VisualSearchHistories.Add(history);
-        await dbContext.SaveChangesAsync(cancellationToken);
+        if (request.MinPrice.HasValue && request.MaxPrice.HasValue && request.MinPrice.Value > request.MaxPrice.Value)
+        {
+            return BadRequest("Minimum fiyat maksimum fiyattan buyuk olamaz.");
+        }
 
-        return Ok(result);
-    }
+        if (request.CategoryId.HasValue &&
+            !await dbContext.Categories.AnyAsync(category => category.Id == request.CategoryId.Value, cancellationToken))
+        {
+            return BadRequest(new { message = "Kategori bulunamadi." });
+        }
 
-    [HttpPost]
-    public async Task<ActionResult<IReadOnlyCollection<VisualSearchResultResponse>>> Search(
-        [FromBody] VisualSearchRequest request,
-        CancellationToken cancellationToken)
-    {
-        var userId = currentUserService.UserId;
-        if (userId is null) return Unauthorized();
+        await using var ms = new MemoryStream();
+        await image.CopyToAsync(ms, cancellationToken);
 
-        var products = await dbContext.Products
-            .AsNoTracking()
-            .Where(x => x.IsActive)
-            .Include(x => x.Images)
-            .ToListAsync(cancellationToken);
-
-        var candidates = products
-            .Select(x => new VisualSearchCandidate
-            {
-                ProductId = x.Id,
-                Title = x.Title,
-                Price = x.Price,
-                ImageUrl = x.Images.OrderBy(img => img.SortOrder).Select(img => img.Url).FirstOrDefault()
-            })
-            .Where(x => !string.IsNullOrWhiteSpace(x.ImageUrl))
-            .ToArray();
-
-        var matches = await visualSearchService.SearchAsync(
-            request.QueryImageUrl,
-            candidates,
-            request.MaxResults,
+        var response = await visualSearchService.SearchAsync(
+            ms.ToArray(),
+            image.ContentType!,
+            request,
             cancellationToken);
 
-        var productMap = products.ToDictionary(x => x.Id);
-        var history = new VisualSearchHistory
+        var userId = currentUserService.UserId;
+        if (userId.HasValue)
         {
-            UserId = userId.Value,
-            QueryImageUrl = request.QueryImageUrl,
-            ResultCount = matches.Count
-        };
-
-        history.Results = matches
-            .Select(match => new VisualSearchResult
+            var history = new VisualSearchHistory
             {
-                ProductId = match.ProductId,
-                SimilarityScore = match.SimilarityScore,
-                Rank = match.Rank
-            })
-            .ToArray();
+                UserId = userId.Value,
+                QueryImageUrl = $"uploaded:{image.FileName}",
+                ResultCount = response.TotalFound
+            };
 
-        dbContext.VisualSearchHistories.Add(history);
-        await dbContext.SaveChangesAsync(cancellationToken);
-
-        var response = matches
-            .Select(match =>
-            {
-                var product = productMap[match.ProductId];
-                return new VisualSearchResultResponse
+            history.Results = response.Results
+                .Select(result => new VisualSearchResult
                 {
-                    ProductId = product.Id,
-                    Title = product.Title,
-                    Price = product.Price,
-                    ImageUrl = product.Images.OrderBy(img => img.SortOrder).Select(img => img.Url).FirstOrDefault(),
-                    SimilarityScore = match.SimilarityScore,
-                    Rank = match.Rank
-                };
-            })
-            .ToArray();
+                    ProductId = result.ProductId,
+                    SimilarityScore = result.SimilarityScore,
+                    Rank = result.Rank
+                })
+                .ToArray();
+
+            dbContext.VisualSearchHistories.Add(history);
+            await dbContext.SaveChangesAsync(cancellationToken);
+            response.SearchId = history.Id;
+        }
 
         return Ok(response);
     }
@@ -141,19 +91,28 @@ public sealed class VisualSearchController(
     public async Task<ActionResult<IReadOnlyCollection<VisualSearchHistoryResponse>>> GetHistory(CancellationToken cancellationToken)
     {
         var userId = currentUserService.UserId;
-        if (userId is null) return Unauthorized();
+        if (userId is null)
+        {
+            return Unauthorized();
+        }
 
         var history = await dbContext.VisualSearchHistories
             .AsNoTracking()
             .AsSplitQuery()
-            .Where(x => x.UserId == userId.Value)
-            .Include(x => x.Results)
-            .ThenInclude(x => x.Product)
-            .ThenInclude(x => x.Images)
-            .OrderByDescending(x => x.SearchedAtUtc)
+            .Where(item => item.UserId == userId.Value)
+            .Include(item => item.Results)
+            .ThenInclude(result => result.Product)
+            .ThenInclude(product => product.Images)
+            .Include(item => item.Results)
+            .ThenInclude(result => result.Product)
+            .ThenInclude(product => product.Category)
+            .Include(item => item.Results)
+            .ThenInclude(result => result.Product)
+            .ThenInclude(product => product.Seller)
+            .OrderByDescending(item => item.SearchedAtUtc)
             .Take(20)
             .ToListAsync(cancellationToken);
 
-        return Ok(history.Select(x => x.ToResponse()).ToArray());
+        return Ok(history.Select(item => item.ToResponse()).ToArray());
     }
 }

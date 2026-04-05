@@ -36,12 +36,12 @@ public sealed class EventsController(AppDbContext dbContext, ICurrentUserService
 
         if (request.EndDateUtc <= request.StartDateUtc)
         {
-            return BadRequest(new { message = "Bitiş tarihi başlangıç tarihinden sonra olmalıdır." });
+            return BadRequest(new { message = "Bitis tarihi baslangic tarihinden sonra olmalidir." });
         }
 
         if (request.GroupId.HasValue && !await dbContext.Groups.AnyAsync(x => x.Id == request.GroupId.Value, cancellationToken))
         {
-            return BadRequest(new { message = "Seçilen grup bulunamadı." });
+            return BadRequest(new { message = "Secilen grup bulunamadi." });
         }
 
         var entity = new Event
@@ -80,6 +80,8 @@ public sealed class EventsController(AppDbContext dbContext, ICurrentUserService
             return Unauthorized();
         }
 
+        var actorName = await GetCurrentUserDisplayNameAsync(userId.Value, cancellationToken);
+
         var entity = await dbContext.Events
             .Include(x => x.Participants)
             .FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
@@ -93,13 +95,13 @@ public sealed class EventsController(AppDbContext dbContext, ICurrentUserService
 
         if (existingParticipant?.Status == EventParticipantStatus.Registered)
         {
-            return BadRequest(new { message = "Etkinliğe zaten kayıtlısınız." });
+            return BadRequest(new { message = "Etkinlige zaten kayitlisiniz." });
         }
 
         var activeParticipantCount = entity.Participants.Count(x => x.Status == EventParticipantStatus.Registered);
         if (activeParticipantCount >= entity.MaxParticipants)
         {
-            return BadRequest(new { message = "Etkinlik kontenjanı dolu." });
+            return BadRequest(new { message = "Etkinlik kontenjani dolu." });
         }
 
         if (existingParticipant is null)
@@ -122,9 +124,10 @@ public sealed class EventsController(AppDbContext dbContext, ICurrentUserService
             dbContext.Notifications.Add(new Notification
             {
                 UserId = entity.CreatorUserId,
-                Title = "Yeni etkinlik katılımı",
-                Message = "Etkinliğinize yeni bir katılımcı eklendi.",
-                Type = NotificationType.Event
+                Title = $"{actorName} etkinligine katildi",
+                Message = $"\"{entity.Title}\" icin yeni bir katilimci var.",
+                Type = NotificationType.Event,
+                TargetPath = "/events"
             });
         }
 
@@ -165,5 +168,15 @@ public sealed class EventsController(AppDbContext dbContext, ICurrentUserService
             .Include(x => x.CreatorUser)
             .Include(x => x.Group)
             .Include(x => x.Participants);
+    }
+
+    private async Task<string> GetCurrentUserDisplayNameAsync(Guid userId, CancellationToken cancellationToken)
+    {
+        return await dbContext.Users
+            .AsNoTracking()
+            .Where(x => x.Id == userId)
+            .Select(x => x.FullName)
+            .FirstOrDefaultAsync(cancellationToken)
+            ?? "Bir kullanici";
     }
 }

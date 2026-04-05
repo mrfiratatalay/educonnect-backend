@@ -1,17 +1,46 @@
+using EduConnect.Application.Contracts.Auth;
 using EduConnect.Application.Contracts.Discounts;
 using EduConnect.Application.Contracts.Events;
 using EduConnect.Application.Contracts.Groups;
 using EduConnect.Application.Contracts.Notifications;
 using EduConnect.Application.Contracts.Posts;
 using EduConnect.Application.Contracts.Products;
+using EduConnect.Application.Contracts.Universities;
 using EduConnect.Application.Contracts.Users;
 using EduConnect.Application.Contracts.VisualSearch;
 using EduConnect.Domain.Entities;
+using EduConnect.Domain.Enums;
 
 namespace EduConnect.Api.Mappings;
 
 public static class MappingExtensions
 {
+    private const int GroupPreviewMemberLimit = 4;
+    private const int GroupModeratorPreviewLimit = 3;
+
+    public static AuthSessionResponse ToResponse(this AuthenticatedUserResult result)
+    {
+        return new AuthSessionResponse
+        {
+            AccessToken = result.AccessToken,
+            ExpiresAtUtc = result.AccessTokenExpiresAtUtc,
+            User = result.User.ToResponse()
+        };
+    }
+
+    public static EmailVerificationChallengeResponse ToChallengeResponse(
+        this EmailVerificationChallengeResult result,
+        string message)
+    {
+        return new EmailVerificationChallengeResponse
+        {
+            Email = result.Email,
+            VerificationExpiresAtUtc = result.VerificationExpiresAtUtc,
+            CanResendAtUtc = result.CanResendAtUtc,
+            Message = message
+        };
+    }
+
     public static UserProfileResponse ToResponse(this User user)
     {
         return new UserProfileResponse
@@ -24,8 +53,37 @@ public static class MappingExtensions
             Year = user.StudentProfile?.Year ?? 1,
             Bio = user.StudentProfile?.Bio,
             AvatarUrl = user.StudentProfile?.AvatarUrl,
+            CoverImageUrl = user.StudentProfile?.CoverImageUrl,
             UniversityId = user.UniversityId,
             UniversityName = user.University?.Name
+        };
+    }
+
+    public static PublicUserProfileResponse ToPublicResponse(this User user)
+    {
+        return new PublicUserProfileResponse
+        {
+            Id = user.Id,
+            FullName = user.FullName,
+            Role = user.Role,
+            Department = user.StudentProfile?.Department ?? string.Empty,
+            Year = user.StudentProfile?.Year ?? 1,
+            Bio = user.StudentProfile?.Bio,
+            AvatarUrl = user.StudentProfile?.AvatarUrl,
+            CoverImageUrl = user.StudentProfile?.CoverImageUrl,
+            UniversityId = user.UniversityId,
+            UniversityName = user.University?.Name
+        };
+    }
+
+    public static UniversityOptionResponse ToResponse(this University university)
+    {
+        return new UniversityOptionResponse
+        {
+            Id = university.Id,
+            Name = university.Name,
+            City = university.City,
+            Domain = university.Domain
         };
     }
 
@@ -35,13 +93,19 @@ public static class MappingExtensions
         {
             Id = post.Id,
             UserId = post.UserId,
+            GroupId = post.GroupId,
+            GroupName = post.Group?.Name,
+            GroupSlug = post.Group?.Slug,
+            GroupAvatarUrl = post.Group?.AvatarUrl,
             UserName = post.User.FullName,
             AvatarUrl = post.User.StudentProfile?.AvatarUrl,
             Content = post.Content,
             ImageUrl = post.ImageUrl,
             LikesCount = post.Likes.Count,
             CommentsCount = post.Comments.Count,
+            ViewsCount = post.Views.Count,
             LikedByCurrentUser = currentUserId.HasValue && post.Likes.Any(x => x.UserId == currentUserId.Value),
+            BookmarkedByCurrentUser = currentUserId.HasValue && post.Bookmarks.Any(x => x.UserId == currentUserId.Value),
             CreatedAtUtc = post.CreatedAtUtc
         };
     }
@@ -65,13 +129,71 @@ public static class MappingExtensions
         {
             Id = group.Id,
             Name = group.Name,
+            Slug = group.Slug,
+            ShortDescription = group.ShortDescription,
             Description = group.Description,
+            AvatarUrl = group.AvatarUrl,
+            BannerUrl = group.BannerUrl,
             Category = group.Category,
             CreatorUserId = group.CreatorUserId,
             CreatorName = group.CreatorUser.FullName,
             MemberCount = group.Members.Count,
+            PreviewMembers = group.Members
+                .OrderByDescending(x => x.JoinedAtUtc)
+                .Take(GroupPreviewMemberLimit)
+                .Select(x => x.ToPreviewResponse())
+                .ToArray(),
             JoinedByCurrentUser = currentUserId.HasValue && group.Members.Any(x => x.UserId == currentUserId.Value),
             CreatedAtUtc = group.CreatedAtUtc
+        };
+    }
+
+    public static GroupDetailResponse ToDetailResponse(
+        this Group group,
+        Guid? currentUserId,
+        int postCount,
+        int eventCount)
+    {
+        var summary = group.ToResponse(currentUserId);
+
+        return new GroupDetailResponse
+        {
+            Id = summary.Id,
+            Name = summary.Name,
+            Slug = summary.Slug,
+            ShortDescription = summary.ShortDescription,
+            Description = summary.Description,
+            AvatarUrl = summary.AvatarUrl,
+            BannerUrl = summary.BannerUrl,
+            Category = summary.Category,
+            CreatorUserId = summary.CreatorUserId,
+            CreatorName = summary.CreatorName,
+            MemberCount = summary.MemberCount,
+            PreviewMembers = summary.PreviewMembers,
+            JoinedByCurrentUser = summary.JoinedByCurrentUser,
+            CreatedAtUtc = summary.CreatedAtUtc,
+            PostCount = postCount,
+            EventCount = eventCount,
+            CanCurrentUserPost = summary.JoinedByCurrentUser,
+            ModeratorPreviewMembers = group.Members
+                .Where(x => x.Role == GroupMemberRole.Owner || x.Role == GroupMemberRole.Moderator)
+                .OrderByDescending(x => x.Role)
+                .ThenByDescending(x => x.JoinedAtUtc)
+                .Take(GroupModeratorPreviewLimit)
+                .Select(x => x.ToPreviewResponse())
+                .ToArray()
+        };
+    }
+
+    public static GroupMemberPreviewResponse ToPreviewResponse(this GroupMember membership)
+    {
+        return new GroupMemberPreviewResponse
+        {
+            UserId = membership.UserId,
+            FullName = membership.User.FullName,
+            AvatarUrl = membership.User.StudentProfile?.AvatarUrl,
+            Department = membership.User.StudentProfile?.Department,
+            Role = membership.Role
         };
     }
 
@@ -148,7 +270,8 @@ public static class MappingExtensions
             Message = notification.Message,
             IsRead = notification.IsRead,
             Type = notification.Type,
-            CreatedAtUtc = notification.CreatedAtUtc
+            CreatedAtUtc = notification.CreatedAtUtc,
+            TargetPath = notification.TargetPath
         };
     }
 
@@ -166,10 +289,25 @@ public static class MappingExtensions
                 {
                     ProductId = x.ProductId,
                     Title = x.Product.Title,
+                    Description = x.Product.Description,
                     Price = x.Product.Price,
                     ImageUrl = x.Product.Images.OrderBy(img => img.SortOrder).Select(img => img.Url).FirstOrDefault(),
+                    CategoryLabel = x.Product.Category?.Name ?? "Diger",
+                    SellerName = x.Product.Seller.FullName,
+                    Condition = x.Product.Condition,
+                    ConditionLabel = x.Product.Condition switch
+                    {
+                        Domain.Enums.ProductCondition.New => "Sifir",
+                        Domain.Enums.ProductCondition.LikeNew => "Yeni gibi",
+                        Domain.Enums.ProductCondition.Good => "Iyi",
+                        Domain.Enums.ProductCondition.Fair => "Orta",
+                        _ => "Bilinmiyor"
+                    },
+                    City = x.Product.City,
                     SimilarityScore = x.SimilarityScore,
-                    Rank = x.Rank
+                    Rank = x.Rank,
+                    MatchedSignals = [],
+                    Breakdown = []
                 })
                 .ToArray()
         };

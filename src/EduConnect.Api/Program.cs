@@ -1,4 +1,6 @@
 using System.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.RateLimiting;
 using EduConnect.Api.Hubs;
 using EduConnect.Api.Middleware;
@@ -10,6 +12,8 @@ using EduConnect.Infrastructure.Options;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi;
 
@@ -18,7 +22,12 @@ var jwtOptions = builder.Configuration.GetSection(JwtOptions.SectionName).Get<Jw
 
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.Converters.Add(
+            new JsonStringEnumConverter(JsonNamingPolicy.CamelCase));
+    });
 builder.Services.AddSignalR();
 builder.Services.AddProblemDetails();
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
@@ -96,17 +105,30 @@ builder.Services.AddSwaggerGen(options =>
         In = ParameterLocation.Header,
         Type = SecuritySchemeType.Http,
         Scheme = JwtBearerDefaults.AuthenticationScheme,
-        Description = "Bearer token kullanın."
+        Description = "Bearer token kullanin."
     };
 
     options.AddSecurityDefinition(JwtBearerDefaults.AuthenticationScheme, jwtSecurityScheme);
 });
 
 var app = builder.Build();
+var avatarUploadOptions = app.Services.GetRequiredService<IOptions<AvatarUploadOptions>>().Value;
+var uploadsRootPath = Path.Combine(app.Environment.ContentRootPath, avatarUploadOptions.RootFolderName);
+
+Directory.CreateDirectory(uploadsRootPath);
 
 app.UseExceptionHandler();
 app.UseSwagger();
 app.UseSwaggerUI();
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(uploadsRootPath),
+    RequestPath = avatarUploadOptions.RequestPath,
+    OnPrepareResponse = context =>
+    {
+        context.Context.Response.Headers.CacheControl = "public,max-age=31536000,immutable";
+    }
+});
 app.UseCors("AllowFrontend");
 app.UseRateLimiter();
 app.UseAuthentication();
@@ -131,7 +153,7 @@ if (app.Environment.IsDevelopment())
     {
         using var ms = new MemoryStream();
         await image.CopyToAsync(ms);
-        var prompt = "Bu görseli analiz et ve JSON formatında yanıt ver: " +
+        var prompt = "Bu gorseli analiz et ve JSON formatinda yanit ver: " +
                      "{\"productName\": \"...\", \"category\": \"...\", \"keywords\": [...], \"description\": \"...\"}";
         var result = await gemini.AnalyzeImageAsync(ms.ToArray(), image.ContentType!, prompt);
         return Results.Ok(new { analysis = result });
@@ -163,4 +185,3 @@ static async Task InitializeDatabaseAsync(WebApplication app)
         logger.LogWarning(exception, "Database migration/seed step skipped because the database is not currently reachable.");
     }
 }
-

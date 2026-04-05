@@ -1,176 +1,136 @@
+using EduConnect.Api.Mappings;
 using EduConnect.Application.Contracts.Auth;
 using EduConnect.Application.Interfaces;
-using EduConnect.Domain.Entities;
-using EduConnect.Infrastructure.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace EduConnect.Api.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
 public sealed class AuthController(
-    AppDbContext dbContext,
-    IPasswordHashService passwordHashService,
-    IJwtTokenService jwtTokenService,
-    IEmailService emailService) : ControllerBase
+    IAuthService authService,
+    ICurrentUserService currentUserService) : ControllerBase
 {
+    private const string RefreshTokenCookieName = "educonnect.refreshToken";
+
     [AllowAnonymous]
     [HttpPost("register")]
-    public async Task<ActionResult<AuthResponse>> Register([FromBody] RegisterRequest request, CancellationToken cancellationToken)
+    public async Task<ActionResult<EmailVerificationChallengeResponse>> Register(
+        [FromBody] RegisterRequest request,
+        CancellationToken cancellationToken)
     {
-        var normalizedEmail = request.Email.Trim().ToLowerInvariant();
-
-        if (await dbContext.Users.AnyAsync(x => x.Email == normalizedEmail, cancellationToken))
-        {
-            return Conflict(new { message = "Bu email adresi zaten kayıtlı." });
-        }
-
-        if (request.UniversityId.HasValue &&
-            !await dbContext.Universities.AnyAsync(x => x.Id == request.UniversityId.Value, cancellationToken))
-        {
-            return BadRequest(new { message = "Seçilen üniversite bulunamadı." });
-        }
-
-        var user = new User
-        {
-            FullName = request.FullName.Trim(),
-            Email = normalizedEmail,
-            UniversityId = request.UniversityId
-        };
-
-        user.PasswordHash = passwordHashService.HashPassword(user, request.Password);
-        user.StudentProfile = new StudentProfile
-        {
-            Department = request.Department.Trim(),
-            Year = request.Year
-        };
-
-        var refreshToken = CreateRefreshToken(user);
-
-        dbContext.Users.Add(user);
-        dbContext.RefreshTokens.Add(refreshToken);
-
-        await dbContext.SaveChangesAsync(cancellationToken);
-
-        return Ok(CreateAuthResponse(user, refreshToken.Token));
+        var result = await authService.RegisterAsync(request, ClientIpAddress, cancellationToken);
+        return Ok(result.ToChallengeResponse("Dogrulama kodu universite e-posta adresinize gonderildi."));
     }
 
     [AllowAnonymous]
     [HttpPost("login")]
-    public async Task<ActionResult<AuthResponse>> Login([FromBody] LoginRequest request, CancellationToken cancellationToken)
+    public async Task<ActionResult<AuthSessionResponse>> Login(
+        [FromBody] LoginRequest request,
+        CancellationToken cancellationToken)
     {
-        var normalizedEmail = request.Email.Trim().ToLowerInvariant();
-
-        var user = await dbContext.Users
-            .FirstOrDefaultAsync(x => x.Email == normalizedEmail && x.IsActive, cancellationToken);
-
-        if (user is null || !passwordHashService.VerifyPassword(user, user.PasswordHash, request.Password))
-        {
-            return Unauthorized(new { message = "Email veya şifre hatalı." });
-        }
-
-        var refreshToken = CreateRefreshToken(user);
-        dbContext.RefreshTokens.Add(refreshToken);
-        await dbContext.SaveChangesAsync(cancellationToken);
-
-        return Ok(CreateAuthResponse(user, refreshToken.Token));
+        var result = await authService.LoginAsync(request, ClientIpAddress, cancellationToken);
+        AppendRefreshTokenCookie(result);
+        return Ok(result.ToResponse());
     }
 
     [AllowAnonymous]
     [HttpPost("refresh")]
-    public async Task<ActionResult<AuthResponse>> Refresh([FromBody] RefreshTokenRequest request, CancellationToken cancellationToken)
+    public async Task<ActionResult<AuthSessionResponse>> Refresh(CancellationToken cancellationToken)
     {
-        var existingRefreshToken = await dbContext.RefreshTokens
-            .Include(x => x.User)
-            .FirstOrDefaultAsync(x => x.Token == request.RefreshToken, cancellationToken);
-
-        if (existingRefreshToken is null || !existingRefreshToken.IsActive || !existingRefreshToken.User.IsActive)
+        try
         {
-            return Unauthorized(new { message = "Refresh token geçersiz veya süresi dolmuş." });
+            var result = await authService.RefreshAsync(RefreshTokenCookie, ClientIpAddress, cancellationToken);
+            AppendRefreshTokenCookie(result);
+            return Ok(result.ToResponse());
         }
-
-        existingRefreshToken.RevokedAtUtc = DateTime.UtcNow;
-        var replacementToken = CreateRefreshToken(existingRefreshToken.User);
-        existingRefreshToken.ReplacedByToken = replacementToken.Token;
-
-        dbContext.RefreshTokens.Add(replacementToken);
-        await dbContext.SaveChangesAsync(cancellationToken);
-
-        return Ok(CreateAuthResponse(existingRefreshToken.User, replacementToken.Token));
+        catch (UnauthorizedAccessException)
+        {
+            DeleteRefreshTokenCookie();
+            throw;
+        }
     }
 
-    [Authorize]
+    [AllowAnonymous]
     [HttpPost("logout")]
-    public async Task<IActionResult> Logout([FromBody] RefreshTokenRequest request, CancellationToken cancellationToken)
+    public async Task<IActionResult> Logout(CancellationToken cancellationToken)
     {
-        var userId = UserId;
-
-        if (userId is null)
-        {
-            return Unauthorized();
-        }
-
-        var refreshToken = await dbContext.RefreshTokens
-            .FirstOrDefaultAsync(x => x.Token == request.RefreshToken && x.UserId == userId.Value, cancellationToken);
-
-        if (refreshToken is null)
-        {
-            return NotFound(new { message = "Refresh token bulunamadı." });
-        }
-
-        refreshToken.RevokedAtUtc = DateTime.UtcNow;
-        await dbContext.SaveChangesAsync(cancellationToken);
-
+        await authService.LogoutAsync(currentUserService.UserId, RefreshTokenCookie, ClientIpAddress, cancellationToken);
+        DeleteRefreshTokenCookie();
         return NoContent();
     }
 
     [AllowAnonymous]
     [HttpPost("forgot-password")]
-    public async Task<IActionResult> ForgotPassword([FromBody] ForgotPasswordRequest request, CancellationToken cancellationToken)
+    public async Task<IActionResult> ForgotPassword(
+        [FromBody] ForgotPasswordRequest request,
+        CancellationToken cancellationToken)
     {
-        var normalizedEmail = request.Email.Trim().ToLowerInvariant();
-        var userExists = await dbContext.Users.AnyAsync(x => x.Email == normalizedEmail, cancellationToken);
-
-        if (userExists)
-        {
-            await emailService.SendForgotPasswordEmailAsync(normalizedEmail, cancellationToken);
-        }
+        await authService.ForgotPasswordAsync(request, cancellationToken);
 
         return Ok(new
         {
-            message = "Eğer kullanıcı mevcutsa şifre sıfırlama işlemi başlatılmıştır."
+            message = "Eger kullanici mevcutsa sifre sifirlama islemi baslatilmistir."
         });
     }
 
-    private Guid? UserId =>
-        Guid.TryParse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value, out var userId)
-            ? userId
-            : null;
-
-    private RefreshToken CreateRefreshToken(User user)
+    [AllowAnonymous]
+    [HttpPost("verify-email")]
+    public async Task<IActionResult> VerifyEmail(
+        [FromBody] VerifyEmailRequest request,
+        CancellationToken cancellationToken)
     {
-        return new RefreshToken
+        await authService.VerifyEmailAsync(request, cancellationToken);
+
+        return Ok(new
         {
-            UserId = user.Id,
-            Token = jwtTokenService.GenerateRefreshToken(),
-            ExpiresAtUtc = jwtTokenService.GetRefreshTokenExpiryUtc(),
-            CreatedByIp = HttpContext.Connection.RemoteIpAddress?.ToString()
-        };
+            message = "Kurumsal e-posta adresiniz dogrulandi. Artik giris yapabilirsiniz."
+        });
     }
 
-    private AuthResponse CreateAuthResponse(User user, string refreshToken)
+    [AllowAnonymous]
+    [HttpPost("resend-verification")]
+    public async Task<ActionResult<EmailVerificationChallengeResponse>> ResendVerification(
+        [FromBody] ResendEmailVerificationRequest request,
+        CancellationToken cancellationToken)
     {
-        return new AuthResponse
+        var result = await authService.ResendEmailVerificationAsync(request, cancellationToken);
+
+        return Ok(result.ToChallengeResponse("Yeni dogrulama kodu universite e-posta adresinize gonderildi."));
+    }
+
+    private string? RefreshTokenCookie =>
+        Request.Cookies.TryGetValue(RefreshTokenCookieName, out var refreshToken)
+            ? refreshToken
+            : null;
+
+    private string? ClientIpAddress => HttpContext.Connection.RemoteIpAddress?.ToString();
+
+    private void AppendRefreshTokenCookie(AuthenticatedUserResult result)
+    {
+        Response.Cookies.Append(
+            RefreshTokenCookieName,
+            result.RefreshToken,
+            CreateRefreshTokenCookieOptions(result.RefreshTokenExpiresAtUtc));
+    }
+
+    private void DeleteRefreshTokenCookie()
+    {
+        Response.Cookies.Delete(
+            RefreshTokenCookieName,
+            CreateRefreshTokenCookieOptions(DateTime.UtcNow.AddDays(-1)));
+    }
+
+    private CookieOptions CreateRefreshTokenCookieOptions(DateTime expiresAtUtc)
+    {
+        return new CookieOptions
         {
-            UserId = user.Id,
-            FullName = user.FullName,
-            Email = user.Email,
-            Role = user.Role,
-            AccessToken = jwtTokenService.GenerateAccessToken(user),
-            RefreshToken = refreshToken,
-            ExpiresAtUtc = jwtTokenService.GetAccessTokenExpiryUtc()
+            HttpOnly = true,
+            Secure = Request.IsHttps,
+            SameSite = SameSiteMode.Lax,
+            Expires = new DateTimeOffset(expiresAtUtc),
+            Path = "/"
         };
     }
 }

@@ -300,6 +300,14 @@ namespace EduConnect.Infrastructure.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("AvatarUrl")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("BannerUrl")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
                     b.Property<string>("Category")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -321,12 +329,25 @@ namespace EduConnect.Infrastructure.Data.Migrations
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
 
+                    b.Property<string>("ShortDescription")
+                        .IsRequired()
+                        .HasMaxLength(220)
+                        .HasColumnType("nvarchar(220)");
+
+                    b.Property<string>("Slug")
+                        .IsRequired()
+                        .HasMaxLength(160)
+                        .HasColumnType("nvarchar(160)");
+
                     b.Property<DateTime?>("UpdatedAtUtc")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CreatorUserId");
+
+                    b.HasIndex("Slug")
+                        .IsUnique();
 
                     b.ToTable("Groups", (string)null);
                 });
@@ -382,6 +403,10 @@ namespace EduConnect.Infrastructure.Data.Migrations
                         .HasMaxLength(1000)
                         .HasColumnType("nvarchar(1000)");
 
+                    b.Property<string>("TargetPath")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(200)
@@ -417,6 +442,9 @@ namespace EduConnect.Infrastructure.Data.Migrations
                     b.Property<DateTime>("CreatedAtUtc")
                         .HasColumnType("datetime2");
 
+                    b.Property<Guid?>("GroupId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("ImageUrl")
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
@@ -432,9 +460,39 @@ namespace EduConnect.Infrastructure.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("GroupId");
+
                     b.HasIndex("UserId");
 
                     b.ToTable("Posts", (string)null);
+                });
+
+            modelBuilder.Entity("EduConnect.Domain.Entities.PostBookmark", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAtUtc")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("PostId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("UpdatedAtUtc")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.HasIndex("PostId", "UserId")
+                        .IsUnique();
+
+                    b.ToTable("PostBookmarks", (string)null);
                 });
 
             modelBuilder.Entity("EduConnect.Domain.Entities.PostComment", b =>
@@ -495,6 +553,34 @@ namespace EduConnect.Infrastructure.Data.Migrations
                         .IsUnique();
 
                     b.ToTable("PostLikes", (string)null);
+                });
+
+            modelBuilder.Entity("EduConnect.Domain.Entities.PostView", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAtUtc")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("PostId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("UpdatedAtUtc")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.HasIndex("PostId", "UserId")
+                        .IsUnique();
+
+                    b.ToTable("PostViews", (string)null);
                 });
 
             modelBuilder.Entity("EduConnect.Domain.Entities.Product", b =>
@@ -639,6 +725,10 @@ namespace EduConnect.Infrastructure.Data.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
+                    b.Property<string>("CoverImageUrl")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
                     b.Property<DateTime>("CreatedAtUtc")
                         .HasColumnType("datetime2");
 
@@ -712,6 +802,22 @@ namespace EduConnect.Infrastructure.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
+
+                    b.Property<int>("EmailVerificationAttemptCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("EmailVerificationCodeHash")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<DateTime?>("EmailVerificationExpiresAtUtc")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("EmailVerificationSentAtUtc")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("EmailVerifiedAtUtc")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("FullName")
                         .IsRequired()
@@ -937,11 +1043,37 @@ namespace EduConnect.Infrastructure.Data.Migrations
 
             modelBuilder.Entity("EduConnect.Domain.Entities.Post", b =>
                 {
+                    b.HasOne("EduConnect.Domain.Entities.Group", "Group")
+                        .WithMany("Posts")
+                        .HasForeignKey("GroupId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
                     b.HasOne("EduConnect.Domain.Entities.User", "User")
                         .WithMany("Posts")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.Navigation("Group");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("EduConnect.Domain.Entities.PostBookmark", b =>
+                {
+                    b.HasOne("EduConnect.Domain.Entities.Post", "Post")
+                        .WithMany("Bookmarks")
+                        .HasForeignKey("PostId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("EduConnect.Domain.Entities.User", "User")
+                        .WithMany("BookmarkedPosts")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Post");
 
                     b.Navigation("User");
                 });
@@ -975,6 +1107,25 @@ namespace EduConnect.Infrastructure.Data.Migrations
 
                     b.HasOne("EduConnect.Domain.Entities.User", "User")
                         .WithMany("Likes")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Post");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("EduConnect.Domain.Entities.PostView", b =>
+                {
+                    b.HasOne("EduConnect.Domain.Entities.Post", "Post")
+                        .WithMany("Views")
+                        .HasForeignKey("PostId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("EduConnect.Domain.Entities.User", "User")
+                        .WithMany("ViewedPosts")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -1097,13 +1248,19 @@ namespace EduConnect.Infrastructure.Data.Migrations
                     b.Navigation("Events");
 
                     b.Navigation("Members");
+
+                    b.Navigation("Posts");
                 });
 
             modelBuilder.Entity("EduConnect.Domain.Entities.Post", b =>
                 {
+                    b.Navigation("Bookmarks");
+
                     b.Navigation("Comments");
 
                     b.Navigation("Likes");
+
+                    b.Navigation("Views");
                 });
 
             modelBuilder.Entity("EduConnect.Domain.Entities.Product", b =>
@@ -1118,6 +1275,8 @@ namespace EduConnect.Infrastructure.Data.Migrations
 
             modelBuilder.Entity("EduConnect.Domain.Entities.User", b =>
                 {
+                    b.Navigation("BookmarkedPosts");
+
                     b.Navigation("ChatSessions");
 
                     b.Navigation("Comments");
@@ -1143,6 +1302,8 @@ namespace EduConnect.Infrastructure.Data.Migrations
                     b.Navigation("RefreshTokens");
 
                     b.Navigation("StudentProfile");
+
+                    b.Navigation("ViewedPosts");
 
                     b.Navigation("VisualSearchHistories");
                 });

@@ -15,4 +15,6 @@ public sealed class NotificationResponse
     public NotificationType Type { get; init; }
 
     public DateTime CreatedAtUtc { get; init; }
+
+    public string? TargetPath { get; init; }
 }

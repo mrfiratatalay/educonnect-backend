@@ -44,6 +44,31 @@ public sealed class UserProfileResponse
 
     public string? AvatarUrl { get; init; }
 
+    public string? CoverImageUrl { get; init; }
+
+    public Guid? UniversityId { get; init; }
+
+    public string? UniversityName { get; init; }
+}
+
+public sealed class PublicUserProfileResponse
+{
+    public Guid Id { get; init; }
+
+    public string FullName { get; init; } = string.Empty;
+
+    public UserRole Role { get; init; }
+
+    public string Department { get; init; } = string.Empty;
+
+    public int Year { get; init; }
+
+    public string? Bio { get; init; }
+
+    public string? AvatarUrl { get; init; }
+
+    public string? CoverImageUrl { get; init; }
+
     public Guid? UniversityId { get; init; }
 
     public string? UniversityName { get; init; }

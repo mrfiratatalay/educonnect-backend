@@ -4,15 +4,9 @@ namespace EduConnect.Application.Interfaces;
 
 public interface IVisualSearchService
 {
-    Task<VisualSearchAnalysisResponse> SearchByImageAsync(
+    Task<VisualSearchSearchResponse> SearchAsync(
         byte[] imageBytes,
         string mimeType,
-        int maxResults = 8,
-        CancellationToken cancellationToken = default);
-
-    Task<IReadOnlyCollection<VisualSearchMatch>> SearchAsync(
-        string queryImageUrl,
-        IReadOnlyCollection<VisualSearchCandidate> candidates,
-        int maxResults,
+        VisualSearchSearchRequest request,
         CancellationToken cancellationToken = default);
 }

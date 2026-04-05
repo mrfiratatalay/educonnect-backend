@@ -9,6 +9,16 @@ public sealed class User : AuditableEntity
 
     public string Email { get; set; } = string.Empty;
 
+    public DateTime? EmailVerifiedAtUtc { get; set; }
+
+    public string? EmailVerificationCodeHash { get; set; }
+
+    public DateTime? EmailVerificationExpiresAtUtc { get; set; }
+
+    public DateTime? EmailVerificationSentAtUtc { get; set; }
+
+    public int EmailVerificationAttemptCount { get; set; }
+
     public string PasswordHash { get; set; } = string.Empty;
 
     public UserRole Role { get; set; } = UserRole.Student;
@@ -30,6 +40,10 @@ public sealed class User : AuditableEntity
     public ICollection<PostComment> Comments { get; set; } = [];
 
     public ICollection<PostLike> Likes { get; set; } = [];
+
+    public ICollection<PostBookmark> BookmarkedPosts { get; set; } = [];
+
+    public ICollection<PostView> ViewedPosts { get; set; } = [];
 
     public ICollection<Group> OwnedGroups { get; set; } = [];
 

@@ -6,6 +6,8 @@ public sealed class Post : AuditableEntity
 {
     public Guid UserId { get; set; }
 
+    public Guid? GroupId { get; set; }
+
     public string Content { get; set; } = string.Empty;
 
     public string? ImageUrl { get; set; }
@@ -14,7 +16,13 @@ public sealed class Post : AuditableEntity
 
     public User User { get; set; } = null!;
 
+    public Group? Group { get; set; }
+
     public ICollection<PostComment> Comments { get; set; } = [];
 
     public ICollection<PostLike> Likes { get; set; } = [];
+
+    public ICollection<PostBookmark> Bookmarks { get; set; } = [];
+
+    public ICollection<PostView> Views { get; set; } = [];
 }

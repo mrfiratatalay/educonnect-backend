@@ -1,3 +1,15 @@
+C:\Users\FIRAT\Desktop\Tubitak-Tez\backend\temp-build\api-avatar-check\EduConnect.Application.deps.json
+C:\Users\FIRAT\Desktop\Tubitak-Tez\backend\temp-build\api-avatar-check\EduConnect.Application.dll
+C:\Users\FIRAT\Desktop\Tubitak-Tez\backend\temp-build\api-avatar-check\EduConnect.Application.pdb
+C:\Users\FIRAT\Desktop\Tubitak-Tez\backend\temp-build\post-compose-v1-check\EduConnect.Application.deps.json
+C:\Users\FIRAT\Desktop\Tubitak-Tez\backend\temp-build\post-compose-v1-check\EduConnect.Application.dll
+C:\Users\FIRAT\Desktop\Tubitak-Tez\backend\temp-build\post-compose-v1-check\EduConnect.Application.pdb
+C:\Users\FIRAT\Desktop\Tubitak-Tez\backend\.tmp\api-build\EduConnect.Application.deps.json
+C:\Users\FIRAT\Desktop\Tubitak-Tez\backend\.tmp\api-build\EduConnect.Application.dll
+C:\Users\FIRAT\Desktop\Tubitak-Tez\backend\.tmp\api-build\EduConnect.Application.pdb
+C:\Users\FIRAT\Desktop\Tubitak-Tez\backend\temp-build\post-v2-check\EduConnect.Application.deps.json
+C:\Users\FIRAT\Desktop\Tubitak-Tez\backend\temp-build\post-v2-check\EduConnect.Application.dll
+C:\Users\FIRAT\Desktop\Tubitak-Tez\backend\temp-build\post-v2-check\EduConnect.Application.pdb
 C:\Users\FIRAT\Desktop\Tubitak-Tez\backend\src\EduConnect.Application\bin\Debug\net10.0\EduConnect.Application.deps.json
 C:\Users\FIRAT\Desktop\Tubitak-Tez\backend\src\EduConnect.Application\bin\Debug\net10.0\EduConnect.Application.dll
 C:\Users\FIRAT\Desktop\Tubitak-Tez\backend\src\EduConnect.Application\bin\Debug\net10.0\EduConnect.Application.pdb

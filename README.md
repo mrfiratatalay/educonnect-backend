@@ -1,38 +1,46 @@
 # EduConnect Backend
 
-Bu backend, `MSSQL Server + ASP.NET Core (.NET 10) + EF Core` ile hazırlanmıştır.
+Bu backend `MSSQL Server + ASP.NET Core (.NET 10) + EF Core` ile hazirlandi.
 
-## Mimarî
+## Mimari
 
-- `src/EduConnect.Api`: Controller, SignalR hub, auth, Swagger, startup
-- `src/EduConnect.Application`: DTO, sözleşmeler, interface'ler
-- `src/EduConnect.Domain`: Entity ve enum tanımları
-- `src/EduConnect.Infrastructure`: EF Core, DbContext, JWT, hashing, seed, migration
+- `src/EduConnect.Api`: controller, hub, middleware, startup
+- `src/EduConnect.Application`: contract ve interface tanimlari
+- `src/EduConnect.Domain`: entity ve enum tanimlari
+- `src/EduConnect.Infrastructure`: EF Core, auth, email, servisler, migration
 
-## Çalıştırma
+## Calistirma
 
 ```powershell
+docker compose -f docker-compose.mailpit.yml up -d mailpit
 dotnet build backend\EduConnect.sln
 dotnet ef database update --project backend\src\EduConnect.Infrastructure --startup-project backend\src\EduConnect.Api
 dotnet run --project backend\src\EduConnect.Api
 ```
 
-## Varsayılan Ayarlar
+## Varsayilan Adresler
 
-- API: `http://localhost:5099` veya launch profile'ın verdiği port
-- Swagger: `/swagger`
-- Health: `/health`
-- SignalR Hub: `/hubs/chat`
-- CORS izinli frontend origin: `http://localhost:5173`
+- API: `http://localhost:5160`
+- Swagger: `http://localhost:5160/swagger`
+- Health: `http://localhost:5160/health`
+- SignalR Hub: `http://localhost:5160/hubs/chat`
+- Frontend CORS origin: `http://localhost:5173`
+- Mailpit SMTP: `localhost:1025`
+- Mailpit UI: `http://localhost:8025`
 
-## Varsayılan Admin Kullanıcısı
-
-Seed sırasında aşağıdaki kullanıcı oluşturulur:
+## Varsayilan Admin
 
 - Email: `admin@educonnect.local`
-- Şifre: `Admin123!`
+- Sifre: `Admin123!`
 
-## Temel Endpoint Grupları
+## Auth Notlari
+
+- Kayit yalnizca secilen universitenin kurumsal e-posta alani ile kabul edilir.
+- Kayit sonrasi kullanici dogrudan login olmaz.
+- Backend 6 haneli bir dogrulama kodu uretir ve development ortaminda bu kod Mailpit'e duser.
+- Kullanici frontend uzerindeki `/verify-email` ekranindan kodu onayladiktan sonra login olabilir.
+
+## Temel Endpoint Gruplari
 
 - `api/auth`
 - `api/users`
@@ -47,6 +55,6 @@ Seed sırasında aşağıdaki kullanıcı oluşturulur:
 
 ## Notlar
 
-- Connection string varsayılan olarak `localhost` üzerindeki MSSQL için ayarlı.
-- Uygulama açılışında migration ve seed denenir; veritabanına ulaşılamazsa uygulama log warning vererek ayağa kalkmaya devam eder.
-- Görsel arama ve chatbot modülü şu an gerçek model entegrasyonu yerine backend-uyumlu servis katmanı ile hazırlanmıştır; daha sonra gerçek AI servisleri aynı interface'ler üzerinden değiştirilebilir.
+- Connection string varsayilan olarak `localhost\SQLEXPRESS` icin ayarlidir.
+- Uygulama acilisinda migration ve seed denenir; veritabani erisilemezse API warning log ile ayakta kalir.
+- Mailpit sadece development ortaminda local e-posta dogrulama testi icin kullanilir. Canli ortamda ayni akisin arkasina gercek SMTP/provider baglanir.

@@ -14,6 +14,8 @@ public static class DependencyInjection
     {
         services.Configure<JwtOptions>(configuration.GetSection(JwtOptions.SectionName));
         services.Configure<GeminiOptions>(configuration.GetSection(GeminiOptions.SectionName));
+        services.Configure<AvatarUploadOptions>(configuration.GetSection(AvatarUploadOptions.SectionName));
+        services.Configure<EmailOptions>(configuration.GetSection(EmailOptions.SectionName));
 
         services.AddHttpContextAccessor();
 
@@ -23,9 +25,12 @@ public static class DependencyInjection
                 sqlOptions => sqlOptions.MigrationsAssembly(typeof(AppDbContext).Assembly.FullName)));
 
         services.AddScoped<ICurrentUserService, CurrentUserService>();
+        services.AddScoped<IAuthService, AuthService>();
         services.AddScoped<IJwtTokenService, JwtTokenService>();
         services.AddScoped<IPasswordHashService, PasswordHashService>();
         services.AddScoped<IEmailService, EmailService>();
+        services.AddSingleton<IUserAvatarStorageService, UserAvatarStorageService>();
+        services.AddSingleton<IPostMediaStorageService, PostMediaStorageService>();
 
         services.AddSingleton<IGeminiApiService, GeminiApiService>();
         services.AddScoped<IChatbotService, ChatbotService>();

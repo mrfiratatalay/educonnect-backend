@@ -13,6 +13,8 @@ public sealed class AppDbContext(DbContextOptions<AppDbContext> options) : DbCon
     public DbSet<Post> Posts => Set<Post>();
     public DbSet<PostComment> PostComments => Set<PostComment>();
     public DbSet<PostLike> PostLikes => Set<PostLike>();
+    public DbSet<PostBookmark> PostBookmarks => Set<PostBookmark>();
+    public DbSet<PostView> PostViews => Set<PostView>();
     public DbSet<Group> Groups => Set<Group>();
     public DbSet<GroupMember> GroupMembers => Set<GroupMember>();
     public DbSet<Event> Events => Set<Event>();
@@ -82,6 +84,7 @@ public sealed class AppDbContext(DbContextOptions<AppDbContext> options) : DbCon
             entity.HasIndex(x => x.Email).IsUnique();
             entity.Property(x => x.FullName).HasMaxLength(150).IsRequired();
             entity.Property(x => x.Email).HasMaxLength(200).IsRequired();
+            entity.Property(x => x.EmailVerificationCodeHash).HasMaxLength(500);
             entity.Property(x => x.PasswordHash).HasMaxLength(1000).IsRequired();
 
             entity.HasOne(x => x.University)
@@ -101,6 +104,7 @@ public sealed class AppDbContext(DbContextOptions<AppDbContext> options) : DbCon
             entity.Property(x => x.Department).HasMaxLength(150).IsRequired();
             entity.Property(x => x.Bio).HasMaxLength(500);
             entity.Property(x => x.AvatarUrl).HasMaxLength(500);
+            entity.Property(x => x.CoverImageUrl).HasMaxLength(500);
         });
 
         modelBuilder.Entity<University>(entity =>
@@ -139,6 +143,11 @@ public sealed class AppDbContext(DbContextOptions<AppDbContext> options) : DbCon
                 .WithMany(x => x.Posts)
                 .HasForeignKey(x => x.UserId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            entity.HasOne(x => x.Group)
+                .WithMany(x => x.Posts)
+                .HasForeignKey(x => x.GroupId)
+                .OnDelete(DeleteBehavior.SetNull);
         });
 
         modelBuilder.Entity<PostComment>(entity =>
@@ -172,6 +181,38 @@ public sealed class AppDbContext(DbContextOptions<AppDbContext> options) : DbCon
                 .HasForeignKey(x => x.UserId)
                 .OnDelete(DeleteBehavior.Restrict);
         });
+
+        modelBuilder.Entity<PostBookmark>(entity =>
+        {
+            entity.ToTable("PostBookmarks");
+            entity.HasIndex(x => new { x.PostId, x.UserId }).IsUnique();
+
+            entity.HasOne(x => x.Post)
+                .WithMany(x => x.Bookmarks)
+                .HasForeignKey(x => x.PostId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            entity.HasOne(x => x.User)
+                .WithMany(x => x.BookmarkedPosts)
+                .HasForeignKey(x => x.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
+        });
+
+        modelBuilder.Entity<PostView>(entity =>
+        {
+            entity.ToTable("PostViews");
+            entity.HasIndex(x => new { x.PostId, x.UserId }).IsUnique();
+
+            entity.HasOne(x => x.Post)
+                .WithMany(x => x.Views)
+                .HasForeignKey(x => x.PostId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            entity.HasOne(x => x.User)
+                .WithMany(x => x.ViewedPosts)
+                .HasForeignKey(x => x.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
+        });
     }
 
     private static void ConfigureGroups(ModelBuilder modelBuilder)
@@ -179,8 +220,13 @@ public sealed class AppDbContext(DbContextOptions<AppDbContext> options) : DbCon
         modelBuilder.Entity<Group>(entity =>
         {
             entity.ToTable("Groups");
+            entity.HasIndex(x => x.Slug).IsUnique();
             entity.Property(x => x.Name).HasMaxLength(150).IsRequired();
+            entity.Property(x => x.Slug).HasMaxLength(160).IsRequired();
+            entity.Property(x => x.ShortDescription).HasMaxLength(220).IsRequired();
             entity.Property(x => x.Description).HasMaxLength(1000).IsRequired();
+            entity.Property(x => x.AvatarUrl).HasMaxLength(500);
+            entity.Property(x => x.BannerUrl).HasMaxLength(500);
             entity.Property(x => x.Category).HasMaxLength(100).IsRequired();
 
             entity.HasOne(x => x.CreatorUser)
@@ -362,6 +408,7 @@ public sealed class AppDbContext(DbContextOptions<AppDbContext> options) : DbCon
             entity.ToTable("Notifications");
             entity.Property(x => x.Title).HasMaxLength(200).IsRequired();
             entity.Property(x => x.Message).HasMaxLength(1000).IsRequired();
+            entity.Property(x => x.TargetPath).HasMaxLength(500);
 
             entity.HasOne(x => x.User)
                 .WithMany(x => x.Notifications)

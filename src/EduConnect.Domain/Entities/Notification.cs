@@ -15,5 +15,7 @@ public sealed class Notification : AuditableEntity
 
     public NotificationType Type { get; set; } = NotificationType.General;
 
+    public string? TargetPath { get; set; }
+
     public User User { get; set; } = null!;
 }
