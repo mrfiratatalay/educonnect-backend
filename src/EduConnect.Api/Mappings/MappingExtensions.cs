@@ -55,11 +55,13 @@ public static class MappingExtensions
             AvatarUrl = user.StudentProfile?.AvatarUrl,
             CoverImageUrl = user.StudentProfile?.CoverImageUrl,
             UniversityId = user.UniversityId,
-            UniversityName = user.University?.Name
+            UniversityName = user.University?.Name,
+            FollowersCount = user.FollowerRelationships.Count,
+            FollowingCount = user.FollowingRelationships.Count
         };
     }
 
-    public static PublicUserProfileResponse ToPublicResponse(this User user)
+    public static PublicUserProfileResponse ToPublicResponse(this User user, bool isFollowedByCurrentUser = false)
     {
         return new PublicUserProfileResponse
         {
@@ -72,7 +74,10 @@ public static class MappingExtensions
             AvatarUrl = user.StudentProfile?.AvatarUrl,
             CoverImageUrl = user.StudentProfile?.CoverImageUrl,
             UniversityId = user.UniversityId,
-            UniversityName = user.University?.Name
+            UniversityName = user.University?.Name,
+            FollowersCount = user.FollowerRelationships.Count,
+            FollowingCount = user.FollowingRelationships.Count,
+            IsFollowedByCurrentUser = isFollowedByCurrentUser
         };
     }
 
@@ -87,7 +92,7 @@ public static class MappingExtensions
         };
     }
 
-    public static PostResponse ToResponse(this Post post, Guid? currentUserId)
+    public static PostResponse ToResponse(this Post post, Guid? currentUserId, string? recommendationReason = null)
     {
         return new PostResponse
         {
@@ -101,6 +106,7 @@ public static class MappingExtensions
             AvatarUrl = post.User.StudentProfile?.AvatarUrl,
             Content = post.Content,
             ImageUrl = post.ImageUrl,
+            RecommendationReason = recommendationReason,
             LikesCount = post.Likes.Count,
             CommentsCount = post.Comments.Count,
             ViewsCount = post.Views.Count,

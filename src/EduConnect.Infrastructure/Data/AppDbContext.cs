@@ -17,6 +17,7 @@ public sealed class AppDbContext(DbContextOptions<AppDbContext> options) : DbCon
     public DbSet<PostView> PostViews => Set<PostView>();
     public DbSet<Group> Groups => Set<Group>();
     public DbSet<GroupMember> GroupMembers => Set<GroupMember>();
+    public DbSet<UserFollow> UserFollows => Set<UserFollow>();
     public DbSet<Event> Events => Set<Event>();
     public DbSet<EventParticipant> EventParticipants => Set<EventParticipant>();
     public DbSet<Category> Categories => Set<Category>();
@@ -128,6 +129,22 @@ public sealed class AppDbContext(DbContextOptions<AppDbContext> options) : DbCon
                 .WithMany(x => x.RefreshTokens)
                 .HasForeignKey(x => x.UserId)
                 .OnDelete(DeleteBehavior.Cascade);
+        });
+
+        modelBuilder.Entity<UserFollow>(entity =>
+        {
+            entity.ToTable("UserFollows");
+            entity.HasIndex(x => new { x.FollowerUserId, x.FollowedUserId }).IsUnique();
+
+            entity.HasOne(x => x.FollowerUser)
+                .WithMany(x => x.FollowingRelationships)
+                .HasForeignKey(x => x.FollowerUserId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            entity.HasOne(x => x.FollowedUser)
+                .WithMany(x => x.FollowerRelationships)
+                .HasForeignKey(x => x.FollowedUserId)
+                .OnDelete(DeleteBehavior.Restrict);
         });
     }
 

@@ -854,6 +854,34 @@ namespace EduConnect.Infrastructure.Data.Migrations
                     b.ToTable("Users", (string)null);
                 });
 
+            modelBuilder.Entity("EduConnect.Domain.Entities.UserFollow", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAtUtc")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("FollowedUserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("FollowerUserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("UpdatedAtUtc")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FollowedUserId");
+
+                    b.HasIndex("FollowerUserId", "FollowedUserId")
+                        .IsUnique();
+
+                    b.ToTable("UserFollows", (string)null);
+                });
+
             modelBuilder.Entity("EduConnect.Domain.Entities.VisualSearchHistory", b =>
                 {
                     b.Property<Guid>("Id")
@@ -1196,6 +1224,25 @@ namespace EduConnect.Infrastructure.Data.Migrations
                     b.Navigation("University");
                 });
 
+            modelBuilder.Entity("EduConnect.Domain.Entities.UserFollow", b =>
+                {
+                    b.HasOne("EduConnect.Domain.Entities.User", "FollowedUser")
+                        .WithMany("FollowerRelationships")
+                        .HasForeignKey("FollowedUserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("EduConnect.Domain.Entities.User", "FollowerUser")
+                        .WithMany("FollowingRelationships")
+                        .HasForeignKey("FollowerUserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("FollowedUser");
+
+                    b.Navigation("FollowerUser");
+                });
+
             modelBuilder.Entity("EduConnect.Domain.Entities.VisualSearchHistory", b =>
                 {
                     b.HasOne("EduConnect.Domain.Entities.User", "User")
@@ -1284,6 +1331,10 @@ namespace EduConnect.Infrastructure.Data.Migrations
                     b.Navigation("EventParticipations");
 
                     b.Navigation("Feedbacks");
+
+                    b.Navigation("FollowerRelationships");
+
+                    b.Navigation("FollowingRelationships");
 
                     b.Navigation("GroupMemberships");
 

@@ -49,6 +49,10 @@ public sealed class UserProfileResponse
     public Guid? UniversityId { get; init; }
 
     public string? UniversityName { get; init; }
+
+    public int FollowersCount { get; init; }
+
+    public int FollowingCount { get; init; }
 }
 
 public sealed class PublicUserProfileResponse
@@ -72,4 +76,47 @@ public sealed class PublicUserProfileResponse
     public Guid? UniversityId { get; init; }
 
     public string? UniversityName { get; init; }
+
+    public int FollowersCount { get; init; }
+
+    public int FollowingCount { get; init; }
+
+    public bool IsFollowedByCurrentUser { get; init; }
+}
+
+public sealed class FollowStateResponse
+{
+    public bool IsFollowing { get; init; }
+}
+
+public sealed class FollowSuggestionResponse
+{
+    public Guid Id { get; init; }
+
+    public string FullName { get; init; } = string.Empty;
+
+    public string? AvatarUrl { get; init; }
+
+    public string? Department { get; init; }
+
+    public string? UniversityName { get; init; }
+
+    public int MutualGroupCount { get; init; }
+
+    public string ReasonLabel { get; init; } = string.Empty;
+}
+
+public sealed class UserConnectionResponse
+{
+    public Guid Id { get; init; }
+
+    public string FullName { get; init; } = string.Empty;
+
+    public string? AvatarUrl { get; init; }
+
+    public string? Department { get; init; }
+
+    public string? UniversityName { get; init; }
+
+    public bool IsFollowedByCurrentUser { get; init; }
 }

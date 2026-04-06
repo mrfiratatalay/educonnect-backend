@@ -31,6 +31,7 @@ builder.Services.AddControllers()
 builder.Services.AddSignalR();
 builder.Services.AddProblemDetails();
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+builder.Services.AddMemoryCache();
 
 builder.Services.AddCors(options =>
 {

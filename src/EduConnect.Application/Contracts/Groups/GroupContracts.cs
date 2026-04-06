@@ -24,6 +24,27 @@ public sealed class CreateGroupRequest
     public string Category { get; init; } = string.Empty;
 }
 
+public sealed class UpdateGroupRequest
+{
+    [Required, StringLength(150, MinimumLength = 3)]
+    public string Name { get; init; } = string.Empty;
+
+    [StringLength(220, MinimumLength = 3)]
+    public string? ShortDescription { get; init; }
+
+    [Required, StringLength(1000, MinimumLength = 10)]
+    public string Description { get; init; } = string.Empty;
+
+    [Url, StringLength(500)]
+    public string? AvatarUrl { get; init; }
+
+    [Url, StringLength(500)]
+    public string? BannerUrl { get; init; }
+
+    [Required, StringLength(100)]
+    public string Category { get; init; } = string.Empty;
+}
+
 public class GroupResponse
 {
     public Guid Id { get; init; }

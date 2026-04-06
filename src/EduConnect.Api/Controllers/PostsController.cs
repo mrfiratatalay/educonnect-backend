@@ -1,3 +1,4 @@
+using EduConnect.Api.Common;
 using EduConnect.Api.Mappings;
 using EduConnect.Application.Contracts.Common;
 using EduConnect.Application.Contracts.Posts;
@@ -42,6 +43,263 @@ public sealed class PostsController(
             Page = page,
             PageSize = pageSize,
             TotalCount = totalCount
+        });
+    }
+
+    [HttpGet("for-you")]
+    public async Task<ActionResult<PagedResponse<PostResponse>>> GetForYou(
+        [FromQuery] int page = 1,
+        [FromQuery] int pageSize = 10,
+        CancellationToken cancellationToken = default)
+    {
+        var userId = currentUserService.UserId;
+        if (userId is null)
+        {
+            return Unauthorized();
+        }
+
+        page = Math.Max(page, 1);
+        pageSize = Math.Clamp(pageSize, 1, 50);
+
+        var currentUserUniversityId = await dbContext.Users
+            .AsNoTracking()
+            .Where(x => x.Id == userId.Value)
+            .Select(x => x.UniversityId)
+            .FirstOrDefaultAsync(cancellationToken);
+
+        var followedUserIds = await dbContext.UserFollows
+            .AsNoTracking()
+            .Where(x => x.FollowerUserId == userId.Value)
+            .Select(x => x.FollowedUserId)
+            .ToArrayAsync(cancellationToken);
+
+        var joinedGroupIds = await dbContext.GroupMembers
+            .AsNoTracking()
+            .Where(x => x.UserId == userId.Value)
+            .Select(x => x.GroupId)
+            .ToArrayAsync(cancellationToken);
+
+        var interestSinceUtc = DateTime.UtcNow.AddDays(-45);
+        var interestPosts = await dbContext.Posts
+            .AsNoTracking()
+            .Where(x =>
+                !x.IsDeleted &&
+                x.CreatedAtUtc >= interestSinceUtc &&
+                (x.UserId == userId.Value ||
+                 x.Likes.Any(like => like.UserId == userId.Value) ||
+                 x.Bookmarks.Any(bookmark => bookmark.UserId == userId.Value)))
+            .Select(x => new PostTrendSource(
+                x.Content,
+                x.UserId,
+                x.User.UniversityId,
+                x.CreatedAtUtc))
+            .ToListAsync(cancellationToken);
+
+        var interestHashtags = PostTrendAnalyzer.Build(interestPosts, 6)
+            .Select(x => x.DisplayHashtag.ToLowerInvariant())
+            .ToHashSet(StringComparer.OrdinalIgnoreCase);
+
+        var candidateSinceUtc = DateTime.UtcNow.AddDays(-30);
+        var candidatePosts = await QueryPostsForFeed()
+            .Where(x => x.CreatedAtUtc >= candidateSinceUtc)
+            .OrderByDescending(x => x.CreatedAtUtc)
+            .Take(250)
+            .ToListAsync(cancellationToken);
+
+        var scoredPosts = candidatePosts
+            .Select(post => new ScoredPost(
+                Post: post,
+                Score: CalculateForYouScore(
+                    post,
+                    userId.Value,
+                    currentUserUniversityId,
+                    followedUserIds,
+                    joinedGroupIds,
+                    interestHashtags)))
+            .OrderByDescending(x => x.Score)
+            .ThenByDescending(x => x.Post.CreatedAtUtc)
+            .ToArray();
+
+        var totalCount = scoredPosts.Length;
+        var posts = scoredPosts
+            .Skip((page - 1) * pageSize)
+            .Take(pageSize)
+            .Select(x => x.Post.ToResponse(
+                userId,
+                BuildForYouReason(
+                    x.Post,
+                    currentUserId: userId.Value,
+                    currentUserUniversityId,
+                    followedUserIds,
+                    joinedGroupIds,
+                    interestHashtags)))
+            .ToArray();
+
+        return Ok(new PagedResponse<PostResponse>
+        {
+            Items = posts,
+            Page = page,
+            PageSize = pageSize,
+            TotalCount = totalCount
+        });
+    }
+
+    [HttpGet("following")]
+    public async Task<ActionResult<PagedResponse<PostResponse>>> GetFollowingFeed(
+        [FromQuery] int page = 1,
+        [FromQuery] int pageSize = 10,
+        CancellationToken cancellationToken = default)
+    {
+        var userId = currentUserService.UserId;
+        if (userId is null)
+        {
+            return Unauthorized();
+        }
+
+        page = Math.Max(page, 1);
+        pageSize = Math.Clamp(pageSize, 1, 50);
+
+        var followedUserIdList = await dbContext.UserFollows
+            .AsNoTracking()
+            .Where(x => x.FollowerUserId == userId.Value)
+            .Select(x => x.FollowedUserId)
+            .ToArrayAsync(cancellationToken);
+
+        if (followedUserIdList.Length == 0)
+        {
+            return Ok(new PagedResponse<PostResponse>
+            {
+                Items = [],
+                Page = page,
+                PageSize = pageSize,
+                TotalCount = 0
+            });
+        }
+
+        var query = QueryPostsForFeed()
+            .Where(x => !x.GroupId.HasValue && followedUserIdList.Contains(x.UserId))
+            .OrderByDescending(x => x.CreatedAtUtc);
+
+        var totalCount = await query.CountAsync(cancellationToken);
+
+        var posts = await query
+            .Skip((page - 1) * pageSize)
+            .Take(pageSize)
+            .ToListAsync(cancellationToken);
+
+        return Ok(new PagedResponse<PostResponse>
+        {
+            Items = posts.Select(x => x.ToResponse(userId)).ToArray(),
+            Page = page,
+            PageSize = pageSize,
+            TotalCount = totalCount
+        });
+    }
+
+    [HttpGet("trending")]
+    public async Task<ActionResult<IReadOnlyCollection<PostTrendingHashtagResponse>>> GetTrendingHashtags(
+        [FromQuery] int limit = 4,
+        CancellationToken cancellationToken = default)
+    {
+        var userId = currentUserService.UserId;
+        if (userId is null)
+        {
+            return Unauthorized();
+        }
+
+        limit = Math.Clamp(limit, 1, 10);
+
+        var currentUserUniversityId = await dbContext.Users
+            .AsNoTracking()
+            .Where(x => x.Id == userId.Value)
+            .Select(x => x.UniversityId)
+            .FirstOrDefaultAsync(cancellationToken);
+
+        var sinceUtc = DateTime.UtcNow.AddDays(-7);
+
+        var recentPosts = await dbContext.Posts
+            .AsNoTracking()
+            .Where(x => !x.IsDeleted && x.CreatedAtUtc >= sinceUtc && x.Content.Contains("#"))
+            .OrderByDescending(x => x.CreatedAtUtc)
+            .Select(x => new TrendingPostSource(
+                x.Content,
+                x.UserId,
+                x.User.UniversityId,
+                x.CreatedAtUtc))
+            .ToListAsync(cancellationToken);
+
+        IReadOnlyCollection<PostTrendingHashtagResponse> trends;
+
+        if (currentUserUniversityId.HasValue)
+        {
+            trends = BuildTrendingHashtagResponses(
+                recentPosts.Where(x => x.UniversityId == currentUserUniversityId.Value),
+                "Universitende - Gundemdekiler",
+                limit);
+
+            if (trends.Count == 0)
+            {
+                trends = BuildTrendingHashtagResponses(
+                    recentPosts,
+                    "Platformda - Gundemdekiler",
+                    limit);
+            }
+        }
+        else
+        {
+            trends = BuildTrendingHashtagResponses(
+                recentPosts,
+                "Platformda - Gundemdekiler",
+                limit);
+        }
+
+        return Ok(trends);
+    }
+
+    [HttpGet("tags/{tag}")]
+    public async Task<ActionResult<PagedResponse<PostResponse>>> GetPostsByTag(
+        string tag,
+        [FromQuery] int page = 1,
+        [FromQuery] int pageSize = 10,
+        CancellationToken cancellationToken = default)
+    {
+        var normalizedTag = NormalizeHashtagTag(tag);
+        if (normalizedTag is null)
+        {
+            return BadRequest(new
+            {
+                message = "Gecersiz hashtag."
+            });
+        }
+
+        page = Math.Max(page, 1);
+        pageSize = Math.Clamp(pageSize, 1, 50);
+
+        var matchingPosts = await QueryPostsForFeed()
+            .Where(x => x.Content.Contains("#"))
+            .OrderByDescending(x => x.CreatedAtUtc)
+            .ToListAsync(cancellationToken);
+
+        var filteredPosts = matchingPosts
+            .Where(post => PostTrendAnalyzer.ExtractHashtags(post.Content)
+                .Any(hashtag => string.Equals(
+                    hashtag.TrimStart('#'),
+                    normalizedTag,
+                    StringComparison.OrdinalIgnoreCase)))
+            .ToArray();
+
+        var pagedPosts = filteredPosts
+            .Skip((page - 1) * pageSize)
+            .Take(pageSize)
+            .Select(x => x.ToResponse(currentUserService.UserId))
+            .ToArray();
+
+        return Ok(new PagedResponse<PostResponse>
+        {
+            Items = pagedPosts,
+            Page = page,
+            PageSize = pageSize,
+            TotalCount = filteredPosts.Length
         });
     }
 
@@ -502,6 +760,130 @@ public sealed class PostsController(
             .ThenInclude(x => x.Views);
     }
 
+    private static IReadOnlyCollection<PostTrendingHashtagResponse> BuildTrendingHashtagResponses(
+        IEnumerable<TrendingPostSource> posts,
+        string contextLabel,
+        int limit)
+    {
+        return PostTrendAnalyzer.Build(
+                posts.Select(post => new PostTrendSource(
+                    post.Content,
+                    post.UserId,
+                    post.UniversityId,
+                    post.CreatedAtUtc)),
+                limit)
+            .Select(x => new PostTrendingHashtagResponse
+            {
+                ContextLabel = contextLabel,
+                Hashtag = x.DisplayHashtag,
+                PostCount = x.PostCount,
+                UniqueAuthorCount = x.UniqueAuthorCount
+            })
+            .ToArray();
+    }
+
+    private static int CalculateForYouScore(
+        Post post,
+        Guid currentUserId,
+        Guid? currentUserUniversityId,
+        IReadOnlyCollection<Guid> followedUserIds,
+        IReadOnlyCollection<Guid> joinedGroupIds,
+        IReadOnlySet<string> interestHashtags)
+    {
+        var score = 0;
+
+        if (followedUserIds.Contains(post.UserId))
+        {
+            score += 46;
+        }
+
+        if (post.GroupId.HasValue && joinedGroupIds.Contains(post.GroupId.Value))
+        {
+            score += 34;
+        }
+
+        if (currentUserUniversityId.HasValue && post.User.UniversityId == currentUserUniversityId.Value)
+        {
+            score += 18;
+        }
+
+        score += post.GroupId.HasValue ? 4 : 8;
+        score += Math.Min(post.Likes.Count, 12);
+        score += Math.Min(post.Comments.Count * 2, 12);
+        score += Math.Min(post.Views.Count / 3, 10);
+
+        if (post.Likes.Any(x => x.UserId == currentUserId) || post.Bookmarks.Any(x => x.UserId == currentUserId))
+        {
+            score += 8;
+        }
+
+        if (interestHashtags.Count > 0)
+        {
+            var matchingHashtagCount = PostTrendAnalyzer.ExtractHashtags(post.Content)
+                .Count(hashtag => interestHashtags.Contains(hashtag.ToLowerInvariant()));
+
+            if (matchingHashtagCount > 0)
+            {
+                score += 18 + (matchingHashtagCount * 6);
+            }
+        }
+
+        var ageHours = Math.Max(0, (DateTime.UtcNow - post.CreatedAtUtc).TotalHours);
+        score += ageHours switch
+        {
+            <= 12 => 14,
+            <= 24 => 10,
+            <= 72 => 6,
+            <= 168 => 3,
+            _ => 0
+        };
+
+        return score;
+    }
+
+    private static string BuildForYouReason(
+        Post post,
+        Guid currentUserId,
+        Guid? currentUserUniversityId,
+        IReadOnlyCollection<Guid> followedUserIds,
+        IReadOnlyCollection<Guid> joinedGroupIds,
+        IReadOnlySet<string> interestHashtags)
+    {
+        if (followedUserIds.Contains(post.UserId))
+        {
+            return "Takip ettiklerinden";
+        }
+
+        if (post.GroupId.HasValue && joinedGroupIds.Contains(post.GroupId.Value))
+        {
+            return "Toplulugundan";
+        }
+
+        if (interestHashtags.Count > 0)
+        {
+            var hasMatchingHashtag = PostTrendAnalyzer.ExtractHashtags(post.Content)
+                .Any(hashtag => interestHashtags.Contains(hashtag.ToLowerInvariant()));
+
+            if (hasMatchingHashtag)
+            {
+                return "Ilgi alanina yakin";
+            }
+        }
+
+        if (currentUserUniversityId.HasValue && post.User.UniversityId == currentUserUniversityId.Value)
+        {
+            return "Ayni universiteden";
+        }
+
+        var engagementScore = post.Likes.Count + post.Comments.Count + post.Views.Count;
+        if (engagementScore >= 8)
+        {
+            return "Etkilesimi yuksek";
+        }
+
+        return "Yeni paylasildi";
+    }
+
     private bool CanManagePost(Post post, Guid currentUserId)
     {
         var isPrivileged =
@@ -538,4 +920,36 @@ public sealed class PostsController(
             ? normalized
             : $"{normalized[..140].TrimEnd()}...";
     }
+
+    private static string? NormalizeHashtagTag(string? value)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+        {
+            return null;
+        }
+
+        var trimmedValue = value.Trim().TrimStart('#');
+        if (trimmedValue.Length is < 2 or > 40)
+        {
+            return null;
+        }
+
+        var normalizedValue = new string(trimmedValue
+            .Where(character => char.IsLetterOrDigit(character) || character == '_')
+            .ToArray());
+
+        return normalizedValue.Length == trimmedValue.Length
+            ? normalizedValue
+            : null;
+    }
+
+    private sealed record TrendingPostSource(
+        string Content,
+        Guid UserId,
+        Guid? UniversityId,
+        DateTime CreatedAtUtc);
+
+    private sealed record ScoredPost(
+        Post Post,
+        int Score);
 }

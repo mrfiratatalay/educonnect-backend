@@ -45,7 +45,7 @@ public sealed class GroupsController(AppDbContext dbContext, ICurrentUserService
         {
             Name = request.Name.Trim(),
             Slug = await GenerateUniqueSlugAsync(request.Name, cancellationToken),
-            ShortDescription = BuildShortDescription(request),
+            ShortDescription = BuildShortDescription(request.ShortDescription, request.Description),
             Description = request.Description.Trim(),
             AvatarUrl = NormalizeOptionalUrl(request.AvatarUrl),
             BannerUrl = NormalizeOptionalUrl(request.BannerUrl),
@@ -65,6 +65,42 @@ public sealed class GroupsController(AppDbContext dbContext, ICurrentUserService
 
         group = await QueryGroups().FirstAsync(x => x.Id == group.Id, cancellationToken);
         return CreatedAtAction(nameof(GetById), new { id = group.Id }, group.ToResponse(userId));
+    }
+
+    [HttpPut("{id:guid}")]
+    public async Task<ActionResult<GroupDetailResponse>> Update(
+        Guid id,
+        [FromBody] UpdateGroupRequest request,
+        CancellationToken cancellationToken)
+    {
+        var userId = currentUserService.UserId;
+        if (userId is null)
+        {
+            return Unauthorized();
+        }
+
+        var group = await dbContext.Groups.FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
+        if (group is null)
+        {
+            return NotFound();
+        }
+
+        if (group.CreatorUserId != userId.Value)
+        {
+            return Forbid();
+        }
+
+        group.Name = request.Name.Trim();
+        group.ShortDescription = BuildShortDescription(request.ShortDescription, request.Description);
+        group.Description = request.Description.Trim();
+        group.AvatarUrl = NormalizeOptionalUrl(request.AvatarUrl);
+        group.BannerUrl = NormalizeOptionalUrl(request.BannerUrl);
+        group.Category = request.Category.Trim();
+
+        await dbContext.SaveChangesAsync(cancellationToken);
+
+        var updatedGroup = await QueryGroups().FirstAsync(x => x.Id == group.Id, cancellationToken);
+        return Ok(await BuildGroupDetailResponseAsync(updatedGroup, cancellationToken));
     }
 
     [HttpGet("{id:guid}")]
@@ -352,11 +388,11 @@ public sealed class GroupsController(AppDbContext dbContext, ICurrentUserService
         return slug;
     }
 
-    private static string BuildShortDescription(CreateGroupRequest request)
+    private static string BuildShortDescription(string? shortDescription, string description)
     {
-        var preferredValue = string.IsNullOrWhiteSpace(request.ShortDescription)
-            ? request.Description
-            : request.ShortDescription;
+        var preferredValue = string.IsNullOrWhiteSpace(shortDescription)
+            ? description
+            : shortDescription;
 
         var normalized = preferredValue.Trim();
         if (normalized.Length <= ShortDescriptionMaxLength)

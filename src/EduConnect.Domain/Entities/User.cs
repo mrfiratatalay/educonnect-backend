@@ -49,6 +49,10 @@ public sealed class User : AuditableEntity
 
     public ICollection<GroupMember> GroupMemberships { get; set; } = [];
 
+    public ICollection<UserFollow> FollowerRelationships { get; set; } = [];
+
+    public ICollection<UserFollow> FollowingRelationships { get; set; } = [];
+
     public ICollection<Event> OwnedEvents { get; set; } = [];
 
     public ICollection<EventParticipant> EventParticipations { get; set; } = [];

@@ -66,6 +66,8 @@ public sealed class PostResponse
 
     public string? ImageUrl { get; init; }
 
+    public string? RecommendationReason { get; init; }
+
     public int LikesCount { get; init; }
 
     public int CommentsCount { get; init; }
@@ -87,6 +89,17 @@ public sealed class PostBookmarkStateResponse
 public sealed class PostViewTrackingResponse
 {
     public int ViewsCount { get; init; }
+}
+
+public sealed class PostTrendingHashtagResponse
+{
+    public string ContextLabel { get; init; } = string.Empty;
+
+    public string Hashtag { get; init; } = string.Empty;
+
+    public int PostCount { get; init; }
+
+    public int UniqueAuthorCount { get; init; }
 }
 
 public sealed class PostDetailResponse
