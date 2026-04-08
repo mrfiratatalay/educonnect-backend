@@ -455,39 +455,32 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\FIRAT\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\aysem\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\FIRAT\\Desktop\\Tubitak-Tez\\backend\\src\\EduConnect.Application\\EduConnect.Application.csproj",
+      "projectUniqueName": "C:\\Users\\aysem\\Desktop\\TEZ-TUBİTAK\\TEZ-Backend\\src\\EduConnect.Application\\EduConnect.Application.csproj",
       "projectName": "EduConnect.Application",
-      "projectPath": "C:\\Users\\FIRAT\\Desktop\\Tubitak-Tez\\backend\\src\\EduConnect.Application\\EduConnect.Application.csproj",
-      "packagesPath": "C:\\Users\\FIRAT\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\FIRAT\\Desktop\\Tubitak-Tez\\backend\\src\\EduConnect.Application\\obj\\",
+      "projectPath": "C:\\Users\\aysem\\Desktop\\TEZ-TUBİTAK\\TEZ-Backend\\src\\EduConnect.Application\\EduConnect.Application.csproj",
+      "packagesPath": "C:\\Users\\aysem\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\aysem\\Desktop\\TEZ-TUBİTAK\\TEZ-Backend\\src\\EduConnect.Application\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\FIRAT\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\aysem\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net10.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net10.0": {
           "targetAlias": "net10.0",
           "projectReferences": {
-            "C:\\Users\\FIRAT\\Desktop\\Tubitak-Tez\\backend\\src\\EduConnect.Domain\\EduConnect.Domain.csproj": {
-              "projectPath": "C:\\Users\\FIRAT\\Desktop\\Tubitak-Tez\\backend\\src\\EduConnect.Domain\\EduConnect.Domain.csproj"
+            "C:\\Users\\aysem\\Desktop\\TEZ-TUBİTAK\\TEZ-Backend\\src\\EduConnect.Domain\\EduConnect.Domain.csproj": {
+              "projectPath": "C:\\Users\\aysem\\Desktop\\TEZ-TUBİTAK\\TEZ-Backend\\src\\EduConnect.Domain\\EduConnect.Domain.csproj"
             }
           }
         }
@@ -533,7 +526,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.104/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.CSharp": "(,4.7.32767]",
           "Microsoft.VisualBasic": "(,10.4.32767]",

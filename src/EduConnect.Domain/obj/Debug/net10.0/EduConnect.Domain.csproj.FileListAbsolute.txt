@@ -61,3 +61,15 @@ C:\Users\FIRAT\Desktop\Tubitak-Tez\backend\temp-build\profile-connections-check\
 C:\Users\FIRAT\Desktop\Tubitak-Tez\backend\temp-build\explore-pure-hashtag-check\EduConnect.Domain.deps.json
 C:\Users\FIRAT\Desktop\Tubitak-Tez\backend\temp-build\explore-pure-hashtag-check\EduConnect.Domain.dll
 C:\Users\FIRAT\Desktop\Tubitak-Tez\backend\temp-build\explore-pure-hashtag-check\EduConnect.Domain.pdb
+C:\Users\aysem\Desktop\TEZ-TUBİTAK\TEZ-Backend\src\EduConnect.Domain\bin\Debug\net10.0\EduConnect.Domain.deps.json
+C:\Users\aysem\Desktop\TEZ-TUBİTAK\TEZ-Backend\src\EduConnect.Domain\bin\Debug\net10.0\EduConnect.Domain.dll
+C:\Users\aysem\Desktop\TEZ-TUBİTAK\TEZ-Backend\src\EduConnect.Domain\bin\Debug\net10.0\EduConnect.Domain.pdb
+C:\Users\aysem\Desktop\TEZ-TUBİTAK\TEZ-Backend\src\EduConnect.Domain\obj\Debug\net10.0\EduConnect.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\aysem\Desktop\TEZ-TUBİTAK\TEZ-Backend\src\EduConnect.Domain\obj\Debug\net10.0\EduConnect.Domain.AssemblyInfoInputs.cache
+C:\Users\aysem\Desktop\TEZ-TUBİTAK\TEZ-Backend\src\EduConnect.Domain\obj\Debug\net10.0\EduConnect.Domain.AssemblyInfo.cs
+C:\Users\aysem\Desktop\TEZ-TUBİTAK\TEZ-Backend\src\EduConnect.Domain\obj\Debug\net10.0\EduConnect.Domain.csproj.CoreCompileInputs.cache
+C:\Users\aysem\Desktop\TEZ-TUBİTAK\TEZ-Backend\src\EduConnect.Domain\obj\Debug\net10.0\EduConnect.Domain.sourcelink.json
+C:\Users\aysem\Desktop\TEZ-TUBİTAK\TEZ-Backend\src\EduConnect.Domain\obj\Debug\net10.0\EduConnect.Domain.dll
+C:\Users\aysem\Desktop\TEZ-TUBİTAK\TEZ-Backend\src\EduConnect.Domain\obj\Debug\net10.0\refint\EduConnect.Domain.dll
+C:\Users\aysem\Desktop\TEZ-TUBİTAK\TEZ-Backend\src\EduConnect.Domain\obj\Debug\net10.0\EduConnect.Domain.pdb
+C:\Users\aysem\Desktop\TEZ-TUBİTAK\TEZ-Backend\src\EduConnect.Domain\obj\Debug\net10.0\ref\EduConnect.Domain.dll

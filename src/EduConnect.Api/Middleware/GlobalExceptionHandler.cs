@@ -1,3 +1,4 @@
+using System.Net.Mail;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,6 +12,7 @@ public sealed class GlobalExceptionHandler(ILogger<GlobalExceptionHandler> logge
 
         var statusCode = exception switch
         {
+            SmtpException => StatusCodes.Status503ServiceUnavailable,
             UnauthorizedAccessException => StatusCodes.Status401Unauthorized,
             KeyNotFoundException => StatusCodes.Status404NotFound,
             InvalidOperationException => StatusCodes.Status400BadRequest,
@@ -22,14 +24,18 @@ public sealed class GlobalExceptionHandler(ILogger<GlobalExceptionHandler> logge
             Status = statusCode,
             Title = exception switch
             {
+                SmtpException => "Email Delivery Failed",
                 UnauthorizedAccessException => "Unauthorized",
                 KeyNotFoundException => "Not Found",
                 InvalidOperationException => "Invalid Operation",
                 _ => "Server Error"
             },
-            Detail = statusCode == StatusCodes.Status500InternalServerError
-                ? "An unexpected error occurred."
-                : exception.Message
+            Detail = exception switch
+            {
+                SmtpException => "Dogrulama e-postasi gonderilemedi. Mail servisini kontrol edip tekrar deneyin.",
+                _ when statusCode == StatusCodes.Status500InternalServerError => "An unexpected error occurred.",
+                _ => exception.Message
+            }
         };
 
         httpContext.Response.StatusCode = statusCode;
