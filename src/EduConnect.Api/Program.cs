@@ -32,6 +32,7 @@ builder.Services.AddSignalR();
 builder.Services.AddProblemDetails();
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 builder.Services.AddMemoryCache();
+builder.Services.AddScoped<IMessagingNotifier, EduConnect.Api.Services.MessagingNotifier>();
 
 builder.Services.AddCors(options =>
 {
@@ -65,7 +66,8 @@ builder.Services
                 var accessToken = context.Request.Query["access_token"];
                 var path = context.HttpContext.Request.Path;
 
-                if (!string.IsNullOrWhiteSpace(accessToken) && path.StartsWithSegments("/hubs/chat"))
+                if (!string.IsNullOrWhiteSpace(accessToken) && 
+                    (path.StartsWithSegments("/hubs/chat") || path.StartsWithSegments("/hubs/messaging")))
                 {
                     context.Token = accessToken;
                 }
@@ -163,6 +165,7 @@ if (app.Environment.IsDevelopment())
 
 app.MapControllers();
 app.MapHub<ChatHub>("/hubs/chat");
+app.MapHub<MessagingHub>("/hubs/messaging");
 
 await InitializeDatabaseAsync(app);
 

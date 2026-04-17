@@ -66,4 +66,8 @@ public sealed class User : AuditableEntity
     public ICollection<Feedback> Feedbacks { get; set; } = [];
 
     public ICollection<Notification> Notifications { get; set; } = [];
+
+    public ICollection<ConversationParticipant> Conversations { get; set; } = [];
+
+    public ICollection<DirectMessage> SentDirectMessages { get; set; } = [];
 }

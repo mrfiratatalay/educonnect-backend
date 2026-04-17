@@ -27,6 +27,9 @@ public sealed class AppDbContext(DbContextOptions<AppDbContext> options) : DbCon
     public DbSet<VisualSearchResult> VisualSearchResults => Set<VisualSearchResult>();
     public DbSet<ChatSession> ChatSessions => Set<ChatSession>();
     public DbSet<ChatMessage> ChatMessages => Set<ChatMessage>();
+    public DbSet<Conversation> Conversations => Set<Conversation>();
+    public DbSet<ConversationParticipant> ConversationParticipants => Set<ConversationParticipant>();
+    public DbSet<DirectMessage> DirectMessages => Set<DirectMessage>();
     public DbSet<Feedback> Feedbacks => Set<Feedback>();
     public DbSet<Notification> Notifications => Set<Notification>();
     public DbSet<Discount> Discounts => Set<Discount>();
@@ -54,6 +57,7 @@ public sealed class AppDbContext(DbContextOptions<AppDbContext> options) : DbCon
         ConfigureProducts(modelBuilder);
         ConfigureVisualSearch(modelBuilder);
         ConfigureChat(modelBuilder);
+        ConfigureDirectMessaging(modelBuilder);
         ConfigureFeedbackAndNotifications(modelBuilder);
         ConfigureDiscounts(modelBuilder);
     }
@@ -403,6 +407,47 @@ public sealed class AppDbContext(DbContextOptions<AppDbContext> options) : DbCon
                 .WithMany(x => x.Messages)
                 .HasForeignKey(x => x.SessionId)
                 .OnDelete(DeleteBehavior.Cascade);
+        });
+    }
+
+    private static void ConfigureDirectMessaging(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Conversation>(entity =>
+        {
+            entity.ToTable("Conversations");
+            entity.Property(x => x.LastMessagePreview).HasMaxLength(500);
+        });
+
+        modelBuilder.Entity<ConversationParticipant>(entity =>
+        {
+            entity.ToTable("ConversationParticipants");
+            entity.HasIndex(x => new { x.ConversationId, x.UserId }).IsUnique();
+
+            entity.HasOne(x => x.Conversation)
+                .WithMany(x => x.Participants)
+                .HasForeignKey(x => x.ConversationId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            entity.HasOne(x => x.User)
+                .WithMany(x => x.Conversations)
+                .HasForeignKey(x => x.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
+        });
+
+        modelBuilder.Entity<DirectMessage>(entity =>
+        {
+            entity.ToTable("DirectMessages");
+            entity.Property(x => x.Content).HasMaxLength(4000).IsRequired();
+
+            entity.HasOne(x => x.Conversation)
+                .WithMany(x => x.Messages)
+                .HasForeignKey(x => x.ConversationId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            entity.HasOne(x => x.Sender)
+                .WithMany(x => x.SentDirectMessages)
+                .HasForeignKey(x => x.SenderId)
+                .OnDelete(DeleteBehavior.Restrict);
         });
     }
 

@@ -35,6 +35,7 @@ public static class DependencyInjection
         services.AddSingleton<IGeminiApiService, GeminiApiService>();
         services.AddScoped<IChatbotService, ChatbotService>();
         services.AddScoped<IVisualSearchService, VisualSearchService>();
+        services.AddScoped<IMessagingService, MessagingService>();
 
         return services;
     }
