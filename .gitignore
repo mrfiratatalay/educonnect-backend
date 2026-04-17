@@ -1,0 +1,57 @@
+# -----------------------------
+# .NET build outputs
+# -----------------------------
+**/bin/
+**/obj/
+.vs/
+TestResults/
+
+# Temporary build/check folders
+temp-build/
+.tmp/
+logs/
+
+# Local .NET SDK/cache
+.dotnet/
+
+# -----------------------------
+# Python / NLP service
+# -----------------------------
+nlp-service/venv/
+nlp-service/.venv/
+nlp-service/__pycache__/
+nlp-service/**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Trained model artifacts
+nlp-service/models/intent_classifier/
+!nlp-service/models/intent_classifier/metrics.json
+
+# -----------------------------
+# Generated uploads / local files
+# -----------------------------
+src/EduConnect.Api/uploads/
+uploads/
+
+# -----------------------------
+# Environment / secrets / local config
+# -----------------------------
+.env
+.env.*
+*.local
+
+# If a separate development settings file is introduced later, keep it local
+appsettings.Development.local.json
+
+# -----------------------------
+# Editor / OS
+# -----------------------------
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
