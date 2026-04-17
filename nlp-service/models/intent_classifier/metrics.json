@@ -1,0 +1,17 @@
+{
+  "best_validation_accuracy": 0.8851,
+  "epochs": 2,
+  "batch_size": 16,
+  "learning_rate": 2e-05,
+  "dataset_size": 1739,
+  "label_count": 7,
+  "labels": [
+    "exam_and_grading",
+    "course_registration",
+    "digital_systems",
+    "student_services",
+    "library",
+    "student_life",
+    "scholarship_support"
+  ]
+}

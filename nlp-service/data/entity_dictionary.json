@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.0",
+  "groups": {
+    "units": [
+      { "value": "Ogrenci Isleri Daire Baskanligi", "type": "unit", "aliases": ["OIDB", "Ogrenci Isleri", "Ogrenci Isleri Daire Baskanligi"] },
+      { "value": "Bilgi Islem Daire Baskanligi", "type": "unit", "aliases": ["BIDB", "Bilgi Islem", "Bilgi Islem Daire Baskanligi"] },
+      { "value": "Saglik Kultur ve Spor Daire Baskanligi", "type": "unit", "aliases": ["SKS", "Saglik Kultur ve Spor", "SKS Daire Baskanligi"] },
+      { "value": "Kutuphane ve Dokumantasyon Daire Baskanligi", "type": "unit", "aliases": ["Kutuphane", "Kutuphane ve Dokumantasyon", "Kutuphane Daire Baskanligi"] },
+      { "value": "Ogrenci Destek Koordinatorlugu", "type": "unit", "aliases": ["ODK", "Ogrenci Destek", "Ogrenci Destek Koordinatorlugu"] }
+    ],
+    "systems": [
+      { "value": "REBIS", "type": "system", "aliases": ["REBIS", "REBiS"] },
+      { "value": "OBS", "type": "system", "aliases": ["OBS", "OBS sistemi", "Ogrenci Bilgi Sistemi", "Ogrenci Bilgi"] },
+      { "value": "E-Kampus", "type": "system", "aliases": ["E-Kampus", "ekampus"] },
+      { "value": "Office 365", "type": "system", "aliases": ["Office 365", "Microsoft 365", "Teams"] },
+      { "value": "Diploma Sorgulama", "type": "system", "aliases": ["Diploma Sorgulama", "Diploma Talep Sistemi", "Ogrenci Durum Sorgulama"] },
+      { "value": "VPN", "type": "system", "aliases": ["VPN", "FortiClient"] },
+      { "value": "RTEU.Net", "type": "system", "aliases": ["RTEU.Net", "eduroam", "kablosuz ag", "wifi"] }
+    ],
+    "documents": [
+      { "value": "Ogrenci Belgesi", "type": "document", "aliases": ["ogrenci belgesi"] },
+      { "value": "Transkript", "type": "document", "aliases": ["transkript", "not dokum belgesi"] },
+      { "value": "Diploma", "type": "document", "aliases": ["diploma"] },
+      { "value": "Diploma Eki", "type": "document", "aliases": ["diploma eki", "diploma supplement"] },
+      { "value": "Gecici Mezuniyet Belgesi", "type": "document", "aliases": ["gecici mezuniyet belgesi", "mezuniyet belgesi"] },
+      { "value": "Asli Gibidir", "type": "document_process", "aliases": ["asli gibidir", "onayli fotokopi"] }
+    ],
+    "exam_terms": [
+      { "value": "Ara Sinav", "type": "exam_type", "aliases": ["vize", "ara sinav"] },
+      { "value": "Final", "type": "exam_type", "aliases": ["final", "yariyil sonu sinavi"] },
+      { "value": "Butunleme", "type": "exam_type", "aliases": ["butunleme", "bütünleme"] },
+      { "value": "Mazeret Sinavi", "type": "exam_type", "aliases": ["mazeret sinavi", "mazeret"] },
+      { "value": "Tek Ders Sinavi", "type": "exam_type", "aliases": ["tek ders", "tek ders sinavi"] }
+    ],
+    "academic_terms": [
+      { "value": "Kayit Yenileme", "type": "academic_process", "aliases": ["kayit yenileme", "ders kaydi"] },
+      { "value": "Danisman Onayi", "type": "academic_process", "aliases": ["danisman onayi", "danisman onay"] },
+      { "value": "Ders Ekleme-Birakma", "type": "academic_process", "aliases": ["ders ekleme", "ders birakma", "ekleme birakma"] },
+      { "value": "Muafiyet", "type": "academic_process", "aliases": ["muafiyet"] },
+      { "value": "Intibak", "type": "academic_process", "aliases": ["intibak"] },
+      { "value": "Katki Payi", "type": "academic_process", "aliases": ["katki payi", "ogrenim ucreti", "harc"] },
+      { "value": "Ilisik Kesme", "type": "academic_process", "aliases": ["ilisik kesme", "kayit sildirme"] }
+    ],
+    "faculty_names": [
+      { "value": "Tip Fakultesi", "type": "faculty", "aliases": ["tip fakultesi", "tip"] },
+      { "value": "Saglik Bilimleri Fakultesi", "type": "faculty", "aliases": ["saglik bilimleri fakultesi", "sbf"] },
+      { "value": "Ziraat Fakultesi", "type": "faculty", "aliases": ["ziraat fakultesi", "ziraat"] }
+    ],
+    "campus_names": [
+      { "value": "Zihni Derin Yerleskesi", "type": "campus", "aliases": ["zihni derin", "zihni derin yerleskesi"] },
+      { "value": "Islampasa", "type": "campus", "aliases": ["islampasa", "islampasa mahallesi"] },
+      { "value": "Pazar", "type": "campus", "aliases": ["pazar", "pazar yerleskesi"] }
+    ],
+    "library_terms": [
+      { "value": "VETIS", "type": "library_term", "aliases": ["VETIS", "kampus disi erisim"] },
+      { "value": "Proxy", "type": "library_term", "aliases": ["proxy"] },
+      { "value": "Odunc", "type": "library_term", "aliases": ["odunc", "iade", "sure uzatma"] },
+      { "value": "Calisma Odasi", "type": "library_term", "aliases": ["bireysel calisma odasi", "grup calisma odasi", "calisma odasi"] }
+    ],
+    "support_terms": [
+      { "value": "Psikolojik Danismanlik", "type": "support_term", "aliases": ["psikolojik danismanlik", "psikolojik destek", "rehberlik"] },
+      { "value": "Yemek Bursu", "type": "support_term", "aliases": ["yemek bursu", "beslenme destegi"] },
+      { "value": "Sosyal Destek", "type": "support_term", "aliases": ["sosyal destek", "maddi destek", "yardim"] },
+      { "value": "Engelli Ogrenci Destegi", "type": "support_term", "aliases": ["engelli ogrenci", "engelsiz universite", "erisilebilirlik destegi"] },
+      { "value": "Rezervasyon", "type": "cafeteria_term", "aliases": ["rezervasyon", "yemek rezervasyonu"] },
+      { "value": "Menu", "type": "cafeteria_term", "aliases": ["menu", "yemek listesi"] }
+    ]
+  }
+}

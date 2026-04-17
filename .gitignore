@@ -29,8 +29,7 @@ nlp-service/**/__pycache__/
 .ruff_cache/
 
 # Trained model artifacts
-nlp-service/models/intent_classifier/
-!nlp-service/models/intent_classifier/metrics.json
+nlp-service/models/**/*.safetensors
 
 # -----------------------------
 # Generated uploads / local files

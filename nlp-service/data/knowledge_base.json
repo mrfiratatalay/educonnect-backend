@@ -1,0 +1,4438 @@
+{
+  "schema_version": "2.0",
+  "description": "RTEU EduAI knowledge base for grounded student support responses. Expanded in Faz A2 and quality-extended in Faz A3.",
+  "entries": [
+    {
+      "id": "kb_exam_001",
+      "intent": "exam_and_grading",
+      "intent_aliases": [
+        "ExamSupport"
+      ],
+      "topic": "ara_sinav_ve_final_yapisi",
+      "question": "RTEU'de genel sinav sistemi nasil isler?",
+      "answer": "Onlisans ve lisans programlarinda her ders icin en az bir ara sinav ve bir yariyil veya yil sonu sinavi bulunur. Sinavlar genellikle 100 puan uzerinden degerlendirilir.",
+      "keywords": [
+        "sinav sistemi",
+        "ara sinav",
+        "final",
+        "yariyil sonu",
+        "genel kural"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/14%20Aral%C4%B1k%202025%20PAZAR-Y%C3%B6netmelik.pdf",
+      "source_title": "On Lisans ve Lisans Egitim-Ogretim ve Sinav Yonetmeligi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_exam_002",
+      "intent": "exam_and_grading",
+      "intent_aliases": [
+        "ExamSupport"
+      ],
+      "topic": "ara_sinav_katki_orani",
+      "question": "Ara sinav ve finalin basari notuna etkisi nedir?",
+      "answer": "Genel sistemde ara sinavlarin toplam katkisi yuzde 40, yariyil veya yil sonu sinavinin katkisi yuzde 60'tir.",
+      "keywords": [
+        "ara sinav",
+        "final",
+        "yuzde 40",
+        "yuzde 60",
+        "basari notu"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/14%20Aral%C4%B1k%202025%20PAZAR-Y%C3%B6netmelik.pdf",
+      "source_title": "On Lisans ve Lisans Egitim-Ogretim ve Sinav Yonetmeligi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_exam_003",
+      "intent": "exam_and_grading",
+      "intent_aliases": [
+        "ExamSupport"
+      ],
+      "topic": "final_baraji",
+      "question": "Finalde minimum kac almak gerekir?",
+      "answer": "Genel sistemde final veya yil sonu sinavinda en az 50 puan alma kosulu vardir. Finale girmeyen veya 50'nin altinda kalan ogrenci FF alir.",
+      "keywords": [
+        "final",
+        "minimum puan",
+        "50",
+        "ff",
+        "baraj"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/14%20Aral%C4%B1k%202025%20PAZAR-Y%C3%B6netmelik.pdf",
+      "source_title": "On Lisans ve Lisans Egitim-Ogretim ve Sinav Yonetmeligi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_exam_004",
+      "intent": "exam_and_grading",
+      "intent_aliases": [
+        "ExamSupport"
+      ],
+      "topic": "devam_sarti",
+      "question": "Finale girebilmek icin devam sarti nedir?",
+      "answer": "Teorik derslerde en az yuzde 70, uygulamali derslerde en az yuzde 80 devam sarti aranir. Devam kosulunu saglamayan ogrenci finale giremez.",
+      "keywords": [
+        "devam",
+        "yuzde 70",
+        "yuzde 80",
+        "finale girmek",
+        "uygulamali ders"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/14%20Aral%C4%B1k%202025%20PAZAR-Y%C3%B6netmelik.pdf",
+      "source_title": "On Lisans ve Lisans Egitim-Ogretim ve Sinav Yonetmeligi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_exam_005",
+      "intent": "exam_and_grading",
+      "intent_aliases": [
+        "ExamSupport"
+      ],
+      "topic": "butunleme_hakki",
+      "question": "Butunleme sinavina kimler girebilir?",
+      "answer": "Finale girme sartini saglayip basarisiz olanlar, finale girmeyenler ve not yukseltmek isteyen DC notlu ogrenciler butunleme sinavina girebilir. Butunleme notu final notunun yerine gecer.",
+      "keywords": [
+        "butunleme",
+        "kim girebilir",
+        "dc",
+        "final yerine",
+        "basarisiz"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/tr/news-detail/tek-ders-sinavi/6418",
+      "source_title": "Tek Ders Sinavi Duyurusu ve Ilgili Akademik Aciklamalar",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_exam_006",
+      "intent": "exam_and_grading",
+      "intent_aliases": [
+        "ExamSupport"
+      ],
+      "topic": "mazeret_sinavi",
+      "question": "Mazeret sinavina nasil basvurulur?",
+      "answer": "Ara sinava hakli ve gecerli nedenle giremeyen ogrenci, belgeyle birlikte sure icinde basvurur. Genel sistemde mazeret sinavi ara sinav icin taninir; final icin uygulanmaz.",
+      "keywords": [
+        "mazeret sinavi",
+        "basvuru",
+        "ara sinav",
+        "belge",
+        "final icin yok"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/tr/page/dilekceler-formlar-ogrenciler-icin/1175",
+      "source_title": "Dilekceler ve Formlar",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_exam_007",
+      "intent": "exam_and_grading",
+      "intent_aliases": [
+        "ExamSupport"
+      ],
+      "topic": "tek_ders_sinavi",
+      "question": "Tek ders sinavi nedir ve basari kosulu nedir?",
+      "answer": "Tek ders sinavi, mezuniyet icin sadece bir dersi kalan ogrenciye taninan sinav hakkidir. Basarili sayilmak icin en az 60 puan almak gerekir.",
+      "keywords": [
+        "tek ders",
+        "mezuniyet",
+        "60 puan",
+        "tek ders sinavi"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/tr/news-detail/tek-ders-sinavi/6418",
+      "source_title": "Tek Ders Sinavi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_exam_008",
+      "intent": "exam_and_grading",
+      "intent_aliases": [
+        "ExamSupport"
+      ],
+      "topic": "not_itirazi",
+      "question": "Sinav notuna itiraz nasil yapilir?",
+      "answer": "Ogrenci once dersin ogretim elemanindan kagidinin yeniden incelenmesini isteyebilir. Sonrasinda ilan tarihinden itibaren bes is gunu icinde yazili olarak akademik birime itiraz edebilir.",
+      "keywords": [
+        "not itirazi",
+        "bes is gunu",
+        "yazili itiraz",
+        "maddi hata"
+      ],
+      "source_url": "https://ardesen.erdogan.edu.tr/Files/ckFiles/ardesen-erdogan-edu-tr/Recep%20Tayyip%20Erdo%C4%9Fan%20%C3%9Cniversitesi%20S%C4%B1nav%20Uygulama%20Esaslar%C4%B1.pdf",
+      "source_title": "Sinav Uygulama Esaslari",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_exam_009",
+      "intent": "exam_and_grading",
+      "intent_aliases": [
+        "ExamSupport"
+      ],
+      "topic": "harf_notu_sistemi",
+      "question": "Genel harf notu sistemi nasildir?",
+      "answer": "Genel sistemde AA 90-100, BA 81-89, BB 73-80, CB 66-72, CC 60-65, DC 50-59, DD 40-49, FD 30-39 ve FF 0-29 araligina karsilik gelir.",
+      "keywords": [
+        "harf notu",
+        "aa",
+        "ba",
+        "bb",
+        "dc",
+        "ff"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/14%20Aral%C4%B1k%202025%20PAZAR-Y%C3%B6netmelik.pdf",
+      "source_title": "On Lisans ve Lisans Egitim-Ogretim ve Sinav Yonetmeligi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_exam_010",
+      "intent": "exam_and_grading",
+      "intent_aliases": [
+        "ExamSupport"
+      ],
+      "topic": "mezuniyet_gano",
+      "question": "Mezuniyet icin minimum GANO kac olmalidir?",
+      "answer": "Mezuniyet icin programdaki tum ders, uygulama ve stajlarin tamamlanmasi ve GANO'nun en az 2.00 olmasi gerekir.",
+      "keywords": [
+        "mezuniyet",
+        "gano",
+        "2.00",
+        "minimum ortalama"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/14%20Aral%C4%B1k%202025%20PAZAR-Y%C3%B6netmelik.pdf",
+      "source_title": "On Lisans ve Lisans Egitim-Ogretim ve Sinav Yonetmeligi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_exam_011",
+      "intent": "exam_and_grading",
+      "intent_aliases": [
+        "ExamSupport"
+      ],
+      "topic": "tip_fakultesi_ayri_rejim",
+      "question": "Tip Fakultesinde sinav sistemi genel sistemden farkli midir?",
+      "answer": "Evet. Tip Fakultesi ayri akademik takvim ve ozel yonerge kullanir. Donem gecme esaslidir ve notlandirma yapisi genel sistemden farklilik gosterir.",
+      "keywords": [
+        "tip fakultesi",
+        "ayri takvim",
+        "ayri yonerge",
+        "donem gecme"
+      ],
+      "source_url": "https://tip.erdogan.edu.tr/tr/page/mevzuat/1449",
+      "source_title": "Tip Fakultesi Mevzuat",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "tip"
+    },
+    {
+      "id": "kb_digital_001",
+      "intent": "digital_systems",
+      "intent_aliases": [
+        "TechnicalSupport"
+      ],
+      "topic": "rebis_obs_iliskisi",
+      "question": "REBIS ile OBS ayni sey midir?",
+      "answer": "Pratikte REBIS giris katmani, Ogrenci Bilgi Sistemi ise islem katmani gibi calisir. Ogrenci ders kaydi ve not islemlerine REBIS/E-Kampus uzerinden ulasir.",
+      "keywords": [
+        "rebis",
+        "obs",
+        "ogrenci bilgi sistemi",
+        "e-kampus",
+        "ayni mi"
+      ],
+      "source_url": "https://ekampus.erdogan.edu.tr/",
+      "source_title": "E-Kampus Giris Ekrani",
+      "confidence": "medium",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_digital_002",
+      "intent": "digital_systems",
+      "intent_aliases": [
+        "TechnicalSupport"
+      ],
+      "topic": "obs_ne_icin_kullanilir",
+      "question": "Ogrenci Bilgi Sistemi ne icin kullanilir?",
+      "answer": "Ogrenci Bilgi Sistemi ders kaydi, not goruntuleme, transkript, belge, izin, disiplin, askerlik ve benzeri ogrenci islemleri icin kullanilir.",
+      "keywords": [
+        "ogrenci bilgi sistemi",
+        "ders kaydi",
+        "not",
+        "transkript",
+        "belge"
+      ],
+      "source_url": "https://ekampus.erdogan.edu.tr/",
+      "source_title": "E-Kampus ve Ogrenci El Kitabi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_digital_003",
+      "intent": "digital_systems",
+      "intent_aliases": [
+        "TechnicalSupport"
+      ],
+      "topic": "kurumsal_eposta",
+      "question": "Kurumsal ogrenci e-postasi nasil olusur?",
+      "answer": "Kurumsal ogrenci e-postasi ilk kayitla birlikte otomatik olusturulur ve REBIS girisinde kullanilir.",
+      "keywords": [
+        "kurumsal e-posta",
+        "ogrenci maili",
+        "otomatik olusur",
+        "rebis"
+      ],
+      "source_url": "https://ekampus.erdogan.edu.tr/",
+      "source_title": "E-Kampus ve Ogrenci El Kitabi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_digital_004",
+      "intent": "digital_systems",
+      "intent_aliases": [
+        "TechnicalSupport"
+      ],
+      "topic": "varsayilan_sifre",
+      "question": "Varsayilan sifre nasil olusturulur?",
+      "answer": "Varsayilan sifre, T.C. kimlik numarasinin ilk 4 hanesi ile ogrenci numarasinin son 4 hanesinin birlesiminden olusur.",
+      "keywords": [
+        "varsayilan sifre",
+        "ilk sifre",
+        "tc kimlik",
+        "ogrenci numarasi"
+      ],
+      "source_url": "https://ekampus.erdogan.edu.tr/",
+      "source_title": "E-Kampus ve Ogrenci El Kitabi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_digital_005",
+      "intent": "digital_systems",
+      "intent_aliases": [
+        "TechnicalSupport"
+      ],
+      "topic": "sifre_sifirlama",
+      "question": "Sifremi unuttugumda ne yapmaliyim?",
+      "answer": "Guncel akista sifre sifirlama icin kayitli cep telefonu ile yeni sifre olusturma yolu kullanilir. Eski belgelerde ikinci e-posta akisi da gecse de guncel ogrenci akisi telefon tabanlidir.",
+      "keywords": [
+        "sifremi unuttum",
+        "sifre sifirlama",
+        "cep telefonu",
+        "yeni sifre"
+      ],
+      "source_url": "https://bidb.erdogan.edu.tr/",
+      "source_title": "E-posta ve Sifre Olusturma Islemleri",
+      "confidence": "medium",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_digital_006",
+      "intent": "digital_systems",
+      "intent_aliases": [
+        "TechnicalSupport"
+      ],
+      "topic": "ogrenci_numarasi_ogrenme",
+      "question": "Ogrenci numarami nereden ogrenebilirim?",
+      "answer": "E-Kampus giris ekraninda ogrenci numarasini ogrenmeye yonelik resmi baglanti bulunur. Ogrenci durum sorgulama ekranlari da kimlik bilgileriyle ogrenci numarasini gosterebilir.",
+      "keywords": [
+        "ogrenci numarasi",
+        "nereden ogrenilir",
+        "durum sorgulama"
+      ],
+      "source_url": "https://ekampus.erdogan.edu.tr/",
+      "source_title": "E-Kampus Giris Ekrani",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_digital_007",
+      "intent": "digital_systems",
+      "intent_aliases": [
+        "TechnicalSupport"
+      ],
+      "topic": "office365",
+      "question": "Ogrenciler Office 365 kullanabilir mi?",
+      "answer": "Evet. Universite ogrencilere Microsoft 365/Office 365 erisimi sunar. Kurumsal hesapla oturum acilarak ilgili servisler kullanilir.",
+      "keywords": [
+        "office 365",
+        "microsoft 365",
+        "ogrenci lisansi",
+        "teams"
+      ],
+      "source_url": "https://bidb.erdogan.edu.tr/",
+      "source_title": "Office 365",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_digital_008",
+      "intent": "digital_systems",
+      "intent_aliases": [
+        "TechnicalSupport"
+      ],
+      "topic": "kampus_wifi",
+      "question": "Kampuste hangi kablosuz aglar kullanilir?",
+      "answer": "Kampus icinde RTEU.Net ve eduroam gibi kablosuz aglar kullanilir. Kurumsal hesap bilgileriyle baglanti saglanir.",
+      "keywords": [
+        "wifi",
+        "kablosuz",
+        "rteu.net",
+        "eduroam",
+        "kampus interneti"
+      ],
+      "source_url": "https://bidb.erdogan.edu.tr/",
+      "source_title": "Wireless Baglanti Ayarlari ve SSS",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_digital_009",
+      "intent": "digital_systems",
+      "intent_aliases": [
+        "TechnicalSupport"
+      ],
+      "topic": "vpn",
+      "question": "VPN ne icin kullanilir?",
+      "answer": "VPN, kampus disindan universite agina ve bazi lisansli kaynaklara erisim icin kullanilir. Bazi yazilimlar ve uzaktan erisim senaryolari icin gerekli olabilir.",
+      "keywords": [
+        "vpn",
+        "kampus disi",
+        "uzaktan erisim",
+        "forticlient"
+      ],
+      "source_url": "https://bidb.erdogan.edu.tr/",
+      "source_title": "VPN Ayarlari",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_digital_010",
+      "intent": "digital_systems",
+      "intent_aliases": [
+        "TechnicalSupport"
+      ],
+      "topic": "bidb_gorev_alani",
+      "question": "Teknik sorunlarda hangi birime basvurulur?",
+      "answer": "Sifre, sistem, internet ve benzeri teknik sorunlarda ana birim Bilgi Islem Daire Baskanligi'dir. Kayit ve ders secimi sorunlarinda ise once akademik birim ogrenci isleri veya OIDB kontrol edilmelidir.",
+      "keywords": [
+        "teknik sorun",
+        "bilgi islem",
+        "bidb",
+        "ogrenci isleri",
+        "oidb"
+      ],
+      "source_url": "https://bidb.erdogan.edu.tr/",
+      "source_title": "Birim Hakkinda ve Genel Erisim Problemleri",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_documents_001",
+      "intent": "student_services",
+      "intent_aliases": [
+        "GeneralInfo",
+        "student_documents"
+      ],
+      "topic": "ogrenci_belgesi",
+      "question": "Ogrenci belgesi nereden alinir?",
+      "answer": "Ogrenci belgesi akademik birim ogrenci islerinden veya OIDB'den alinabilir. Ayrica e-Devlet uzerinden de ogrenci belgesi temin edilebilir.",
+      "keywords": [
+        "ogrenci belgesi",
+        "nereden alinir",
+        "e-devlet",
+        "oidb"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/",
+      "source_title": "Ogrenci Belgesi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_documents_002",
+      "intent": "student_services",
+      "intent_aliases": [
+        "GeneralInfo",
+        "student_documents"
+      ],
+      "topic": "transkript",
+      "question": "Transkript nereden alinir?",
+      "answer": "Transkript, kayitli olunan akademik birim ogrenci islerinden, OIDB'den veya e-Devlet uzerinden alinabilir.",
+      "keywords": [
+        "transkript",
+        "not dokum belgesi",
+        "e-devlet",
+        "ogrenci isleri"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/",
+      "source_title": "Transkript (Not Dokum Belgesi)",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_documents_003",
+      "intent": "student_services",
+      "intent_aliases": [
+        "GeneralInfo",
+        "student_documents"
+      ],
+      "topic": "asli_gibidir",
+      "question": "Asli gibidir onayi nasil alinir?",
+      "answer": "Belgenin asli ibraz edilerek OIDB veya ilgili yetkili birimde fotokopisinin aslina uygunlugu kontrol edilir ve asli gibidir onayi verilir.",
+      "keywords": [
+        "asli gibidir",
+        "onay",
+        "fotokopi",
+        "oidb"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/",
+      "source_title": "Asli Gibidir Onayi Bilgilendirmesi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_documents_004",
+      "intent": "student_services",
+      "intent_aliases": [
+        "GeneralInfo",
+        "student_documents"
+      ],
+      "topic": "diploma_teslim",
+      "question": "Diploma kimden teslim alinir?",
+      "answer": "Diploma, genel olarak Ogrenci Isleri Daire Baskanligi tarafindan teslim edilir. Noter onayli vekaletname ile vekil araciligiyla teslim alma da mumkundur.",
+      "keywords": [
+        "diploma",
+        "teslim",
+        "oidb",
+        "vekalet"
+      ],
+      "source_url": "https://ogrenci.erdogan.edu.tr/",
+      "source_title": "Diploma Sorgulama ve OIDB Diploma Aciklamalari",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_documents_005",
+      "intent": "student_services",
+      "intent_aliases": [
+        "GeneralInfo",
+        "student_documents"
+      ],
+      "topic": "diploma_sorgulama",
+      "question": "Diploma durumu nasil sorgulanir?",
+      "answer": "Diploma durumu, ogrenci sistemi icindeki Diploma Sorgulama ekrani uzerinden kimlik bilgileriyle kontrol edilir. Sistemde imzalandi, imzaya gonderildi veya teslime hazir gibi durumlar gorulebilir.",
+      "keywords": [
+        "diploma sorgulama",
+        "teslime hazir",
+        "imzalandi",
+        "ogrenci sistemi"
+      ],
+      "source_url": "https://ogrenci.erdogan.edu.tr/",
+      "source_title": "Diploma Sorgulama",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_documents_006",
+      "intent": "student_services",
+      "intent_aliases": [
+        "GeneralInfo",
+        "student_documents"
+      ],
+      "topic": "diploma_eki",
+      "question": "Diploma eki veriliyor mu?",
+      "answer": "Evet. RTEU'de diploma eki mezunlara ucretsiz verilir ve resmi kaynaklarda Ingilizce olarak duzenlendigi belirtilir.",
+      "keywords": [
+        "diploma eki",
+        "ucretsiz",
+        "ingilizce",
+        "mezun"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/",
+      "source_title": "Diploma Eki",
+      "confidence": "medium",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_documents_007",
+      "intent": "student_services",
+      "intent_aliases": [
+        "GeneralInfo",
+        "student_documents"
+      ],
+      "topic": "ilisik_kesme",
+      "question": "Ilisik kesme ne anlama gelir?",
+      "answer": "Ilisik kesme, ogrencinin universite ile resmi baginin sona erdirilmesidir. Mezuniyet sonrasi veya kayit sildirme sureclerinde kullanilir.",
+      "keywords": [
+        "ilisik kesme",
+        "kayit sildirme",
+        "mezuniyet sonrasi",
+        "resmi bag"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/",
+      "source_title": "Ilisik Kesme ve Kayit Silme Bilgilendirmeleri",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_library_001",
+      "intent": "library",
+      "intent_aliases": [
+        "LibraryInfo"
+      ],
+      "topic": "kutuphane_birimi",
+      "question": "Kutuphane hangi birim tarafindan yonetilir?",
+      "answer": "Kutuphane hizmetleri Kutuphane ve Dokumantasyon Daire Baskanligi tarafindan yurutulur.",
+      "keywords": [
+        "kutuphane",
+        "hangi birim",
+        "dokumantasyon",
+        "daire baskanligi"
+      ],
+      "source_url": "https://kutuphanedb.erdogan.edu.tr/",
+      "source_title": "Kutuphane ve Dokumantasyon Daire Baskanligi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_library_002",
+      "intent": "library",
+      "intent_aliases": [
+        "LibraryInfo"
+      ],
+      "topic": "calisma_saatleri",
+      "question": "Kutuphane calisma saatleri sabit midir?",
+      "answer": "Hayir. Kutuphane saatleri normal donem, sinav donemi ve tatil donemlerinde degisebilir. Guncel saatler resmi kutuphane duyurularindan takip edilmelidir.",
+      "keywords": [
+        "kutuphane saatleri",
+        "sinav donemi",
+        "tatil donemi",
+        "guncel saatler"
+      ],
+      "source_url": "https://kutuphanedb.erdogan.edu.tr/",
+      "source_title": "Kutuphane Calisma Saatleri ve Duyurular",
+      "confidence": "high",
+      "time_sensitive": true,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_library_003",
+      "intent": "library",
+      "intent_aliases": [
+        "LibraryInfo"
+      ],
+      "topic": "odunc_kurallari",
+      "question": "Kutuphane odunc kurallari var midir?",
+      "answer": "Evet. Odunc alma, iade, sure uzatma ve kayip materyal kurallari kutuphane yonergelerinde duzenlenir. Ayrintilar kutuphane resmi sayfalarinda yer alir.",
+      "keywords": [
+        "odunc",
+        "iade",
+        "sure uzatma",
+        "kayip kitap",
+        "kutuphane kurali"
+      ],
+      "source_url": "https://kutuphanedb.erdogan.edu.tr/",
+      "source_title": "Kutuphane SSS ve Odunc Kurallari",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_library_004",
+      "intent": "library",
+      "intent_aliases": [
+        "LibraryInfo"
+      ],
+      "topic": "gecikme_cezasi",
+      "question": "Gec teslim edilen materyaller icin ceza uygulanir mi?",
+      "answer": "Kutuphane kaynaklarinda gecikme cezasi ve yaptirimlara iliskin kurallar bulunur. Ceza detaylari kutuphane kurallarina gore belirlenir.",
+      "keywords": [
+        "gecikme cezasi",
+        "gec teslim",
+        "kutuphane cezasi"
+      ],
+      "source_url": "https://kutuphanedb.erdogan.edu.tr/",
+      "source_title": "Kutuphane Kurallari",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_library_005",
+      "intent": "library",
+      "intent_aliases": [
+        "LibraryInfo",
+        "digital_systems"
+      ],
+      "topic": "kampus_disi_erisim",
+      "question": "Kampus disindan kutuphane veritabanlarina nasil erisilir?",
+      "answer": "Kampus disi erisim icin VETIS veya benzeri uzaktan erisim yontemleri kullanilir. Proxy konusunda ise bazi sayfalarda kapsam farki bulundugu icin guncel resmi kutuphane yonlendirmesi kontrol edilmelidir.",
+      "keywords": [
+        "kampus disi",
+        "kampus disi erisim",
+        "proxy",
+        "uzaktan erisim",
+        "veritabani",
+        "vetis"
+      ],
+      "source_url": "https://kutuphanedb.erdogan.edu.tr/",
+      "source_title": "Kampus Disi Erisim Bilgilendirmesi",
+      "confidence": "medium",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_library_006",
+      "intent": "library",
+      "intent_aliases": [
+        "LibraryInfo",
+        "digital_systems"
+      ],
+      "topic": "elektronik_kaynaklar",
+      "question": "Kutuphane elektronik veritabanlari sunuyor mu?",
+      "answer": "Evet. Kutuphane tarafindan elektronik veritabanlari, e-dergi, e-kitap ve benzeri akademik kaynaklara erisim saglanir.",
+      "keywords": [
+        "akademik kaynak",
+        "e-dergi",
+        "e-kitap",
+        "elektronik veritabani",
+        "kampus disi",
+        "proxy",
+        "uzaktan erisim",
+        "vetis"
+      ],
+      "source_url": "https://kutuphanedb.erdogan.edu.tr/",
+      "source_title": "Elektronik Kaynaklar ve Veritabanlari",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_library_007",
+      "intent": "library",
+      "intent_aliases": [
+        "LibraryInfo"
+      ],
+      "topic": "bireysel_calisma_odasi",
+      "question": "Bireysel veya grup calisma alanlari var mi?",
+      "answer": "Kutuphane tarafinda bireysel veya grup calisma alanlari bulunabilir. Rezervasyon ve kullanim kurallari ilgili kutuphane sayfalarinda ilan edilir.",
+      "keywords": [
+        "bireysel calisma",
+        "grup calisma",
+        "oda",
+        "rezervasyon"
+      ],
+      "source_url": "https://kutuphanedb.erdogan.edu.tr/",
+      "source_title": "Kutuphane Calisma Alanlari",
+      "confidence": "medium",
+      "time_sensitive": true,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_cafeteria_001",
+      "intent": "student_life",
+      "intent_aliases": [
+        "CafeteriaInfo",
+        "cafeteria",
+        "campus_life",
+        "campus_logistics"
+      ],
+      "topic": "beslenme_hizmeti_birimi",
+      "question": "Yemekhane hizmetlerini hangi birim yurutur?",
+      "answer": "Yemekhane ve beslenme hizmetleri Saglik Kultur ve Spor Daire Baskanligi tarafindan yurutulur.",
+      "keywords": [
+        "yemekhane",
+        "beslenme hizmetleri",
+        "sks",
+        "hangi birim"
+      ],
+      "source_url": "https://sks.erdogan.edu.tr/",
+      "source_title": "SKS ve Beslenme Hizmetleri",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_cafeteria_002",
+      "intent": "student_life",
+      "intent_aliases": [
+        "CafeteriaInfo",
+        "cafeteria",
+        "campus_life",
+        "campus_logistics"
+      ],
+      "topic": "rezervasyon_sistemi",
+      "question": "Yemek rezervasyon sistemi var mi?",
+      "answer": "Evet. RTEU'de yemekhane hizmeti belirli donemlerde rezervasyon mantigi ile yurutulebilir ve resmi SKS duyurulari uzerinden takip edilmelidir.",
+      "keywords": [
+        "yemek rezervasyon",
+        "rezervasyon sistemi",
+        "sks duyurusu"
+      ],
+      "source_url": "https://sks.erdogan.edu.tr/",
+      "source_title": "Yemekhane ve Rezervasyon Bilgilendirmeleri",
+      "confidence": "high",
+      "time_sensitive": true,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_cafeteria_003",
+      "intent": "student_life",
+      "intent_aliases": [
+        "CafeteriaInfo",
+        "cafeteria",
+        "campus_life",
+        "campus_logistics"
+      ],
+      "topic": "ucretlendirme",
+      "question": "Yemekhane ucretleri sabit midir?",
+      "answer": "Hayir. Yemekhane ucretleri yonetim kararlari ve donemsel uygulamalara gore degisebilir. Guncel fiyatlar icin resmi SKS duyurulari kontrol edilmelidir.",
+      "keywords": [
+        "yemekhane ucreti",
+        "fiyat",
+        "ucret",
+        "guncel fiyat"
+      ],
+      "source_url": "https://sks.erdogan.edu.tr/",
+      "source_title": "Yemekhane Ucretlendirme Bilgilendirmeleri",
+      "confidence": "high",
+      "time_sensitive": true,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_cafeteria_004",
+      "intent": "student_life",
+      "intent_aliases": [
+        "CafeteriaInfo",
+        "cafeteria",
+        "campus_life",
+        "campus_logistics"
+      ],
+      "topic": "yemek_bursu",
+      "question": "Yemek bursu var mi?",
+      "answer": "Evet. Ogrencilere yonelik yemek bursu uygulamasi bulunur. Basvuru ve kapsam bilgileri SKS tarafindan duyurulur.",
+      "keywords": [
+        "yemek bursu",
+        "sks",
+        "basvuru",
+        "yemekhane destegi"
+      ],
+      "source_url": "https://sks.erdogan.edu.tr/",
+      "source_title": "Yemek Bursu Duyurulari",
+      "confidence": "high",
+      "time_sensitive": true,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_cafeteria_005",
+      "intent": "student_life",
+      "intent_aliases": [
+        "CafeteriaInfo",
+        "cafeteria",
+        "campus_life",
+        "campus_logistics"
+      ],
+      "topic": "menu_duyurulari",
+      "question": "Yemek listesi veya menu nereden takip edilir?",
+      "answer": "Gunluk veya donemsel yemek listeleri ve hizmet duyurulari resmi SKS kanallarindan takip edilmelidir.",
+      "keywords": [
+        "menu",
+        "yemek listesi",
+        "gundelik yemek",
+        "sks duyuru"
+      ],
+      "source_url": "https://sks.erdogan.edu.tr/",
+      "source_title": "Beslenme Hizmetleri Duyurulari",
+      "confidence": "high",
+      "time_sensitive": true,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_scholarship_001",
+      "intent": "scholarship_support",
+      "intent_aliases": [
+        "ScholarshipInfo"
+      ],
+      "topic": "burs_birimleri",
+      "question": "Burs ve maddi destek konularinda hangi birimler ilgilenir?",
+      "answer": "Burs ve destek konularinda Ogrenci Isleri, SKS ve Ogrenci Destek Koordinatorlugu gibi birimler ogrenciye temas eder. Hangi destek turu olduguna gore sorumlu birim degisebilir.",
+      "keywords": [
+        "burs",
+        "maddi destek",
+        "sks",
+        "odk",
+        "oidb"
+      ],
+      "source_url": "https://erdogan.edu.tr/",
+      "source_title": "RTEU Burs ve Destek Yapisi Arastirma Havuzu",
+      "confidence": "medium",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_scholarship_002",
+      "intent": "scholarship_support",
+      "intent_aliases": [
+        "ScholarshipInfo"
+      ],
+      "topic": "yemek_bursu_sureci",
+      "question": "Yemek bursuna nasil basvurulur?",
+      "answer": "Yemek bursu basvurulari SKS tarafindan duyurulan resmi surecler uzerinden yapilir. Basvuru tarihleri ve kapsam donemsel olarak ilan edilir.",
+      "keywords": [
+        "yemek bursu",
+        "basvuru",
+        "sks",
+        "duyuru"
+      ],
+      "source_url": "https://sks.erdogan.edu.tr/",
+      "source_title": "Yemek Bursu Duyurulari",
+      "confidence": "high",
+      "time_sensitive": true,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_scholarship_003",
+      "intent": "scholarship_support",
+      "intent_aliases": [
+        "ScholarshipInfo"
+      ],
+      "topic": "dis_burs_yonlendirmesi",
+      "question": "Universite KYK veya dis burslar icin yonlendirme yapiyor mu?",
+      "answer": "Universite, KYK ve benzeri dis burs imkanlari icin resmi yonlendirme veya duyuru paylasabilir. Ancak bu destekler universitenin kendi burslariyla karistirilmamalidir.",
+      "keywords": [
+        "kyk",
+        "dis burs",
+        "yonlendirme",
+        "resmi duyuru"
+      ],
+      "source_url": "https://erdogan.edu.tr/",
+      "source_title": "Burs ve Maddi Destek Arastirma Havuzu",
+      "confidence": "medium",
+      "time_sensitive": true,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_scholarship_004",
+      "intent": "scholarship_support",
+      "intent_aliases": [
+        "ScholarshipInfo"
+      ],
+      "topic": "sosyal_destekler",
+      "question": "Maddi zorluk yasayan ogrenciler icin sosyal destek var mi?",
+      "answer": "Sosyal ve ekonomik destek mekanizmalari resmi duyurularla veya ilgili birimler uzerinden aciklanabilir. Ogrenci Destek Koordinatorlugu ve SKS bu konuda takip edilmesi gereken yapilardandir.",
+      "keywords": [
+        "maddi zorluk",
+        "sosyal destek",
+        "odk",
+        "sks",
+        "yardim"
+      ],
+      "source_url": "https://odk.erdogan.edu.tr/",
+      "source_title": "Ogrenci Destek ve Sosyal Destek Yapilari",
+      "confidence": "medium",
+      "time_sensitive": true,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_support_001",
+      "intent": "student_services",
+      "intent_aliases": [
+        "GeneralInfo",
+        "student_life",
+        "student_support"
+      ],
+      "topic": "psikolojik_danismanlik",
+      "question": "Universitede psikolojik danismanlik hizmeti var mi?",
+      "answer": "Evet. Ogrencilerin psikolojik danismanlik ve destek alabilecegi resmi yapilar bulunur. Guncel erisim ve randevu bilgileri ilgili resmi birimlerin sayfalarindan takip edilmelidir.",
+      "keywords": [
+        "psikolojik danismanlik",
+        "psikolojik destek",
+        "rehberlik",
+        "ogrenci destek"
+      ],
+      "source_url": "https://odk.erdogan.edu.tr/",
+      "source_title": "Psikolojik ve Ogrenci Destek Hizmetleri",
+      "confidence": "high",
+      "time_sensitive": true,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_support_002",
+      "intent": "student_services",
+      "intent_aliases": [
+        "GeneralInfo",
+        "student_life",
+        "student_support"
+      ],
+      "topic": "ogrenci_destek_koordinatorlugu",
+      "question": "Ogrenci Destek Koordinatorlugu ne yapar?",
+      "answer": "Ogrenci Destek Koordinatorlugu, ogrencinin sosyal, kurumsal ve destek ihtiyaclarinda yonlendirme ve koordinasyon saglayan resmi yapilardan biridir.",
+      "keywords": [
+        "ogrenci destek koordinatorlugu",
+        "odk",
+        "yonlendirme",
+        "destek"
+      ],
+      "source_url": "https://odk.erdogan.edu.tr/",
+      "source_title": "Ogrenci Destek Koordinatorlugu",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_support_003",
+      "intent": "student_services",
+      "intent_aliases": [
+        "GeneralInfo",
+        "student_life",
+        "student_support"
+      ],
+      "topic": "engelli_ogrenci_destegi",
+      "question": "Engelli ogrenciler icin resmi destek var mi?",
+      "answer": "Evet. Engelli ogrencilere yonelik resmi destek ve koordinasyon yapilari bulunur. Ayrintili bilgi icin ilgili engelsiz universite veya destek birimi takip edilmelidir.",
+      "keywords": [
+        "engelli ogrenci",
+        "engelsiz universite",
+        "destek",
+        "koordinasyon"
+      ],
+      "source_url": "https://erdogan.edu.tr/",
+      "source_title": "Engelli Ogrenci ve Engelsiz Universite Bilgilendirmeleri",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_support_004",
+      "intent": "student_services",
+      "intent_aliases": [
+        "GeneralInfo",
+        "student_life",
+        "student_support"
+      ],
+      "topic": "yardim_kanallari",
+      "question": "Kurumsal veya sosyal bir sorun yasarsam nereye basvurabilirim?",
+      "answer": "Sorunun niteligine gore Ogrenci Isleri, SKS, Bilgi Islem, Ogrenci Destek Koordinatorlugu veya psikolojik destek birimleri resmi basvuru noktalari olabilir.",
+      "keywords": [
+        "sorun yasarsam",
+        "nereye basvurulur",
+        "odk",
+        "sks",
+        "ogrenci isleri",
+        "bidb"
+      ],
+      "source_url": "https://erdogan.edu.tr/",
+      "source_title": "Ogrenciye Dokunan Resmi Birimler",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_exam_012",
+      "intent": "exam_and_grading",
+      "intent_aliases": [],
+      "topic": "sinav_programi_duyurusu",
+      "question": "Sinav programlari ne kadar once ilan edilir?",
+      "answer": "Sinav gunu, saati ve salon bilgileri ilgili birimlerin resmi internet sayfalarinda sinav baslangic tarihinden en az iki hafta once ilan edilir.",
+      "keywords": [
+        "sinav programi",
+        "iki hafta",
+        "duyuru",
+        "salon bilgisi"
+      ],
+      "source_url": "https://ardesen.erdogan.edu.tr/Files/ckFiles/ardesen-erdogan-edu-tr/Recep%20Tayyip%20Erdo%C4%9Fan%20%C3%9Cniversitesi%20S%C4%B1nav%20Uygulama%20Esaslar%C4%B1.pdf",
+      "source_title": "Sinav Uygulama Esaslari",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_exam_013",
+      "intent": "exam_and_grading",
+      "intent_aliases": [],
+      "topic": "sinav_programi_degisikligi",
+      "question": "Sinav programi son anda degistirilebilir mi?",
+      "answer": "Zorunlu degisikliklerde ogrencilere en az 48 saat once bilgi verilmesi esastir.",
+      "keywords": [
+        "sinav degisikligi",
+        "48 saat",
+        "program degisikligi"
+      ],
+      "source_url": "https://ardesen.erdogan.edu.tr/Files/ckFiles/ardesen-erdogan-edu-tr/Recep%20Tayyip%20Erdo%C4%9Fan%20%C3%9Cniversitesi%20S%C4%B1nav%20Uygulama%20Esaslar%C4%B1.pdf",
+      "source_title": "Sinav Uygulama Esaslari",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_exam_014",
+      "intent": "exam_and_grading",
+      "intent_aliases": [],
+      "topic": "gunde_iki_sinav",
+      "question": "Ayni gun kac sinav yapilabilir?",
+      "answer": "Genel duzende ayni yariyil veya yil programinda yer alan derslerden bir gunde en fazla iki ders sinavi yapilir.",
+      "keywords": [
+        "bir gunde iki sinav",
+        "ayni gun",
+        "sinav sayisi"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/14%20Aral%C4%B1k%202025%20PAZAR-Y%C3%B6netmelik.pdf",
+      "source_title": "On Lisans ve Lisans Egitim-Ogretim ve Sinav Yonetmeligi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_exam_015",
+      "intent": "exam_and_grading",
+      "intent_aliases": [],
+      "topic": "butunleme_takvimi",
+      "question": "Butunleme tarihlerini nereden ogrenebilirim?",
+      "answer": "Butunleme tarihleri universitenin ilgili akademik takviminde ve birim duyurularinda ilan edilir. Tip ve Dis Hekimligi disindaki birimler icin genel akademik takvim, Tip icin ise ayrik fakulte takvimi kullanilir.",
+      "keywords": [
+        "butunleme tarihi",
+        "akademik takvim",
+        "birim duyurusu"
+      ],
+      "source_url": "https://erdogan.edu.tr/Images/Uploads/MyContents/L_6146-20250604152832789418.pdf",
+      "source_title": "2025-2026 Onlisans-Lisans Akademik Takvimi",
+      "confidence": "medium",
+      "time_sensitive": true,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_exam_016",
+      "intent": "exam_and_grading",
+      "intent_aliases": [],
+      "topic": "mazeret_takvimi",
+      "question": "Mazeret sinav tarihleri nerede yayinlanir?",
+      "answer": "Mazeret sinav tarihleri akademik takvim ve ilgili birim duyurularinda yayinlanir. Tip Fakultesi icin ayri takvim kullanilabilir.",
+      "keywords": [
+        "mazeret tarihi",
+        "akademik takvim",
+        "mazeret sinavi"
+      ],
+      "source_url": "https://erdogan.edu.tr/Images/Uploads/MyContents/L_6146-20250604152832789418.pdf",
+      "source_title": "2025-2026 Onlisans-Lisans Akademik Takvimi",
+      "confidence": "medium",
+      "time_sensitive": true,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_exam_017",
+      "intent": "exam_and_grading",
+      "intent_aliases": [],
+      "topic": "tek_ders_takvimi",
+      "question": "Tek ders sinavi tarihi nereden takip edilir?",
+      "answer": "Tek ders sinavi tarihleri akademik takvimde ve OIDB veya ilgili akademik birim duyurularinda ilan edilir.",
+      "keywords": [
+        "tek ders tarihi",
+        "akademik takvim",
+        "oidb"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/tr/news-detail/tek-ders-sinavi/6418",
+      "source_title": "Tek Ders Sinavi",
+      "confidence": "medium",
+      "time_sensitive": true,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_exam_018",
+      "intent": "exam_and_grading",
+      "intent_aliases": [],
+      "topic": "onur_yuksek_onur",
+      "question": "Onur ve yuksek onur ogrencisi olma kosulu nedir?",
+      "answer": "Onur ve yuksek onur degerlendirmesi yariyil not ortalamasina gore yapilir. Kesin sinirlar ilgili yonetmelik ve birim aciklamalarina gore degerlendirilir.",
+      "keywords": [
+        "onur",
+        "yuksek onur",
+        "yano"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/14%20Aral%C4%B1k%202025%20PAZAR-Y%C3%B6netmelik.pdf",
+      "source_title": "On Lisans ve Lisans Egitim-Ogretim ve Sinav Yonetmeligi",
+      "confidence": "medium",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_exam_019",
+      "intent": "exam_and_grading",
+      "intent_aliases": [],
+      "topic": "not_donusum_tablosu",
+      "question": "100'lük notumu 4'lük sisteme nasil cevirebilirim?",
+      "answer": "Not donusumlerinde universitenin kullandigi resmi donusum tablosu ve YOK esdegerlik tablolari esas alinmalidir.",
+      "keywords": [
+        "not donusumu",
+        "4'lük sistem",
+        "100'lük sistem"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/tr/page/not-donusum-tablosu/1237",
+      "source_title": "Not Donusum Tablosu",
+      "confidence": "medium",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_exam_020",
+      "intent": "exam_and_grading",
+      "intent_aliases": [],
+      "topic": "sinav_sonucu_itiraz_ilk_adim",
+      "question": "Not itirazinda once hocaya mi basvurulur?",
+      "answer": "Ogrenci once dersin ogretim elemanindan kagidinin yeniden incelenmesini isteyebilir. Sonrasinda ilan tarihinden itibaren sure icinde yazili itiraz yoluna gidebilir.",
+      "keywords": [
+        "not itirazi",
+        "hocaya basvuru",
+        "yeniden inceleme"
+      ],
+      "source_url": "https://ardesen.erdogan.edu.tr/Files/ckFiles/ardesen-erdogan-edu-tr/Recep%20Tayyip%20Erdo%C4%9Fan%20%C3%9Cniversitesi%20S%C4%B1nav%20Uygulama%20Esaslar%C4%B1.pdf",
+      "source_title": "Sinav Uygulama Esaslari",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_exam_021",
+      "intent": "exam_and_grading",
+      "intent_aliases": [],
+      "topic": "tip_ders_kurulu",
+      "question": "Tip Fakultesinde ara sinav yerine ne uygulanir?",
+      "answer": "Tip Fakultesinde Donem I-III icin klasik vize yerine ders kurulu sinavlari uygulanir. Donem IV-V icin staj sonu sinavlari, Donem VI icin intornluk degerlendirmesi vardir.",
+      "keywords": [
+        "tip",
+        "ders kurulu",
+        "staj sonu"
+      ],
+      "source_url": "https://tip.erdogan.edu.tr/Files/ckFiles/tip-erdogan-edu-tr/Ocak%202020/E%C4%9Fitim-%C3%96%C4%9Fretim%20ve%20S%C4%B1nav%20Y%C3%B6nergesi.pdf",
+      "source_title": "Tip Fakultesi Egitim-Ogretim ve Sinav Yonergesi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "tip"
+    },
+    {
+      "id": "kb_exam_022",
+      "intent": "exam_and_grading",
+      "intent_aliases": [],
+      "topic": "tip_donem_notu",
+      "question": "Tip Fakultesinde donem notu nasil hesaplanir?",
+      "answer": "Tip Fakultesinde Donem I-III icin donem basari notu, ders kurulu sinavlari ortalamasinin yuzde 60'i ile final veya butunleme notunun yuzde 40'inin toplamindan olusur.",
+      "keywords": [
+        "tip fakultesi",
+        "donem notu",
+        "yuzde 60",
+        "yuzde 40"
+      ],
+      "source_url": "https://tip.erdogan.edu.tr/Files/ckFiles/tip-erdogan-edu-tr/Ocak%202020/E%C4%9Fitim-%C3%96%C4%9Fretim%20ve%20S%C4%B1nav%20Y%C3%B6nergesi.pdf",
+      "source_title": "Tip Fakultesi Egitim-Ogretim ve Sinav Yonergesi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "tip"
+    },
+    {
+      "id": "kb_exam_023",
+      "intent": "exam_and_grading",
+      "intent_aliases": [],
+      "topic": "tip_final_muafiyet",
+      "question": "Tip Fakultesinde finale girmeden ust doneme gecmek mumkun mu?",
+      "answer": "Tip Fakultesinde Donem I-III'te ders kurulu ortalamasi 75 ve uzeri olan ve devam sarti saglanan ogrenci, finale girmeden ust doneme gecebilir. Not yukseltmek isterse final veya butunlemeye girebilir.",
+      "keywords": [
+        "tip",
+        "75 ortalama",
+        "finale girmeden",
+        "ust doneme gecis"
+      ],
+      "source_url": "https://tip.erdogan.edu.tr/Files/ckFiles/tip-erdogan-edu-tr/Ocak%202020/E%C4%9Fitim-%C3%96%C4%9Fretim%20ve%20S%C4%B1nav%20Y%C3%B6nergesi.pdf",
+      "source_title": "Tip Fakultesi Egitim-Ogretim ve Sinav Yonergesi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "tip"
+    },
+    {
+      "id": "kb_exam_024",
+      "intent": "exam_and_grading",
+      "intent_aliases": [],
+      "topic": "sbf_onkosul",
+      "question": "Saglik Bilimleri Fakultesinde uygulamali dersler icin on kosul olabilir mi?",
+      "answer": "Evet. Saglik Bilimleri Fakultesi resmi SSS sayfasinda bazi uygulamali derslerin ve intornluk dersinin belirli on kosullara bagli oldugu acikca belirtilir.",
+      "keywords": [
+        "sbf",
+        "on kosul",
+        "uygulamali ders",
+        "intornluk"
+      ],
+      "source_url": "https://sbf.erdogan.edu.tr/tr/page/soru-cevap/4721",
+      "source_title": "Saglik Bilimleri Fakultesi Sikca Sorulan Sorular",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "sbf"
+    },
+    {
+      "id": "kb_exam_025",
+      "intent": "exam_and_grading",
+      "intent_aliases": [],
+      "topic": "ziraat_staj_sarti",
+      "question": "Ziraat Fakultesinde staj mezuniyet acisindan onemli mi?",
+      "answer": "Evet. Ziraat Fakultesi duyurularinda 40 is gunu staj yukumlulugu ve staj muafiyet/teslim kurallari aciklandigi icin staj mezuniyet surecinin onemli bir parcasidir.",
+      "keywords": [
+        "ziraat",
+        "staj",
+        "40 is gunu",
+        "mezuniyet"
+      ],
+      "source_url": "https://ziraat.erdogan.edu.tr/tr/news-detail/staj-basvuru-duyurusu/15650",
+      "source_title": "Ziraat Fakultesi Staj Basvuru Duyurusu",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "ziraat"
+    },
+    {
+      "id": "kb_registration_001",
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "kayit_yenileme_tanimi",
+      "question": "Kayit yenileme ne demektir?",
+      "answer": "Kayit yenileme, ogrencinin ilgili yariyilda ders secerek ogrenciligini aktif tutmasi ve ders kaydini tamamlamasi islemidir.",
+      "keywords": [
+        "kayit yenileme",
+        "ders secimi",
+        "ogrencilik"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/tr/page/derse-kayit-kayit-yenileme/1247",
+      "source_title": "Derse Kayit / Kayit Yenileme",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_registration_002",
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "ders_kaydi_giris",
+      "question": "Ders kaydi icin hangi sisteme girmek gerekir?",
+      "answer": "Ders kaydi icin ogrenci REBIS uzerinden Ogrenci Bilgi Sistemine girer ve ders secim islemlerini oradan yapar.",
+      "keywords": [
+        "ders kaydi",
+        "rebis",
+        "obs"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/tr/news-detail/2025-2026-egitim-ogretim-yili-bahar-yariyili-kayit-yenileme-derse-kayit-islemleri/6942",
+      "source_title": "Kayit Yenileme / Derse Kayit Islemleri",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_registration_003",
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "alt_donem_ders_onceligi",
+      "question": "Ders secerken once alt donem dersleri mi alinmali?",
+      "answer": "Kayit yenileme akisinda ogrencinin once basarisiz veya eksik alt donem derslerini dikkate almasi ve sonra ust donem derslerini secmesi beklenir.",
+      "keywords": [
+        "alt donem dersi",
+        "ders secimi",
+        "basarisiz ders"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/tr/news-detail/2025-2026-egitim-ogretim-yili-bahar-yariyili-kayit-yenileme-derse-kayit-islemleri/6942",
+      "source_title": "Kayit Yenileme / Derse Kayit Islemleri",
+      "confidence": "medium",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_registration_004",
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "taslak_kayit",
+      "question": "Dersleri sectikten sonra islem hemen tamamlanir mi?",
+      "answer": "Hayir. Dersler once sisteme kaydedilir, sonra danisman onayina gonderilir ve kayit sureci danisman onayiyla tamamlanir.",
+      "keywords": [
+        "taslak",
+        "danisman onayi",
+        "kayit tamamlama"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/tr/news-detail/2025-2026-egitim-ogretim-yili-bahar-yariyili-kayit-yenileme-derse-kayit-islemleri/6942",
+      "source_title": "Kayit Yenileme / Derse Kayit Islemleri",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_registration_005",
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "danisman_onayi",
+      "question": "Danisman onayi olmadan ders kaydi tamamlanmis sayilir mi?",
+      "answer": "Hayir. Danisman onayi ders kaydinin kesinlesme asamasidir; ogrenci kaydinin tamamlandigini transkript ve sistem uzerinden kontrol etmelidir.",
+      "keywords": [
+        "danisman onayi",
+        "kesinlesme",
+        "transkript kontrolu"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/tr/news-detail/2025-2026-egitim-ogretim-yili-bahar-yariyili-kayit-yenileme-derse-kayit-islemleri/6942",
+      "source_title": "Kayit Yenileme / Derse Kayit Islemleri",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_registration_006",
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "mazeretli_ders_kaydi",
+      "question": "Kayit haftasini kacirirsam mazeretli derse kayit yapabilir miyim?",
+      "answer": "Mazeretli derse kayit islemleri universitenin ilgili duyuru ve takvimine gore ayrica ilan edilir. Basvuru resmi belge ve sure kosullarina baglidir.",
+      "keywords": [
+        "mazeretli kayit",
+        "ders kaydi",
+        "kayit haftasi"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/tr/news-detail/2025-2026-egitim-ogretim-yili-guz-yariyili-mazeretli-derse-kayit-islemleri/6565",
+      "source_title": "Mazeretli Derse Kayit Islemleri",
+      "confidence": "medium",
+      "time_sensitive": true,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_registration_007",
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "katki_payi_kayit_iliskisi",
+      "question": "Katki payi veya ogrenim ucreti odemesi ders kaydini etkiler mi?",
+      "answer": "Evet. Katki payi veya ogrenim ucreti yukumlulugu bulunan ogrencilerde bu odeme derse kayit hakkini dogrudan etkiler.",
+      "keywords": [
+        "katki payi",
+        "ogrenim ucreti",
+        "ders kaydi"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/tr/page/katki-payi-ogrenim-ucretinin-yatirilmasi/1243",
+      "source_title": "Katki Payi / Ogrenim Ucreti Bilgilendirmesi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_registration_008",
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "muafiyet_genel",
+      "question": "Muafiyet basvurusu ne zaman yapilir?",
+      "answer": "Muafiyet basvurulari fakulte veya program duzenine gore sureye baglidir. Fakultelere gore farklilik olabildigi icin ogrencinin kendi biriminin resmi duyurusunu esas almasi gerekir.",
+      "keywords": [
+        "muafiyet",
+        "basvuru suresi",
+        "fakulte"
+      ],
+      "source_url": "https://sbf.erdogan.edu.tr/tr/page/soru-cevap/4721",
+      "source_title": "Saglik Bilimleri Fakultesi Sikca Sorulan Sorular",
+      "confidence": "medium",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_registration_009",
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "sbf_muafiyet_suresi",
+      "question": "Saglik Bilimleri Fakultesinde muafiyet basvurusu icin sure nedir?",
+      "answer": "Saglik Bilimleri Fakultesi SSS sayfasina gore muafiyet basvurusu derslerin baslamasini izleyen bes is gunu icinde yapilmalidir.",
+      "keywords": [
+        "sbf",
+        "muafiyet",
+        "bes is gunu"
+      ],
+      "source_url": "https://sbf.erdogan.edu.tr/tr/page/soru-cevap/4721",
+      "source_title": "Saglik Bilimleri Fakultesi Sikca Sorulan Sorular",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "sbf"
+    },
+    {
+      "id": "kb_registration_010",
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "tip_muafiyet_suresi",
+      "question": "Tip Fakultesinde ders veya staj muafiyeti icin sure nedir?",
+      "answer": "Tip Fakultesi yonergesine gore ders veya staj muafiyeti icin basvuru ilk on is gunu icinde Dekanliga yapilir ve basvuru sureye baglidir.",
+      "keywords": [
+        "tip",
+        "staj muafiyeti",
+        "on is gunu"
+      ],
+      "source_url": "https://tip.erdogan.edu.tr/Files/ckFiles/tip-erdogan-edu-tr/Ocak%202020/E%C4%9Fitim-%C3%96%C4%9Fretim%20ve%20S%C4%B1nav%20Y%C3%B6nergesi.pdf",
+      "source_title": "Tip Fakultesi Egitim-Ogretim ve Sinav Yonergesi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "tip"
+    },
+    {
+      "id": "kb_registration_011",
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "dgs_intibak",
+      "question": "DGS ile gelen ogrencinin intibaki nasil belirlenir?",
+      "answer": "Saglik Bilimleri Fakultesi resmi SSS sayfasina gore DGS ile gelen ogrencilerin intibak sinifi muafiyet ve intibak komisyonunca belirlenir.",
+      "keywords": [
+        "dgs",
+        "intibak",
+        "komisyon"
+      ],
+      "source_url": "https://sbf.erdogan.edu.tr/tr/page/soru-cevap/4721",
+      "source_title": "Saglik Bilimleri Fakultesi Sikca Sorulan Sorular",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "sbf"
+    },
+    {
+      "id": "kb_registration_012",
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "cap_yandal_gano",
+      "question": "Cift anadal veya yandal basvurusu icin GANO siniri var mi?",
+      "answer": "Evet. OIDB duyurularinda cift anadal ve yandal basvurularinda GANO'nun en az 2.71 olmasi gerektigi acikca belirtilir.",
+      "keywords": [
+        "cap",
+        "yandal",
+        "gano",
+        "2.71"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/tr/news-detail/2025-2026-egitim-ogretim-yili-cift-anadal-yandal-programlari-basvurulari/6464",
+      "source_title": "Cift Anadal / Yandal Basvurulari",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_registration_013",
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "cap_yandal_ayri_kimlik",
+      "question": "CAP veya yandal ogrencisine ayri ogrenci numarasi verilir mi?",
+      "answer": "Kayit yenileme duyurularinda CAP ve yandal ogrencileri icin anadal programindan ayri ogrenci numarasi ve kurumsal e-posta tanimlandigi belirtilir.",
+      "keywords": [
+        "cap",
+        "yandal",
+        "ogrenci numarasi",
+        "kurumsal e-posta"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/tr/news-detail/2025-2026-egitim-ogretim-yili-bahar-yariyili-kayit-yenileme-derse-kayit-islemleri/6942",
+      "source_title": "Kayit Yenileme / Derse Kayit Islemleri",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_registration_014",
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "yatay_gecis_sistemi",
+      "question": "Yatay gecis basvurusu icin ayri bir sistem var mi?",
+      "answer": "Evet. RTEU'de yatay gecis basvurulari icin ayri bir cevrim ici basvuru bilgi sistemi kullanilir.",
+      "keywords": [
+        "yatay gecis",
+        "basvuru sistemi"
+      ],
+      "source_url": "https://ogrenci.erdogan.edu.tr/YatayGecis/Login",
+      "source_title": "Yatay Gecis Basvuru Bilgi Sistemi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_registration_015",
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "kayit_yenileme_tip_ayri",
+      "question": "Tip Fakultesinde kayit yenileme takvimi ayri midir?",
+      "answer": "Evet. Tip Fakultesi genel onlisans-lisans takviminden ayri bir akademik takvim kullanir; kayit yenileme ve ders ekleme-cikarma tarihleri bu takvimde ayri ilan edilir.",
+      "keywords": [
+        "tip fakultesi",
+        "kayit yenileme",
+        "ayri takvim"
+      ],
+      "source_url": "https://erdogan.edu.tr/Images/Uploads/MyContents/L_6146-20250604152742268512.pdf",
+      "source_title": "2025-2026 Tip Fakultesi Akademik Takvimi",
+      "confidence": "high",
+      "time_sensitive": true,
+      "faculty_scope": "tip"
+    },
+    {
+      "id": "kb_digital_011",
+      "intent": "digital_systems",
+      "intent_aliases": [],
+      "topic": "ogrenci_eposta_ogrenme",
+      "question": "Kurumsal ogrenci e-postami nereden ogrenebilirim?",
+      "answer": "REBIS/E-Kampus giris sayfasindaki 'Ogrenci eposta adresimi ogrenmek istiyorum' akisi kullanilarak kurumsal ogrenci e-postasi ogrenilebilir.",
+      "keywords": [
+        "ogrenci e-posta",
+        "eposta ogrenme",
+        "rebis"
+      ],
+      "source_url": "https://ekampus.erdogan.edu.tr/Login?ret=obs",
+      "source_title": "Giris | E-Kampus",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_digital_012",
+      "intent": "digital_systems",
+      "intent_aliases": [],
+      "topic": "ogrenci_numarasi_ogrenme",
+      "question": "Ogrenci numarami internetten ogrenebilir miyim?",
+      "answer": "Evet. REBIS/E-Kampus giris ekranindaki ogrenci numarasi ogrenme baglantisi veya ogrenci sorgulama ekrani kullanilarak ogrenci numarasi ogrenilebilir.",
+      "keywords": [
+        "ogrenci numarasi",
+        "sorgulama",
+        "e-kampus"
+      ],
+      "source_url": "https://ekampus.erdogan.edu.tr/Login?ret=obs",
+      "source_title": "Giris | E-Kampus",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_digital_013",
+      "intent": "digital_systems",
+      "intent_aliases": [],
+      "topic": "varsayilan_sifre_formulu",
+      "question": "Ilk varsayilan sifre nasil olusur?",
+      "answer": "Varsayilan sifre genel olarak T.C. kimlik numarasinin ilk dort hanesi ile ogrenci numarasinin son dort hanesinin birlestirilmesiyle olusturulur.",
+      "keywords": [
+        "varsayilan sifre",
+        "ilk sifre",
+        "tc ilk 4",
+        "ogrenci no son 4"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/eposta-ve-sifre-olusturma-islemleri.pdf",
+      "source_title": "E-posta ve Sifre Olusturma Islemleri",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_digital_014",
+      "intent": "digital_systems",
+      "intent_aliases": [],
+      "topic": "sifre_unuttum_mobil",
+      "question": "Sifremi unuttugumda yeni sifre nasil alirim?",
+      "answer": "Guncel kilavuza gore kurumsal e-posta adresi ve sistemde kayitli cep telefonu kullanilarak yeni sifre olusturulabilir; yeni sifre kayitli cep telefonuna gonderilir.",
+      "keywords": [
+        "sifre unuttum",
+        "cep telefonu",
+        "yeni sifre"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/eposta-ve-sifre-olusturma-islemleri.pdf",
+      "source_title": "E-posta ve Sifre Olusturma Islemleri",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_digital_015",
+      "intent": "digital_systems",
+      "intent_aliases": [],
+      "topic": "eposta_formati",
+      "question": "Kurumsal e-posta adresi hangi formatta olur?",
+      "answer": "RTEU Kimlik Dogrulama Servisi sayfasina gore ogrenci e-postasi ad_soyad ve verilen yil mantigiyla @erdogan.edu.tr uzantisinda tanimlanir.",
+      "keywords": [
+        "eposta formati",
+        "ad soyad",
+        "@erdogan.edu.tr"
+      ],
+      "source_url": "https://bidb.erdogan.edu.tr/tr/page/rteu-kimlik-dogrulama-servisi/1518",
+      "source_title": "RTEU Kimlik Dogrulama Servisi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_digital_016",
+      "intent": "digital_systems",
+      "intent_aliases": [],
+      "topic": "office365_giris",
+      "question": "Office 365'e hangi hesapla girilir?",
+      "answer": "Office 365'e REBIS'te tanimli kurumsal @erdogan.edu.tr uzantili hesapla girilir.",
+      "keywords": [
+        "office 365",
+        "giris",
+        "kurumsal hesap"
+      ],
+      "source_url": "https://bidb.erdogan.edu.tr/tr/page/office-365/1808",
+      "source_title": "Office 365",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_digital_017",
+      "intent": "digital_systems",
+      "intent_aliases": [],
+      "topic": "office365_lisans",
+      "question": "Office 365 ogrenciler icin lisansli mi?",
+      "answer": "Evet. Aktif ogrencilere belirli periyotlarla Microsoft 365 lisansi atanir ve hizmet aktif ogrencilik suresince kullanilir.",
+      "keywords": [
+        "office 365",
+        "lisans",
+        "aktif ogrenci"
+      ],
+      "source_url": "https://bidb.erdogan.edu.tr/tr/page/office-365/1808",
+      "source_title": "Office 365",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_digital_018",
+      "intent": "digital_systems",
+      "intent_aliases": [],
+      "topic": "office365_cihaz_sayisi",
+      "question": "Microsoft 365 ayni anda kac cihazda kullanilabilir?",
+      "answer": "Resmi Office 365 sayfasina gore hesap bes cihaza kadar kullanilabilir.",
+      "keywords": [
+        "microsoft 365",
+        "bes cihaz",
+        "cihaz siniri"
+      ],
+      "source_url": "https://bidb.erdogan.edu.tr/tr/page/office-365/1808",
+      "source_title": "Office 365",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_digital_019",
+      "intent": "digital_systems",
+      "intent_aliases": [],
+      "topic": "microsoft_hesap_islemleri",
+      "question": "Microsoft 365 parolasi REBIS icinden yonetilebilir mi?",
+      "answer": "Evet. REBIS icindeki Microsoft Office Hesap Islemleri uygulamasi uzerinden ilk aktivasyon ve parola degisimi yapilabilir.",
+      "keywords": [
+        "microsoft office hesap islemleri",
+        "parola",
+        "rebis"
+      ],
+      "source_url": "https://bidb.erdogan.edu.tr/tr/page/microsoft-office-365-hesap-olusturma-ve-sifre-sifirlama/1810",
+      "source_title": "Microsoft Office 365 Hesap Olusturma ve Sifre Sifirlama",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_digital_020",
+      "intent": "digital_systems",
+      "intent_aliases": [],
+      "topic": "kampus_internet_giris",
+      "question": "Kampus icinde internete nasil giris yapilir?",
+      "answer": "Kampus icinde ag baglantisi kurulduktan sonra tarayici uzerinden universitenin tahsis ettigi kurumsal e-posta ve sifre ile kimlik dogrulama yapilir.",
+      "keywords": [
+        "kampus internet",
+        "kimlik dogrulama",
+        "kurumsal e-posta"
+      ],
+      "source_url": "https://bidb.erdogan.edu.tr/tr/page/internet-erisimi/1672",
+      "source_title": "Internet Erisimi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_digital_021",
+      "intent": "digital_systems",
+      "intent_aliases": [],
+      "topic": "eduroam_giris",
+      "question": "Eduroam icin hangi bilgileri kullanmak gerekir?",
+      "answer": "Eduroam baglantisinda kullanici adi olarak kurumsal e-posta adresi, parola olarak ise kurumsal e-posta sifresi kullanilir.",
+      "keywords": [
+        "eduroam",
+        "kullanici adi",
+        "kurumsal e-posta"
+      ],
+      "source_url": "https://bidb.erdogan.edu.tr/tr/page/eduroam-baglanti-ayarlari/1677",
+      "source_title": "Eduroam Baglanti Ayarlari",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_digital_022",
+      "intent": "digital_systems",
+      "intent_aliases": [],
+      "topic": "rteunet_kullanim",
+      "question": "RTEU.Net kimler icin kullanilir?",
+      "answer": "Wireless baglanti ayarlarina gore RTEU.Net baglantisi universite ogrenci ve personeli icin kullanilir.",
+      "keywords": [
+        "rteu.net",
+        "ogrenci",
+        "personel",
+        "wireless"
+      ],
+      "source_url": "https://bidb.erdogan.edu.tr/tr/page/wireless-baglanti-ayarlari/1678",
+      "source_title": "Wireless Baglanti Ayarlari",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_digital_023",
+      "intent": "digital_systems",
+      "intent_aliases": [],
+      "topic": "vpn_istemci",
+      "question": "VPN baglantisi icin hangi uygulama kullanilir?",
+      "answer": "BIDB sayfasina gore VPN baglantisi icin FortiClient VPN istemcisi kullanilir.",
+      "keywords": [
+        "vpn",
+        "forticlient",
+        "istemci"
+      ],
+      "source_url": "https://bidb.erdogan.edu.tr/tr/page/vpn-ayarlari/1680",
+      "source_title": "VPN Ayarlari",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_digital_024",
+      "intent": "digital_systems",
+      "intent_aliases": [],
+      "topic": "kimlik_dogrulama_kullanici_adi",
+      "question": "RTEU Kimlik Dogrulama Servisi'nde kullanici adina alan adi eklenir mi?",
+      "answer": "Hayir. RTEU Kimlik Dogrulama Servisi'nde kullanici adi REBIS hesabi esas alinir ve @erdogan.edu.tr eklenmeden kullanilir.",
+      "keywords": [
+        "kimlik dogrulama",
+        "kullanici adi",
+        "@erdogan.edu.tr"
+      ],
+      "source_url": "https://bidb.erdogan.edu.tr/tr/page/rteu-kimlik-dogrulama-servisi/1518",
+      "source_title": "RTEU Kimlik Dogrulama Servisi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_digital_025",
+      "intent": "digital_systems",
+      "intent_aliases": [],
+      "topic": "teknik_destek_hatlari",
+      "question": "E-posta veya internet sorunu icin hangi teknik destek hatlari kullanilir?",
+      "answer": "Genel erisim problemleri sayfasinda e-posta ve parola sorunlari icin Web grubu, internet erisimi icin ise Sistem ve Network grubu iletisim numaralari verilir.",
+      "keywords": [
+        "teknik destek",
+        "web grubu",
+        "network grubu"
+      ],
+      "source_url": "https://bidb.erdogan.edu.tr/tr/page/genel-erisim-problemleri/1684",
+      "source_title": "Genel Erisim Problemleri",
+      "confidence": "medium",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_digital_026",
+      "intent": "digital_systems",
+      "intent_aliases": [],
+      "topic": "bidb_ve_oidb_rol_farki",
+      "question": "REBIS ve Ogrenci Bilgi Sisteminden hangi birimler sorumludur?",
+      "answer": "Uygulamalar ve sorumlu birim listesine gore REBIS icin Bilgi Islem Daire Baskanligi, Ogrenci Bilgi Sistemi icin ise Ogrenci Isleri Daire Baskanligi sorumludur.",
+      "keywords": [
+        "bidb",
+        "oidb",
+        "rebis",
+        "ogrenci bilgi sistemi"
+      ],
+      "source_url": "https://bidb.erdogan.edu.tr/tr/page/uygulamalar-ve-sorumlu-birim-personel/1807",
+      "source_title": "Uygulamalar ve Sorumlu Birim/Personel",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_services_012",
+      "intent": "student_services",
+      "intent_aliases": [],
+      "topic": "ogrenci_belgesi_kaynaklari",
+      "question": "Ogrenci belgesi hangi kanallardan alinabilir?",
+      "answer": "Ogrenci belgesi akademik birim ogrenci islerinden, OIDB'den veya e-Devlet uzerinden alinabilir.",
+      "keywords": [
+        "ogrenci belgesi",
+        "e-devlet",
+        "oidb"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/tr/page/ogrenci-belgesi/1182",
+      "source_title": "Ogrenci Belgesi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_services_013",
+      "intent": "student_services",
+      "intent_aliases": [],
+      "topic": "transkript_ucret",
+      "question": "Transkript almak ucretli midir?",
+      "answer": "Hayir. OIDB sayfasina gore transkript veya not dokum belgesi icin ucret alinmaz.",
+      "keywords": [
+        "transkript",
+        "ucret",
+        "not dokum"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/tr/page/transkript-not-dokum-belgesi/1184",
+      "source_title": "Transkript (Not Dokum Belgesi)",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_services_014",
+      "intent": "student_services",
+      "intent_aliases": [],
+      "topic": "gecici_mezuniyet_belgesi",
+      "question": "Diploma hazir degilse hangi belge alinabilir?",
+      "answer": "Diploma duzenlenmeden once mezuniyet hakki kazanan ogrenciye gecici mezuniyet belgesi duzenlenebilir.",
+      "keywords": [
+        "gecici mezuniyet",
+        "diploma hazir degil"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/tr/page/diploma/1188",
+      "source_title": "Diploma",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_services_015",
+      "intent": "student_services",
+      "intent_aliases": [],
+      "topic": "diploma_sorgulama_bilgi_seti",
+      "question": "Diploma sorgulamada hangi bilgiler istenir?",
+      "answer": "Diploma sorgulama ekraninda ogrenci numarasi, T.C. kimlik numarasi ve aile bilgileri veya T.C. kimlik numarasi ile diploma numarasi kullanilabilir.",
+      "keywords": [
+        "diploma sorgulama",
+        "ogrenci numarasi",
+        "diploma numarasi"
+      ],
+      "source_url": "https://ogrenci.erdogan.edu.tr/OgrenciDiplomaSorgulama/Index",
+      "source_title": "Diploma Sorgulama",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_services_016",
+      "intent": "student_services",
+      "intent_aliases": [],
+      "topic": "diploma_teslim_hazir",
+      "question": "Diploma 'teslime hazir' oldugunda ne yapabilirim?",
+      "answer": "Diploma teslime hazir oldugunda ogrenci diplomasini sahsen, noter onayli vekaletle veya Diploma Talep Sistemi uzerinden kargo talebiyle alabilir.",
+      "keywords": [
+        "teslime hazir",
+        "diploma talep",
+        "vekalet"
+      ],
+      "source_url": "https://ogrenci.erdogan.edu.tr/DiplomaTalep/Login",
+      "source_title": "Mezun Diploma Talep ve Surec Takip Uygulamasi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_services_017",
+      "intent": "student_services",
+      "intent_aliases": [],
+      "topic": "diploma_eki_otomatik",
+      "question": "Diploma eki otomatik mi verilir?",
+      "answer": "OIDB sayfasina gore diploma eki mezunlara otomatik ve ucretsiz olarak, Ingilizce dilinde verilir.",
+      "keywords": [
+        "diploma eki",
+        "otomatik",
+        "ingilizce"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/tr/page/diploma-eki/1190",
+      "source_title": "Diploma Eki",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_services_018",
+      "intent": "student_services",
+      "intent_aliases": [],
+      "topic": "asli_gibidir_onayi",
+      "question": "Asli gibidir onayi nerede yaptirilir?",
+      "answer": "Asli gibidir onayi icin belgenin asli ibraz edilerek OIDB veya ilgili birimde fotokopinin belgeyle uyumunun onaylanmasi gerekir.",
+      "keywords": [
+        "asli gibidir",
+        "onay",
+        "oidb"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/tr/page/asli-gibidir/1181",
+      "source_title": "Asli Gibidir",
+      "confidence": "medium",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_services_019",
+      "intent": "student_services",
+      "intent_aliases": [],
+      "topic": "kendi_istegiyle_ilisik_kesme",
+      "question": "Kendi istegimle kaydimi sildirmek istersem ne yapmaliyim?",
+      "answer": "Kendi istegiyle ilisik kesmek isteyen ogrenci ilgili formu doldurup ogrenci kimlik kartiyla birlikte bagli oldugu akademik birime sahsen basvurur.",
+      "keywords": [
+        "ilisik kesme",
+        "kayit sildirme",
+        "form"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/tr/page/kendi-istegi-ile-ilisik-kesme/1179",
+      "source_title": "Kendi Istegi Ile Ilisik Kesme",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_services_020",
+      "intent": "student_services",
+      "intent_aliases": [],
+      "topic": "ogrenci_durum_sorgulama",
+      "question": "Ogrenci durum sorgulamada hangi bilgiler gorulur?",
+      "answer": "Ogrenci durum sorgulama ekraninda ad-soyad, ogrenci numarasi, durum, durum detay ve kayitla ilgili temel bilgiler goruntulenir.",
+      "keywords": [
+        "ogrenci durum sorgulama",
+        "durum detay",
+        "ogrenci numarasi"
+      ],
+      "source_url": "https://ogrenci.erdogan.edu.tr/OgrenciSorgulama/Index",
+      "source_title": "Ogrenci Durum Sorgulama",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_services_021",
+      "intent": "student_services",
+      "intent_aliases": [
+        "student_life"
+      ],
+      "topic": "odk_kurulus",
+      "question": "Ogrenci Destek Koordinatorlugu ne zaman kuruldu?",
+      "answer": "Ogrenci Destek Koordinatorlugu 22 Ocak 2025 tarihli ve 222 sayili Senato karariyla kurulmustur.",
+      "keywords": [
+        "odk",
+        "22 ocak 2025",
+        "222 sayili"
+      ],
+      "source_url": "https://ziraat.erdogan.edu.tr/tr/news-detail/t-c-recep-tayyip-erdogan-universitesi-ogrenci-destek-koordinatorlugu-ogrenci-senato-uyeleri-belirlendi/15359",
+      "source_title": "ODK Ogrenci Senato Uyeleri Belirlendi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_services_022",
+      "intent": "student_services",
+      "intent_aliases": [
+        "student_life"
+      ],
+      "topic": "odk_amaci",
+      "question": "Ogrenci Destek Koordinatorlugu ne is yapar?",
+      "answer": "ODK'nin amaci ogrencilerin akademik, sosyal ve kisisel gelisimlerini desteklemek; sorunlari tespit edip cozum odakli mekanizmalar gelistirmektir.",
+      "keywords": [
+        "ogrenci destek koordinatorlugu",
+        "akademik sosyal kisisel gelisim"
+      ],
+      "source_url": "https://odk.erdogan.edu.tr/tr/page/amac-ve-faaliyet-alani/5278",
+      "source_title": "ODK Amac ve Faaliyet Alani",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_services_023",
+      "intent": "student_services",
+      "intent_aliases": [],
+      "topic": "eimer_kanali",
+      "question": "Ogrenci sorun ve sikayetleri icin resmi geri bildirim kanali var mi?",
+      "answer": "ODK iletisim sayfasinda dilek, gorus, memnuniyet ve sikayetlerin E-IMER sistemi uzerinden iletilebilecegi belirtilir.",
+      "keywords": [
+        "e-imer",
+        "sikayet",
+        "geri bildirim"
+      ],
+      "source_url": "https://odk.erdogan.edu.tr/tr/page/iletisim/5279",
+      "source_title": "ODK Iletisim",
+      "confidence": "medium",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_services_024",
+      "intent": "student_services",
+      "intent_aliases": [
+        "student_life"
+      ],
+      "topic": "engelli_ogrenci_birimi",
+      "question": "Engelli ogrenciler icin resmi destek birimi var mi?",
+      "answer": "Evet. Engelli Ogrenci Birimi resmi olarak SKS bunyesinde yer alir ve erisilebilirlik ile ogrenci destek koordinasyonunu yurutur.",
+      "keywords": [
+        "engelli ogrenci",
+        "sks",
+        "erisilebilirlik"
+      ],
+      "source_url": "https://eob.erdogan.edu.tr",
+      "source_title": "Engelli Ogrenci Birimi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_services_025",
+      "intent": "student_services",
+      "intent_aliases": [
+        "student_life"
+      ],
+      "topic": "rpduam_hizmeti",
+      "question": "Psikolojik danismanlik hizmetini hangi birim verir?",
+      "answer": "Psikolojik danismanlik hizmeti resmi olarak Rehberlik ve Psikolojik Danisma Uygulama ve Arastirma Merkezi tarafindan sunulur.",
+      "keywords": [
+        "psikolojik danismanlik",
+        "rpduam",
+        "rehberlik"
+      ],
+      "source_url": "https://erdogan.edu.tr/Website/Contents.aspx?PageID=391&LangID=1",
+      "source_title": "RPDUAM",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_services_026",
+      "intent": "student_services",
+      "intent_aliases": [
+        "student_life"
+      ],
+      "topic": "rpduam_kapsam",
+      "question": "RPDUAM kimlere hizmet verir?",
+      "answer": "Universite ana tanitim metinlerine gore RPDUAM universite ogrencileri ve personeline rehberlik ve psikolojik danisma hizmeti verir.",
+      "keywords": [
+        "rpduam",
+        "ogrenciler",
+        "personel"
+      ],
+      "source_url": "https://erdogan.edu.tr/Website/Contents.aspx?PageID=391&LangID=1",
+      "source_title": "RPDUAM",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_library_008",
+      "intent": "library",
+      "intent_aliases": [],
+      "topic": "odunc_sayi_sure",
+      "question": "Lisans ogrencisi kac kitap ve kac gun odunc alabilir?",
+      "answer": "Kutuphane SSS sayfasina gore lisans ve onlisans ogrencileri bir seferde 4 kitabi 15 gun sureyle odunc alabilir.",
+      "keywords": [
+        "4 kitap",
+        "15 gun",
+        "odunc"
+      ],
+      "source_url": "https://kutuphanedb.erdogan.edu.tr/tr/page/sikca-sorulan-sorular/1194",
+      "source_title": "Kutuphane Sikca Sorulan Sorular",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_library_009",
+      "intent": "library",
+      "intent_aliases": [],
+      "topic": "odunc_uzatma_kosullari",
+      "question": "Kutuphane kitabinin suresi hangi kosullarda uzatilabilir?",
+      "answer": "Uzatma iade tarihinden en fazla 3 gun once baslar ve her kitap icin en fazla 2 kez yapilabilir. Kitap rezerve edilmemis olmali, borc bulunmamali ve sure gecmemis olmalidir.",
+      "keywords": [
+        "uzatma",
+        "3 gun once",
+        "2 kez",
+        "rezervasyon"
+      ],
+      "source_url": "https://kutuphanedb.erdogan.edu.tr/tr/page/sikca-sorulan-sorular/1194",
+      "source_title": "Kutuphane Sikca Sorulan Sorular",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_library_010",
+      "intent": "library",
+      "intent_aliases": [],
+      "topic": "kitap_iade_yeri",
+      "question": "Odunc alinan kitabi nereye iade etmek gerekir?",
+      "answer": "Odunc alinan materyal odunc verme bankosuna veya odunc alindigi yere iade edilmelidir.",
+      "keywords": [
+        "iade",
+        "odunc verme bankosu"
+      ],
+      "source_url": "https://kutuphanedb.erdogan.edu.tr/tr/page/sikca-sorulan-sorular/1194",
+      "source_title": "Kutuphane Sikca Sorulan Sorular",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_library_011",
+      "intent": "library",
+      "intent_aliases": [],
+      "topic": "kargo_ile_iade",
+      "question": "Rize disindayken kutuphane kitabini kargoyla iade edebilir miyim?",
+      "answer": "Evet. SSS sayfasina gore Rize disinda bulunan kullanicilar sorumluluk kendilerine ait olmak uzere kitaplari kargoyla iade edebilir.",
+      "keywords": [
+        "kargo ile iade",
+        "rize disi"
+      ],
+      "source_url": "https://kutuphanedb.erdogan.edu.tr/tr/page/sikca-sorulan-sorular/1194",
+      "source_title": "Kutuphane Sikca Sorulan Sorular",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_library_012",
+      "intent": "library",
+      "intent_aliases": [],
+      "topic": "gecikme_cezasi_ve_engel",
+      "question": "Kutuphane gecikme cezasi yeni odunc islemini engeller mi?",
+      "answer": "Evet. Gecikme cezasi odenmeden yeni kitap odunc alma veya sure uzatma islemi yapilamaz.",
+      "keywords": [
+        "gecikme cezasi",
+        "borc",
+        "odunc engeli"
+      ],
+      "source_url": "https://kutuphanedb.erdogan.edu.tr/tr/page/sikca-sorulan-sorular/1194",
+      "source_title": "Kutuphane Sikca Sorulan Sorular",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_library_013",
+      "intent": "library",
+      "intent_aliases": [],
+      "topic": "gecikme_yuz_gun",
+      "question": "Kutuphane gecikme cezasi sinirsiz mi isler?",
+      "answer": "Kutuphane yonergesi ozetine gore gecikme cezasi uygulamasi yuz gunle sinirlandirilir; kayip bildirimi yapildigi tarihten itibaren ceza durdurulur.",
+      "keywords": [
+        "100 gun",
+        "kayip bildirimi",
+        "gecikme cezasi"
+      ],
+      "source_url": "https://kutuphanedb.erdogan.edu.tr/Files/ckFiles/kutuphane-idari-erdogan-edu-tr/K%C3%9CT%C3%9CPHANE%20H%C4%B0ZMETLER%C4%B0%20Y%C3%96NERGES%C4%B0.pdf",
+      "source_title": "Kutuphane Hizmetleri Yonergesi",
+      "confidence": "medium",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_library_014",
+      "intent": "library",
+      "intent_aliases": [],
+      "topic": "tez_ve_dergi_odunc",
+      "question": "Tezler ve dergiler odunc verilir mi?",
+      "answer": "Hayir. SSS sayfasina gore tezler, dergiler ve referans kaynaklari odunc verilmez; kutuphane icinde kullanilir.",
+      "keywords": [
+        "tez",
+        "dergi",
+        "odunc verilmez"
+      ],
+      "source_url": "https://kutuphanedb.erdogan.edu.tr/tr/page/sikca-sorulan-sorular/1194",
+      "source_title": "Kutuphane Sikca Sorulan Sorular",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_library_015",
+      "intent": "library",
+      "intent_aliases": [],
+      "topic": "misafir_kullanici_hakki",
+      "question": "RTEU mensubu olmayan biri kutuphaneden kitap odunc alabilir mi?",
+      "answer": "Hayir. Misafir kullanicilar kutuphaneyi arastirma amacli kullanabilir ve basili kaynaklardan fotokopi yoluyla yararlanabilir; odunc haklari yoktur.",
+      "keywords": [
+        "misafir kullanici",
+        "odunc alabilir mi",
+        "fotokopi"
+      ],
+      "source_url": "https://kutuphanedb.erdogan.edu.tr/tr/page/sikca-sorulan-sorular/1194",
+      "source_title": "Kutuphane Sikca Sorulan Sorular",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_library_016",
+      "intent": "library",
+      "intent_aliases": [],
+      "topic": "kutuphane_hesabi_islevleri",
+      "question": "Kutuphane hesabi uzerinden hangi islemler yapilabilir?",
+      "answer": "Kutuphane hesabi uzerinden uzerinizdeki kitaplari, iade tarihlerini, borclari ve ayirtilan eserleri goruntuleyebilir; sure uzatma ve ayirtma islemleri yapabilirsiniz.",
+      "keywords": [
+        "kutuphane hesabi",
+        "borclarim",
+        "kitaplarim",
+        "sure uzatma"
+      ],
+      "source_url": "https://kutuphanedb.erdogan.edu.tr/tr/page/sikca-sorulan-sorular/1194",
+      "source_title": "Kutuphane Sikca Sorulan Sorular",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_library_017",
+      "intent": "library",
+      "intent_aliases": [],
+      "topic": "bireysel_calisma_odasi_sure",
+      "question": "Bireysel calisma odalari ne kadar sureyle kullanilabilir?",
+      "answer": "Perplexity arastirma derlemesine gore bireysel calisma odalari mesai icinde 3 saat, mesai disinda 5 saat kullanilabilir; kullanimda kimlik birakma ve kurallara uyma esastir.",
+      "keywords": [
+        "bireysel calisma odasi",
+        "3 saat",
+        "5 saat"
+      ],
+      "source_url": "https://kutuphanedb.erdogan.edu.tr/tr/page/bireysel-calisma-odasi/1152",
+      "source_title": "Bireysel Calisma Odasi",
+      "confidence": "medium",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_library_018",
+      "intent": "library",
+      "intent_aliases": [
+        "digital_systems"
+      ],
+      "topic": "vetis_uzaktan_erisim",
+      "question": "Ogrenci kampus disindan kutuphane veritabanlarina nasil erisir?",
+      "answer": "Ogrenciler icin kampus disi erisimde VETIS sistemi one cikarilir. Elektronik kutuphane ve kampus disi erisim sayfalari bu yontemi resmi yol olarak listeler.",
+      "keywords": [
+        "kampus disi",
+        "ogrenci",
+        "proxy",
+        "uzaktan erisim",
+        "vetis"
+      ],
+      "source_url": "https://kutuphanedb.erdogan.edu.tr/tr/page/kampus-disi-erisim-olanaklari/2947",
+      "source_title": "Kampus Disi Erisim Olanaklari",
+      "confidence": "medium",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_library_019",
+      "intent": "library",
+      "intent_aliases": [
+        "digital_systems"
+      ],
+      "topic": "proxy_ogrenci_belirsizligi",
+      "question": "Proxy erisimi ogrenciler icin kesin olarak acik mi?",
+      "answer": "Kutuphane ve BIDB kaynaklarinda proxy erisimi anlatilsa da bazi aciklamalarda bunun daha cok akademik ve idari personel icin oldugu belirtilir. Ogrenciler icin VETIS daha net resmi yol olarak gorunur.",
+      "keywords": [
+        "kampus disi",
+        "ogrenci",
+        "proxy",
+        "uzaktan erisim",
+        "vetis"
+      ],
+      "source_url": "https://bidb.erdogan.edu.tr/tr/page/kampus-disi-erisim-bilgilendirme/1681",
+      "source_title": "Kampus Disi Erisim Bilgilendirme",
+      "confidence": "medium",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_scholarship_005",
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "vakif_burs_turleri",
+      "question": "RTEU Gelistirme Vakfi hangi burs turlerini tanimlar?",
+      "answer": "Gelistirme Vakfi yonergesinde tesvik burslari, ihtiyac burslari ve basari odulleri gibi ogrenciye yonelik destekler tanimlanir.",
+      "keywords": [
+        "gelistirme vakfi",
+        "ihtiyac bursu",
+        "tesvik bursu",
+        "basari odulu"
+      ],
+      "source_url": "https://erdogan.edu.tr/Images/Uploads/Vak%C4%B1f%20Akademik%20Te%C5%9Fvik%20Y%C3%B6nergesi%20(2).pdf",
+      "source_title": "RTEU Gelistirme Vakfi Burs ve Tesvik Yonergesi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_scholarship_006",
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "vakif_komisyon",
+      "question": "Vakit burslarinda karar mekanizmasi nasil isler?",
+      "answer": "Yonergeye gore Yurt-Burs-Ogrenci Isleri Komisyonu ogrencilerle ilgili burs kararlarini onerir; uygulama Mu tevelli Heyeti onayiyla yurumeye girer.",
+      "keywords": [
+        "komisyon",
+        "mutevelli heyeti",
+        "vakif burs"
+      ],
+      "source_url": "https://erdogan.edu.tr/Images/Uploads/Vak%C4%B1f%20Akademik%20Te%C5%9Fvik%20Y%C3%B6nergesi%20(2).pdf",
+      "source_title": "RTEU Gelistirme Vakfi Burs ve Tesvik Yonergesi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_scholarship_007",
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "yemek_bursu_duyuru_kanali",
+      "question": "Yemek bursu basvurulari nerede duyurulur?",
+      "answer": "Yemek bursu basvurulari SKS duyurular sayfasinda resmi olarak ilan edilir.",
+      "keywords": [
+        "yemek bursu",
+        "sks duyurular"
+      ],
+      "source_url": "https://sks.erdogan.edu.tr/tr/news",
+      "source_title": "SKS Duyurular",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_scholarship_008",
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "yemek_bursu_vakif",
+      "question": "Yemek bursunu hangi kurum saglar?",
+      "answer": "SKS duyurularinda yemek bursunun RTEU Gelistirme Vakfi tarafindan saglandigi belirtilir.",
+      "keywords": [
+        "yemek bursu",
+        "gelistirme vakfi"
+      ],
+      "source_url": "https://sks.erdogan.edu.tr/tr/news-detail/yemek-bursu-basvurulari-2025/6545",
+      "source_title": "Yemek Bursu Basvurulari - 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_scholarship_009",
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "yemek_bursu_kapsami",
+      "question": "Yemek bursu ogrenciye ne saglar?",
+      "answer": "Yemek bursu, hak kazanan ogrenciye yemekhanelerde gunde bir ogun ucretsiz yemek imkani saglayan destek turudur.",
+      "keywords": [
+        "gunde bir ogun",
+        "ucretsiz yemek",
+        "yemek bursu"
+      ],
+      "source_url": "https://sks.erdogan.edu.tr/tr/news-detail/yemek-bursu-basvurulari-2025/6545",
+      "source_title": "Yemek Bursu Basvurulari - 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_scholarship_010",
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "yemek_bursu_kesilme",
+      "question": "Yemek bursu hangi durumda kesilebilir?",
+      "answer": "Erisebilen resmi kurallara gore ogrencinin yemek kartini baskasina kullandirmasi veya ay icinde on defadan az yemek yemesi durumunda yemek bursu kesilebilir.",
+      "keywords": [
+        "yemek bursu kesilir mi",
+        "karti baskasina kullandirma",
+        "10 defa"
+      ],
+      "source_url": "https://sks.erdogan.edu.tr/Files/ckFiles/sks-idari-erdogan-edu-tr/Normal/yemek%20bursu2022.pdf",
+      "source_title": "Yemek Bursu 2022 Kurallari",
+      "confidence": "medium",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_scholarship_011",
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "barinma_yardimi",
+      "question": "Universite resmi belgelerinde barinma yardimi geciyor mu?",
+      "answer": "SKS faaliyet raporunda ogrencilere yemek yardimi ve barinma yardimi gibi destekler saglandigi acikca ifade edilir.",
+      "keywords": [
+        "barinma yardimi",
+        "sks faaliyet raporu"
+      ],
+      "source_url": "https://sks.erdogan.edu.tr/Files/ckFiles/sks-erdogan-edu-tr/Faaliyet%20Raporlar%C4%B1%20ve%20Mevzuat/2025%20B%C4%B0R%C4%B0M_FAL%20RAPORU.pdf",
+      "source_title": "SKS 2025 Birim Faaliyet Raporu",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_scholarship_012",
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "ogrenim_bursu_duyurusu",
+      "question": "Ogrenim bursu icin resmi duyuru yayimlaniyor mu?",
+      "answer": "Evet. OIDB ve universite ana sayfasinda ogrenim bursu basvuru duyurulari yayinlanir.",
+      "keywords": [
+        "ogrenim bursu",
+        "oidb duyuru"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/tr/news-detail/ogrenim-bursu-basvuru-duyurusu/6646",
+      "source_title": "Ogrenim Bursu Basvuru Duyurusu",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_scholarship_013",
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "basari_bursu_osym",
+      "question": "RTEU'de basari bursu var mi?",
+      "answer": "Universitenin resmi basari bursu duyurusunda OSMY yerlestirme basarisina gore belirli ogrencilere nakdi basari bursu verilecegi belirtilir.",
+      "keywords": [
+        "basari bursu",
+        "osym",
+        "nakdi burs"
+      ],
+      "source_url": "https://erdogan.edu.tr/Website/Contents.aspx?PageID=396&LangID=1",
+      "source_title": "Basari Bursu Firsati",
+      "confidence": "medium",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_scholarship_014",
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "kyk_basvuru_kanali",
+      "question": "KYK burs veya kredi basvurusu universite icinden mi yapilir?",
+      "answer": "Hayir. OIDB belgelerine gore KYK burs ve kredi basvurulari dogrudan KYK'nin resmi internet sistemi uzerinden yapilir; universite bilgilendirme ve durum bildirimi yapar.",
+      "keywords": [
+        "kyk",
+        "basvuru",
+        "universite icinden mi"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/KATKI%20PAYI%20%C3%96%C4%9EREN%C4%B0M%20%C3%9CCRET%C4%B0%20ALINMASI%20HAKKINDA%20B%C4%B0LG%C4%B0LER.pdf",
+      "source_title": "Katki Payi / Ogrenim Ucreti Bilgilendirmesi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_scholarship_015",
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "oidb_kyk_rolu",
+      "question": "OIDB'nin KYK burs surecinde rolu var midir?",
+      "answer": "OIDB'nin is planlarinda KYK burs veya kredi alan ogrencilerin basari durumlarini izleme ve burs kontenjan yazilarini ilgili komisyonlara iletme gorevleri tanimlanir.",
+      "keywords": [
+        "oidb",
+        "kyk",
+        "basari durumu"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/Images/hassas-gorev-tespit-2312023132756.pdf",
+      "source_title": "Hassas Gorev Tespit Dokumani",
+      "confidence": "medium",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_scholarship_016",
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "dis_burs_duyurulari",
+      "question": "TEV gibi dis burslar resmi kanallarda duyuruluyor mu?",
+      "answer": "Evet. TEV ve benzeri dis kaynak burslar universitenin veya fakulte duyuru sayfalarinda resmi olarak ilan edilip ilgili vakfin basvuru sayfasina yonlendirme yapilir.",
+      "keywords": [
+        "tev",
+        "dis burs",
+        "duyuru"
+      ],
+      "source_url": "https://tde-fef.erdogan.edu.tr/tr/news-detail/2025-2026-ogretim-yili-tev-universite-egitim-burs-basvuru-duyurusu/16540",
+      "source_title": "TEV Universite Egitim Bursu Basvuru Duyurusu",
+      "confidence": "medium",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_life_006",
+      "intent": "student_life",
+      "intent_aliases": [
+        "cafeteria",
+        "campus_life",
+        "campus_logistics"
+      ],
+      "topic": "sks_gorev_alani",
+      "question": "Ogrenci yasami ile ilgili resmi hizmetleri hangi birim yurutur?",
+      "answer": "Ogrenci yasamina dair beslenme, spor, topluluklar, sosyal hizmetler ve benzeri hizmetlerin ana kurumsal muhatabi SKS'dir.",
+      "keywords": [
+        "sks",
+        "ogrenci yasami",
+        "sosyal hizmetler"
+      ],
+      "source_url": "https://sks.erdogan.edu.tr",
+      "source_title": "SKS Ana Sayfasi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_life_007",
+      "intent": "student_life",
+      "intent_aliases": [
+        "cafeteria",
+        "campus_life",
+        "campus_logistics"
+      ],
+      "topic": "yemek_listesi_sayfasi",
+      "question": "Gunluk yemek listesi nerede yayinlanir?",
+      "answer": "Gunluk yemek listesi universitenin resmi Yemek Listesi sayfasinda kampus ve birim bazinda yayinlanir.",
+      "keywords": [
+        "yemek listesi",
+        "gunluk menu",
+        "kampus bazli"
+      ],
+      "source_url": "https://erdogan.edu.tr/Website/Contents.aspx?PageID=1156&LangID=1",
+      "source_title": "Yemek Listesi",
+      "confidence": "high",
+      "time_sensitive": true,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_life_008",
+      "intent": "student_life",
+      "intent_aliases": [
+        "cafeteria",
+        "campus_life",
+        "campus_logistics"
+      ],
+      "topic": "yemek_rezervasyon_sistemi",
+      "question": "Universitede yemekhane rezervasyon sistemi var mi?",
+      "answer": "Evet. SKS duyurularinda Yemekhane Rezervasyon Sistemi ve ilgili bilgilendirme duyurulari resmi olarak yer alir.",
+      "keywords": [
+        "yemekhane rezervasyon sistemi",
+        "sks duyuru"
+      ],
+      "source_url": "https://sks.erdogan.edu.tr/tr/news-detail/yemekhane-rezervasyon-sistemi/4787",
+      "source_title": "Yemekhane Rezervasyon Sistemi",
+      "confidence": "medium",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_life_009",
+      "intent": "student_life",
+      "intent_aliases": [
+        "cafeteria",
+        "campus_life",
+        "campus_logistics"
+      ],
+      "topic": "rezervasyon_zorunlulugu",
+      "question": "Yemek hizmeti icin rezervasyon yapmak gerekiyor mu?",
+      "answer": "Arastirma havuzundaki resmi duyurular rezervasyon sisteminin aktif oldugunu ve ucretsiz yemek uygulamasinda rezervasyon vurgusunu gosterir. Ancak tum ogrenciler icin zorunluluk ayrintisi her sayfada ayni aciklikta yazili degildir.",
+      "keywords": [
+        "rezervasyon zorunlu mu",
+        "ucretsiz yemek",
+        "yemek sistemi"
+      ],
+      "source_url": "https://sks.erdogan.edu.tr/tr/news-detail/yemekhane-rezervasyon-sistemi-bilgilendirme/5397",
+      "source_title": "Yemekhane Rezervasyon Sistemi Bilgilendirme",
+      "confidence": "medium",
+      "time_sensitive": true,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_life_010",
+      "intent": "student_life",
+      "intent_aliases": [
+        "cafeteria",
+        "campus_life",
+        "campus_logistics"
+      ],
+      "topic": "para_yukleme",
+      "question": "Yemekhane kartina online para yuklenebilir mi?",
+      "answer": "SKS hizli erisim baglantilarinda Para Yukleme ve Yemekhane Kartina RTEU Mobilden Para Yukleme secenekleri bulundugu icin online veya mobil bakiye yukleme imkani vardir.",
+      "keywords": [
+        "para yukleme",
+        "rteu mobilden",
+        "yemekhane karti"
+      ],
+      "source_url": "https://sks.erdogan.edu.tr",
+      "source_title": "SKS Ana Sayfasi",
+      "confidence": "medium",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_life_011",
+      "intent": "student_life",
+      "intent_aliases": [
+        "cafeteria",
+        "campus_life",
+        "campus_logistics"
+      ],
+      "topic": "barinma_bologna",
+      "question": "Barinma bilgileri icin resmi sayfa var mi?",
+      "answer": "Universitenin Bologna bilgi paketinde barinma basligi altinda genel bilgilendirme yer alir. Ancak detayli yurt listeleri ve fiyat bilgileri ayni duzeyde acik olmayabilir.",
+      "keywords": [
+        "barinma",
+        "bologna",
+        "yurt bilgisi"
+      ],
+      "source_url": "https://bologna2.erdogan.edu.tr/tr/page/barinma/3497",
+      "source_title": "Barinma",
+      "confidence": "medium",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_life_012",
+      "intent": "student_life",
+      "intent_aliases": [
+        "cafeteria",
+        "campus_life",
+        "campus_logistics"
+      ],
+      "topic": "kyk_yurt_yonlendirme",
+      "question": "Yurt basvurulari universite icinden mi yapilir?",
+      "answer": "Barinma kaynaklarinda ilk kayitlanan ogrenciler icin yurt basvurularinin KYK sistemi uzerinden yurudugune yonelik resmi yonlendirmeler bulunur.",
+      "keywords": [
+        "yurt basvurusu",
+        "kyk",
+        "barinma"
+      ],
+      "source_url": "https://bologna2.erdogan.edu.tr/tr/page/barinma/3497",
+      "source_title": "Barinma",
+      "confidence": "medium",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_life_013",
+      "intent": "student_life",
+      "intent_aliases": [
+        "cafeteria",
+        "campus_life",
+        "campus_logistics"
+      ],
+      "topic": "ulasim_sayfasi",
+      "question": "Kampus veya sehir ici ulasim bilgileri icin resmi bir sayfa var mi?",
+      "answer": "Universitenin Bologna bilgi paketi icinde ulasim basligi altinda resmi genel bilgilendirme sayfasi bulunur.",
+      "keywords": [
+        "ulasim",
+        "kampus",
+        "bologna"
+      ],
+      "source_url": "https://bologna2.erdogan.edu.tr/tr/page/ulasim/3499",
+      "source_title": "Ulasim",
+      "confidence": "medium",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_life_014",
+      "intent": "student_life",
+      "intent_aliases": [
+        "cafeteria",
+        "campus_life",
+        "campus_logistics"
+      ],
+      "topic": "topluluklar_listesi",
+      "question": "Aktif ogrenci topluluklarinin listesine nereden ulasabilirim?",
+      "answer": "SKS tarafindan yayinlanan RTEU aktif ogrenci topluluklari listesi ve iletisim bilgileri sayfasindan topluluklara ulasilabilir.",
+      "keywords": [
+        "ogrenci topluluklari",
+        "aktif liste",
+        "iletisim"
+      ],
+      "source_url": "https://sks.erdogan.edu.tr/tr/page/rteu-topluluklar-listesi-ve-iletisim-bilgileri/6088",
+      "source_title": "RTEU Topluluklar Listesi ve Iletisim Bilgileri",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_life_015",
+      "intent": "student_life",
+      "intent_aliases": [
+        "cafeteria",
+        "campus_life",
+        "campus_logistics"
+      ],
+      "topic": "topluluk_yonergesi",
+      "question": "Ogrenci topluluklarinin resmi yonergesi var mi?",
+      "answer": "Evet. Ogrenci topluluklarinin kurulus, isleyis ve denetim esaslarini duzenleyen resmi yonerge bulunur.",
+      "keywords": [
+        "topluluk yonergesi",
+        "kurulus",
+        "isleyis"
+      ],
+      "source_url": "https://ilahiyat.erdogan.edu.tr/Files/ckFiles/ilahiyat-erdogan-edu-tr/ogrenci-topluluklari-yonergesi_18-03-2015.pdf",
+      "source_title": "Ogrenci Topluluklari Yonergesi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_life_016",
+      "intent": "student_life",
+      "intent_aliases": [
+        "cafeteria",
+        "campus_life",
+        "campus_logistics"
+      ],
+      "topic": "topluluk_kurulumu",
+      "question": "Yeni ogrenci toplulugu kurmak veya topluluk bilgisini guncellemek icin resmi bir yol var mi?",
+      "answer": "SKS web yapisinda topluluk kurulumu ve topluluk guncelleme baglantilari yer aldigi icin bu islemler icin cevrim ici resmi basvuru veya guncelleme akisi bulunur.",
+      "keywords": [
+        "topluluk kurulumu",
+        "topluluk guncelleme",
+        "sks"
+      ],
+      "source_url": "https://sks.erdogan.edu.tr/tr/page/topluluk-guncelleme/1562",
+      "source_title": "Topluluk Guncelleme",
+      "confidence": "medium",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_life_017",
+      "intent": "student_life",
+      "intent_aliases": [
+        "cafeteria",
+        "campus_life",
+        "campus_logistics"
+      ],
+      "topic": "etkinlikler_sayfasi",
+      "question": "Kampus etkinlikleri nerede duyurulur?",
+      "answer": "SKS'nin Tum Etkinlikler sayfasinda topluluk etkinlikleri, senlikler, konserler, spor etkinlikleri ve kultur-sanat faaliyetleri listelenir.",
+      "keywords": [
+        "tum etkinlikler",
+        "duyuru",
+        "senlik",
+        "konser"
+      ],
+      "source_url": "https://sks.erdogan.edu.tr/tr/events",
+      "source_title": "Tum Etkinlikler",
+      "confidence": "medium",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_life_018",
+      "intent": "student_life",
+      "intent_aliases": [
+        "cafeteria",
+        "campus_life",
+        "campus_logistics"
+      ],
+      "topic": "spor_imkanlari",
+      "question": "Universitede ogrenciler icin hangi spor imkanlari var?",
+      "answer": "SKS menulerinde tenis kortu, mini golf, squash, hamam-sauna, acik spor alanlari ve fitness salonu gibi imkanlar resmi olarak listelenir.",
+      "keywords": [
+        "spor imkanlari",
+        "tenis kortu",
+        "fitness",
+        "sks"
+      ],
+      "source_url": "https://sks.erdogan.edu.tr",
+      "source_title": "SKS Ana Sayfasi",
+      "confidence": "medium",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_life_019",
+      "intent": "student_life",
+      "intent_aliases": [
+        "cafeteria",
+        "campus_life",
+        "campus_logistics"
+      ],
+      "topic": "kariyer_merkezi_duyurulari",
+      "question": "Staj ve is firsatlari ile ilgili resmi duyurular nerede paylasilir?",
+      "answer": "Kariyer Merkezi duyuru sayfasi kariyer etkinlikleri, staj ve istihdam firsatlari ile ilgili resmi ilanlar yayinlar.",
+      "keywords": [
+        "kariyer merkezi",
+        "staj",
+        "is firsati",
+        "duyuru"
+      ],
+      "source_url": "https://kariyer.erdogan.edu.tr/tr/news",
+      "source_title": "Kariyer Merkezi Duyurulari",
+      "confidence": "medium",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_life_020",
+      "intent": "student_life",
+      "intent_aliases": [
+        "cafeteria",
+        "campus_life",
+        "campus_logistics"
+      ],
+      "topic": "sosyal_destek_butik",
+      "question": "SKS bunyesinde sosyal yardim odakli bir uygulama var mi?",
+      "answer": "Psikolojik ve ogrenci destek arastirmasinda SKS bunyesinde RTEU Kizilay Kackar Butik gibi sosyal yardim uygulamalarinin bulundugu belirtilir; ayrintili isleyis her sayfada ayni aciklikta yer almaz.",
+      "keywords": [
+        "kackar butik",
+        "sosyal yardim",
+        "sks"
+      ],
+      "source_url": "https://sks.erdogan.edu.tr",
+      "source_title": "SKS Ana Sayfasi",
+      "confidence": "medium",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_registration_016",
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "kayit_yenileme_sorumluluk",
+      "question": "Kayit yenileme sorumlulugu ogrencide mi?",
+      "answer": "Evet. Ders secimi ve kayit yenileme surecinin zamaninda tamamlanmasindan birincil olarak ogrenci sorumludur; danisman onayi ise surecin kesinlesme asamasidir.",
+      "keywords": [
+        "kayit yenileme",
+        "ogrenci sorumlulugu",
+        "danisman onayi"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/tr/page/derse-kayit-kayit-yenileme/1247",
+      "source_title": "Derse Kayit / Kayit Yenileme",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_registration_017",
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "kayit_yenilememe_hak_kaybi",
+      "question": "Kayit yenilemezsem hangi haklari kaybederim?",
+      "answer": "Kayit yenilemeyen ogrenci ilgili donemde derslere devam edemez, sinavlara giremez ve ogrencilik haklarindan yararlanamaz.",
+      "keywords": [
+        "kayit yenilememe",
+        "hak kaybi",
+        "sinava girememe"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/14%20Aral%C4%B1k%202025%20PAZAR-Y%C3%B6netmelik.pdf",
+      "source_title": "On Lisans ve Lisans Egitim-Ogretim ve Sinav Yonetmeligi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_registration_018",
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "kayitsiz_sinav_gecersiz",
+      "question": "Kayit yapmadan girdigim sinav gecerli sayilir mi?",
+      "answer": "Hayir. Kayit yenilenmeyen dersin sinavina girilse bile notu gecerli sayilmaz.",
+      "keywords": [
+        "kayitsiz ders",
+        "sinav gecerli mi",
+        "not gecersiz"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/14%20Aral%C4%B1k%202025%20PAZAR-Y%C3%B6netmelik.pdf",
+      "source_title": "On Lisans ve Lisans Egitim-Ogretim ve Sinav Yonetmeligi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_registration_019",
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "azami_sure_kayit_yenilememe",
+      "question": "Kayit yenilemedigim donem azami sureden duser mi?",
+      "answer": "Evet. Kayit yenilenmeyen yariyillar da azami ogrenim suresinden sayilir.",
+      "keywords": [
+        "azami sure",
+        "kayit yenilememe",
+        "yariyil sayilir"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/14%20Aral%C4%B1k%202025%20PAZAR-Y%C3%B6netmelik.pdf",
+      "source_title": "On Lisans ve Lisans Egitim-Ogretim ve Sinav Yonetmeligi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_registration_020",
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "dort_yil_kayit_yenilememe",
+      "question": "Uzun sure kayit yenilemezsem ilisik kesilir mi?",
+      "answer": "Genel duzende dort yil ust uste katkı payi veya ogrenim ucreti yatirilmamasi ve kayit yenilenmemesi halinde ilisik kesme sonucu dogabilir.",
+      "keywords": [
+        "ilisik kesme",
+        "dort yil",
+        "kayit yenilememe"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/14%20Aral%C4%B1k%202025%20PAZAR-Y%C3%B6netmelik.pdf",
+      "source_title": "On Lisans ve Lisans Egitim-Ogretim ve Sinav Yonetmeligi",
+      "confidence": "medium",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_registration_021",
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "danisman_gorusme_onemi",
+      "question": "Ders secmeden once danismanla gorusmek gerekir mi?",
+      "answer": "Resmi kayit akislarinda ders seciminin danismanla iletisim icinde yapilmasi ve onayin takip edilmesi beklenir.",
+      "keywords": [
+        "danismanla gorusme",
+        "ders secimi",
+        "onay"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/tr/page/derse-kayit-kayit-yenileme/1247",
+      "source_title": "Derse Kayit / Kayit Yenileme",
+      "confidence": "medium",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_registration_022",
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "katki_payi_odeme_kanali",
+      "question": "Katki payi veya ogrenim ucretini nasil odeyebilirim?",
+      "answer": "Resmi duyurularda odemenin sanal POS ekranindan veya anlasmali banka ATM kanallarindan yapilabildigi belirtilir.",
+      "keywords": [
+        "katki payi odeme",
+        "sanal pos",
+        "atm"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/tr/news-detail/2025-2026-egitim-ogretim-yili-guz-yariyili-mazeretli-derse-kayit-islemleri/6565",
+      "source_title": "Mazeretli Derse Kayit Islemleri",
+      "confidence": "medium",
+      "time_sensitive": true,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_registration_023",
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "mazeretli_basvuru_yeri",
+      "question": "Mazeretli ders kaydi icin nereye basvurulur?",
+      "answer": "Mazeretli ders kaydi icin ogrenci mazeret dilekcesi ve belgeleriyle kayitli oldugu akademik birime basvurur; karar ilgili birim yonetim kurulunca verilir.",
+      "keywords": [
+        "mazeretli kayit",
+        "akademik birim",
+        "yonetim kurulu"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/14%20Aral%C4%B1k%202025%20PAZAR-Y%C3%B6netmelik.pdf",
+      "source_title": "On Lisans ve Lisans Egitim-Ogretim ve Sinav Yonetmeligi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_registration_024",
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "mazeretli_basvuru_suresi",
+      "question": "Mazeretli derse kayit icin sure siniri var mi?",
+      "answer": "Evet. Genel duzende mazeretli kayit basvurusu derslerin baslamasindan itibaren on is gunu icinde yapilmalidir.",
+      "keywords": [
+        "mazeretli kayit",
+        "on is gunu",
+        "sure"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/14%20Aral%C4%B1k%202025%20PAZAR-Y%C3%B6netmelik.pdf",
+      "source_title": "On Lisans ve Lisans Egitim-Ogretim ve Sinav Yonetmeligi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_registration_025",
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "ders_ekle_birak_takvimi",
+      "question": "Ders ekleme-birakma neye gore yapilir?",
+      "answer": "Ders ekleme-birakma islemleri akademik takvimde ilan edilen ayri pencere icinde ve danisman onayiyla yapilir.",
+      "keywords": [
+        "ders ekleme",
+        "ders birakma",
+        "akademik takvim"
+      ],
+      "source_url": "https://erdogan.edu.tr/Images/Uploads/MyContents/L_6146-20250604152832789418.pdf",
+      "source_title": "2025-2026 Onlisans-Lisans Akademik Takvimi",
+      "confidence": "high",
+      "time_sensitive": true,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_registration_026",
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "tekrar_ders_birakma",
+      "question": "Basarisiz oldugum zorunlu dersi ekleme-birakma doneminde birakabilir miyim?",
+      "answer": "Basarisizlik nedeniyle tekrar alinmasi gereken dersler ilgili fakulte veya program kurallarina gore birakilamayabilir; ogrenci resmi birim yonlendirmesini esas almalidir.",
+      "keywords": [
+        "tekrar ders",
+        "birakma",
+        "basarisiz ders"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/tr/page/derse-kayit-kayit-yenileme/1247",
+      "source_title": "Derse Kayit / Kayit Yenileme",
+      "confidence": "medium",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_registration_027",
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "gano_150_kisit",
+      "question": "GANO 1.50 altina dusunce ustten ders alinabilir mi?",
+      "answer": "Dorduncu yariyil sonunda GANO'su 1.50'nin altinda olan lisans ogrencisi ust yariyillardan ders alamaz.",
+      "keywords": [
+        "gano 1.50",
+        "ustten ders",
+        "lisans"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/14%20Aral%C4%B1k%202025%20PAZAR-Y%C3%B6netmelik.pdf",
+      "source_title": "On Lisans ve Lisans Egitim-Ogretim ve Sinav Yonetmeligi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_registration_028",
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "gano_300_ustten",
+      "question": "GANO 3.00 ve ustuyse ustten ders alinabilir mi?",
+      "answer": "Evet. GANO'su en az 3.00 olan ogrenci, resmi sinirlar dahilinde ust yariyildan ek ders alabilir.",
+      "keywords": [
+        "gano 3.00",
+        "ustten ders",
+        "ek ders"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/14%20Aral%C4%B1k%202025%20PAZAR-Y%C3%B6netmelik.pdf",
+      "source_title": "On Lisans ve Lisans Egitim-Ogretim ve Sinav Yonetmeligi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_registration_029",
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "akademik_birim_ogrenci_isleri",
+      "question": "Sadece merkezi ogrenci isleri mi ilgilenir, yoksa fakulte ogrenci isleri de var mi?",
+      "answer": "Merkezi OIDB'ye ek olarak her akademik birimde ogrenci isleri burolari bulunur ve bircok kayit-belge islemi fakulte veya yuksekokul ogrenci isleriyle birlikte yurur.",
+      "keywords": [
+        "merkezi ogrenci isleri",
+        "fakulte ogrenci isleri",
+        "birim"
+      ],
+      "source_url": "https://bologna2.erdogan.edu.tr/tr/page/ogrenci-isleri-daire-baskanligi/3501",
+      "source_title": "Ogrenci Isleri Daire Baskanligi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_registration_030",
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "sbf_intibak_komisyonu",
+      "question": "Saglik Bilimleri Fakultesinde intibak kararini kim verir?",
+      "answer": "Saglik Bilimleri Fakultesi resmi SSS sayfasina gore DGS ile gelen ogrencilerin intibak sinifi muafiyet ve intibak komisyonunca belirlenir.",
+      "keywords": [
+        "sbf",
+        "intibak",
+        "komisyon"
+      ],
+      "source_url": "https://sbf.erdogan.edu.tr/tr/page/soru-cevap/4721",
+      "source_title": "Saglik Bilimleri Fakultesi Sikca Sorulan Sorular",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "sbf"
+    },
+    {
+      "id": "kb_registration_031",
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "sbf_muafiyet_gec_basvuru",
+      "question": "Saglik Bilimleri Fakultesinde muafiyet suresini kacirirsam ne olur?",
+      "answer": "Fakulte SSS'sinde muafiyet basvurusunun derslerin baslamasini izleyen bes is gunu icinde yapilmasi gerektigi belirtilir; sure sonrasinda ogrenci ilgili derslerden sorumlu olur.",
+      "keywords": [
+        "sbf",
+        "muafiyet",
+        "bes is gunu"
+      ],
+      "source_url": "https://sbf.erdogan.edu.tr/tr/page/soru-cevap/4721",
+      "source_title": "Saglik Bilimleri Fakultesi Sikca Sorulan Sorular",
+      "confidence": "medium",
+      "time_sensitive": false,
+      "faculty_scope": "sbf"
+    },
+    {
+      "id": "kb_registration_032",
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "tip_muafiyet_tek_sefer",
+      "question": "Tip Fakultesinde muafiyet basvurusu birden fazla kez yapilabilir mi?",
+      "answer": "Tip Fakultesi yonergesine gore ders veya staj muafiyeti basvurusu sureye bagli ve tek seferliktir.",
+      "keywords": [
+        "tip",
+        "muafiyet",
+        "tek sefer"
+      ],
+      "source_url": "https://tip.erdogan.edu.tr/Files/ckFiles/tip-erdogan-edu-tr/Ocak%202020/E%C4%9Fitim-%C3%96%C4%9Fretim%20ve%20S%C4%B1nav%20Y%C3%B6nergesi.pdf",
+      "source_title": "Tip Fakultesi Egitim-Ogretim ve Sinav Yonergesi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "tip"
+    },
+    {
+      "id": "kb_registration_033",
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "tip_staj_muafiyet_birimi",
+      "question": "Tip Fakultesinde staj muafiyeti icin nereye basvurulur?",
+      "answer": "Tip Fakultesinde ders veya staj muafiyeti icin ilk on is gunu icinde Dekanliga basvurulur.",
+      "keywords": [
+        "tip",
+        "staj muafiyeti",
+        "dekanlik"
+      ],
+      "source_url": "https://tip.erdogan.edu.tr/Files/ckFiles/tip-erdogan-edu-tr/Ocak%202020/E%C4%9Fitim-%C3%96%C4%9Fretim%20ve%20S%C4%B1nav%20Y%C3%B6nergesi.pdf",
+      "source_title": "Tip Fakultesi Egitim-Ogretim ve Sinav Yonergesi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "tip"
+    },
+    {
+      "id": "kb_registration_034",
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "tip_ayri_takvim_vurgusu",
+      "question": "Tip Fakultesi neden genel akademik takvimden farkli takip edilir?",
+      "answer": "Universitenin genel takvimi Tip Fakultesini kapsam disi biraktigi icin Tipte kayit, staj ve sinav tarihleri ayri takvimle izlenir.",
+      "keywords": [
+        "tip fakultesi",
+        "ayri takvim",
+        "genel takvim"
+      ],
+      "source_url": "https://erdogan.edu.tr/Images/Uploads/MyContents/L_6146-20250604152742268512.pdf",
+      "source_title": "2025-2026 Tip Fakultesi Akademik Takvimi",
+      "confidence": "high",
+      "time_sensitive": true,
+      "faculty_scope": "tip"
+    },
+    {
+      "id": "kb_registration_035",
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "ziraat_staj_belge_kaynagi",
+      "question": "Ziraat Fakultesinde staj belgeleri nereden alinir?",
+      "answer": "Ziraat Fakultesi duyurulari staj belgelerinin fakulte web sayfasindan temin edilecegini belirtir.",
+      "keywords": [
+        "ziraat",
+        "staj belgeleri",
+        "web sayfasi"
+      ],
+      "source_url": "https://ziraat.erdogan.edu.tr/tr/news-detail/staj-basvuru-duyurusu/15650",
+      "source_title": "Ziraat Fakultesi Staj Basvuru Duyurusu",
+      "confidence": "high",
+      "time_sensitive": true,
+      "faculty_scope": "ziraat"
+    },
+    {
+      "id": "kb_registration_036",
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "ziraat_staj_teslim",
+      "question": "Ziraat Fakultesi staj dosyasi nasil teslim edilir?",
+      "answer": "Tamamlanan staj dosyasinin fakulte ogrenci islerine sahsen veya posta-kargo ile teslim edilebildigi resmi duyurularda belirtilir.",
+      "keywords": [
+        "ziraat",
+        "staj dosyasi",
+        "posta",
+        "ogrenci isleri"
+      ],
+      "source_url": "https://ziraat.erdogan.edu.tr/tr/news-detail/staj-basvuru-duyurusu/15650",
+      "source_title": "Ziraat Fakultesi Staj Basvuru Duyurusu",
+      "confidence": "medium",
+      "time_sensitive": true,
+      "faculty_scope": "ziraat"
+    },
+    {
+      "id": "kb_registration_037",
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "yatay_gecis_online",
+      "question": "Yatay gecis basvurusu cevrim ici mi yapiliyor?",
+      "answer": "Evet. RTEU yatay gecis basvurulari icin ayri bir cevrim ici basvuru bilgi sistemi kullanir.",
+      "keywords": [
+        "yatay gecis",
+        "cevrim ici",
+        "basvuru sistemi"
+      ],
+      "source_url": "https://ogrenci.erdogan.edu.tr/YatayGecis/Login",
+      "source_title": "Yatay Gecis Basvuru Bilgi Sistemi",
+      "confidence": "high",
+      "time_sensitive": true,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_registration_038",
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "cap_yandal_basvuru_donemi",
+      "question": "CAP ve yandal basvurulari icin ayri duyuru donemi oluyor mu?",
+      "answer": "Evet. Cift anadal ve yandal basvurulari OIDB tarafindan donemsel resmi duyuru ile acilir.",
+      "keywords": [
+        "cap",
+        "yandal",
+        "duyuru donemi"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/tr/news-detail/2025-2026-egitim-ogretim-yili-cift-anadal-yandal-programlari-basvurulari/6464",
+      "source_title": "Cift Anadal / Yandal Basvurulari",
+      "confidence": "high",
+      "time_sensitive": true,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_scholarship_017",
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "vakif_komisyonu",
+      "question": "Universite burs kararlarinda hangi vakif komisyonu rol alir?",
+      "answer": "Gelistirme Vakfi yonergesine gore ogrenci burs sureclerinde Yurt-Burs-Ogrenci Isleri Komisyonu ve Vakif Mutevelli Heyeti rol alir.",
+      "keywords": [
+        "vakif komisyonu",
+        "yurt burs ogrenci isleri",
+        "mutevelli heyeti"
+      ],
+      "source_url": "https://erdogan.edu.tr/Images/Uploads/Vak%C4%B1f%20Akademik%20Te%C5%9Fvik%20Y%C3%B6nergesi%20(2).pdf",
+      "source_title": "RTEU Gelistirme Vakfi Burs ve Tesvik Yonergesi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_scholarship_018",
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "tesvik_bursu_yillik",
+      "question": "Tesvik bursu miktari sabit midir?",
+      "answer": "Hayir. Vakif yonergesine gore hangi ogrencilere ne miktarda tesvik bursu verilecegi her yil Mutevelli Heyeti tarafindan belirlenir.",
+      "keywords": [
+        "tesvik bursu",
+        "her yil",
+        "mutevelli heyeti"
+      ],
+      "source_url": "https://erdogan.edu.tr/Images/Uploads/Vak%C4%B1f%20Akademik%20Te%C5%9Fvik%20Y%C3%B6nergesi%20(2).pdf",
+      "source_title": "RTEU Gelistirme Vakfi Burs ve Tesvik Yonergesi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_scholarship_019",
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "tesvik_bursu_gano",
+      "question": "Tesvik bursu devam ederken GANO kurali var mi?",
+      "answer": "Evet. Vakif yonergesine gore genel akademik not ortalamasi 4.00 uzerinden 2.50'nin altina dusen ogrencinin tesvik bursu kesilebilir.",
+      "keywords": [
+        "tesvik bursu",
+        "gano 2.50",
+        "kesilme"
+      ],
+      "source_url": "https://erdogan.edu.tr/Images/Uploads/Vak%C4%B1f%20Akademik%20Te%C5%9Fvik%20Y%C3%B6nergesi%20(2).pdf",
+      "source_title": "RTEU Gelistirme Vakfi Burs ve Tesvik Yonergesi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_scholarship_020",
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "tesvik_bursu_disiplin",
+      "question": "Disiplin cezasi tesvik bursunu etkiler mi?",
+      "answer": "Evet. Uzaklastirma veya daha agir ceza alinmasi halinde tesvik bursunun kesilecegi vakif yonergesinde belirtilir.",
+      "keywords": [
+        "tesvik bursu",
+        "disiplin cezasi",
+        "kesilir"
+      ],
+      "source_url": "https://erdogan.edu.tr/Images/Uploads/Vak%C4%B1f%20Akademik%20Te%C5%9Fvik%20Y%C3%B6nergesi%20(2).pdf",
+      "source_title": "RTEU Gelistirme Vakfi Burs ve Tesvik Yonergesi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_scholarship_021",
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "tesvik_bursu_alttan_ders",
+      "question": "Alttan ders olursa tesvik bursu etkilenir mi?",
+      "answer": "Evet. Vakif yonergesi, sinif kaybi veya alttan dersi bulunan ogrencinin tesvik bursunun kesilebilecegini belirtir.",
+      "keywords": [
+        "alttan ders",
+        "tesvik bursu",
+        "sinif kaybi"
+      ],
+      "source_url": "https://erdogan.edu.tr/Images/Uploads/Vak%C4%B1f%20Akademik%20Te%C5%9Fvik%20Y%C3%B6nergesi%20(2).pdf",
+      "source_title": "RTEU Gelistirme Vakfi Burs ve Tesvik Yonergesi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_scholarship_022",
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "ihtiyac_bursu_kimler",
+      "question": "Ihtiyac bursu kimler icin dusunulur?",
+      "answer": "Vakif yonergesine gore ihtiyac sahibi ogrenciler fakulte veya birim yonetimleri tarafindan belirlenir, komisyonca uygun gorulurse vakif bursu alabilir.",
+      "keywords": [
+        "ihtiyac bursu",
+        "ihtiyac sahibi",
+        "komisyon"
+      ],
+      "source_url": "https://erdogan.edu.tr/Images/Uploads/Vak%C4%B1f%20Akademik%20Te%C5%9Fvik%20Y%C3%B6nergesi%20(2).pdf",
+      "source_title": "RTEU Gelistirme Vakfi Burs ve Tesvik Yonergesi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_scholarship_023",
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "ihtiyac_bursu_sure",
+      "question": "Ihtiyac bursu ne kadar sure devam edebilir?",
+      "answer": "Uluslararasi ogrenciler haric olmak uzere, kosullar korundugu surece ihtiyac bursu azami ogrenim suresi boyunca devam edebilir.",
+      "keywords": [
+        "ihtiyac bursu",
+        "azami ogrenim suresi"
+      ],
+      "source_url": "https://erdogan.edu.tr/Images/Uploads/Vak%C4%B1f%20Akademik%20Te%C5%9Fvik%20Y%C3%B6nergesi%20(2).pdf",
+      "source_title": "RTEU Gelistirme Vakfi Burs ve Tesvik Yonergesi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_scholarship_024",
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "ihtiyac_bursu_kosullar",
+      "question": "Ihtiyac bursu devam ederken hangi kosullar korunmali?",
+      "answer": "Vakif yonergesine gore kayit dondurmama, en az 2.50 GANO'yu koruma ve agir disiplin cezasi almama gibi kosullar aranir.",
+      "keywords": [
+        "ihtiyac bursu",
+        "2.50",
+        "kayit dondurma",
+        "disiplin"
+      ],
+      "source_url": "https://erdogan.edu.tr/Images/Uploads/Vak%C4%B1f%20Akademik%20Te%C5%9Fvik%20Y%C3%B6nergesi%20(2).pdf",
+      "source_title": "RTEU Gelistirme Vakfi Burs ve Tesvik Yonergesi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_scholarship_025",
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "basari_odulu_ilk_uc",
+      "question": "Bolum veya fakulte derecesi yapan ogrencilere odul var mi?",
+      "answer": "Vakif yonergesi fakulte, yuksekokul veya MYO'yu ilk uc derece ile bitiren ogrencilere nakdi veya ayni basari odulu verilebilecegini belirtir.",
+      "keywords": [
+        "ilk uc derece",
+        "basari odulu",
+        "nakdi"
+      ],
+      "source_url": "https://erdogan.edu.tr/Images/Uploads/Vak%C4%B1f%20Akademik%20Te%C5%9Fvik%20Y%C3%B6nergesi%20(2).pdf",
+      "source_title": "RTEU Gelistirme Vakfi Burs ve Tesvik Yonergesi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_scholarship_026",
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "basari_odulu_yarisma",
+      "question": "Ulusal veya uluslararasi yarismalarda derece yapan ogrencilere odul verilebilir mi?",
+      "answer": "Evet. Vakif yonergesine gore bilim, kultur veya spor alanlarinda ilk uce giren ogrencilere odul verilebilir.",
+      "keywords": [
+        "uluslararasi yarisma",
+        "odul",
+        "spor",
+        "bilim"
+      ],
+      "source_url": "https://erdogan.edu.tr/Images/Uploads/Vak%C4%B1f%20Akademik%20Te%C5%9Fvik%20Y%C3%B6nergesi%20(2).pdf",
+      "source_title": "RTEU Gelistirme Vakfi Burs ve Tesvik Yonergesi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_scholarship_027",
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "yemek_bursu_talep_edenler",
+      "question": "2025 duyurusunda yemek bursu kapsami nasil ifade edildi?",
+      "answer": "2025 SKS duyurusunda, yemek bursu talep eden tum ogrencilere Gelistirme Vakfi tarafindan yemek bursu verilecegi ifade edilir.",
+      "keywords": [
+        "2025 yemek bursu",
+        "talep eden tum ogrenciler"
+      ],
+      "source_url": "https://sks.erdogan.edu.tr/tr/news-detail/yemek-bursu-basvurulari-2025/6545",
+      "source_title": "Yemek Bursu Basvurulari - 2025",
+      "confidence": "medium",
+      "time_sensitive": true,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_scholarship_028",
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "yemek_bursu_duyuru_kanali",
+      "question": "Yemek bursu duyurulari hangi resmi sayfada toplanir?",
+      "answer": "Yemek bursu basvurulari SKS duyurular sayfasinda yayinlanir ve ilgili basvuru baglantilari bu sayfadan paylasilir.",
+      "keywords": [
+        "sks duyurular",
+        "yemek bursu"
+      ],
+      "source_url": "https://sks.erdogan.edu.tr/tr/news",
+      "source_title": "SKS Duyurular",
+      "confidence": "high",
+      "time_sensitive": true,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_scholarship_029",
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "yemek_bursu_sks_rolu",
+      "question": "Yemek bursu surecinde SKS'nin rolu nedir?",
+      "answer": "SKS faaliyet raporunda yemek bursu islemlerinin Beslenme Hizmetleri Birimi gorevleri arasinda sayildigi gorulur.",
+      "keywords": [
+        "sks",
+        "yemek bursu islemleri",
+        "beslenme hizmetleri"
+      ],
+      "source_url": "https://sks.erdogan.edu.tr/Files/ckFiles/sks-erdogan-edu-tr/Faaliyet%20Raporlar%C4%B1%20ve%20Mevzuat/2025%20B%C4%B0R%C4%B0M_FAL%C4%B0YET_RAPORU.pdf",
+      "source_title": "SKS 2025 Birim Faaliyet Raporu",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_scholarship_030",
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "barinma_yardimi_varligi",
+      "question": "Universitenin resmi belgelerinde barinma yardimi geciyor mu?",
+      "answer": "Evet. SKS faaliyet raporu ogrencilere burs, yemek yardimi ve barinma yardimi gibi destekler saglandigini acikca belirtir.",
+      "keywords": [
+        "barinma yardimi",
+        "faaliyet raporu"
+      ],
+      "source_url": "https://sks.erdogan.edu.tr/Files/ckFiles/sks-erdogan-edu-tr/Faaliyet%20Raporlar%C4%B1%20ve%20Mevzuat/2025%20B%C4%B0R%C4%B0M_FAL%C4%B0YET_RAPORU.pdf",
+      "source_title": "SKS 2025 Birim Faaliyet Raporu",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_scholarship_031",
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "sosyal_destek_sks",
+      "question": "SKS sadece yemekhane degil sosyal destek de saglar mi?",
+      "answer": "Evet. SKS raporlarinda beslenme, barinma, sosyal destek ve psikolojik danismanlikla iliskili ogrenci hizmetleri birlikte anilir.",
+      "keywords": [
+        "sks",
+        "sosyal destek",
+        "psikolojik danismanlik"
+      ],
+      "source_url": "https://sks.erdogan.edu.tr/Files/ckFiles/sks-erdogan-edu-tr/Faaliyet%20Raporlar%C4%B1%20ve%20Mevzuat/2025%20B%C4%B0R%C4%B0M_FAL%C4%B0YET_RAPORU.pdf",
+      "source_title": "SKS 2025 Birim Faaliyet Raporu",
+      "confidence": "medium",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_scholarship_032",
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "ogrenim_bursu_evrak",
+      "question": "Ogrenim bursu basvurularinda aile gelir belgesi gibi evraklar istenebilir mi?",
+      "answer": "2025 ogrenim bursu duyurusu aile gelir belgeleri, nufus kayit ornegi ve adli sicil gibi belgelerin istendigini gosterir.",
+      "keywords": [
+        "ogrenim bursu",
+        "gelir belgesi",
+        "adli sicil"
+      ],
+      "source_url": "https://erdogan.edu.tr/Website/Contents.aspx?PageID=6310&LangID=1",
+      "source_title": "Ogrenim Bursu Basvuru Duyurusu",
+      "confidence": "high",
+      "time_sensitive": true,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_scholarship_033",
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "ogrenim_bursu_disiplin",
+      "question": "Ogrenim bursu icin disiplin cezasiz olmak onemli mi?",
+      "answer": "Ogrenim bursu duyurusunda disiplin cezasi bulunmamasi degerlendirme kriterlerinden biri olarak yer alir.",
+      "keywords": [
+        "ogrenim bursu",
+        "disiplin cezasi"
+      ],
+      "source_url": "https://erdogan.edu.tr/Website/Contents.aspx?PageID=6310&LangID=1",
+      "source_title": "Ogrenim Bursu Basvuru Duyurusu",
+      "confidence": "high",
+      "time_sensitive": true,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_scholarship_034",
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "ogrenim_bursu_aile_kriter",
+      "question": "Ogrenim bursunda aile ve gelir durumu dikkate alinir mi?",
+      "answer": "Evet. Ogrenim bursu duyurusunda aile geliri, kardes sayisi ve aile durumu gibi kriterler degerlendirmede kullanilir.",
+      "keywords": [
+        "aile geliri",
+        "kardes sayisi",
+        "ogrenim bursu"
+      ],
+      "source_url": "https://erdogan.edu.tr/Website/Contents.aspx?PageID=6310&LangID=1",
+      "source_title": "Ogrenim Bursu Basvuru Duyurusu",
+      "confidence": "high",
+      "time_sensitive": true,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_scholarship_035",
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "basari_bursu_tutar",
+      "question": "Basari bursu 2025 icin ne kadar aciklandi?",
+      "answer": "Universitenin resmi basari bursu duyurusu 2025 donemi icin uygun OSMY siralamalarina sahip ogrencilere 18 bin TL basari bursu verilecegini belirtir.",
+      "keywords": [
+        "18 bin tl",
+        "basari bursu",
+        "osym"
+      ],
+      "source_url": "https://erdogan.edu.tr/Website/Contents.aspx?PageID=396&LangID=1",
+      "source_title": "Basari Bursu Firsati",
+      "confidence": "high",
+      "time_sensitive": true,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_scholarship_036",
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "basari_bursu_siralama",
+      "question": "Basari bursu icin yerlestirme siralamasi onemli mi?",
+      "answer": "Evet. Basari bursu duyurusunda sayisal, esit agirlik ve sozel alanlar icin farkli siralama esikleri resmi olarak tanimlanir.",
+      "keywords": [
+        "yerlestirme siralamasi",
+        "sayisal",
+        "esit agirlik",
+        "sozel"
+      ],
+      "source_url": "https://erdogan.edu.tr/Website/Contents.aspx?PageID=396&LangID=1",
+      "source_title": "Basari Bursu Firsati",
+      "confidence": "high",
+      "time_sensitive": true,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_scholarship_037",
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "kyk_sadece_resmi_sistem",
+      "question": "KYK burs ve kredi icin hangi kanal esas alinmali?",
+      "answer": "OIDB belgeleri KYK burs ve kredi basvurulari icin dogrudan KYK'nin resmi internet kanalini esas gosterir.",
+      "keywords": [
+        "kyk resmi sistem",
+        "burs kredi"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/KATKI%20PAYI%20%C3%96%C4%9EREN%C4%B0M%20%C3%9CCRET%C4%B0%20ALINMASI%20HAKKINDA%20B%C4%B0LG%C4%B0LER.pdf",
+      "source_title": "Katki Payi / Ogrenim Ucreti Alinmasi Hakkinda Bilgiler",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_scholarship_038",
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "oidb_burs_kontenjan",
+      "question": "OIDB burs kontenjan yazilarinda rol aliyor mu?",
+      "answer": "Evet. OIDB'nin hassas gorev dokumaninda burs kontenjan yazilarini ilgili komisyonlara iletme gorevi yer alir.",
+      "keywords": [
+        "oidb",
+        "burs kontenjan",
+        "komisyon"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/Images/hassas-gorev-tespit-2312023132756.pdf",
+      "source_title": "OIDB Hassas Gorev Tespit Dokumani",
+      "confidence": "medium",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_scholarship_039",
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "tev_duyuru_yonlendirme",
+      "question": "TEV bursu icin universite dogrudan burs mu veriyor, yoksa yonlendirme mi yapiyor?",
+      "answer": "Universite TEV gibi dis burslar icin resmi duyuru yayimlar ve ogrenciyi ilgili vakfin basvuru kanalina yonlendirir.",
+      "keywords": [
+        "tev",
+        "yonlendirme",
+        "vakif"
+      ],
+      "source_url": "https://tde-fef.erdogan.edu.tr/tr/news-detail/2025-2026-ogretim-yili-tev-universite-egitim-burs-basvuru-duyurusu/16540",
+      "source_title": "TEV Universite Egitim Bursu Basvuru Duyurusu",
+      "confidence": "high",
+      "time_sensitive": true,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_scholarship_040",
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "kismi_zamanli_basvuru",
+      "question": "Kismi zamanli ogrenci calisma basvurulari resmi olarak aciliyor mu?",
+      "answer": "Evet. SKS, kismi zamanli ogrenci calisma basvurularini resmi duyuru ile acar.",
+      "keywords": [
+        "kismi zamanli",
+        "ogrenci calisma",
+        "sks"
+      ],
+      "source_url": "https://sks.erdogan.edu.tr/tr/news-detail/2025-2026-egitim-ogretim-yili-kismi-zamanli-ogrenci-calisma-basvurulari/16523",
+      "source_title": "Kismi Zamanli Ogrenci Calisma Basvurulari",
+      "confidence": "high",
+      "time_sensitive": true,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_scholarship_041",
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "kismi_zamanli_oncelik",
+      "question": "Kismi zamanli ogrenci calismada burs alan ya da ihtiyac sahibi ogrencilere oncelik veriliyor mu?",
+      "answer": "Kismi zamanli ogrenci calisma duyurulari KYK bursu alan ya da burs alma kosullarini tasiyan ogrencilere oncelik verilebildigini belirtir.",
+      "keywords": [
+        "kismi zamanli",
+        "oncelik",
+        "kyk bursu"
+      ],
+      "source_url": "https://sks.erdogan.edu.tr/tr/news-detail/2025-2026-egitim-ogretim-yili-kismi-zamanli-ogrenci-calisma-basvurulari/16523",
+      "source_title": "Kismi Zamanli Ogrenci Calisma Basvurulari",
+      "confidence": "medium",
+      "time_sensitive": true,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_life_021",
+      "intent": "student_life",
+      "intent_aliases": [
+        "cafeteria",
+        "campus_life",
+        "campus_logistics"
+      ],
+      "topic": "rezervasyon_amaci",
+      "question": "Yemekhane rezervasyon sistemi neden uygulanmaya baslandi?",
+      "answer": "SKS bilgilendirme notlarina gore rezervasyon sistemi israfi azaltmak, kaliteyi artirmak ve magduriyetleri onlemek amaciyla uygulanmaya baslandi.",
+      "keywords": [
+        "yemekhane rezervasyon",
+        "israf",
+        "kalite"
+      ],
+      "source_url": "https://sks.erdogan.edu.tr/Files/ckFiles/sks-erdogan-edu-tr/beslenme/Yemekhane%20Rezervasyon%20Bilgilendirme.pdf",
+      "source_title": "Yemekhane Rezervasyon Bilgilendirme",
+      "confidence": "high",
+      "time_sensitive": true,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_life_022",
+      "intent": "student_life",
+      "intent_aliases": [
+        "cafeteria",
+        "campus_life",
+        "campus_logistics"
+      ],
+      "topic": "rezervasyon_son_saat",
+      "question": "Yemek rezervasyonu son saate kadar ne zaman yapilabilir?",
+      "answer": "Yemekhane rezervasyon bilgilendirme dokumaninda rezervasyonun ilgili gun icin bir gun once saat 13.00'e kadar yapilabildigi belirtilir.",
+      "keywords": [
+        "rezervasyon son saat",
+        "13.00",
+        "bir gun once"
+      ],
+      "source_url": "https://sks.erdogan.edu.tr/Files/ckFiles/sks-erdogan-edu-tr/beslenme/Yemekhane%20Rezervasyon%20Bilgilendirme.pdf",
+      "source_title": "Yemekhane Rezervasyon Bilgilendirme",
+      "confidence": "high",
+      "time_sensitive": true,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_life_023",
+      "intent": "student_life",
+      "intent_aliases": [
+        "cafeteria",
+        "campus_life",
+        "campus_logistics"
+      ],
+      "topic": "rezervasyon_iptal",
+      "question": "Yemek rezervasyonu iptal edilebilir mi?",
+      "answer": "Evet. Bilgilendirme dokumaninda rezervasyonun yine bir gun once saat 13.00'e kadar iptal edilebildigi belirtilir.",
+      "keywords": [
+        "rezervasyon iptal",
+        "13.00"
+      ],
+      "source_url": "https://sks.erdogan.edu.tr/Files/ckFiles/sks-erdogan-edu-tr/beslenme/Yemekhane%20Rezervasyon%20Bilgilendirme.pdf",
+      "source_title": "Yemekhane Rezervasyon Bilgilendirme",
+      "confidence": "high",
+      "time_sensitive": true,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_life_024",
+      "intent": "student_life",
+      "intent_aliases": [
+        "cafeteria",
+        "campus_life",
+        "campus_logistics"
+      ],
+      "topic": "ogle_rezervasyon_saat",
+      "question": "Rezervasyonlu ogle yemegi saatleri nedir?",
+      "answer": "Bilgilendirme dokumanina gore rezervasyonlu ogle yemegi saati 11.00-13.00 araligidir.",
+      "keywords": [
+        "rezervasyonlu ogle",
+        "11.00",
+        "13.00"
+      ],
+      "source_url": "https://sks.erdogan.edu.tr/Files/ckFiles/sks-erdogan-edu-tr/beslenme/Yemekhane%20Rezervasyon%20Bilgilendirme.pdf",
+      "source_title": "Yemekhane Rezervasyon Bilgilendirme",
+      "confidence": "high",
+      "time_sensitive": true,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_life_025",
+      "intent": "student_life",
+      "intent_aliases": [
+        "cafeteria",
+        "campus_life",
+        "campus_logistics"
+      ],
+      "topic": "ogle_rezervasyonsuz_saat",
+      "question": "Rezervasyonsuz ogle yemegi saatleri nedir?",
+      "answer": "Bilgilendirme dokumanina gore rezervasyonsuz ogle yemegi saati 13.00-14.00 araligidir.",
+      "keywords": [
+        "rezervasyonsuz ogle",
+        "13.00",
+        "14.00"
+      ],
+      "source_url": "https://sks.erdogan.edu.tr/Files/ckFiles/sks-erdogan-edu-tr/beslenme/Yemekhane%20Rezervasyon%20Bilgilendirme.pdf",
+      "source_title": "Yemekhane Rezervasyon Bilgilendirme",
+      "confidence": "high",
+      "time_sensitive": true,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_life_026",
+      "intent": "student_life",
+      "intent_aliases": [
+        "cafeteria",
+        "campus_life",
+        "campus_logistics"
+      ],
+      "topic": "aksam_rezervasyon_saat",
+      "question": "Rezervasyonlu aksam yemegi saatleri nedir?",
+      "answer": "Bilgilendirme dokumanina gore rezervasyonlu aksam yemegi saati 16.00-17.00 araligidir.",
+      "keywords": [
+        "rezervasyonlu aksam",
+        "16.00",
+        "17.00"
+      ],
+      "source_url": "https://sks.erdogan.edu.tr/Files/ckFiles/sks-erdogan-edu-tr/beslenme/Yemekhane%20Rezervasyon%20Bilgilendirme.pdf",
+      "source_title": "Yemekhane Rezervasyon Bilgilendirme",
+      "confidence": "high",
+      "time_sensitive": true,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_life_027",
+      "intent": "student_life",
+      "intent_aliases": [
+        "cafeteria",
+        "campus_life",
+        "campus_logistics"
+      ],
+      "topic": "aksam_rezervasyonsuz_saat",
+      "question": "Rezervasyonsuz aksam yemegi saatleri nedir?",
+      "answer": "Bilgilendirme dokumanina gore rezervasyonsuz aksam yemegi saati 17.00-18.00 araligidir.",
+      "keywords": [
+        "rezervasyonsuz aksam",
+        "17.00",
+        "18.00"
+      ],
+      "source_url": "https://sks.erdogan.edu.tr/Files/ckFiles/sks-erdogan-edu-tr/beslenme/Yemekhane%20Rezervasyon%20Bilgilendirme.pdf",
+      "source_title": "Yemekhane Rezervasyon Bilgilendirme",
+      "confidence": "high",
+      "time_sensitive": true,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_life_028",
+      "intent": "student_life",
+      "intent_aliases": [
+        "cafeteria",
+        "campus_life",
+        "campus_logistics"
+      ],
+      "topic": "rezervasyon_sayisi_20",
+      "question": "Rezervasyon sayisi icin alt sinir olduguna dair resmi ifade var mi?",
+      "answer": "SKS duyuru snippet'inde rezervasyon sayisi 20 ve uzeri olan yerlerde uygulamaya dair ifade gecmektedir; ayrintilar ilgili duyurudan takip edilmelidir.",
+      "keywords": [
+        "rezervasyon sayisi 20",
+        "snippet"
+      ],
+      "source_url": "https://sks.erdogan.edu.tr/tr/news-detail/yemekhane-rezervasyon-sistemi/4787",
+      "source_title": "Yemekhane Rezervasyon Sistemi",
+      "confidence": "medium",
+      "time_sensitive": true,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_life_029",
+      "intent": "student_life",
+      "intent_aliases": [
+        "cafeteria",
+        "campus_life",
+        "campus_logistics"
+      ],
+      "topic": "ucretsiz_yemek_2024",
+      "question": "2024 sonunda tum ogrenciler icin rezervasyonlu ucretsiz yemek uygulamasi var miydi?",
+      "answer": "Yemekhane bilgilendirme PDF'inde 2024 sonuna kadar tum ogrencilerin rezervasyon yaparak ucretsiz yemek hizmetinden yararlanabilecegi belirtilir.",
+      "keywords": [
+        "ucretsiz yemek",
+        "2024 sonu",
+        "rezervasyon"
+      ],
+      "source_url": "https://sks.erdogan.edu.tr/Files/ckFiles/sks-erdogan-edu-tr/beslenme/Yemekhane%20Rezervasyon%20Bilgilendirme.pdf",
+      "source_title": "Yemekhane Rezervasyon Bilgilendirme",
+      "confidence": "high",
+      "time_sensitive": true,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_life_030",
+      "intent": "student_life",
+      "intent_aliases": [
+        "cafeteria",
+        "campus_life",
+        "campus_logistics"
+      ],
+      "topic": "yemek_ucreti_2026",
+      "question": "2026 resmi fiyat sayfasinda ogrenci yemek ucreti kac TL olarak gorunuyor?",
+      "answer": "SKS 2026 yemek hizmeti fiyatlari sayfasinda ogrenci yemek ucreti 25 TL olarak yayinlanmistir.",
+      "keywords": [
+        "2026",
+        "ogrenci ucreti",
+        "25 tl"
+      ],
+      "source_url": "https://sks.erdogan.edu.tr/tr/page/yemek-hizmeti-fiyatlari/4316",
+      "source_title": "Yemek Hizmeti Fiyatlari",
+      "confidence": "high",
+      "time_sensitive": true,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_life_031",
+      "intent": "student_life",
+      "intent_aliases": [
+        "cafeteria",
+        "campus_life",
+        "campus_logistics"
+      ],
+      "topic": "mobil_para_yukleme",
+      "question": "Yemekhane kartina RTEU Mobilden para yukleme secenegi var mi?",
+      "answer": "Evet. SKS hizli erisim baglantilarinda Yemekhane Kartina RTEU Mobilden Para Yukleme secenegi resmi olarak yer alir.",
+      "keywords": [
+        "rteu mobil",
+        "para yukleme"
+      ],
+      "source_url": "https://sks.erdogan.edu.tr",
+      "source_title": "SKS Ana Sayfasi",
+      "confidence": "high",
+      "time_sensitive": true,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_life_032",
+      "intent": "student_life",
+      "intent_aliases": [
+        "cafeteria",
+        "campus_life",
+        "campus_logistics"
+      ],
+      "topic": "topluluk_sayisi_252",
+      "question": "Aktif ogrenci topluluklari sayisi resmi belgelerde yuksek mi gorunuyor?",
+      "answer": "Kapsamli arastirma belgelerinde aktif ogrenci topluluklari sayisinin 252 olarak verildigi resmi listeye atif bulunur; guncel sayi SKS topluluk listesi sayfasindan teyit edilmelidir.",
+      "keywords": [
+        "252 topluluk",
+        "aktif topluluklar"
+      ],
+      "source_url": "https://sks.erdogan.edu.tr/tr/page/rteu-topluluklar-listesi-ve-iletisim-bilgileri/6088",
+      "source_title": "RTEU Topluluklar Listesi ve Iletisim Bilgileri",
+      "confidence": "medium",
+      "time_sensitive": true,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_life_033",
+      "intent": "student_life",
+      "intent_aliases": [
+        "cafeteria",
+        "campus_life",
+        "campus_logistics"
+      ],
+      "topic": "topluluk_danisman_bilgisi",
+      "question": "Topluluklarin danisman bilgileri resmi olarak paylasiliyor mu?",
+      "answer": "Evet. SKS topluluk listesi sayfasinda topluluklarin iletisim ve danisman bilgileri resmi olarak listelenir.",
+      "keywords": [
+        "topluluk danismani",
+        "iletisim bilgisi"
+      ],
+      "source_url": "https://sks.erdogan.edu.tr/tr/page/rteu-topluluklar-listesi-ve-iletisim-bilgileri/6088",
+      "source_title": "RTEU Topluluklar Listesi ve Iletisim Bilgileri",
+      "confidence": "high",
+      "time_sensitive": true,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_life_034",
+      "intent": "student_life",
+      "intent_aliases": [
+        "cafeteria",
+        "campus_life",
+        "campus_logistics"
+      ],
+      "topic": "topluluk_basvuru_kanali",
+      "question": "Topluluklarla ilgili resmi islemler icin SKS ana kanal midir?",
+      "answer": "Evet. Topluluk kurulumu, guncelleme ve etkinlik degerlendirme surecleri SKS altyapisi uzerinden yurur.",
+      "keywords": [
+        "topluluk kurulumu",
+        "sks",
+        "guncelleme"
+      ],
+      "source_url": "https://ilahiyat.erdogan.edu.tr/Files/ckFiles/ilahiyat-erdogan-edu-tr/ogrenci-topluluklari-yonergesi_18-03-2015.pdf",
+      "source_title": "Ogrenci Topluluklari Yonergesi",
+      "confidence": "medium",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_life_035",
+      "intent": "student_life",
+      "intent_aliases": [
+        "cafeteria",
+        "campus_life",
+        "campus_logistics"
+      ],
+      "topic": "etkinlik_duyuru_kanali",
+      "question": "Universite etkinlikleri icin en temel resmi kanal nedir?",
+      "answer": "SKS'nin Tum Etkinlikler sayfasi ve topluluk etkinlik duyurulari kampus etkinlikleri icin temel resmi kanallardir.",
+      "keywords": [
+        "tum etkinlikler",
+        "resmi kanal"
+      ],
+      "source_url": "https://sks.erdogan.edu.tr/tr/Activities/AllActivities",
+      "source_title": "Tum Etkinlikler",
+      "confidence": "high",
+      "time_sensitive": true,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_life_036",
+      "intent": "student_life",
+      "intent_aliases": [
+        "cafeteria",
+        "campus_life",
+        "campus_logistics"
+      ],
+      "topic": "spor_rezervasyon",
+      "question": "Spor alanlari icin online rezervasyon veya tahsis akisi var mi?",
+      "answer": "SKS yapisinda halisaha, tenis kortu ve diger spor alanlari icin tahsis veya rezervasyon baglantilari resmi olarak yer alir.",
+      "keywords": [
+        "spor alanlari",
+        "rezervasyon",
+        "tahsis"
+      ],
+      "source_url": "https://sks.erdogan.edu.tr/tr/page/fitness-salonu/1338",
+      "source_title": "Fitness Salonu",
+      "confidence": "medium",
+      "time_sensitive": true,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_life_037",
+      "intent": "student_life",
+      "intent_aliases": [
+        "cafeteria",
+        "campus_life",
+        "campus_logistics"
+      ],
+      "topic": "fitness_var",
+      "question": "Universitede fitness salonu var mi?",
+      "answer": "Evet. SKS sayfalarinda fitness salonu resmi hizmet olarak listelenir.",
+      "keywords": [
+        "fitness salonu",
+        "sks"
+      ],
+      "source_url": "https://sks.erdogan.edu.tr/tr/page/fitness-salonu/1338",
+      "source_title": "Fitness Salonu",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_life_038",
+      "intent": "student_life",
+      "intent_aliases": [
+        "cafeteria",
+        "campus_life",
+        "campus_logistics"
+      ],
+      "topic": "mini_golf_squash",
+      "question": "Mini golf veya squash gibi farkli spor imkanlari da var mi?",
+      "answer": "Evet. SKS menulerinde mini golf ve squash gibi tesisler resmi olarak listelenir.",
+      "keywords": [
+        "mini golf",
+        "squash",
+        "spor imkanlari"
+      ],
+      "source_url": "https://sks.erdogan.edu.tr",
+      "source_title": "SKS Ana Sayfasi",
+      "confidence": "medium",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_life_039",
+      "intent": "student_life",
+      "intent_aliases": [
+        "cafeteria",
+        "campus_life",
+        "campus_logistics"
+      ],
+      "topic": "barinma_genel_yonlendirme",
+      "question": "Barinma konusunda resmi genel bilgi sayfasi var mi?",
+      "answer": "Evet. Bologna bilgi paketi icinde barinma basligi altinda resmi genel bilgilendirme sayfasi bulunur.",
+      "keywords": [
+        "barinma",
+        "bologna"
+      ],
+      "source_url": "https://bologna2.erdogan.edu.tr/tr/page/barinma/3497",
+      "source_title": "Barinma",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_life_040",
+      "intent": "student_life",
+      "intent_aliases": [
+        "cafeteria",
+        "campus_life",
+        "campus_logistics"
+      ],
+      "topic": "ilk_kayit_yurt",
+      "question": "Yeni kazanan ogrenciler icin yurt basvurulari hangi kurumla iliskili anlatiliyor?",
+      "answer": "Barinma bilgi sayfasi yurt basvurularinin KYK sistemi uzerinden yurudugune yonelik resmi yonlendirmeler icerir.",
+      "keywords": [
+        "kyk yurt",
+        "yeni kazanan"
+      ],
+      "source_url": "https://bologna2.erdogan.edu.tr/tr/page/barinma/3497",
+      "source_title": "Barinma",
+      "confidence": "medium",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_life_041",
+      "intent": "student_life",
+      "intent_aliases": [
+        "cafeteria",
+        "campus_life",
+        "campus_logistics"
+      ],
+      "topic": "ulasim_genel_sayfa",
+      "question": "Sehir ici veya kampus ulasimi icin resmi genel sayfa var mi?",
+      "answer": "Evet. Bologna bilgi paketinde ulasim basligi altinda resmi genel bilgilendirme sayfasi vardir.",
+      "keywords": [
+        "ulasim",
+        "bologna bilgi paketi"
+      ],
+      "source_url": "https://bologna2.erdogan.edu.tr/tr/page/ulasim/3499",
+      "source_title": "Ulasim",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_life_042",
+      "intent": "student_life",
+      "intent_aliases": [
+        "cafeteria",
+        "campus_life",
+        "campus_logistics"
+      ],
+      "topic": "rpduam_ucretsiz",
+      "question": "Psikolojik danismanlik hizmeti ucretli mi?",
+      "answer": "RPDUAM tanitim metinlerinde psikolojik danisma hizmetinin ogrenci ve personele ucretsiz verildigi belirtilir.",
+      "keywords": [
+        "psikolojik danismanlik",
+        "ucretsiz"
+      ],
+      "source_url": "https://rehberlik.erdogan.edu.tr/tr/page/genel-bilgiler/2376",
+      "source_title": "RPDUAM Genel Bilgiler",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_life_043",
+      "intent": "student_life",
+      "intent_aliases": [
+        "cafeteria",
+        "campus_life",
+        "campus_logistics"
+      ],
+      "topic": "rpduam_iletisim",
+      "question": "Psikolojik destek icin resmi iletisim kanali var mi?",
+      "answer": "Evet. RPDUAM iletisim sayfasinda telefon ve kurumsal e-posta bilgileri resmi olarak verilir.",
+      "keywords": [
+        "rpduam",
+        "iletisim",
+        "telefon"
+      ],
+      "source_url": "https://rehberlik.erdogan.edu.tr/tr/page/iletisim/2383",
+      "source_title": "RPDUAM Iletisim",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_life_044",
+      "intent": "student_life",
+      "intent_aliases": [
+        "cafeteria",
+        "campus_life",
+        "campus_logistics"
+      ],
+      "topic": "rpduam_ilce_hizmet",
+      "question": "Ilce yerleskelerindeki ogrenciler icin yerinde psikolojik danisma uygulamasi var mi?",
+      "answer": "RPDUAM duyurulari ilcelerde yerinde psikolojik danisma hizmetine atif yapar; ayrintilar resmi merkez duyurularindan takip edilmelidir.",
+      "keywords": [
+        "yerinde psikolojik danisma",
+        "ilce"
+      ],
+      "source_url": "https://rehberlik.erdogan.edu.tr/tr/page/genel-bilgiler/2376",
+      "source_title": "RPDUAM Genel Bilgiler",
+      "confidence": "medium",
+      "time_sensitive": true,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_life_045",
+      "intent": "student_life",
+      "intent_aliases": [
+        "cafeteria",
+        "campus_life",
+        "campus_logistics"
+      ],
+      "topic": "odk_uyum",
+      "question": "Ogrenci Destek Koordinatorlugu universiteye uyum konusunda rol alir mi?",
+      "answer": "Evet. ODK'nin amac ve faaliyet alani metni ogrencilerin universite yasamina uyum surecini desteklemeyi gorev olarak tanimlar.",
+      "keywords": [
+        "odk",
+        "uyum",
+        "universite yasami"
+      ],
+      "source_url": "https://odk.erdogan.edu.tr/tr/page/amac-ve-faaliyet-alani/5278",
+      "source_title": "ODK Amac ve Faaliyet Alani",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_life_046",
+      "intent": "student_life",
+      "intent_aliases": [
+        "cafeteria",
+        "campus_life",
+        "campus_logistics"
+      ],
+      "topic": "odk_sorun_tespiti",
+      "question": "Ogrenci Destek Koordinatorlugu ogrenci sorunlarini toplamak icin mi kuruldu?",
+      "answer": "ODK'nin resmi amac metni ogrenci sorunlarini tespit etmek ve cozum odakli mekanizmalar gelistirmek uzerine kuruludur.",
+      "keywords": [
+        "odk",
+        "ogrenci sorunu",
+        "cozum"
+      ],
+      "source_url": "https://odk.erdogan.edu.tr/tr/page/amac-ve-faaliyet-alani/5278",
+      "source_title": "ODK Amac ve Faaliyet Alani",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_life_047",
+      "intent": "student_life",
+      "intent_aliases": [
+        "cafeteria",
+        "campus_life",
+        "campus_logistics"
+      ],
+      "topic": "engelli_birim_baglilik",
+      "question": "Engelli ogrenci destegi hangi resmi birim altindadir?",
+      "answer": "Engelli Ogrenci Birimi resmi olarak SKS bunyesinde yer alir.",
+      "keywords": [
+        "engelli ogrenci birimi",
+        "sks"
+      ],
+      "source_url": "https://eob.erdogan.edu.tr/tr/page/hakkimizda/1568",
+      "source_title": "Engelli Ogrenci Birimi Hakkimizda",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_life_048",
+      "intent": "student_life",
+      "intent_aliases": [
+        "cafeteria",
+        "campus_life",
+        "campus_logistics"
+      ],
+      "topic": "engelli_esitligi",
+      "question": "Engelli Ogrenci Biriminin temel amaci nedir?",
+      "answer": "Engelli Ogrenci Birimi, ozel gereksinimi olan ogrencilere egitimde firsat esitligi saglamak amaciyla calisir.",
+      "keywords": [
+        "engelli ogrenci",
+        "firsat esitligi"
+      ],
+      "source_url": "https://eob.erdogan.edu.tr/tr/page/hakkimizda/1568",
+      "source_title": "Engelli Ogrenci Birimi Hakkimizda",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_life_049",
+      "intent": "student_life",
+      "intent_aliases": [
+        "cafeteria",
+        "campus_life",
+        "campus_logistics"
+      ],
+      "topic": "kariyer_duyuru_kanali",
+      "question": "Kariyer etkinlikleri ve staj duyurulari icin hangi resmi sayfa izlenmeli?",
+      "answer": "Kariyer Merkezi duyuru sayfasi kariyer etkinlikleri, staj ve istihdam odakli resmi ilanlar icin temel kanaldir.",
+      "keywords": [
+        "kariyer merkezi",
+        "staj duyurusu"
+      ],
+      "source_url": "https://kariyer.erdogan.edu.tr/tr/news",
+      "source_title": "Kariyer Merkezi Duyurulari",
+      "confidence": "high",
+      "time_sensitive": true,
+      "faculty_scope": "general"
+    },
+    {
+      "id": "kb_life_050",
+      "intent": "student_life",
+      "intent_aliases": [
+        "cafeteria",
+        "campus_life",
+        "campus_logistics"
+      ],
+      "topic": "kackar_butik",
+      "question": "Ihtiyac sahibi ogrenciler icin Kackar Butik gibi bir sosyal destek uygulamasi var mi?",
+      "answer": "SKS yapisinda RTEU Kizilay Kackar Butik sosyal yardim odakli resmi bir uygulama olarak yer alir.",
+      "keywords": [
+        "kackar butik",
+        "sosyal destek"
+      ],
+      "source_url": "https://sks.erdogan.edu.tr",
+      "source_title": "SKS Ana Sayfasi",
+      "confidence": "medium",
+      "time_sensitive": false,
+      "faculty_scope": "general"
+    }
+  ]
+}
