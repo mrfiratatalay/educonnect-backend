@@ -55,3 +55,4 @@ appsettings.Development.local.json
 .DS_Store
 Thumbs.db
 *.log
+build-verify/
