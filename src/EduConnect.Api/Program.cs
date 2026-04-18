@@ -2,6 +2,7 @@ using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.RateLimiting;
+using EduConnect.Api.Common;
 using EduConnect.Api.Hubs;
 using EduConnect.Api.Middleware;
 using EduConnect.Application;
@@ -22,6 +23,7 @@ var jwtOptions = builder.Configuration.GetSection(JwtOptions.SectionName).Get<Jw
 
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
+builder.Services.AddScoped<NotificationPublisher>();
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
@@ -65,7 +67,8 @@ builder.Services
                 var accessToken = context.Request.Query["access_token"];
                 var path = context.HttpContext.Request.Path;
 
-                if (!string.IsNullOrWhiteSpace(accessToken) && path.StartsWithSegments("/hubs/chat"))
+                if (!string.IsNullOrWhiteSpace(accessToken) &&
+                    (path.StartsWithSegments("/hubs/chat") || path.StartsWithSegments("/hubs/direct-messages")))
                 {
                     context.Token = accessToken;
                 }
@@ -86,6 +89,14 @@ builder.Services.AddRateLimiter(options =>
         opt.PermitLimit = 30;
         opt.Window = TimeSpan.FromMinutes(1);
         opt.QueueLimit = 5;
+        opt.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
+    });
+
+    options.AddFixedWindowLimiter("directmessages", opt =>
+    {
+        opt.PermitLimit = 120;
+        opt.Window = TimeSpan.FromMinutes(1);
+        opt.QueueLimit = 20;
         opt.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
     });
 });
@@ -163,6 +174,8 @@ if (app.Environment.IsDevelopment())
 
 app.MapControllers();
 app.MapHub<ChatHub>("/hubs/chat");
+app.MapHub<DirectMessageHub>("/hubs/direct-messages");
+app.MapHub<NotificationHub>("/hubs/notifications");
 
 await InitializeDatabaseAsync(app);
 

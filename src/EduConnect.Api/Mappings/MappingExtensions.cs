@@ -10,6 +10,7 @@ using EduConnect.Application.Contracts.Users;
 using EduConnect.Application.Contracts.VisualSearch;
 using EduConnect.Domain.Entities;
 using EduConnect.Domain.Enums;
+using System.Text.Json;
 
 namespace EduConnect.Api.Mappings;
 
@@ -141,6 +142,7 @@ public static class MappingExtensions
             AvatarUrl = group.AvatarUrl,
             BannerUrl = group.BannerUrl,
             Category = group.Category,
+            Rules = ParseGroupRules(group.RulesJson),
             CreatorUserId = group.CreatorUserId,
             CreatorName = group.CreatorUser.FullName,
             MemberCount = group.Members.Count,
@@ -161,6 +163,13 @@ public static class MappingExtensions
         int eventCount)
     {
         var summary = group.ToResponse(currentUserId);
+        var currentMembership = currentUserId.HasValue
+            ? group.Members.FirstOrDefault(x => x.UserId == currentUserId.Value)
+            : null;
+        var currentRole = currentMembership?.Role;
+        var canManageMembers = currentRole is GroupMemberRole.Owner or GroupMemberRole.Moderator;
+        var canManageSettings = currentRole == GroupMemberRole.Owner;
+        var canCreateEvents = currentRole is GroupMemberRole.Owner or GroupMemberRole.Moderator;
 
         return new GroupDetailResponse
         {
@@ -172,6 +181,7 @@ public static class MappingExtensions
             AvatarUrl = summary.AvatarUrl,
             BannerUrl = summary.BannerUrl,
             Category = summary.Category,
+            Rules = summary.Rules,
             CreatorUserId = summary.CreatorUserId,
             CreatorName = summary.CreatorName,
             MemberCount = summary.MemberCount,
@@ -181,6 +191,10 @@ public static class MappingExtensions
             PostCount = postCount,
             EventCount = eventCount,
             CanCurrentUserPost = summary.JoinedByCurrentUser,
+            CurrentUserRole = currentRole,
+            CanManageMembers = canManageMembers,
+            CanManageSettings = canManageSettings,
+            CanCreateEvents = canCreateEvents,
             ModeratorPreviewMembers = group.Members
                 .Where(x => x.Role == GroupMemberRole.Owner || x.Role == GroupMemberRole.Moderator)
                 .OrderByDescending(x => x.Role)
@@ -201,6 +215,58 @@ public static class MappingExtensions
             Department = membership.User.StudentProfile?.Department,
             Role = membership.Role
         };
+    }
+
+    public static GroupMemberResponse ToResponse(
+        this GroupMember membership,
+        GroupMemberRole? currentUserRole,
+        Guid? currentUserId)
+    {
+        var canManageMembers = currentUserRole is GroupMemberRole.Owner or GroupMemberRole.Moderator;
+        var targetRole = membership.Role;
+        var isCurrentUser = currentUserId.HasValue && membership.UserId == currentUserId.Value;
+        var canPromote = currentUserRole == GroupMemberRole.Owner && targetRole == GroupMemberRole.Member && !isCurrentUser;
+        var canDemote = currentUserRole == GroupMemberRole.Owner && targetRole == GroupMemberRole.Moderator && !isCurrentUser;
+        var canRemove =
+            canManageMembers &&
+            !isCurrentUser &&
+            targetRole != GroupMemberRole.Owner &&
+            (currentUserRole == GroupMemberRole.Owner || targetRole == GroupMemberRole.Member);
+
+        return new GroupMemberResponse
+        {
+            UserId = membership.UserId,
+            FullName = membership.User.FullName,
+            AvatarUrl = membership.User.StudentProfile?.AvatarUrl,
+            Department = membership.User.StudentProfile?.Department,
+            Role = membership.Role,
+            JoinedAtUtc = membership.JoinedAtUtc,
+            IsCurrentUser = isCurrentUser,
+            CanBePromoted = canPromote,
+            CanBeDemoted = canDemote,
+            CanBeRemoved = canRemove,
+        };
+    }
+
+    private static IReadOnlyCollection<string> ParseGroupRules(string? rulesJson)
+    {
+        if (string.IsNullOrWhiteSpace(rulesJson))
+        {
+            return [];
+        }
+
+        try
+        {
+            var rules = JsonSerializer.Deserialize<string[]>(rulesJson);
+            return rules?
+                .Select(x => x.Trim())
+                .Where(x => x.Length > 0)
+                .ToArray() ?? [];
+        }
+        catch
+        {
+            return [];
+        }
     }
 
     public static EventResponse ToResponse(this Event entity, Guid? currentUserId)

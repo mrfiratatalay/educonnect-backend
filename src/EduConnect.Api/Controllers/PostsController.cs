@@ -18,21 +18,28 @@ namespace EduConnect.Api.Controllers;
 public sealed class PostsController(
     AppDbContext dbContext,
     ICurrentUserService currentUserService,
-    IPostMediaStorageService postMediaStorageService) : ControllerBase
+    IPostMediaStorageService postMediaStorageService,
+    NotificationPublisher notificationPublisher) : ControllerBase
 {
     [HttpGet]
     public async Task<ActionResult<PagedResponse<PostResponse>>> GetAll(
         [FromQuery] int page = 1,
         [FromQuery] int pageSize = 10,
+        [FromQuery] Guid? userId = null,
+        [FromQuery] bool mediaOnly = false,
         CancellationToken cancellationToken = default)
     {
         page = Math.Max(page, 1);
         pageSize = Math.Clamp(pageSize, 1, 50);
 
-        var query = QueryPostsForFeed().OrderByDescending(x => x.CreatedAtUtc);
-        var totalCount = await query.CountAsync(cancellationToken);
+        var query = QueryPostsForFeed();
+        if (userId.HasValue) query = query.Where(x => x.UserId == userId.Value);
+        if (mediaOnly) query = query.Where(x => x.ImageUrl != null);
 
-        var posts = await query
+        var ordered = query.OrderByDescending(x => x.CreatedAtUtc);
+        var totalCount = await ordered.CountAsync(cancellationToken);
+
+        var posts = await ordered
             .Skip((page - 1) * pageSize)
             .Take(pageSize)
             .ToListAsync(cancellationToken);
@@ -318,17 +325,54 @@ public sealed class PostsController(
         page = Math.Max(page, 1);
         pageSize = Math.Clamp(pageSize, 1, 50);
 
-        var query = QueryBookmarkedPostsForUser(userId.Value);
-        var totalCount = await query.CountAsync(cancellationToken);
+        var bookmarkedQuery = QueryPostsForFeed()
+            .Where(p => p.Bookmarks.Any(b => b.UserId == userId.Value));
 
-        var bookmarks = await query
+        var totalCount = await bookmarkedQuery.CountAsync(cancellationToken);
+
+        var posts = await bookmarkedQuery
+            .OrderByDescending(p => p.Bookmarks.Where(b => b.UserId == userId.Value).Select(b => b.CreatedAtUtc).FirstOrDefault())
             .Skip((page - 1) * pageSize)
             .Take(pageSize)
             .ToListAsync(cancellationToken);
 
         return Ok(new PagedResponse<PostResponse>
         {
-            Items = bookmarks.Select(x => x.Post.ToResponse(userId.Value)).ToArray(),
+            Items = posts.Select(x => x.ToResponse(userId.Value)).ToArray(),
+            Page = page,
+            PageSize = pageSize,
+            TotalCount = totalCount
+        });
+    }
+
+    [HttpGet("liked")]
+    public async Task<ActionResult<PagedResponse<PostResponse>>> GetLikedPosts(
+        [FromQuery] int page = 1,
+        [FromQuery] int pageSize = 10,
+        [FromQuery] Guid? userId = null,
+        CancellationToken cancellationToken = default)
+    {
+        var currentUserId = currentUserService.UserId;
+        if (currentUserId is null) return Unauthorized();
+
+        var targetUserId = userId ?? currentUserId.Value;
+        page = Math.Max(page, 1);
+        pageSize = Math.Clamp(pageSize, 1, 50);
+
+        var likedQuery = QueryPostsForFeed()
+            .Where(p => p.Likes.Any(l => l.UserId == targetUserId));
+
+        var totalCount = await likedQuery.CountAsync(cancellationToken);
+
+        var posts = await likedQuery
+            .OrderByDescending(p => p.Likes.Where(l => l.UserId == targetUserId).Select(l => l.CreatedAtUtc).FirstOrDefault())
+            .Skip((page - 1) * pageSize)
+            .Take(pageSize)
+            .ToListAsync(cancellationToken);
+
+        return Ok(new PagedResponse<PostResponse>
+        {
+            Items = posts.Select(x => x.ToResponse(currentUserId)).ToArray(),
             Page = page,
             PageSize = pageSize,
             TotalCount = totalCount
@@ -348,23 +392,16 @@ public sealed class PostsController(
         }
 
         var content = request.Content.Trim();
-        if (content.Length == 0)
+
+        string? imageUrl = string.IsNullOrWhiteSpace(request.ImageUrl) ? null : request.ImageUrl.Trim();
+
+        if (content.Length == 0 && image is null && imageUrl is null)
         {
             return BadRequest(new ValidationProblemDetails(new Dictionary<string, string[]>
             {
-                [nameof(request.Content)] = ["Icerik bos olamaz."]
+                [nameof(request.Content)] = ["Bir metin yaz veya gorsel ekle."]
             }));
         }
-
-        if (image is not null && !string.IsNullOrWhiteSpace(request.ImageUrl))
-        {
-            return BadRequest(new
-            {
-                message = "Ayni istekte hem gorsel dosyasi hem de imageUrl gonderemezsiniz."
-            });
-        }
-
-        string? imageUrl = string.IsNullOrWhiteSpace(request.ImageUrl) ? null : request.ImageUrl.Trim();
 
         if (image is not null)
         {
@@ -380,7 +417,7 @@ public sealed class PostsController(
         if (request.GroupId.HasValue)
         {
             var groupExists = await dbContext.Groups
-                .AnyAsync(x => x.Id == request.GroupId.Value, cancellationToken);
+                .AnyAsync(x => x.Id == request.GroupId.Value && x.IsActive, cancellationToken);
 
             if (!groupExists)
             {
@@ -440,7 +477,8 @@ public sealed class PostsController(
     [HttpPut("{id:guid}")]
     public async Task<ActionResult<PostResponse>> Update(
         Guid id,
-        [FromBody] UpdatePostRequest request,
+        [FromForm] UpdatePostRequest request,
+        [FromForm(Name = "image")] IFormFile? image,
         CancellationToken cancellationToken)
     {
         var currentUserId = currentUserService.UserId;
@@ -463,16 +501,30 @@ public sealed class PostsController(
         }
 
         var content = request.Content.Trim();
-        if (content.Length == 0)
+        if (content.Length == 0 && image is null && post.ImageUrl is null && !request.RemoveImage)
         {
             return BadRequest(new ValidationProblemDetails(new Dictionary<string, string[]>
             {
-                [nameof(request.Content)] = ["Icerik bos olamaz."]
+                [nameof(request.Content)] = ["Bir metin yaz veya gorsel ekle."]
             }));
         }
 
         post.Content = content;
-        post.ImageUrl = string.IsNullOrWhiteSpace(request.ImageUrl) ? null : request.ImageUrl.Trim();
+
+        if (request.RemoveImage)
+        {
+            post.ImageUrl = null;
+        }
+        else if (image is not null)
+        {
+            await using var fileStream = image.OpenReadStream();
+            post.ImageUrl = await postMediaStorageService.SaveAsync(
+                currentUserId.Value,
+                fileStream,
+                image.FileName,
+                image.ContentType,
+                cancellationToken);
+        }
 
         await dbContext.SaveChangesAsync(cancellationToken);
 
@@ -530,6 +582,8 @@ public sealed class PostsController(
         var like = post.Likes.FirstOrDefault(x => x.UserId == userId.Value);
         if (like is null)
         {
+            Notification? createdNotification = null;
+
             dbContext.PostLikes.Add(new PostLike
             {
                 PostId = post.Id,
@@ -538,22 +592,29 @@ public sealed class PostsController(
 
             if (post.UserId != userId.Value)
             {
-                dbContext.Notifications.Add(new Notification
+                createdNotification = new Notification
                 {
                     UserId = post.UserId,
                     Title = $"{actorName} gonderini begendi",
                     Message = BuildNotificationExcerpt(post.Content, "Gonderine yeni bir begeni geldi."),
                     Type = NotificationType.Social,
                     TargetPath = BuildPostTargetPath(post.Id)
-                });
+                };
+                dbContext.Notifications.Add(createdNotification);
+            }
+
+            await dbContext.SaveChangesAsync(cancellationToken);
+
+            if (createdNotification is not null)
+            {
+                await notificationPublisher.PublishAsync(createdNotification, cancellationToken);
             }
         }
         else
         {
             dbContext.PostLikes.Remove(like);
+            await dbContext.SaveChangesAsync(cancellationToken);
         }
-
-        await dbContext.SaveChangesAsync(cancellationToken);
         return NoContent();
     }
 
@@ -692,19 +753,27 @@ public sealed class PostsController(
 
         dbContext.PostComments.Add(comment);
 
+        Notification? createdNotification = null;
+
         if (post.UserId != userId.Value)
         {
-            dbContext.Notifications.Add(new Notification
+            createdNotification = new Notification
             {
                 UserId = post.UserId,
                 Title = $"{actorName} gonderine yorum yapti",
                 Message = BuildNotificationExcerpt(content, "Gonderine yeni bir yorum geldi."),
                 Type = NotificationType.Social,
                 TargetPath = BuildPostTargetPath(post.Id)
-            });
+            };
+            dbContext.Notifications.Add(createdNotification);
         }
 
         await dbContext.SaveChangesAsync(cancellationToken);
+
+        if (createdNotification is not null)
+        {
+            await notificationPublisher.PublishAsync(createdNotification, cancellationToken);
+        }
 
         comment = await dbContext.PostComments
             .AsNoTracking()
@@ -715,12 +784,54 @@ public sealed class PostsController(
         return Ok(comment.ToResponse());
     }
 
+    [HttpDelete("{postId:guid}/comments/{commentId:guid}")]
+    public async Task<IActionResult> DeleteComment(
+        Guid postId,
+        Guid commentId,
+        CancellationToken cancellationToken)
+    {
+        var userId = currentUserService.UserId;
+        if (userId is null)
+        {
+            return Unauthorized();
+        }
+
+        var comment = await dbContext.PostComments
+            .Include(x => x.Post)
+            .FirstOrDefaultAsync(
+                x => x.Id == commentId && x.PostId == postId,
+                cancellationToken);
+
+        if (comment is null)
+        {
+            return NotFound();
+        }
+
+        var isAuthor = comment.UserId == userId.Value;
+        var isPostOwner = comment.Post.UserId == userId.Value;
+        var currentUserRole = await dbContext.Users
+            .Where(x => x.Id == userId.Value)
+            .Select(x => x.Role)
+            .FirstOrDefaultAsync(cancellationToken);
+        var isAdmin = currentUserRole is UserRole.Admin or UserRole.Moderator;
+
+        if (!isAuthor && !isPostOwner && !isAdmin)
+        {
+            return Forbid();
+        }
+
+        dbContext.PostComments.Remove(comment);
+        await dbContext.SaveChangesAsync(cancellationToken);
+
+        return NoContent();
+    }
+
     private IQueryable<Post> QueryPostsForFeed()
     {
         return dbContext.Posts
             .AsNoTracking()
             .AsSplitQuery()
-            .Where(x => !x.IsDeleted)
+            .Where(x => !x.IsDeleted && (!x.GroupId.HasValue || (x.Group != null && x.Group.IsActive)))
             .Include(x => x.User)
             .ThenInclude(x => x.StudentProfile)
             .Include(x => x.Group)
@@ -738,29 +849,7 @@ public sealed class PostsController(
             .ThenInclude(x => x.StudentProfile);
     }
 
-    private IQueryable<PostBookmark> QueryBookmarkedPostsForUser(Guid userId)
-    {
-        return dbContext.PostBookmarks
-            .AsNoTracking()
-            .AsSplitQuery()
-            .Where(x => x.UserId == userId && !x.Post.IsDeleted)
-            .OrderByDescending(x => x.CreatedAtUtc)
-            .Include(x => x.Post)
-            .ThenInclude(x => x.User)
-            .ThenInclude(x => x.StudentProfile)
-            .Include(x => x.Post)
-            .ThenInclude(x => x.Group)
-            .Include(x => x.Post)
-            .ThenInclude(x => x.Likes)
-            .Include(x => x.Post)
-            .ThenInclude(x => x.Comments)
-            .Include(x => x.Post)
-            .ThenInclude(x => x.Bookmarks)
-            .Include(x => x.Post)
-            .ThenInclude(x => x.Views);
-    }
-
-    private static IReadOnlyCollection<PostTrendingHashtagResponse> BuildTrendingHashtagResponses(
+private static IReadOnlyCollection<PostTrendingHashtagResponse> BuildTrendingHashtagResponses(
         IEnumerable<TrendingPostSource> posts,
         string contextLabel,
         int limit)

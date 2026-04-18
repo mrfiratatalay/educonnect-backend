@@ -54,3 +54,4 @@ appsettings.Development.local.json
 .idea/
 .DS_Store
 Thumbs.db
+*.log

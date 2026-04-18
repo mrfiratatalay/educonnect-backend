@@ -1,3 +1,4 @@
+using EduConnect.Api.Common;
 using EduConnect.Api.Mappings;
 using EduConnect.Application.Contracts.Users;
 using EduConnect.Application.Interfaces;
@@ -12,7 +13,10 @@ namespace EduConnect.Api.Controllers;
 [ApiController]
 [Authorize]
 [Route("api/[controller]")]
-public sealed class UsersController(AppDbContext dbContext, ICurrentUserService currentUserService) : ControllerBase
+public sealed class UsersController(
+    AppDbContext dbContext,
+    ICurrentUserService currentUserService,
+    NotificationPublisher notificationPublisher) : ControllerBase
 {
     private const int DefaultFollowSuggestionLimit = 3;
 
@@ -212,6 +216,45 @@ public sealed class UsersController(AppDbContext dbContext, ICurrentUserService 
         return Ok(user.ToResponse());
     }
 
+    [HttpGet("search")]
+    public async Task<ActionResult<IReadOnlyList<UserSearchResult>>> Search(
+        [FromQuery] string q,
+        [FromQuery] int limit = 10,
+        CancellationToken cancellationToken = default)
+    {
+        var userId = currentUserService.UserId;
+        if (userId is null)
+        {
+            return Unauthorized();
+        }
+
+        if (string.IsNullOrWhiteSpace(q) || q.Trim().Length < 2)
+        {
+            return Ok(Array.Empty<UserSearchResult>());
+        }
+
+        limit = Math.Clamp(limit, 1, 20);
+        var term = q.Trim().ToLower();
+
+        var results = await dbContext.Users
+            .AsNoTracking()
+            .Where(x => x.IsActive && x.Id != userId.Value &&
+                        (x.FullName.ToLower().Contains(term) || x.Email.ToLower().Contains(term)))
+            .OrderBy(x => x.FullName)
+            .Take(limit)
+            .Select(x => new UserSearchResult
+            {
+                Id = x.Id,
+                FullName = x.FullName,
+                AvatarUrl = x.StudentProfile != null ? x.StudentProfile.AvatarUrl : null,
+                Department = x.StudentProfile != null ? x.StudentProfile.Department : null,
+                UniversityName = x.University != null ? x.University.Name : null,
+            })
+            .ToListAsync(cancellationToken);
+
+        return Ok(results);
+    }
+
     [HttpGet("{id:guid}")]
     public async Task<ActionResult<PublicUserProfileResponse>> GetById(Guid id, CancellationToken cancellationToken)
     {
@@ -272,7 +315,7 @@ public sealed class UsersController(AppDbContext dbContext, ICurrentUserService 
 
         var suggestionCandidates = await dbContext.Users
             .AsNoTracking()
-            .Where(x => x.IsActive && x.Id != userId.Value && !followedUserIds.Contains(x.Id))
+            .Where(x => x.IsActive && x.Id != userId.Value)
             .Select(x => new FollowSuggestionCandidate(
                 x.Id,
                 x.FullName,
@@ -280,12 +323,14 @@ public sealed class UsersController(AppDbContext dbContext, ICurrentUserService 
                 x.StudentProfile != null ? x.StudentProfile.Department : null,
                 x.UniversityId,
                 x.University != null ? x.University.Name : null,
+                followedUserIds.Contains(x.Id),
                 x.GroupMemberships.Count(membership => currentGroupIds.Contains(membership.GroupId)),
                 x.Posts.Count(post => !post.IsDeleted && !post.GroupId.HasValue && post.CreatedAtUtc >= activeSinceUtc)))
             .ToListAsync(cancellationToken);
 
         var suggestions = suggestionCandidates
-            .OrderByDescending(x => x.UniversityId == currentUserContext.UniversityId && currentUserContext.UniversityId.HasValue)
+            .OrderBy(x => x.IsFollowedByCurrentUser)
+            .ThenByDescending(x => x.UniversityId == currentUserContext.UniversityId && currentUserContext.UniversityId.HasValue)
             .ThenByDescending(x => x.MutualGroupCount)
             .ThenByDescending(x => x.RecentPersonalPostCount)
             .ThenBy(x => x.FullName)
@@ -300,7 +345,8 @@ public sealed class UsersController(AppDbContext dbContext, ICurrentUserService 
             Department = x.Department,
             UniversityName = x.UniversityName,
             MutualGroupCount = x.MutualGroupCount,
-            ReasonLabel = BuildFollowSuggestionReason(x, currentUserContext)
+            ReasonLabel = BuildFollowSuggestionReason(x, currentUserContext),
+            IsFollowedByCurrentUser = x.IsFollowedByCurrentUser
         }).ToArray());
     }
 
@@ -424,13 +470,30 @@ public sealed class UsersController(AppDbContext dbContext, ICurrentUserService 
 
         if (!isAlreadyFollowing)
         {
+            var actorName = await dbContext.Users
+                .AsNoTracking()
+                .Where(x => x.Id == userId.Value)
+                .Select(x => x.FullName)
+                .FirstOrDefaultAsync(cancellationToken) ?? "Bir kullanici";
+
             dbContext.UserFollows.Add(new UserFollow
             {
                 FollowerUserId = userId.Value,
                 FollowedUserId = id
             });
 
+            var createdNotification = new Notification
+            {
+                UserId = id,
+                Title = $"{actorName} seni takip etmeye basladi",
+                Message = "Profilini ziyaret edip baglanti kurabilirsin.",
+                Type = Domain.Enums.NotificationType.Social,
+                TargetPath = $"/profile/{userId.Value}"
+            };
+            dbContext.Notifications.Add(createdNotification);
+
             await dbContext.SaveChangesAsync(cancellationToken);
+            await notificationPublisher.PublishAsync(createdNotification, cancellationToken);
         }
 
         return Ok(new FollowStateResponse
@@ -518,6 +581,7 @@ public sealed class UsersController(AppDbContext dbContext, ICurrentUserService 
         string? Department,
         Guid? UniversityId,
         string? UniversityName,
+        bool IsFollowedByCurrentUser,
         int MutualGroupCount,
         int RecentPersonalPostCount);
 }

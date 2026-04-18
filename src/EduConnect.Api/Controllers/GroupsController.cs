@@ -1,4 +1,6 @@
 using System.Text;
+using System.Text.Json;
+using EduConnect.Api.Common;
 using EduConnect.Api.Mappings;
 using EduConnect.Application.Contracts.Common;
 using EduConnect.Application.Contracts.Groups;
@@ -16,7 +18,10 @@ namespace EduConnect.Api.Controllers;
 [ApiController]
 [Authorize]
 [Route("api/[controller]")]
-public sealed class GroupsController(AppDbContext dbContext, ICurrentUserService currentUserService) : ControllerBase
+public sealed class GroupsController(
+    AppDbContext dbContext,
+    ICurrentUserService currentUserService,
+    NotificationPublisher notificationPublisher) : ControllerBase
 {
     private const int ShortDescriptionMaxLength = 220;
     private const int DefaultJoinedGroupsLimit = 12;
@@ -47,6 +52,7 @@ public sealed class GroupsController(AppDbContext dbContext, ICurrentUserService
             Slug = await GenerateUniqueSlugAsync(request.Name, cancellationToken),
             ShortDescription = BuildShortDescription(request.ShortDescription, request.Description),
             Description = request.Description.Trim(),
+            RulesJson = SerializeRules(request.Rules),
             AvatarUrl = NormalizeOptionalUrl(request.AvatarUrl),
             BannerUrl = NormalizeOptionalUrl(request.BannerUrl),
             Category = request.Category.Trim(),
@@ -79,7 +85,7 @@ public sealed class GroupsController(AppDbContext dbContext, ICurrentUserService
             return Unauthorized();
         }
 
-        var group = await dbContext.Groups.FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
+        var group = await dbContext.Groups.FirstOrDefaultAsync(x => x.Id == id && x.IsActive, cancellationToken);
         if (group is null)
         {
             return NotFound();
@@ -93,6 +99,7 @@ public sealed class GroupsController(AppDbContext dbContext, ICurrentUserService
         group.Name = request.Name.Trim();
         group.ShortDescription = BuildShortDescription(request.ShortDescription, request.Description);
         group.Description = request.Description.Trim();
+        group.RulesJson = SerializeRules(request.Rules);
         group.AvatarUrl = NormalizeOptionalUrl(request.AvatarUrl);
         group.BannerUrl = NormalizeOptionalUrl(request.BannerUrl);
         group.Category = request.Category.Trim();
@@ -115,6 +122,54 @@ public sealed class GroupsController(AppDbContext dbContext, ICurrentUserService
         }
 
         return Ok(await BuildGroupDetailResponseAsync(group, cancellationToken));
+    }
+
+    [HttpDelete("{id:guid}")]
+    public async Task<IActionResult> Delete(Guid id, CancellationToken cancellationToken)
+    {
+        var userId = currentUserService.UserId;
+        if (userId is null)
+        {
+            return Unauthorized();
+        }
+
+        var group = await dbContext.Groups.FirstOrDefaultAsync(x => x.Id == id && x.IsActive, cancellationToken);
+        if (group is null)
+        {
+            return NotFound();
+        }
+
+        if (group.CreatorUserId != userId.Value)
+        {
+            return Forbid();
+        }
+
+        group.IsActive = false;
+        await dbContext.SaveChangesAsync(cancellationToken);
+        return NoContent();
+    }
+
+    [HttpGet("{id:guid}/members")]
+    public async Task<ActionResult<IReadOnlyCollection<GroupMemberResponse>>> GetMembers(
+        Guid id,
+        CancellationToken cancellationToken)
+    {
+        var group = await QueryGroups()
+            .FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
+
+        if (group is null)
+        {
+            return NotFound();
+        }
+
+        var currentUserRole = ResolveCurrentUserRole(group, currentUserService.UserId);
+        var members = group.Members
+            .OrderByDescending(x => x.Role)
+            .ThenBy(x => x.User.FullName)
+            .Select(x => x.ToResponse(currentUserRole, currentUserService.UserId))
+            .ToArray();
+
+        return Ok(members);
     }
 
     [HttpGet("joined")]
@@ -283,7 +338,7 @@ public sealed class GroupsController(AppDbContext dbContext, ICurrentUserService
 
         var actorName = await GetCurrentUserDisplayNameAsync(userId.Value, cancellationToken);
 
-        var group = await dbContext.Groups.FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
+        var group = await dbContext.Groups.FirstOrDefaultAsync(x => x.Id == id && x.IsActive, cancellationToken);
         if (group is null)
         {
             return NotFound();
@@ -304,19 +359,28 @@ public sealed class GroupsController(AppDbContext dbContext, ICurrentUserService
             UserId = userId.Value
         });
 
+        Notification? createdNotification = null;
+
         if (group.CreatorUserId != userId.Value)
         {
-            dbContext.Notifications.Add(new Notification
+            createdNotification = new Notification
             {
                 UserId = group.CreatorUserId,
                 Title = $"{actorName} grubuna katildi",
                 Message = $"\"{group.Name}\" topluluguna yeni bir uye eklendi.",
                 Type = NotificationType.Social,
                 TargetPath = "/communities"
-            });
+            };
+            dbContext.Notifications.Add(createdNotification);
         }
 
         await dbContext.SaveChangesAsync(cancellationToken);
+
+        if (createdNotification is not null)
+        {
+            await notificationPublisher.PublishAsync(createdNotification, cancellationToken);
+        }
+
         return NoContent();
     }
 
@@ -347,11 +411,161 @@ public sealed class GroupsController(AppDbContext dbContext, ICurrentUserService
         return NoContent();
     }
 
+    [HttpPost("{id:guid}/members/{targetUserId:guid}/promote")]
+    public async Task<IActionResult> PromoteMember(
+        Guid id,
+        Guid targetUserId,
+        CancellationToken cancellationToken)
+    {
+        var currentUserId = currentUserService.UserId;
+        if (currentUserId is null)
+        {
+            return Unauthorized();
+        }
+
+        var group = await dbContext.Groups
+            .Include(x => x.Members)
+            .FirstOrDefaultAsync(x => x.Id == id && x.IsActive, cancellationToken);
+
+        if (group is null)
+        {
+            return NotFound();
+        }
+
+        var actorMembership = group.Members.FirstOrDefault(x => x.UserId == currentUserId.Value);
+        if (actorMembership?.Role != GroupMemberRole.Owner)
+        {
+            return Forbid();
+        }
+
+        var targetMembership = group.Members.FirstOrDefault(x => x.UserId == targetUserId);
+        if (targetMembership is null)
+        {
+            return NotFound();
+        }
+
+        if (targetMembership.UserId == currentUserId.Value)
+        {
+            return BadRequest(new { message = "Kendi rolunuzu degistiremezsiniz." });
+        }
+
+        if (targetMembership.Role != GroupMemberRole.Member)
+        {
+            return BadRequest(new { message = "Sadece normal uyeler moderator yapilabilir." });
+        }
+
+        targetMembership.Role = GroupMemberRole.Moderator;
+        await dbContext.SaveChangesAsync(cancellationToken);
+        return NoContent();
+    }
+
+    [HttpPost("{id:guid}/members/{targetUserId:guid}/demote")]
+    public async Task<IActionResult> DemoteMember(
+        Guid id,
+        Guid targetUserId,
+        CancellationToken cancellationToken)
+    {
+        var currentUserId = currentUserService.UserId;
+        if (currentUserId is null)
+        {
+            return Unauthorized();
+        }
+
+        var group = await dbContext.Groups
+            .Include(x => x.Members)
+            .FirstOrDefaultAsync(x => x.Id == id && x.IsActive, cancellationToken);
+
+        if (group is null)
+        {
+            return NotFound();
+        }
+
+        var actorMembership = group.Members.FirstOrDefault(x => x.UserId == currentUserId.Value);
+        if (actorMembership?.Role != GroupMemberRole.Owner)
+        {
+            return Forbid();
+        }
+
+        var targetMembership = group.Members.FirstOrDefault(x => x.UserId == targetUserId);
+        if (targetMembership is null)
+        {
+            return NotFound();
+        }
+
+        if (targetMembership.UserId == currentUserId.Value)
+        {
+            return BadRequest(new { message = "Kendi rolunuzu degistiremezsiniz." });
+        }
+
+        if (targetMembership.Role != GroupMemberRole.Moderator)
+        {
+            return BadRequest(new { message = "Sadece moderatorler uye rolune indirilebilir." });
+        }
+
+        targetMembership.Role = GroupMemberRole.Member;
+        await dbContext.SaveChangesAsync(cancellationToken);
+        return NoContent();
+    }
+
+    [HttpDelete("{id:guid}/members/{targetUserId:guid}")]
+    public async Task<IActionResult> RemoveMember(
+        Guid id,
+        Guid targetUserId,
+        CancellationToken cancellationToken)
+    {
+        var currentUserId = currentUserService.UserId;
+        if (currentUserId is null)
+        {
+            return Unauthorized();
+        }
+
+        var group = await dbContext.Groups
+            .Include(x => x.Members)
+            .FirstOrDefaultAsync(x => x.Id == id && x.IsActive, cancellationToken);
+
+        if (group is null)
+        {
+            return NotFound();
+        }
+
+        var actorMembership = group.Members.FirstOrDefault(x => x.UserId == currentUserId.Value);
+        if (actorMembership is null || actorMembership.Role == GroupMemberRole.Member)
+        {
+            return Forbid();
+        }
+
+        var targetMembership = group.Members.FirstOrDefault(x => x.UserId == targetUserId);
+        if (targetMembership is null)
+        {
+            return NotFound();
+        }
+
+        if (targetMembership.UserId == currentUserId.Value)
+        {
+            return BadRequest(new { message = "Kendinizi topluluktan cikarmazsiniz." });
+        }
+
+        if (targetMembership.Role == GroupMemberRole.Owner)
+        {
+            return BadRequest(new { message = "Topluluk sahibi topluluktan cikarilamaz." });
+        }
+
+        if (actorMembership.Role == GroupMemberRole.Moderator && targetMembership.Role != GroupMemberRole.Member)
+        {
+            return Forbid();
+        }
+
+        dbContext.GroupMembers.Remove(targetMembership);
+        await dbContext.SaveChangesAsync(cancellationToken);
+        return NoContent();
+    }
+
     private IQueryable<Group> QueryGroups()
     {
         return dbContext.Groups
             .AsNoTracking()
             .AsSplitQuery()
+            .Where(x => x.IsActive)
             .Include(x => x.CreatorUser)
             .Include(x => x.Members)
             .ThenInclude(x => x.User)
@@ -363,7 +577,7 @@ public sealed class GroupsController(AppDbContext dbContext, ICurrentUserService
         return dbContext.Posts
             .AsNoTracking()
             .AsSplitQuery()
-            .Where(x => !x.IsDeleted && x.GroupId.HasValue)
+            .Where(x => !x.IsDeleted && x.GroupId.HasValue && x.Group != null && x.Group.IsActive)
             .Include(x => x.User)
             .ThenInclude(x => x.StudentProfile)
             .Include(x => x.Group)
@@ -406,6 +620,18 @@ public sealed class GroupsController(AppDbContext dbContext, ICurrentUserService
     private static string? NormalizeOptionalUrl(string? value)
     {
         return string.IsNullOrWhiteSpace(value) ? null : value.Trim();
+    }
+
+    private static string SerializeRules(IReadOnlyCollection<string>? rules)
+    {
+        var normalizedRules = (rules ?? [])
+            .Select(x => x.Trim())
+            .Where(x => x.Length > 0)
+            .Distinct(StringComparer.OrdinalIgnoreCase)
+            .Take(10)
+            .ToArray();
+
+        return JsonSerializer.Serialize(normalizedRules);
     }
 
     private static string BuildSlugBase(string value)
@@ -470,5 +696,17 @@ public sealed class GroupsController(AppDbContext dbContext, ICurrentUserService
             .CountAsync(x => x.GroupId == group.Id, cancellationToken);
 
         return group.ToDetailResponse(currentUserService.UserId, postCount, eventCount);
+    }
+
+    private static GroupMemberRole? ResolveCurrentUserRole(Group group, Guid? currentUserId)
+    {
+        if (!currentUserId.HasValue)
+        {
+            return null;
+        }
+
+        return group.Members
+            .FirstOrDefault(x => x.UserId == currentUserId.Value)
+            ?.Role;
     }
 }

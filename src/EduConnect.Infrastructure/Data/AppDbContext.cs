@@ -28,8 +28,11 @@ public sealed class AppDbContext(DbContextOptions<AppDbContext> options) : DbCon
     public DbSet<ChatSession> ChatSessions => Set<ChatSession>();
     public DbSet<ChatMessage> ChatMessages => Set<ChatMessage>();
     public DbSet<Feedback> Feedbacks => Set<Feedback>();
+    public DbSet<ChatMessageFeedback> ChatMessageFeedbacks => Set<ChatMessageFeedback>();
     public DbSet<Notification> Notifications => Set<Notification>();
     public DbSet<Discount> Discounts => Set<Discount>();
+    public DbSet<DirectConversation> DirectConversations => Set<DirectConversation>();
+    public DbSet<DirectMessage> DirectMessages => Set<DirectMessage>();
 
     public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
     {
@@ -56,6 +59,7 @@ public sealed class AppDbContext(DbContextOptions<AppDbContext> options) : DbCon
         ConfigureChat(modelBuilder);
         ConfigureFeedbackAndNotifications(modelBuilder);
         ConfigureDiscounts(modelBuilder);
+        ConfigureDirectMessaging(modelBuilder);
     }
 
     private void ApplyAuditing()
@@ -242,6 +246,7 @@ public sealed class AppDbContext(DbContextOptions<AppDbContext> options) : DbCon
             entity.Property(x => x.Slug).HasMaxLength(160).IsRequired();
             entity.Property(x => x.ShortDescription).HasMaxLength(220).IsRequired();
             entity.Property(x => x.Description).HasMaxLength(1000).IsRequired();
+            entity.Property(x => x.RulesJson).HasMaxLength(4000).IsRequired();
             entity.Property(x => x.AvatarUrl).HasMaxLength(500);
             entity.Property(x => x.BannerUrl).HasMaxLength(500);
             entity.Property(x => x.Category).HasMaxLength(100).IsRequired();
@@ -343,6 +348,7 @@ public sealed class AppDbContext(DbContextOptions<AppDbContext> options) : DbCon
         {
             entity.ToTable("ProductImages");
             entity.Property(x => x.Url).HasMaxLength(500).IsRequired();
+            entity.Property(x => x.EmbeddingJson).HasColumnType("nvarchar(max)");
 
             entity.HasOne(x => x.Product)
                 .WithMany(x => x.Images)
@@ -398,11 +404,30 @@ public sealed class AppDbContext(DbContextOptions<AppDbContext> options) : DbCon
             entity.ToTable("ChatMessages");
             entity.Property(x => x.Content).HasMaxLength(4000).IsRequired();
             entity.Property(x => x.IntentDetected).HasMaxLength(150);
+            entity.Property(x => x.ModelUsed).HasMaxLength(100);
+            entity.Property(x => x.KbScore).HasColumnType("float");
 
             entity.HasOne(x => x.Session)
                 .WithMany(x => x.Messages)
                 .HasForeignKey(x => x.SessionId)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            entity.HasOne(x => x.Feedback)
+                .WithOne(x => x.ChatMessage)
+                .HasForeignKey<ChatMessageFeedback>(x => x.ChatMessageId)
+                .OnDelete(DeleteBehavior.Cascade);
+        });
+
+        modelBuilder.Entity<ChatMessageFeedback>(entity =>
+        {
+            entity.ToTable("ChatMessageFeedbacks");
+            entity.HasIndex(x => x.ChatMessageId).IsUnique();
+            entity.Property(x => x.Comment).HasMaxLength(500);
+
+            entity.HasOne(x => x.User)
+                .WithMany(x => x.ChatMessageFeedbacks)
+                .HasForeignKey(x => x.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
         });
     }
 
@@ -445,6 +470,41 @@ public sealed class AppDbContext(DbContextOptions<AppDbContext> options) : DbCon
             entity.Property(x => x.DiscountCode).HasMaxLength(50).IsRequired();
             entity.Property(x => x.LogoUrl).HasMaxLength(500);
             entity.Property(x => x.DiscountRate).HasColumnType("decimal(5,2)");
+        });
+    }
+
+    private static void ConfigureDirectMessaging(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<DirectConversation>(entity =>
+        {
+            entity.ToTable("DirectConversations");
+            entity.HasIndex(x => new { x.UserLowerId, x.UserHigherId }).IsUnique();
+
+            entity.HasOne(x => x.UserLower)
+                .WithMany()
+                .HasForeignKey(x => x.UserLowerId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            entity.HasOne(x => x.UserHigher)
+                .WithMany()
+                .HasForeignKey(x => x.UserHigherId)
+                .OnDelete(DeleteBehavior.Restrict);
+        });
+
+        modelBuilder.Entity<DirectMessage>(entity =>
+        {
+            entity.ToTable("DirectMessages");
+            entity.Property(x => x.Content).HasMaxLength(2000).IsRequired();
+
+            entity.HasOne(x => x.Conversation)
+                .WithMany(x => x.Messages)
+                .HasForeignKey(x => x.ConversationId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            entity.HasOne(x => x.Sender)
+                .WithMany()
+                .HasForeignKey(x => x.SenderUserId)
+                .OnDelete(DeleteBehavior.Restrict);
         });
     }
 }

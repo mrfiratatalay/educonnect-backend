@@ -14,7 +14,10 @@ namespace EduConnect.Api.Controllers;
 [ApiController]
 [Authorize]
 [Route("api/[controller]")]
-public sealed class ProductsController(AppDbContext dbContext, ICurrentUserService currentUserService) : ControllerBase
+public sealed class ProductsController(
+    AppDbContext dbContext,
+    ICurrentUserService currentUserService,
+    IProductEmbeddingService embeddingService) : ControllerBase
 {
     [HttpGet]
     public async Task<ActionResult<PagedResponse<ProductResponse>>> GetAll(
@@ -22,6 +25,19 @@ public sealed class ProductsController(AppDbContext dbContext, ICurrentUserServi
         CancellationToken cancellationToken)
     {
         var query = QueryProducts().Where(x => x.IsActive);
+
+        if (!string.IsNullOrWhiteSpace(filters.SearchTerm))
+        {
+            var term = filters.SearchTerm.Trim().ToLower();
+            query = query.Where(x =>
+                x.Title.ToLower().Contains(term) ||
+                x.Description.ToLower().Contains(term));
+        }
+
+        if (filters.SellerId.HasValue)
+        {
+            query = query.Where(x => x.SellerId == filters.SellerId.Value);
+        }
 
         if (filters.CategoryId.HasValue)
         {
@@ -102,6 +118,8 @@ public sealed class ProductsController(AppDbContext dbContext, ICurrentUserServi
         dbContext.Products.Add(product);
         await dbContext.SaveChangesAsync(cancellationToken);
 
+        _ = Task.Run(() => embeddingService.ExtractAndStoreAsync(product.Id, CancellationToken.None), CancellationToken.None);
+
         product = await QueryProducts().FirstAsync(x => x.Id == product.Id, cancellationToken);
         return CreatedAtAction(nameof(GetById), new { id = product.Id }, product.ToResponse());
     }
@@ -155,7 +173,9 @@ public sealed class ProductsController(AppDbContext dbContext, ICurrentUserServi
         product.IsNegotiable = request.IsNegotiable;
 
         dbContext.ProductImages.RemoveRange(product.Images);
-        product.Images = request.ImageUrls
+        await dbContext.SaveChangesAsync(cancellationToken);
+
+        var newImages = request.ImageUrls
             .Distinct()
             .Select((url, index) => new ProductImage
             {
@@ -165,10 +185,13 @@ public sealed class ProductsController(AppDbContext dbContext, ICurrentUserServi
             })
             .ToArray();
 
+        dbContext.ProductImages.AddRange(newImages);
         await dbContext.SaveChangesAsync(cancellationToken);
 
-        product = await QueryProducts().FirstAsync(x => x.Id == product.Id, cancellationToken);
-        return Ok(product.ToResponse());
+        _ = Task.Run(() => embeddingService.ExtractAndStoreAsync(product.Id, CancellationToken.None), CancellationToken.None);
+
+        var updated = await QueryProducts().FirstAsync(x => x.Id == product.Id, cancellationToken);
+        return Ok(updated.ToResponse());
     }
 
     [HttpDelete("{id:guid}")]

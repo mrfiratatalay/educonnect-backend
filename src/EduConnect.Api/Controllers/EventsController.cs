@@ -1,3 +1,4 @@
+using EduConnect.Api.Common;
 using EduConnect.Api.Mappings;
 using EduConnect.Application.Contracts.Events;
 using EduConnect.Application.Interfaces;
@@ -13,12 +14,23 @@ namespace EduConnect.Api.Controllers;
 [ApiController]
 [Authorize]
 [Route("api/[controller]")]
-public sealed class EventsController(AppDbContext dbContext, ICurrentUserService currentUserService) : ControllerBase
+public sealed class EventsController(
+    AppDbContext dbContext,
+    ICurrentUserService currentUserService,
+    NotificationPublisher notificationPublisher) : ControllerBase
 {
     [HttpGet]
-    public async Task<ActionResult<IReadOnlyCollection<EventResponse>>> GetAll(CancellationToken cancellationToken)
+    public async Task<ActionResult<IReadOnlyCollection<EventResponse>>> GetAll(
+        [FromQuery] Guid? groupId,
+        CancellationToken cancellationToken)
     {
-        var events = await QueryEvents()
+        var query = QueryEvents();
+        if (groupId.HasValue)
+        {
+            query = query.Where(x => x.GroupId == groupId.Value);
+        }
+
+        var events = await query
             .OrderBy(x => x.StartDateUtc)
             .ToListAsync(cancellationToken);
 
@@ -39,9 +51,27 @@ public sealed class EventsController(AppDbContext dbContext, ICurrentUserService
             return BadRequest(new { message = "Bitis tarihi baslangic tarihinden sonra olmalidir." });
         }
 
-        if (request.GroupId.HasValue && !await dbContext.Groups.AnyAsync(x => x.Id == request.GroupId.Value, cancellationToken))
+        if (request.GroupId.HasValue && !await dbContext.Groups.AnyAsync(x => x.Id == request.GroupId.Value && x.IsActive, cancellationToken))
         {
             return BadRequest(new { message = "Secilen grup bulunamadi." });
+        }
+
+        if (request.GroupId.HasValue)
+        {
+            var membershipRole = await dbContext.GroupMembers
+                .Where(x => x.GroupId == request.GroupId.Value && x.UserId == userId.Value)
+                .Select(x => (GroupMemberRole?)x.Role)
+                .FirstOrDefaultAsync(cancellationToken);
+
+            if (membershipRole is null)
+            {
+                return BadRequest(new { message = "Grup etkinligi olusturmak icin once o gruba katilmalisiniz." });
+            }
+
+            if (membershipRole is not GroupMemberRole.Owner and not GroupMemberRole.Moderator)
+            {
+                return BadRequest(new { message = "Grup etkinligi olusturmak icin moderator veya kurucu olmalisiniz." });
+            }
         }
 
         var entity = new Event
@@ -69,6 +99,113 @@ public sealed class EventsController(AppDbContext dbContext, ICurrentUserService
     {
         var entity = await QueryEvents().FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
         return entity is null ? NotFound() : Ok(entity.ToResponse(currentUserService.UserId));
+    }
+
+    [HttpPut("{id:guid}")]
+    public async Task<ActionResult<EventResponse>> Update(
+        Guid id,
+        [FromBody] UpdateEventRequest request,
+        CancellationToken cancellationToken)
+    {
+        var userId = currentUserService.UserId;
+        if (userId is null)
+        {
+            return Unauthorized();
+        }
+
+        if (request.EndDateUtc <= request.StartDateUtc)
+        {
+            return BadRequest(new { message = "Bitis tarihi baslangic tarihinden sonra olmalidir." });
+        }
+
+        var entity = await dbContext.Events
+            .Include(x => x.Participants)
+            .FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
+
+        if (entity is null)
+        {
+            return NotFound();
+        }
+
+        if (!CanManageEvent(entity, userId.Value))
+        {
+            return Forbid();
+        }
+
+        if (request.GroupId.HasValue && !await dbContext.Groups.AnyAsync(x => x.Id == request.GroupId.Value && x.IsActive, cancellationToken))
+        {
+            return BadRequest(new { message = "Secilen grup bulunamadi." });
+        }
+
+        if (request.GroupId.HasValue)
+        {
+            var membershipRole = await dbContext.GroupMembers
+                .Where(x => x.GroupId == request.GroupId.Value && x.UserId == userId.Value)
+                .Select(x => (GroupMemberRole?)x.Role)
+                .FirstOrDefaultAsync(cancellationToken);
+
+            if (membershipRole is null)
+            {
+                return BadRequest(new { message = "Grup etkinligi guncellemek icin once o gruba katilmalisiniz." });
+            }
+
+            if (membershipRole is not GroupMemberRole.Owner and not GroupMemberRole.Moderator)
+            {
+                return BadRequest(new { message = "Grup etkinligi guncellemek icin moderator veya kurucu olmalisiniz." });
+            }
+        }
+
+        if (entity.Participants.Count(x => x.Status == EventParticipantStatus.Registered) > request.MaxParticipants)
+        {
+            return BadRequest(new { message = "Yeni kontenjan mevcut kayitli katilimci sayisindan kucuk olamaz." });
+        }
+
+        entity.Title = request.Title.Trim();
+        entity.Description = request.Description.Trim();
+        entity.Location = request.Location.Trim();
+        entity.StartDateUtc = request.StartDateUtc;
+        entity.EndDateUtc = request.EndDateUtc;
+        entity.GroupId = request.GroupId;
+        entity.MaxParticipants = request.MaxParticipants;
+        entity.Category = request.Category.Trim();
+
+        await dbContext.SaveChangesAsync(cancellationToken);
+
+        entity = await QueryEvents().FirstAsync(x => x.Id == id, cancellationToken);
+        return Ok(entity.ToResponse(userId));
+    }
+
+    [HttpDelete("{id:guid}")]
+    public async Task<IActionResult> Delete(Guid id, CancellationToken cancellationToken)
+    {
+        var userId = currentUserService.UserId;
+        if (userId is null)
+        {
+            return Unauthorized();
+        }
+
+        var entity = await dbContext.Events
+            .Include(x => x.Participants)
+            .FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
+
+        if (entity is null)
+        {
+            return NotFound();
+        }
+
+        if (!CanManageEvent(entity, userId.Value))
+        {
+            return Forbid();
+        }
+
+        if (entity.Participants.Count > 0)
+        {
+            dbContext.EventParticipants.RemoveRange(entity.Participants);
+        }
+
+        dbContext.Events.Remove(entity);
+        await dbContext.SaveChangesAsync(cancellationToken);
+        return NoContent();
     }
 
     [HttpPost("{id:guid}/register")]
@@ -119,19 +256,28 @@ public sealed class EventsController(AppDbContext dbContext, ICurrentUserService
             existingParticipant.RegisteredAtUtc = DateTime.UtcNow;
         }
 
+        Notification? createdNotification = null;
+
         if (entity.CreatorUserId != userId.Value)
         {
-            dbContext.Notifications.Add(new Notification
+            createdNotification = new Notification
             {
                 UserId = entity.CreatorUserId,
                 Title = $"{actorName} etkinligine katildi",
                 Message = $"\"{entity.Title}\" icin yeni bir katilimci var.",
                 Type = NotificationType.Event,
                 TargetPath = "/events"
-            });
+            };
+            dbContext.Notifications.Add(createdNotification);
         }
 
         await dbContext.SaveChangesAsync(cancellationToken);
+
+        if (createdNotification is not null)
+        {
+            await notificationPublisher.PublishAsync(createdNotification, cancellationToken);
+        }
+
         return NoContent();
     }
 
@@ -165,6 +311,7 @@ public sealed class EventsController(AppDbContext dbContext, ICurrentUserService
         return dbContext.Events
             .AsNoTracking()
             .AsSplitQuery()
+            .Where(x => !x.GroupId.HasValue || (x.Group != null && x.Group.IsActive))
             .Include(x => x.CreatorUser)
             .Include(x => x.Group)
             .Include(x => x.Participants);
@@ -178,5 +325,14 @@ public sealed class EventsController(AppDbContext dbContext, ICurrentUserService
             .Select(x => x.FullName)
             .FirstOrDefaultAsync(cancellationToken)
             ?? "Bir kullanici";
+    }
+
+    private bool CanManageEvent(Event entity, Guid currentUserId)
+    {
+        var isPrivileged =
+            User.IsInRole(UserRole.Admin.ToString()) ||
+            User.IsInRole(UserRole.Moderator.ToString());
+
+        return isPrivileged || entity.CreatorUserId == currentUserId;
     }
 }

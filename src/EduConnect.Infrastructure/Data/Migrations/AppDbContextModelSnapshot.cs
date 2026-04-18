@@ -70,6 +70,22 @@ namespace EduConnect.Infrastructure.Data.Migrations
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
 
+                    b.Property<bool?>("IsFallback")
+                        .HasColumnType("bit");
+
+                    b.Property<bool?>("KbHit")
+                        .HasColumnType("bit");
+
+                    b.Property<double?>("KbScore")
+                        .HasColumnType("float");
+
+                    b.Property<long?>("LatencyMs")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("ModelUsed")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
                     b.Property<int>("SenderType")
                         .HasColumnType("int");
 
@@ -87,6 +103,41 @@ namespace EduConnect.Infrastructure.Data.Migrations
                     b.HasIndex("SessionId");
 
                     b.ToTable("ChatMessages", (string)null);
+                });
+
+            modelBuilder.Entity("EduConnect.Domain.Entities.ChatMessageFeedback", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("ChatMessageId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Comment")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<DateTime>("CreatedAtUtc")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsHelpful")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("UpdatedAtUtc")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ChatMessageId")
+                        .IsUnique();
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("ChatMessageFeedbacks", (string)null);
                 });
 
             modelBuilder.Entity("EduConnect.Domain.Entities.ChatSession", b =>
@@ -118,6 +169,66 @@ namespace EduConnect.Infrastructure.Data.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("ChatSessions", (string)null);
+                });
+
+            modelBuilder.Entity("EduConnect.Domain.Entities.DirectConversation", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAtUtc")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("LastMessageAtUtc")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("UpdatedAtUtc")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("UserHigherId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("UserLowerId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserHigherId");
+
+                    b.HasIndex("UserLowerId", "UserHigherId")
+                        .IsUnique();
+
+                    b.ToTable("DirectConversations", (string)null);
+                });
+
+            modelBuilder.Entity("EduConnect.Domain.Entities.DirectMessage", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasMaxLength(2000)
+                        .HasColumnType("nvarchar(2000)");
+
+                    b.Property<Guid>("ConversationId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("SenderUserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("SentAtUtc")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ConversationId");
+
+                    b.HasIndex("SenderUserId");
+
+                    b.ToTable("DirectMessages", (string)null);
                 });
 
             modelBuilder.Entity("EduConnect.Domain.Entities.Discount", b =>
@@ -324,10 +435,18 @@ namespace EduConnect.Infrastructure.Data.Migrations
                         .HasMaxLength(1000)
                         .HasColumnType("nvarchar(1000)");
 
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
+
+                    b.Property<string>("RulesJson")
+                        .IsRequired()
+                        .HasMaxLength(4000)
+                        .HasColumnType("nvarchar(4000)");
 
                     b.Property<string>("ShortDescription")
                         .IsRequired()
@@ -645,6 +764,9 @@ namespace EduConnect.Infrastructure.Data.Migrations
 
                     b.Property<DateTime>("CreatedAtUtc")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("EmbeddingJson")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid>("ProductId")
                         .HasColumnType("uniqueidentifier");
@@ -969,6 +1091,25 @@ namespace EduConnect.Infrastructure.Data.Migrations
                     b.Navigation("Session");
                 });
 
+            modelBuilder.Entity("EduConnect.Domain.Entities.ChatMessageFeedback", b =>
+                {
+                    b.HasOne("EduConnect.Domain.Entities.ChatMessage", "ChatMessage")
+                        .WithOne("Feedback")
+                        .HasForeignKey("EduConnect.Domain.Entities.ChatMessageFeedback", "ChatMessageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("EduConnect.Domain.Entities.User", "User")
+                        .WithMany("ChatMessageFeedbacks")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("ChatMessage");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("EduConnect.Domain.Entities.ChatSession", b =>
                 {
                     b.HasOne("EduConnect.Domain.Entities.User", "User")
@@ -978,6 +1119,44 @@ namespace EduConnect.Infrastructure.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("EduConnect.Domain.Entities.DirectConversation", b =>
+                {
+                    b.HasOne("EduConnect.Domain.Entities.User", "UserHigher")
+                        .WithMany()
+                        .HasForeignKey("UserHigherId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("EduConnect.Domain.Entities.User", "UserLower")
+                        .WithMany()
+                        .HasForeignKey("UserLowerId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("UserHigher");
+
+                    b.Navigation("UserLower");
+                });
+
+            modelBuilder.Entity("EduConnect.Domain.Entities.DirectMessage", b =>
+                {
+                    b.HasOne("EduConnect.Domain.Entities.DirectConversation", "Conversation")
+                        .WithMany("Messages")
+                        .HasForeignKey("ConversationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("EduConnect.Domain.Entities.User", "Sender")
+                        .WithMany()
+                        .HasForeignKey("SenderUserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Conversation");
+
+                    b.Navigation("Sender");
                 });
 
             modelBuilder.Entity("EduConnect.Domain.Entities.Event", b =>
@@ -1280,7 +1459,17 @@ namespace EduConnect.Infrastructure.Data.Migrations
                     b.Navigation("Products");
                 });
 
+            modelBuilder.Entity("EduConnect.Domain.Entities.ChatMessage", b =>
+                {
+                    b.Navigation("Feedback");
+                });
+
             modelBuilder.Entity("EduConnect.Domain.Entities.ChatSession", b =>
+                {
+                    b.Navigation("Messages");
+                });
+
+            modelBuilder.Entity("EduConnect.Domain.Entities.DirectConversation", b =>
                 {
                     b.Navigation("Messages");
                 });
@@ -1323,6 +1512,8 @@ namespace EduConnect.Infrastructure.Data.Migrations
             modelBuilder.Entity("EduConnect.Domain.Entities.User", b =>
                 {
                     b.Navigation("BookmarkedPosts");
+
+                    b.Navigation("ChatMessageFeedbacks");
 
                     b.Navigation("ChatSessions");
 

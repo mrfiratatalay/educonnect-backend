@@ -17,5 +17,18 @@ public sealed class ChatMessage : AuditableEntity
 
     public double? Confidence { get; set; }
 
+    // --- Faz 5: Analitik alanları ---
+    public string? ModelUsed { get; set; }
+
+    public double? KbScore { get; set; }
+
+    public bool? KbHit { get; set; }
+
+    public bool? IsFallback { get; set; }
+
+    public long? LatencyMs { get; set; }
+
     public ChatSession Session { get; set; } = null!;
+
+    public ChatMessageFeedback? Feedback { get; set; }
 }

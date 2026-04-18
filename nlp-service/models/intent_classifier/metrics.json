@@ -1,6 +1,6 @@
 {
-  "best_validation_accuracy": 0.8851,
-  "epochs": 2,
+  "best_validation_accuracy": 0.9626,
+  "epochs": 3,
   "batch_size": 16,
   "learning_rate": 2e-05,
   "dataset_size": 1739,

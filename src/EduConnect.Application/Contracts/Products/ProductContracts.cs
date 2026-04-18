@@ -5,7 +5,11 @@ namespace EduConnect.Application.Contracts.Products;
 
 public sealed class ProductFilterRequest
 {
+    public string? SearchTerm { get; init; }
+
     public Guid? CategoryId { get; init; }
+
+    public Guid? SellerId { get; init; }
 
     public decimal? MinPrice { get; init; }
 
@@ -44,6 +48,12 @@ public class CreateProductRequest
 
 public sealed class UpdateProductRequest : CreateProductRequest
 {
+}
+
+public sealed class CategoryResponse
+{
+    public Guid Id { get; init; }
+    public string Name { get; init; } = string.Empty;
 }
 
 public sealed class ProductResponse

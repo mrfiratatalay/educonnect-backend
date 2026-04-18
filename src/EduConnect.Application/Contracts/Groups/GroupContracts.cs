@@ -22,6 +22,8 @@ public sealed class CreateGroupRequest
 
     [Required, StringLength(100)]
     public string Category { get; init; } = string.Empty;
+
+    public IReadOnlyCollection<string>? Rules { get; init; }
 }
 
 public sealed class UpdateGroupRequest
@@ -43,6 +45,8 @@ public sealed class UpdateGroupRequest
 
     [Required, StringLength(100)]
     public string Category { get; init; } = string.Empty;
+
+    public IReadOnlyCollection<string>? Rules { get; init; }
 }
 
 public class GroupResponse
@@ -62,6 +66,8 @@ public class GroupResponse
     public string? BannerUrl { get; init; }
 
     public string Category { get; init; } = string.Empty;
+
+    public IReadOnlyCollection<string> Rules { get; init; } = [];
 
     public Guid CreatorUserId { get; init; }
 
@@ -97,5 +103,36 @@ public sealed class GroupDetailResponse : GroupResponse
 
     public bool CanCurrentUserPost { get; init; }
 
+    public GroupMemberRole? CurrentUserRole { get; init; }
+
+    public bool CanManageMembers { get; init; }
+
+    public bool CanManageSettings { get; init; }
+
+    public bool CanCreateEvents { get; init; }
+
     public IReadOnlyCollection<GroupMemberPreviewResponse> ModeratorPreviewMembers { get; init; } = [];
+}
+
+public sealed class GroupMemberResponse
+{
+    public Guid UserId { get; init; }
+
+    public string FullName { get; init; } = string.Empty;
+
+    public string? AvatarUrl { get; init; }
+
+    public string? Department { get; init; }
+
+    public GroupMemberRole Role { get; init; }
+
+    public DateTime JoinedAtUtc { get; init; }
+
+    public bool IsCurrentUser { get; init; }
+
+    public bool CanBePromoted { get; init; }
+
+    public bool CanBeDemoted { get; init; }
+
+    public bool CanBeRemoved { get; init; }
 }

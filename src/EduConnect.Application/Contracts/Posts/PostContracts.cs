@@ -7,7 +7,7 @@ public sealed class CreatePostRequest
 {
     public Guid? GroupId { get; init; }
 
-    [Required, StringLength(1500, MinimumLength = 1)]
+    [StringLength(1500)]
     public string Content { get; init; } = string.Empty;
 
     [Url]
@@ -16,11 +16,10 @@ public sealed class CreatePostRequest
 
 public sealed class UpdatePostRequest
 {
-    [Required, StringLength(1500, MinimumLength = 1)]
+    [StringLength(1500)]
     public string Content { get; init; } = string.Empty;
 
-    [Url]
-    public string? ImageUrl { get; init; }
+    public bool RemoveImage { get; init; }
 }
 
 public sealed class CreatePostCommentRequest

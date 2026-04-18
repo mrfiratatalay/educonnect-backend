@@ -34,7 +34,15 @@ public sealed class ExploreSuggestionResponse
 
     public string AvatarSeed { get; init; } = string.Empty;
 
+    public string? AvatarUrl { get; init; }
+
     public string TargetPath { get; init; } = string.Empty;
 
     public string CtaLabel { get; init; } = string.Empty;
+
+    public string? ReasonLabel { get; init; }
+
+    public string? ActionableUserId { get; init; }
+
+    public bool IsFollowedByCurrentUser { get; init; }
 }

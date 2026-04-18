@@ -12,9 +12,13 @@ public sealed class Group : AuditableEntity
 
     public string Description { get; set; } = string.Empty;
 
+    public string RulesJson { get; set; } = "[]";
+
     public string? AvatarUrl { get; set; }
 
     public string? BannerUrl { get; set; }
+
+    public bool IsActive { get; set; } = true;
 
     public Guid CreatorUserId { get; set; }
 

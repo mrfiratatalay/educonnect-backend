@@ -16,6 +16,7 @@ public static class DependencyInjection
         services.Configure<GeminiOptions>(configuration.GetSection(GeminiOptions.SectionName));
         services.Configure<AvatarUploadOptions>(configuration.GetSection(AvatarUploadOptions.SectionName));
         services.Configure<EmailOptions>(configuration.GetSection(EmailOptions.SectionName));
+        services.Configure<NlpServiceOptions>(configuration.GetSection(NlpServiceOptions.SectionName));
 
         services.AddHttpContextAccessor();
 
@@ -33,8 +34,11 @@ public static class DependencyInjection
         services.AddSingleton<IPostMediaStorageService, PostMediaStorageService>();
 
         services.AddSingleton<IGeminiApiService, GeminiApiService>();
+        services.AddHttpClient<INlpService, NlpApiService>();
+        services.AddHttpClient<IVisionEmbeddingService, VisionEmbeddingApiService>();
         services.AddScoped<IChatbotService, ChatbotService>();
         services.AddScoped<IVisualSearchService, VisualSearchService>();
+        services.AddScoped<IProductEmbeddingService, ProductEmbeddingService>();
 
         return services;
     }

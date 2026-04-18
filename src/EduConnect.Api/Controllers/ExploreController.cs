@@ -52,10 +52,20 @@ public sealed class ExploreController(
                 Name = item.Name,
                 Handle = item.Handle,
                 AvatarSeed = item.AvatarSeed,
+                AvatarUrl = item.AvatarUrl,
                 TargetPath = item.TargetPath,
-                CtaLabel = item.CtaLabel
+                CtaLabel = item.CtaLabel,
+                ReasonLabel = item.ReasonLabel,
+                ActionableUserId = item.ActionableUserId,
+                IsFollowedByCurrentUser = false
             })
             .ToArray();
+
+        var liveSuggestions = await BuildLiveSuggestionsAsync(userId.Value, 4, cancellationToken);
+        if (liveSuggestions.Length > 0)
+        {
+            suggestions = liveSuggestions;
+        }
 
         return Ok(new ExploreDiscoveryResponse
         {
@@ -75,7 +85,7 @@ public sealed class ExploreController(
 
         if (liveTrendData.Aggregates.Count == 0)
         {
-            return BuildStaticTrendResponses(tab, query);
+            return [];
         }
 
         var liveTrends = liveTrendData.Aggregates
@@ -88,15 +98,16 @@ public sealed class ExploreController(
 
         if (liveTrends.Length == 0)
         {
-            return BuildStaticTrendResponses(tab, query);
+            return [];
         }
 
         var filteredLiveTrends = string.IsNullOrWhiteSpace(query)
             ? liveTrends
             : liveTrends.Where(item => MatchesQuery(item, query)).ToArray();
 
-        var staticFallbackTrends = BuildStaticTrendResponses(tab, query);
-        return MergeTrendResponses(filteredLiveTrends, staticFallbackTrends, maxResponseCount);
+        return filteredLiveTrends
+            .Take(maxResponseCount)
+            .ToArray();
     }
 
     private async Task<CachedLiveTrendData> GetCachedLiveTrendDataAsync(
@@ -142,6 +153,78 @@ public sealed class ExploreController(
             Aggregates: aggregates);
     }
 
+    private async Task<ExploreSuggestionResponse[]> BuildLiveSuggestionsAsync(
+        Guid userId,
+        int limit,
+        CancellationToken cancellationToken)
+    {
+        limit = Math.Clamp(limit, 1, 8);
+
+        var currentUserContext = await dbContext.Users
+            .AsNoTracking()
+            .Where(x => x.Id == userId)
+            .Select(x => new CurrentUserSuggestionContext(
+                x.UniversityId,
+                x.StudentProfile != null ? x.StudentProfile.Department : null))
+            .FirstOrDefaultAsync(cancellationToken);
+
+        if (currentUserContext is null)
+        {
+            return [];
+        }
+
+        var followedUserIds = await dbContext.UserFollows
+            .AsNoTracking()
+            .Where(x => x.FollowerUserId == userId)
+            .Select(x => x.FollowedUserId)
+            .ToArrayAsync(cancellationToken);
+
+        var currentGroupIds = await dbContext.GroupMembers
+            .AsNoTracking()
+            .Where(x => x.UserId == userId)
+            .Select(x => x.GroupId)
+            .ToArrayAsync(cancellationToken);
+
+        var activeSinceUtc = DateTime.UtcNow.AddDays(-14);
+
+        var suggestionCandidates = await dbContext.Users
+            .AsNoTracking()
+            .Where(x => x.IsActive && x.Id != userId)
+            .Select(x => new FollowSuggestionCandidate(
+                x.Id,
+                x.FullName,
+                x.StudentProfile != null ? x.StudentProfile.AvatarUrl : null,
+                x.StudentProfile != null ? x.StudentProfile.Department : null,
+                x.UniversityId,
+                x.University != null ? x.University.Name : null,
+                followedUserIds.Contains(x.Id),
+                x.GroupMemberships.Count(membership => currentGroupIds.Contains(membership.GroupId)),
+                x.Posts.Count(post => !post.IsDeleted && !post.GroupId.HasValue && post.CreatedAtUtc >= activeSinceUtc)))
+            .ToListAsync(cancellationToken);
+
+        return suggestionCandidates
+            .OrderBy(x => x.IsFollowedByCurrentUser)
+            .ThenByDescending(x => x.UniversityId == currentUserContext.UniversityId && currentUserContext.UniversityId.HasValue)
+            .ThenByDescending(x => x.MutualGroupCount)
+            .ThenByDescending(x => x.RecentPersonalPostCount)
+            .ThenBy(x => x.FullName)
+            .Take(limit)
+            .Select(x => new ExploreSuggestionResponse
+            {
+                Id = x.Id.ToString(),
+                Name = x.FullName,
+                Handle = $"@{BuildHandle(x.FullName)}",
+                AvatarSeed = x.Id.ToString("N"),
+                AvatarUrl = x.AvatarUrl,
+                TargetPath = $"/profile/{x.Id}",
+                CtaLabel = "Takip et",
+                ReasonLabel = BuildFollowSuggestionReason(x, currentUserContext),
+                ActionableUserId = x.Id.ToString(),
+                IsFollowedByCurrentUser = x.IsFollowedByCurrentUser
+            })
+            .ToArray();
+    }
+
     private static bool MatchesQuery(ExploreTrendSeed item, string query)
     {
         return MatchesSearch(query, item.ContextLabel, item.Title, item.MetricLabel);
@@ -157,9 +240,6 @@ public sealed class ExploreController(
         return tab?.Trim().ToLowerInvariant() switch
         {
             "campus" => "campus",
-            "academic" => "academic",
-            "career" => "career",
-            "events" => "events",
             _ => "for-you"
         };
     }
@@ -200,50 +280,17 @@ public sealed class ExploreController(
     {
         if (requestedTab == "for-you")
         {
-            return primaryTab switch
-            {
-                "academic" => "Akademik - Sana ozel",
-                "career" => "Kariyer - Sana ozel",
-                "events" => "Etkinlikler - Sana ozel",
-                _ => hasUniversityScope ? "Kampus - Sana ozel" : "Platform - Sana ozel"
-            };
+            return hasUniversityScope ? "Kampus - Sana ozel" : "Platform - Sana ozel";
         }
 
-        return primaryTab switch
-        {
-            "academic" => hasUniversityScope
-                ? "Akademik - Universitende gundemde"
-                : "Akademik - Platformda gundemde",
-            "career" => hasUniversityScope
-                ? "Kariyer - Kampuste konusuluyor"
-                : "Kariyer - Platformda konusuluyor",
-            "events" => hasUniversityScope
-                ? "Etkinlikler - Bu hafta yukseliyor"
-                : "Etkinlikler - Platformda yukseliyor",
-            _ => hasUniversityScope
-                ? "Kampus - Universitende gundemde"
-                : "Platformda - Gundemdekiler"
-        };
+        return hasUniversityScope
+            ? "Kampus - Universitende gundemde"
+            : "Platformda - Gundemdekiler";
     }
 
     private static LiveTrendMetadata ClassifyTrend(string title)
     {
         var normalizedTitle = title.Trim().TrimStart('#').ToLowerInvariant();
-
-        if (ContainsAny(normalizedTitle, EventKeywords))
-        {
-            return new LiveTrendMetadata("events", "event", "/events");
-        }
-
-        if (ContainsAny(normalizedTitle, CareerKeywords))
-        {
-            return new LiveTrendMetadata("career", "hashtag", "/");
-        }
-
-        if (ContainsAny(normalizedTitle, AcademicKeywords))
-        {
-            return new LiveTrendMetadata("academic", "hashtag", "/");
-        }
 
         if (ContainsAny(normalizedTitle, DiscountKeywords))
         {
@@ -422,82 +469,82 @@ public sealed class ExploreController(
             "/communities",
             false),
         new(
-            "academic-1",
-            "academic",
+            "campus-4",
+            "campus",
             "hashtag",
-            "Akademik - Universitende gundemde",
+            "Kampus - Universitende gundemde",
             "#finalhaftasi",
             "52 gonderi",
             "/",
             true),
         new(
-            "academic-2",
-            "academic",
+            "campus-5",
+            "campus",
             "hashtag",
-            "Akademik - Duyurularda one cikiyor",
+            "Kampus - Gundemdekiler",
             "#bitirmeprojesunumlari",
             "9 guncel paylasim",
             "/",
             true),
         new(
-            "academic-3",
-            "academic",
+            "campus-6",
+            "campus",
             "hashtag",
-            "Akademik - Son 24 saatte hizlandi",
+            "Kampus - Son 24 saatte hizlandi",
             "#labtelafisi",
             "17 gonderi",
             "/",
             false),
         new(
-            "career-1",
-            "career",
+            "campus-7",
+            "campus",
             "hashtag",
-            "Kariyer - Kampuste konusuluyor",
+            "Kampus - Gundemdekiler",
             "#yazstaji2026",
             "29 gonderi",
             "/",
             true),
         new(
-            "career-2",
-            "career",
+            "campus-8",
+            "campus",
             "hashtag",
-            "Kariyer - Bu hafta one cikiyor",
+            "Kampus - Bu hafta one cikiyor",
             "#kariyergunleri",
             "13 yeni paylasim",
-            "/events",
+            "/",
             true),
         new(
-            "career-3",
-            "career",
+            "campus-9",
+            "campus",
             "discount",
-            "Kariyer - Ogrenci firsati",
+            "Kampus - Ogrenci firsati",
             "#cvbaskiindirimi",
             "6 paylasim",
             "/market?tab=discounts",
             false),
         new(
-            "events-1",
-            "events",
+            "campus-10",
+            "campus",
             "event",
-            "Etkinlikler - Bu hafta yukseliyor",
+            "Kampus - Bu hafta yukseliyor",
             "#ieeeworkshop",
             "21 gonderi",
             "/events",
             true),
         new(
-            "events-2",
-            "events",
+            "campus-11",
+            "campus",
             "event",
-            "Etkinlikler - Kayitlar acildi",
+            "Kampus - Kayitlar acildi",
             "#acikhavafilmgecesi",
             "84 katilim goruntulendi",
             "/events",
             true),
         new(
-            "events-3",
-            "events",
+            "campus-12",
+            "campus",
             "event",
-            "Etkinlikler - Kampuste konusuluyor",
+            "Kampus - Gundemdekiler",
             "#kariyerzirvesi",
             "18 gonderi",
             "/events",
@@ -511,22 +558,31 @@ public sealed class ExploreController(
             "IEEE Ogrenci Kulubu",
             "@ieeerteu",
             "IEEEKulubu",
+            null,
             "/communities",
-            "Takip et"),
+            "Incele",
+            "Toplulugu kesfet",
+            null),
         new(
             "suggestion-2",
             "Kariyer Merkezi",
             "@kariyermerkezi",
             "KariyerMerkezi",
+            null,
             "/events",
-            "Takip et"),
+            "Incele",
+            "Etkinlikleri gor",
+            null),
         new(
             "suggestion-3",
             "Kampus Duyurular",
             "@kampusduyurular",
             "KampusDuyurular",
+            null,
             "/",
-            "Takip et")
+            "Incele",
+            "Gundeme don",
+            null)
     ];
 
     private sealed record ExploreTrendSeed(
@@ -544,8 +600,26 @@ public sealed class ExploreController(
         string Name,
         string Handle,
         string AvatarSeed,
+        string? AvatarUrl,
         string TargetPath,
-        string CtaLabel);
+        string CtaLabel,
+        string? ReasonLabel,
+        string? ActionableUserId);
+
+    private sealed record CurrentUserSuggestionContext(
+        Guid? UniversityId,
+        string? Department);
+
+    private sealed record FollowSuggestionCandidate(
+        Guid Id,
+        string FullName,
+        string? AvatarUrl,
+        string? Department,
+        Guid? UniversityId,
+        string? UniversityName,
+        bool IsFollowedByCurrentUser,
+        int MutualGroupCount,
+        int RecentPersonalPostCount);
 
     private sealed record LiveTrendMetadata(
         string PrimaryTab,
@@ -558,52 +632,6 @@ public sealed class ExploreController(
     {
         public static CachedLiveTrendData Empty { get; } = new(false, []);
     }
-
-    private static readonly string[] AcademicKeywords =
-    [
-        "final",
-        "vize",
-        "sinav",
-        "quiz",
-        "but",
-        "tez",
-        "proje",
-        "sunum",
-        "lab",
-        "odev",
-        "ders",
-        "studyjam"
-    ];
-
-    private static readonly string[] CareerKeywords =
-    [
-        "kariyer",
-        "staj",
-        "cv",
-        "mulakat",
-        "intern",
-        "linkedin",
-        "network",
-        "portfolyo",
-        "portfolio",
-        "mentor"
-    ];
-
-    private static readonly string[] EventKeywords =
-    [
-        "workshop",
-        "etkinlik",
-        "seminer",
-        "hackathon",
-        "zirve",
-        "summit",
-        "meetup",
-        "bulusma",
-        "film",
-        "konser",
-        "atolye",
-        "festival"
-    ];
 
     private static readonly string[] DiscountKeywords =
     [
@@ -622,4 +650,38 @@ public sealed class ExploreController(
         "community",
         "ieee"
     ];
+
+    private static string BuildFollowSuggestionReason(
+        FollowSuggestionCandidate suggestion,
+        CurrentUserSuggestionContext currentUser)
+    {
+        if (suggestion.MutualGroupCount > 0)
+        {
+            return $"{suggestion.MutualGroupCount} ortak topluluk";
+        }
+
+        if (suggestion.UniversityId == currentUser.UniversityId && currentUser.UniversityId.HasValue)
+        {
+            return "Ayni universiteden";
+        }
+
+        if (!string.IsNullOrWhiteSpace(suggestion.Department) &&
+            string.Equals(suggestion.Department, currentUser.Department, StringComparison.OrdinalIgnoreCase))
+        {
+            return "Benzer bolum ilgisi";
+        }
+
+        if (suggestion.RecentPersonalPostCount > 0)
+        {
+            return "Son gunlerde aktif";
+        }
+
+        return "Kesfet icin oneriliyor";
+    }
+
+    private static string BuildHandle(string fullName)
+    {
+        var simplified = SimplifySearchText(fullName).Replace(" ", string.Empty);
+        return string.IsNullOrWhiteSpace(simplified) ? "educonnect" : simplified;
+    }
 }

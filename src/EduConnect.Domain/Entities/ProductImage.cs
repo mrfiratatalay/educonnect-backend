@@ -10,5 +10,7 @@ public sealed class ProductImage : AuditableEntity
 
     public int SortOrder { get; set; }
 
+    public string? EmbeddingJson { get; set; }
+
     public Product Product { get; set; } = null!;
 }

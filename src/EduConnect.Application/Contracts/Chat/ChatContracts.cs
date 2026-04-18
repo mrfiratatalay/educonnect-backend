@@ -9,6 +9,20 @@ public sealed class ChatbotReply
     public string? IntentDetected { get; init; }
 
     public double? Confidence { get; init; }
+
+    public string? ConfidenceBand { get; init; }
+
+    public bool NeedsReview { get; init; }
+
+    public string? ModelUsed { get; init; }
+
+    public double? KbScore { get; init; }
+
+    public bool KbHit { get; init; }
+
+    public bool IsFallback { get; init; }
+
+    public long LatencyMs { get; init; }
 }
 
 public sealed class ChatSessionStartedResponse
@@ -48,5 +62,23 @@ public sealed class ChatMessageResponse
 
     public double? Confidence { get; init; }
 
+    public string? ConfidenceBand { get; init; }
+
+    public bool NeedsReview { get; init; }
+
+    public string? ModelUsed { get; init; }
+
+    public double? KbScore { get; init; }
+
+    public bool? KbHit { get; init; }
+
+    public bool? IsFallback { get; init; }
+
+    public long? LatencyMs { get; init; }
+
     public DateTime TimestampUtc { get; init; }
+
+    public bool? HasFeedback { get; init; }
+
+    public bool? FeedbackIsHelpful { get; init; }
 }
