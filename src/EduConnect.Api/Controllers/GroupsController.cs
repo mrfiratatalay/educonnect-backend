@@ -37,6 +37,38 @@ public sealed class GroupsController(
         return Ok(groups.Select(x => x.ToResponse(currentUserService.UserId)).ToArray());
     }
 
+    [HttpPost("upload-avatar")]
+    [Consumes("multipart/form-data")]
+    public async Task<ActionResult<UploadImageResponse>> UploadAvatar(
+        [FromForm(Name = "file")] IFormFile file,
+        [FromServices] IUserAvatarStorageService storageService,
+        CancellationToken cancellationToken)
+    {
+        var userId = currentUserService.UserId;
+        if (userId is null) return Unauthorized();
+        if (file is null) return BadRequest(new { message = "Dosya bulunamadi." });
+
+        await using var stream = file.OpenReadStream();
+        var url = await storageService.SaveAvatarAsync(userId.Value, stream, file.FileName, file.ContentType, cancellationToken);
+        return Ok(new UploadImageResponse(url));
+    }
+
+    [HttpPost("upload-banner")]
+    [Consumes("multipart/form-data")]
+    public async Task<ActionResult<UploadImageResponse>> UploadBanner(
+        [FromForm(Name = "file")] IFormFile file,
+        [FromServices] IUserAvatarStorageService storageService,
+        CancellationToken cancellationToken)
+    {
+        var userId = currentUserService.UserId;
+        if (userId is null) return Unauthorized();
+        if (file is null) return BadRequest(new { message = "Dosya bulunamadi." });
+
+        await using var stream = file.OpenReadStream();
+        var url = await storageService.SaveCoverAsync(userId.Value, stream, file.FileName, file.ContentType, cancellationToken);
+        return Ok(new UploadImageResponse(url));
+    }
+
     [HttpPost]
     public async Task<ActionResult<GroupResponse>> Create([FromBody] CreateGroupRequest request, CancellationToken cancellationToken)
     {
@@ -710,3 +742,5 @@ public sealed class GroupsController(
             ?.Role;
     }
 }
+
+public sealed record UploadImageResponse(string Url);
