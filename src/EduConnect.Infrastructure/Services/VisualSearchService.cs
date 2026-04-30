@@ -13,6 +13,7 @@ public sealed class VisualSearchService(
     IGeminiApiService geminiApiService,
     IVisionEmbeddingService visionEmbeddingService,
     AppDbContext dbContext,
+    IHttpClientFactory httpClientFactory,
     ILogger<VisualSearchService> logger) : IVisualSearchService
 {
     private const string VisualSearchPrompt =
@@ -21,8 +22,8 @@ public sealed class VisualSearchService(
         "{\"productName\":\"...\",\"categoryLabel\":\"Elektronik|Ders Kitaplari|Kirtasiye|Etkinlik Biletleri|Diger\"," +
         "\"keywords\":[\"kw1\",\"kw2\",\"kw3\"],\"description\":\"...\",\"estimatedPriceRange\":\"...\",\"conditionLabel\":\"Sifir|Yeni gibi|Iyi|Orta\"}";
 
-    private const double EmbeddingWeight = 0.35;
-    private const double HeuristicWeight = 0.65;
+    private const double EmbeddingWeight = 0.55;
+    private const double HeuristicWeight = 0.45;
 
     private static readonly JsonSerializerOptions JsonOptions = new() { PropertyNameCaseInsensitive = true };
 
@@ -84,23 +85,37 @@ public sealed class VisualSearchService(
 
         var scoredResults = candidates.Select((product, index) =>
         {
-            var heuristicScore = ComputeHeuristicScore(product, analysis, keywordTerms, targetPrice);
+            var scoreParts = ComputeScoreParts(product, analysis, keywordTerms, targetPrice);
+            var heuristicScore = scoreParts.HeuristicScore;
             var embeddingScore = embeddingScores.Count > index ? embeddingScores.ElementAt(index) : 0.0;
 
-            var totalScore = queryEmbedding.Features.Count > 0
+            var hasProductEmbedding = embeddingScore > 0;
+            var totalScore = queryEmbedding.Features.Count > 0 && hasProductEmbedding
                 ? (heuristicScore * HeuristicWeight) + (embeddingScore * EmbeddingWeight)
                 : heuristicScore;
 
             var signals = BuildMatchedSignals(product, analysis, keywordTerms, heuristicScore, embeddingScore);
             var breakdown = BuildBreakdown(product, analysis, keywordTerms, targetPrice, embeddingScore);
 
-            return new { Product = product, Score = totalScore, Signals = signals, Breakdown = breakdown };
+            return new
+            {
+                Product = product,
+                Score = totalScore,
+                scoreParts.TextScore,
+                EmbeddingScore = embeddingScore,
+                Signals = signals,
+                Breakdown = breakdown
+            };
         }).OrderByDescending(r => r.Score).ToList();
 
-        var threshold = searchMode == "discovery" ? 0.24 : 0.34;
-        var shortlisted = scoredResults.Where(r => r.Score >= threshold).Take(request.MaxResults).ToList();
+        var threshold = searchMode == "discovery" ? 0.32 : 0.42;
+        var shortlisted = scoredResults
+            .Where(r => r.Score >= threshold)
+            .Where(r => searchMode == "discovery" || r.EmbeddingScore >= 0.55 || r.TextScore >= 0.08)
+            .Take(request.MaxResults)
+            .ToList();
 
-        if (shortlisted.Count == 0)
+        if (shortlisted.Count == 0 && searchMode == "discovery")
             shortlisted = scoredResults.Take(request.MaxResults).ToList();
 
         return shortlisted.Select((r, i) => new VisualSearchResultResponse
@@ -110,7 +125,7 @@ public sealed class VisualSearchService(
             Description = r.Product.Description,
             Price = r.Product.Price,
             ImageUrl = r.Product.Images.OrderBy(img => img.SortOrder).Select(img => img.Url).FirstOrDefault(),
-            CategoryLabel = r.Product.Category?.Name ?? "Diger",
+            CategoryLabel = r.Product.Category?.Name ?? "Diğer",
             SellerName = r.Product.Seller.FullName,
             Condition = r.Product.Condition,
             ConditionLabel = VisualSearchScoringHelper.GetConditionLabel(r.Product.Condition),
@@ -133,7 +148,13 @@ public sealed class VisualSearchService(
         foreach (var product in candidates)
         {
             var primaryImage = product.Images.OrderBy(img => img.SortOrder).FirstOrDefault();
-            if (primaryImage?.EmbeddingJson is not null)
+            if (primaryImage is null)
+            {
+                candidateFeatures.Add([]);
+                continue;
+            }
+
+            if (primaryImage.EmbeddingJson is not null)
             {
                 try
                 {
@@ -143,7 +164,8 @@ public sealed class VisualSearchService(
                 }
                 catch { /* fall through */ }
             }
-            candidateFeatures.Add([]);
+
+            candidateFeatures.Add(await ExtractCandidateImageFeaturesAsync(primaryImage, cancellationToken));
         }
 
         if (candidateFeatures.All(f => f.Count == 0)) return [];
@@ -160,7 +182,34 @@ public sealed class VisualSearchService(
         }
     }
 
-    private static double ComputeHeuristicScore(
+    private async Task<IReadOnlyCollection<double>> ExtractCandidateImageFeaturesAsync(
+        ProductImage image,
+        CancellationToken cancellationToken)
+    {
+        try
+        {
+            using var httpClient = httpClientFactory.CreateClient();
+            var imageBytes = await httpClient.GetByteArrayAsync(image.Url, cancellationToken);
+            var result = await visionEmbeddingService.ExtractFeaturesAsync(imageBytes, cancellationToken);
+            if (result.Features.Count > 0)
+            {
+                var embeddingJson = JsonSerializer.Serialize(result.Features);
+                await dbContext.ProductImages
+                    .Where(productImage => productImage.Id == image.Id)
+                    .ExecuteUpdateAsync(
+                        setters => setters.SetProperty(productImage => productImage.EmbeddingJson, embeddingJson),
+                        cancellationToken);
+            }
+            return result.Features;
+        }
+        catch (Exception ex)
+        {
+            logger.LogWarning(ex, "Failed to extract on-demand visual embedding for product image {ImageId}", image.Id);
+            return [];
+        }
+    }
+
+    private static ScoreParts ComputeScoreParts(
         Product product, VisualSearchAnalysis analysis,
         IReadOnlyCollection<string> keywordTerms, decimal? targetPrice)
     {
@@ -173,9 +222,12 @@ public sealed class VisualSearchService(
         var textScore = VisualSearchScoringHelper.GetTextScore(title, desc, keywordTerms, nameTokens);
         var conditionScore = VisualSearchScoringHelper.GetConditionScore(product.Condition, analysis.ConditionLabel);
         var priceScore = VisualSearchScoringHelper.GetPriceScore(product.Price, targetPrice);
+        var heuristicScore = (textScore * 0.4) + (categoryScore * 0.3) + (conditionScore * 0.15) + (priceScore * 0.15);
 
-        return (textScore * 0.4) + (categoryScore * 0.3) + (conditionScore * 0.15) + (priceScore * 0.15);
+        return new ScoreParts(heuristicScore, textScore);
     }
+
+    private sealed record ScoreParts(double HeuristicScore, double TextScore);
 
     private static IReadOnlyCollection<string> BuildMatchedSignals(
         Product product, VisualSearchAnalysis analysis,
@@ -195,10 +247,10 @@ public sealed class VisualSearchService(
             signals.Add(VisualSearchScoringHelper.ToTitleCase(matchedKw));
 
         if (embeddingScore >= 0.7)
-            signals.Add("Gorsel benzerlik");
+            signals.Add("Görsel benzerlik");
 
         if (signals.Count == 0)
-            signals.Add("Benzer urun");
+            signals.Add("Benzer ürün");
 
         return signals.Distinct(StringComparer.OrdinalIgnoreCase).Take(3).ToArray();
     }
@@ -221,7 +273,7 @@ public sealed class VisualSearchService(
         };
 
         if (embeddingScore > 0)
-            items.Add(new VisualSearchBreakdownItem { Label = "Gorsel", Value = (int)Math.Round(embeddingScore * 100) });
+            items.Add(new VisualSearchBreakdownItem { Label = "Görsel", Value = (int)Math.Round(embeddingScore * 100) });
 
         return items;
     }
@@ -246,10 +298,10 @@ public sealed class VisualSearchService(
                 .Distinct(StringComparer.OrdinalIgnoreCase).Take(6).ToList();
 
             if (string.IsNullOrWhiteSpace(a.ProductName))
-                a.ProductName = "Bilinmeyen urun";
+                a.ProductName = "Bilinmeyen ürün";
 
             if (string.IsNullOrWhiteSpace(a.Description))
-                a.Description = "Gorselden otomatik olarak cikarilan bilgi sinirli.";
+                a.Description = "Görselden otomatik olarak çıkarılan bilgi sınırlı.";
 
             if (string.IsNullOrWhiteSpace(a.EstimatedPriceRange))
                 a.EstimatedPriceRange = "Belirsiz";
@@ -259,7 +311,7 @@ public sealed class VisualSearchService(
         catch (JsonException ex)
         {
             logger.LogWarning(ex, "Gemini JSON parse failed during visual search analysis");
-            return CreateFallbackAnalysis("Gorsel analiz sonucu islenemedi.");
+            return CreateFallbackAnalysis("Görsel analiz sonucu işlenemedi.");
         }
         catch (OperationCanceledException)
         {
@@ -268,16 +320,16 @@ public sealed class VisualSearchService(
         catch (Exception ex)
         {
             logger.LogWarning(ex, "Visual search image analysis failed, falling back to heuristic-only search");
-            return CreateFallbackAnalysis("Gorsel analiz servisine gecici olarak ulasilamadi.");
+            return CreateFallbackAnalysis("Görsel analiz servisine geçici olarak ulaşılamadı.");
         }
     }
 
     private static VisualSearchAnalysis CreateFallbackAnalysis(string description) => new()
     {
-        ProductName = "Bilinmeyen urun",
-        CategoryLabel = "Diger",
+        ProductName = "Bilinmeyen ürün",
+        CategoryLabel = "Diğer",
         Description = description,
-        ConditionLabel = "Iyi",
+        ConditionLabel = "İyi",
         EstimatedPriceRange = "Belirsiz",
         Keywords = []
     };
@@ -304,7 +356,7 @@ public sealed class VisualSearchService(
     private static int CalculateConfidence(VisualSearchAnalysis analysis, IReadOnlyCollection<VisualSearchResultResponse> results)
     {
         var confidence = 55;
-        if (!string.IsNullOrWhiteSpace(analysis.CategoryLabel) && analysis.CategoryLabel != "Diger") confidence += 10;
+        if (!string.IsNullOrWhiteSpace(analysis.CategoryLabel) && analysis.CategoryLabel != "Diğer") confidence += 10;
         confidence += Math.Min(analysis.Keywords.Count * 4, 16);
         if (results.Count > 0) confidence += (int)Math.Round(results.Take(3).Average(r => r.SimilarityScore) * 20);
         return Math.Clamp(confidence, 55, 96);

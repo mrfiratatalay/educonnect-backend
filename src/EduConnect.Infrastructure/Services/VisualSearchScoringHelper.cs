@@ -84,26 +84,26 @@ internal static partial class VisualSearchScoringHelper
     {
         var n = NormalizeForSearch(category);
         if (n.Contains("elektronik", StringComparison.Ordinal)) return "Elektronik";
-        if (n.Contains("kitap", StringComparison.Ordinal) || n.Contains("ders materyal", StringComparison.Ordinal)) return "Ders Kitaplari";
-        if (n.Contains("kirtasiye", StringComparison.Ordinal)) return "Kirtasiye";
+        if (n.Contains("kitap", StringComparison.Ordinal) || n.Contains("ders materyal", StringComparison.Ordinal)) return "Ders Kitapları";
+        if (n.Contains("kirtasiye", StringComparison.Ordinal)) return "Kırtasiye";
         if (n.Contains("etkinlik", StringComparison.Ordinal) || n.Contains("bilet", StringComparison.Ordinal)) return "Etkinlik Biletleri";
-        return string.IsNullOrWhiteSpace(category) ? "Diger" : category.Trim();
+        return string.IsNullOrWhiteSpace(category) ? "Diğer" : category.Trim();
     }
 
     internal static string NormalizeConditionLabel(string condition) => ParseCondition(condition) switch
     {
-        ProductCondition.New => "Sifir",
+        ProductCondition.New => "Sıfır",
         ProductCondition.LikeNew => "Yeni gibi",
-        ProductCondition.Good => "Iyi",
+        ProductCondition.Good => "İyi",
         ProductCondition.Fair => "Orta",
-        _ => string.IsNullOrWhiteSpace(condition) ? "Iyi" : condition.Trim()
+        _ => string.IsNullOrWhiteSpace(condition) ? "İyi" : condition.Trim()
     };
 
     internal static string GetConditionLabel(ProductCondition condition) => condition switch
     {
-        ProductCondition.New => "Sifir",
+        ProductCondition.New => "Sıfır",
         ProductCondition.LikeNew => "Yeni gibi",
-        ProductCondition.Good => "Iyi",
+        ProductCondition.Good => "İyi",
         ProductCondition.Fair => "Orta",
         _ => "Bilinmiyor"
     };
