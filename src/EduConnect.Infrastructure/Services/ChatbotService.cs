@@ -27,30 +27,51 @@ public sealed class ChatbotService(
         try
         {
             var nlpResult = await nlpService.ClassifyAsync(message, cancellationToken);
-
-            var enrichedPrompt = BuildEnrichedPrompt(message, nlpResult);
-            var aiResponse = await geminiApiService.GenerateTextAsync(
-                enrichedPrompt, conversationHistory, cancellationToken);
-            aiResponse = NormalizeResponseLinks(aiResponse);
-
-            stopwatch.Stop();
-
             var kbHit = nlpResult.KbAnswer is not null && nlpResult.KbAnswer.Score >= GroundedKbThreshold;
             var isFallback = nlpResult.ModelUsed is "keyword-fallback" or "fallback" or "hybrid-fallback";
 
-            return new ChatbotReply
+            try
             {
-                Content = aiResponse,
-                IntentDetected = nlpResult.Intent,
-                Confidence = nlpResult.Confidence,
-                ConfidenceBand = nlpResult.ConfidenceBand,
-                NeedsReview = nlpResult.NeedsReview,
-                ModelUsed = nlpResult.ModelUsed,
-                KbScore = nlpResult.KbAnswer?.Score,
-                KbHit = kbHit,
-                IsFallback = isFallback,
-                LatencyMs = stopwatch.ElapsedMilliseconds,
-            };
+                var enrichedPrompt = BuildEnrichedPrompt(message, nlpResult);
+                var aiResponse = await geminiApiService.GenerateTextAsync(
+                    enrichedPrompt, conversationHistory, cancellationToken);
+                aiResponse = NormalizeResponseLinks(aiResponse);
+
+                stopwatch.Stop();
+
+                return new ChatbotReply
+                {
+                    Content = aiResponse,
+                    IntentDetected = nlpResult.Intent,
+                    Confidence = nlpResult.Confidence,
+                    ConfidenceBand = nlpResult.ConfidenceBand,
+                    NeedsReview = nlpResult.NeedsReview,
+                    ModelUsed = nlpResult.ModelUsed,
+                    KbScore = nlpResult.KbAnswer?.Score,
+                    KbHit = kbHit,
+                    IsFallback = isFallback,
+                    LatencyMs = stopwatch.ElapsedMilliseconds,
+                };
+            }
+            catch (Exception ex) when (ex is not OperationCanceledException)
+            {
+                logger.LogWarning(ex, "Gemini generation failed; using local NLP/KB response");
+                stopwatch.Stop();
+
+                return new ChatbotReply
+                {
+                    Content = BuildLocalResponse(nlpResult),
+                    IntentDetected = nlpResult.Intent,
+                    Confidence = nlpResult.Confidence,
+                    ConfidenceBand = nlpResult.ConfidenceBand,
+                    NeedsReview = nlpResult.NeedsReview,
+                    ModelUsed = kbHit ? $"{nlpResult.ModelUsed}+local-kb" : $"{nlpResult.ModelUsed}+local-fallback",
+                    KbScore = nlpResult.KbAnswer?.Score,
+                    KbHit = kbHit,
+                    IsFallback = !kbHit || isFallback,
+                    LatencyMs = stopwatch.ElapsedMilliseconds,
+                };
+            }
         }
         catch (Exception ex)
         {
@@ -70,6 +91,36 @@ public sealed class ChatbotService(
                 LatencyMs = stopwatch.ElapsedMilliseconds,
             };
         }
+    }
+
+    private string BuildLocalResponse(NlpClassifyResult nlpResult)
+    {
+        if (IsGrounded(nlpResult))
+        {
+            var kb = nlpResult.KbAnswer!;
+            var response = kb.Answer.Trim();
+
+            if (kb.TimeSensitive)
+            {
+                response += "\n\nBu bilgi zamanla değişebilir; kesin tarih, ücret veya başvuru süreci için resmî kaynağı kontrol etmen daha güvenli olur.";
+            }
+
+            if (!string.IsNullOrWhiteSpace(kb.SourceUrl))
+            {
+                response += $"\n\nKaynak: {kb.SourceUrl}";
+            }
+
+            return NormalizeResponseLinks(response);
+        }
+
+        if (nlpResult.KbAnswer is not null)
+        {
+            return NormalizeResponseLinks(
+                "Bu konuda bilgi tabanında zayıf bir eşleşme buldum; kesin bilgi vermem doğru olmaz. " +
+                "İlgili resmî birimden veya üniversitenin duyuru sayfalarından kontrol etmen daha güvenli olur.");
+        }
+
+        return "Şu an yapay zekâ metin üretimi geçici olarak kullanılamıyor. Sorunu daha net yanıtlayabilmem için biraz sonra tekrar deneyebilirsin.";
     }
 
     private string BuildEnrichedPrompt(string originalMessage, NlpClassifyResult nlpResult)
