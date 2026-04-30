@@ -28,9 +28,6 @@ nlp-service/**/__pycache__/
 .mypy_cache/
 .ruff_cache/
 
-# Trained model artifacts
-nlp-service/models/**/*.safetensors
-
 # -----------------------------
 # Generated uploads / local files
 # -----------------------------
