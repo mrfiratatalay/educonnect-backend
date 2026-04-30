@@ -13,5 +13,6 @@ PROD:
 Model:
 - nlp-service\models\intent_classifier\model.safetensors Git LFS ile gelir.
 - Clone sonrasi model pointer kalirsa NLP scriptleri git lfs pull dener.
-- Git LFS yoksa veya indirme basarisizsa MODEL_URL tanimlanabilir:
+- Git LFS yoksa script winget ile Git LFS kurmayi dener, sonra git lfs pull calistirir.
+- Otomatik kurulum/indirme basarisizsa MODEL_URL tanimlanabilir:
   setx MODEL_URL "https://.../model.safetensors"
