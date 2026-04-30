@@ -241,14 +241,14 @@ public sealed class PostsController(
         {
             trends = BuildTrendingHashtagResponses(
                 recentPosts.Where(x => x.UniversityId == currentUserUniversityId.Value),
-                "Universitende - Gundemdekiler",
+                "Üniversitende - Gündemdekiler",
                 limit);
 
             if (trends.Count == 0)
             {
                 trends = BuildTrendingHashtagResponses(
                     recentPosts,
-                    "Platformda - Gundemdekiler",
+                    "Platformda - Gündemdekiler",
                     limit);
             }
         }
@@ -256,7 +256,7 @@ public sealed class PostsController(
         {
             trends = BuildTrendingHashtagResponses(
                 recentPosts,
-                "Platformda - Gundemdekiler",
+                "Platformda - Gündemdekiler",
                 limit);
         }
 
@@ -275,7 +275,7 @@ public sealed class PostsController(
         {
             return BadRequest(new
             {
-                message = "Gecersiz hashtag."
+                message = "Geçersiz hashtag."
             });
         }
 
@@ -399,7 +399,7 @@ public sealed class PostsController(
         {
             return BadRequest(new ValidationProblemDetails(new Dictionary<string, string[]>
             {
-                [nameof(request.Content)] = ["Bir metin yaz veya gorsel ekle."]
+                [nameof(request.Content)] = ["Bir metin yaz veya görsel ekle."]
             }));
         }
 
@@ -423,7 +423,7 @@ public sealed class PostsController(
             {
                 return NotFound(new
                 {
-                    message = "Topluluk bulunamadi."
+                    message = "Topluluk bulunamadı."
                 });
             }
 
@@ -505,7 +505,7 @@ public sealed class PostsController(
         {
             return BadRequest(new ValidationProblemDetails(new Dictionary<string, string[]>
             {
-                [nameof(request.Content)] = ["Bir metin yaz veya gorsel ekle."]
+                [nameof(request.Content)] = ["Bir metin yaz veya görsel ekle."]
             }));
         }
 
@@ -955,7 +955,7 @@ private static IReadOnlyCollection<PostTrendingHashtagResponse> BuildTrendingHas
 
             if (hasMatchingHashtag)
             {
-                return "Ilgi alanina yakin";
+                return "İlgi alanına yakın";
             }
         }
 

@@ -280,12 +280,12 @@ public sealed class ExploreController(
     {
         if (requestedTab == "for-you")
         {
-            return hasUniversityScope ? "Kampus - Sana ozel" : "Platform - Sana ozel";
+            return hasUniversityScope ? "Kampüs - Sana özel" : "Platform - Sana özel";
         }
 
         return hasUniversityScope
-            ? "Kampus - Universitende gundemde"
-            : "Platformda - Gundemdekiler";
+            ? "Kampüs - Üniversitende gündemde"
+            : "Platformda - Gündemdekiler";
     }
 
     private static LiveTrendMetadata ClassifyTrend(string title)
@@ -445,7 +445,7 @@ public sealed class ExploreController(
             "campus-1",
             "campus",
             "hashtag",
-            "Kampus - Universitende gundemde",
+            "Kampüs - Üniversitende gündemde",
             "#kutuphanegeceacik",
             "38 gonderi",
             "/",
@@ -454,7 +454,7 @@ public sealed class ExploreController(
             "campus-2",
             "campus",
             "hashtag",
-            "Kampus - Gunun konusu",
+            "Kampüs - Günün konusu",
             "#yemekhanegundemi",
             "14 yeni paylasim",
             "/",
@@ -463,7 +463,7 @@ public sealed class ExploreController(
             "campus-3",
             "campus",
             "community",
-            "Topluluklar - Kampuste yukseliyor",
+            "Topluluklar - Kampüste yükseliyor",
             "#acikkaynakatolyesi",
             "11 gonderi",
             "/communities",
@@ -472,7 +472,7 @@ public sealed class ExploreController(
             "campus-4",
             "campus",
             "hashtag",
-            "Kampus - Universitende gundemde",
+            "Kampüs - Üniversitende gündemde",
             "#finalhaftasi",
             "52 gonderi",
             "/",
@@ -481,16 +481,16 @@ public sealed class ExploreController(
             "campus-5",
             "campus",
             "hashtag",
-            "Kampus - Gundemdekiler",
+            "Kampüs - Gündemdekiler",
             "#bitirmeprojesunumlari",
-            "9 guncel paylasim",
+            "9 güncel paylaşım",
             "/",
             true),
         new(
             "campus-6",
             "campus",
             "hashtag",
-            "Kampus - Son 24 saatte hizlandi",
+            "Kampüs - Son 24 saatte hızlandı",
             "#labtelafisi",
             "17 gonderi",
             "/",
@@ -499,7 +499,7 @@ public sealed class ExploreController(
             "campus-7",
             "campus",
             "hashtag",
-            "Kampus - Gundemdekiler",
+            "Kampüs - Gündemdekiler",
             "#yazstaji2026",
             "29 gonderi",
             "/",
@@ -508,7 +508,7 @@ public sealed class ExploreController(
             "campus-8",
             "campus",
             "hashtag",
-            "Kampus - Bu hafta one cikiyor",
+            "Kampüs - Bu hafta öne çıkıyor",
             "#kariyergunleri",
             "13 yeni paylasim",
             "/",
@@ -517,7 +517,7 @@ public sealed class ExploreController(
             "campus-9",
             "campus",
             "discount",
-            "Kampus - Ogrenci firsati",
+            "Kampüs - Öğrenci fırsatı",
             "#cvbaskiindirimi",
             "6 paylasim",
             "/market?tab=discounts",
@@ -526,7 +526,7 @@ public sealed class ExploreController(
             "campus-10",
             "campus",
             "event",
-            "Kampus - Bu hafta yukseliyor",
+            "Kampüs - Bu hafta yükseliyor",
             "#ieeeworkshop",
             "21 gonderi",
             "/events",
@@ -535,16 +535,16 @@ public sealed class ExploreController(
             "campus-11",
             "campus",
             "event",
-            "Kampus - Kayitlar acildi",
+            "Kampüs - Kayıtlar açıldı",
             "#acikhavafilmgecesi",
-            "84 katilim goruntulendi",
+            "84 katılım görüntülendi",
             "/events",
             true),
         new(
             "campus-12",
             "campus",
             "event",
-            "Kampus - Gundemdekiler",
+            "Kampüs - Gündemdekiler",
             "#kariyerzirvesi",
             "18 gonderi",
             "/events",
@@ -571,11 +571,11 @@ public sealed class ExploreController(
             null,
             "/events",
             "Incele",
-            "Etkinlikleri gor",
+            "Etkinlikleri gör",
             null),
         new(
             "suggestion-3",
-            "Kampus Duyurular",
+            "Kampüs Duyurular",
             "@kampusduyurular",
             "KampusDuyurular",
             null,
@@ -676,7 +676,7 @@ public sealed class ExploreController(
             return "Son gunlerde aktif";
         }
 
-        return "Kesfet icin oneriliyor";
+        return "Keşfet için öneriliyor";
     }
 
     private static string BuildHandle(string fullName)

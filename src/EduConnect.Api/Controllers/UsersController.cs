@@ -128,7 +128,7 @@ public sealed class UsersController(
 
         if (file is null)
         {
-            return BadRequest(new { message = "Yuklenecek dosya bulunamadi." });
+            return BadRequest(new { message = "Yüklenecek dosya bulunamadı." });
         }
 
         var user = await dbContext.Users
@@ -179,7 +179,7 @@ public sealed class UsersController(
 
         if (file is null)
         {
-            return BadRequest(new { message = "Yuklenecek dosya bulunamadi." });
+            return BadRequest(new { message = "Yüklenecek dosya bulunamadı." });
         }
 
         var user = await dbContext.Users

@@ -48,12 +48,12 @@ public sealed class EventsController(
 
         if (request.EndDateUtc <= request.StartDateUtc)
         {
-            return BadRequest(new { message = "Bitis tarihi baslangic tarihinden sonra olmalidir." });
+            return BadRequest(new { message = "Bitiş tarihi başlangıç tarihinden sonra olmalıdır." });
         }
 
         if (request.GroupId.HasValue && !await dbContext.Groups.AnyAsync(x => x.Id == request.GroupId.Value && x.IsActive, cancellationToken))
         {
-            return BadRequest(new { message = "Secilen grup bulunamadi." });
+            return BadRequest(new { message = "Seçilen grup bulunamadı." });
         }
 
         if (request.GroupId.HasValue)
@@ -65,12 +65,12 @@ public sealed class EventsController(
 
             if (membershipRole is null)
             {
-                return BadRequest(new { message = "Grup etkinligi olusturmak icin once o gruba katilmalisiniz." });
+                return BadRequest(new { message = "Grup etkinliği oluşturmak için önce o gruba katılmalısınız." });
             }
 
             if (membershipRole is not GroupMemberRole.Owner and not GroupMemberRole.Moderator)
             {
-                return BadRequest(new { message = "Grup etkinligi olusturmak icin moderator veya kurucu olmalisiniz." });
+                return BadRequest(new { message = "Grup etkinliği oluşturmak için moderatör veya kurucu olmalısınız." });
             }
         }
 
@@ -115,7 +115,7 @@ public sealed class EventsController(
 
         if (request.EndDateUtc <= request.StartDateUtc)
         {
-            return BadRequest(new { message = "Bitis tarihi baslangic tarihinden sonra olmalidir." });
+            return BadRequest(new { message = "Bitiş tarihi başlangıç tarihinden sonra olmalıdır." });
         }
 
         var entity = await dbContext.Events
@@ -134,7 +134,7 @@ public sealed class EventsController(
 
         if (request.GroupId.HasValue && !await dbContext.Groups.AnyAsync(x => x.Id == request.GroupId.Value && x.IsActive, cancellationToken))
         {
-            return BadRequest(new { message = "Secilen grup bulunamadi." });
+            return BadRequest(new { message = "Seçilen grup bulunamadı." });
         }
 
         if (request.GroupId.HasValue)
@@ -146,12 +146,12 @@ public sealed class EventsController(
 
             if (membershipRole is null)
             {
-                return BadRequest(new { message = "Grup etkinligi guncellemek icin once o gruba katilmalisiniz." });
+                return BadRequest(new { message = "Grup etkinliği güncellemek için önce o gruba katılmalısınız." });
             }
 
             if (membershipRole is not GroupMemberRole.Owner and not GroupMemberRole.Moderator)
             {
-                return BadRequest(new { message = "Grup etkinligi guncellemek icin moderator veya kurucu olmalisiniz." });
+                return BadRequest(new { message = "Grup etkinliği güncellemek için moderatör veya kurucu olmalısınız." });
             }
         }
 
@@ -232,7 +232,7 @@ public sealed class EventsController(
 
         if (existingParticipant?.Status == EventParticipantStatus.Registered)
         {
-            return BadRequest(new { message = "Etkinlige zaten kayitlisiniz." });
+            return BadRequest(new { message = "Etkinliğe zaten kayıtlısınız." });
         }
 
         var activeParticipantCount = entity.Participants.Count(x => x.Status == EventParticipantStatus.Registered);
@@ -264,7 +264,7 @@ public sealed class EventsController(
             {
                 UserId = entity.CreatorUserId,
                 Title = $"{actorName} etkinligine katildi",
-                Message = $"\"{entity.Title}\" icin yeni bir katilimci var.",
+                Message = $"\"{entity.Title}\" için yeni bir katılımcı var.",
                 Type = NotificationType.Event,
                 TargetPath = "/events"
             };

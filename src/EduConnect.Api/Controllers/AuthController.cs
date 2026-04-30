@@ -71,7 +71,7 @@ public sealed class AuthController(
 
         return Ok(new
         {
-            message = "Eger kullanici mevcutsa sifre sifirlama islemi baslatilmistir."
+            message = "Eğer kullanıcı mevcutsa şifre sıfırlama işlemi başlatılmıştır."
         });
     }
 

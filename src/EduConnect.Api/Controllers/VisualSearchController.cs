@@ -48,7 +48,7 @@ public sealed class VisualSearchController(
         if (request.CategoryId.HasValue &&
             !await dbContext.Categories.AnyAsync(category => category.Id == request.CategoryId.Value, cancellationToken))
         {
-            return BadRequest(new { message = "Kategori bulunamadi." });
+            return BadRequest(new { message = "Kategori bulunamadı." });
         }
 
         await using var ms = new MemoryStream();

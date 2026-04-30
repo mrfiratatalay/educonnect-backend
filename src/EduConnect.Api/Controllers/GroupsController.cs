@@ -46,7 +46,7 @@ public sealed class GroupsController(
     {
         var userId = currentUserService.UserId;
         if (userId is null) return Unauthorized();
-        if (file is null) return BadRequest(new { message = "Dosya bulunamadi." });
+        if (file is null) return BadRequest(new { message = "Dosya bulunamadı." });
 
         await using var stream = file.OpenReadStream();
         var url = await storageService.SaveAvatarAsync(userId.Value, stream, file.FileName, file.ContentType, cancellationToken);
@@ -62,7 +62,7 @@ public sealed class GroupsController(
     {
         var userId = currentUserService.UserId;
         if (userId is null) return Unauthorized();
-        if (file is null) return BadRequest(new { message = "Dosya bulunamadi." });
+        if (file is null) return BadRequest(new { message = "Dosya bulunamadı." });
 
         await using var stream = file.OpenReadStream();
         var url = await storageService.SaveCoverAsync(userId.Value, stream, file.FileName, file.ContentType, cancellationToken);
@@ -574,12 +574,12 @@ public sealed class GroupsController(
 
         if (targetMembership.UserId == currentUserId.Value)
         {
-            return BadRequest(new { message = "Kendinizi topluluktan cikarmazsiniz." });
+            return BadRequest(new { message = "Kendinizi topluluktan çıkaramazsınız." });
         }
 
         if (targetMembership.Role == GroupMemberRole.Owner)
         {
-            return BadRequest(new { message = "Topluluk sahibi topluluktan cikarilamaz." });
+            return BadRequest(new { message = "Topluluk sahibi topluluktan çıkarılamaz." });
         }
 
         if (actorMembership.Role == GroupMemberRole.Moderator && targetMembership.Role != GroupMemberRole.Member)

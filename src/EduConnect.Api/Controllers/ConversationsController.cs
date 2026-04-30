@@ -151,7 +151,7 @@ public sealed class ConversationsController(
         var otherExists = await dbContext.Users.AnyAsync(x => x.Id == otherId && x.IsActive, cancellationToken);
         if (!otherExists)
         {
-            return NotFound(new { message = "Kullanici bulunamadi." });
+            return NotFound(new { message = "Kullanıcı bulunamadı." });
         }
 
         OrderPair(userId.Value, otherId, out var lower, out var higher);
