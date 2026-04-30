@@ -1,0 +1,17 @@
+Backend repo icindeki scriptler:
+
+DEV:
+- scripts\dev\start-all-dev.bat
+- Backend, frontend ve NLP/Vision servislerini ayri pencerelerde acar.
+- Frontend sibling klasoru olarak once frontend, sonra TEZ-Frontend aranir.
+- ResNet-50 gorsel arama modeli NLP/Vision servisinin icindedir; ayri ResNet komutu yoktur.
+
+PROD:
+- scripts\prod\start-all-prod.bat
+- Temiz backend/frontend build alir ve NLP/Vision servisini acar.
+
+Model:
+- nlp-service\models\intent_classifier\model.safetensors Git LFS ile gelir.
+- Clone sonrasi model pointer kalirsa NLP scriptleri git lfs pull dener.
+- Git LFS yoksa veya indirme basarisizsa MODEL_URL tanimlanabilir:
+  setx MODEL_URL "https://.../model.safetensors"
