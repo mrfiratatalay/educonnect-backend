@@ -59,7 +59,7 @@ public sealed class ChatbotService(
 
             return new ChatbotReply
             {
-                Content = "Uzgunum, su an yanit uretilirken bir sorun olustu. Lutfen biraz sonra tekrar dene.",
+                Content = "Üzgünüm, şu an yanıt üretilirken bir sorun oluştu. Lütfen biraz sonra tekrar dene.",
                 IntentDetected = "Error",
                 Confidence = 0,
                 ConfidenceBand = "low",
