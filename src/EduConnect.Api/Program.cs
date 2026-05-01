@@ -103,6 +103,8 @@ builder.Services.AddRateLimiter(options =>
 
 builder.Services.AddSwaggerGen(options =>
 {
+    const string bearerSchemeName = "Bearer";
+
     options.SwaggerDoc("v1", new OpenApiInfo
     {
         Title = "EduConnect API",
@@ -116,11 +118,15 @@ builder.Services.AddSwaggerGen(options =>
         Name = "Authorization",
         In = ParameterLocation.Header,
         Type = SecuritySchemeType.Http,
-        Scheme = JwtBearerDefaults.AuthenticationScheme,
+        Scheme = "bearer",
         Description = "Bearer token kullanin."
     };
 
-    options.AddSecurityDefinition(JwtBearerDefaults.AuthenticationScheme, jwtSecurityScheme);
+    options.AddSecurityDefinition(bearerSchemeName, jwtSecurityScheme);
+    options.AddSecurityRequirement(document => new OpenApiSecurityRequirement
+    {
+        [new OpenApiSecuritySchemeReference(bearerSchemeName, document, null)] = []
+    });
 });
 
 var app = builder.Build();

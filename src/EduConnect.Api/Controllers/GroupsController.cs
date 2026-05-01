@@ -40,12 +40,13 @@ public sealed class GroupsController(
     [HttpPost("upload-avatar")]
     [Consumes("multipart/form-data")]
     public async Task<ActionResult<UploadImageResponse>> UploadAvatar(
-        [FromForm(Name = "file")] IFormFile file,
+        [FromForm] GroupImageUploadFormRequest request,
         [FromServices] IUserAvatarStorageService storageService,
         CancellationToken cancellationToken)
     {
         var userId = currentUserService.UserId;
         if (userId is null) return Unauthorized();
+        var file = request.File;
         if (file is null) return BadRequest(new { message = "Dosya bulunamadı." });
 
         await using var stream = file.OpenReadStream();
@@ -56,12 +57,13 @@ public sealed class GroupsController(
     [HttpPost("upload-banner")]
     [Consumes("multipart/form-data")]
     public async Task<ActionResult<UploadImageResponse>> UploadBanner(
-        [FromForm(Name = "file")] IFormFile file,
+        [FromForm] GroupImageUploadFormRequest request,
         [FromServices] IUserAvatarStorageService storageService,
         CancellationToken cancellationToken)
     {
         var userId = currentUserService.UserId;
         if (userId is null) return Unauthorized();
+        var file = request.File;
         if (file is null) return BadRequest(new { message = "Dosya bulunamadı." });
 
         await using var stream = file.OpenReadStream();
@@ -741,6 +743,11 @@ public sealed class GroupsController(
             .FirstOrDefault(x => x.UserId == currentUserId.Value)
             ?.Role;
     }
+}
+
+public sealed class GroupImageUploadFormRequest
+{
+    public IFormFile? File { get; init; }
 }
 
 public sealed record UploadImageResponse(string Url);

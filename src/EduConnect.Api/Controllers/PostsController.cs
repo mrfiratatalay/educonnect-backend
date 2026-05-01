@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using EduConnect.Api.Common;
 using EduConnect.Api.Mappings;
 using EduConnect.Application.Contracts.Common;
@@ -381,8 +382,7 @@ public sealed class PostsController(
 
     [HttpPost]
     public async Task<ActionResult<PostResponse>> Create(
-        [FromForm] CreatePostRequest request,
-        [FromForm(Name = "image")] IFormFile? image,
+        [FromForm] CreatePostFormRequest form,
         CancellationToken cancellationToken)
     {
         var userId = currentUserService.UserId;
@@ -391,6 +391,8 @@ public sealed class PostsController(
             return Unauthorized();
         }
 
+        var request = form.ToCreateRequest();
+        var image = form.Image;
         var content = request.Content.Trim();
 
         string? imageUrl = string.IsNullOrWhiteSpace(request.ImageUrl) ? null : request.ImageUrl.Trim();
@@ -477,8 +479,7 @@ public sealed class PostsController(
     [HttpPut("{id:guid}")]
     public async Task<ActionResult<PostResponse>> Update(
         Guid id,
-        [FromForm] UpdatePostRequest request,
-        [FromForm(Name = "image")] IFormFile? image,
+        [FromForm] UpdatePostFormRequest form,
         CancellationToken cancellationToken)
     {
         var currentUserId = currentUserService.UserId;
@@ -500,6 +501,8 @@ public sealed class PostsController(
             return Forbid();
         }
 
+        var request = form.ToUpdateRequest();
+        var image = form.Image;
         var content = request.Content.Trim();
         if (content.Length == 0 && image is null && post.ImageUrl is null && !request.RemoveImage)
         {
@@ -1041,4 +1044,46 @@ private static IReadOnlyCollection<PostTrendingHashtagResponse> BuildTrendingHas
     private sealed record ScoredPost(
         Post Post,
         int Score);
+}
+
+public sealed class CreatePostFormRequest
+{
+    public Guid? GroupId { get; init; }
+
+    [StringLength(1500)]
+    public string Content { get; init; } = string.Empty;
+
+    [Url]
+    public string? ImageUrl { get; init; }
+
+    public IFormFile? Image { get; init; }
+
+    public CreatePostRequest ToCreateRequest()
+    {
+        return new CreatePostRequest
+        {
+            GroupId = GroupId,
+            Content = Content,
+            ImageUrl = ImageUrl
+        };
+    }
+}
+
+public sealed class UpdatePostFormRequest
+{
+    [StringLength(1500)]
+    public string Content { get; init; } = string.Empty;
+
+    public bool RemoveImage { get; init; }
+
+    public IFormFile? Image { get; init; }
+
+    public UpdatePostRequest ToUpdateRequest()
+    {
+        return new UpdatePostRequest
+        {
+            Content = Content,
+            RemoveImage = RemoveImage
+        };
+    }
 }

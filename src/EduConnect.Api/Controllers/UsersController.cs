@@ -116,7 +116,7 @@ public sealed class UsersController(
 
     [HttpPost("me/avatar/upload")]
     public async Task<ActionResult<UserProfileResponse>> UploadAvatarFile(
-        [FromForm(Name = "file")] IFormFile file,
+        [FromForm] UserImageUploadFormRequest request,
         [FromServices] IUserAvatarStorageService userAvatarStorageService,
         CancellationToken cancellationToken)
     {
@@ -126,6 +126,7 @@ public sealed class UsersController(
             return Unauthorized();
         }
 
+        var file = request.File;
         if (file is null)
         {
             return BadRequest(new { message = "Yüklenecek dosya bulunamadı." });
@@ -167,7 +168,7 @@ public sealed class UsersController(
 
     [HttpPost("me/cover/upload")]
     public async Task<ActionResult<UserProfileResponse>> UploadCoverFile(
-        [FromForm(Name = "file")] IFormFile file,
+        [FromForm] UserImageUploadFormRequest request,
         [FromServices] IUserAvatarStorageService userAvatarStorageService,
         CancellationToken cancellationToken)
     {
@@ -177,6 +178,7 @@ public sealed class UsersController(
             return Unauthorized();
         }
 
+        var file = request.File;
         if (file is null)
         {
             return BadRequest(new { message = "Yüklenecek dosya bulunamadı." });
@@ -584,4 +586,9 @@ public sealed class UsersController(
         bool IsFollowedByCurrentUser,
         int MutualGroupCount,
         int RecentPersonalPostCount);
+}
+
+public sealed class UserImageUploadFormRequest
+{
+    public IFormFile? File { get; init; }
 }

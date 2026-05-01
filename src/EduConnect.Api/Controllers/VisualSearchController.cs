@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using EduConnect.Api.Mappings;
 using EduConnect.Application.Contracts.VisualSearch;
 using EduConnect.Application.Interfaces;
@@ -24,12 +25,15 @@ public sealed class VisualSearchController(
 
     [AllowAnonymous]
     [HttpPost("searches")]
+    [Consumes("multipart/form-data")]
     [RequestSizeLimit(10 * 1024 * 1024)]
     public async Task<ActionResult<VisualSearchSearchResponse>> Search(
-        [FromForm] IFormFile image,
-        [FromForm] VisualSearchSearchRequest request,
+        [FromForm] VisualSearchFormRequest form,
         CancellationToken cancellationToken = default)
     {
+        var image = form.Image;
+        var request = form.ToSearchRequest();
+
         if (image is null || image.Length == 0)
         {
             return BadRequest("Gorsel yuklenmedi.");
@@ -114,5 +118,40 @@ public sealed class VisualSearchController(
             .ToListAsync(cancellationToken);
 
         return Ok(history.Select(item => item.ToResponse()).ToArray());
+    }
+}
+
+public sealed class VisualSearchFormRequest
+{
+    public IFormFile? Image { get; init; }
+
+    [Range(1, 20)]
+    public int MaxResults { get; init; } = 4;
+
+    public Guid? CategoryId { get; init; }
+
+    [Range(0, 10_000_000)]
+    public decimal? MinPrice { get; init; }
+
+    [Range(0, 10_000_000)]
+    public decimal? MaxPrice { get; init; }
+
+    [StringLength(120)]
+    public string? City { get; init; }
+
+    [StringLength(20)]
+    public string Mode { get; init; } = "strict";
+
+    public VisualSearchSearchRequest ToSearchRequest()
+    {
+        return new VisualSearchSearchRequest
+        {
+            MaxResults = MaxResults,
+            CategoryId = CategoryId,
+            MinPrice = MinPrice,
+            MaxPrice = MaxPrice,
+            City = City,
+            Mode = Mode
+        };
     }
 }
