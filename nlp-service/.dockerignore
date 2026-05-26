@@ -1,0 +1,24 @@
+venv/
+.venv/
+__pycache__/
+**/__pycache__/
+*.pyc
+*.pyo
+
+# Egitim ve test scriptleri - prod'a dahil edilmez
+augment_data.py
+smoke_test_cli.py
+training/
+
+# Git ve IDE
+.git/
+.gitignore
+.vscode/
+.idea/
+
+# Cache
+.cache/
+.pytest_cache/
+
+# Notlar / dokumanlar
+*.md

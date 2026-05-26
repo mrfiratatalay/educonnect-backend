@@ -348,7 +348,7 @@ public sealed class AppDbContext(DbContextOptions<AppDbContext> options) : DbCon
         {
             entity.ToTable("ProductImages");
             entity.Property(x => x.Url).HasMaxLength(500).IsRequired();
-            entity.Property(x => x.EmbeddingJson).HasColumnType("nvarchar(max)");
+            entity.Property(x => x.EmbeddingJson).HasColumnType("text");
 
             entity.HasOne(x => x.Product)
                 .WithMany(x => x.Images)
@@ -373,7 +373,7 @@ public sealed class AppDbContext(DbContextOptions<AppDbContext> options) : DbCon
         modelBuilder.Entity<VisualSearchResult>(entity =>
         {
             entity.ToTable("VisualSearchResults");
-            entity.Property(x => x.SimilarityScore).HasColumnType("float");
+            entity.Property(x => x.SimilarityScore).HasColumnType("double precision");
 
             entity.HasOne(x => x.SearchHistory)
                 .WithMany(x => x.Results)
@@ -405,7 +405,7 @@ public sealed class AppDbContext(DbContextOptions<AppDbContext> options) : DbCon
             entity.Property(x => x.Content).HasMaxLength(4000).IsRequired();
             entity.Property(x => x.IntentDetected).HasMaxLength(150);
             entity.Property(x => x.ModelUsed).HasMaxLength(100);
-            entity.Property(x => x.KbScore).HasColumnType("float");
+            entity.Property(x => x.KbScore).HasColumnType("double precision");
 
             entity.HasOne(x => x.Session)
                 .WithMany(x => x.Messages)
