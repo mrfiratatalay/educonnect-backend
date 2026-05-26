@@ -284,12 +284,16 @@ public sealed class PostsController(
         page = Math.Max(page, 1);
         pageSize = Math.Clamp(pageSize, 1, 50);
 
-        var matchingPosts = await QueryPostsForFeed()
-            .Where(x => x.Content.Contains("#"))
+        // SQL tarafinda ILIKE ile aday postlari daralt: butun postlari RAM'e cekmek yerine
+        // PostgreSQL'in pattern matching'i ile pre-filter yap. C#'ta tam hashtag dogrulamasi yap.
+        var likePattern = $"%#{normalizedTag}%";
+        var candidatePosts = await QueryPostsForFeed()
+            .Where(x => EF.Functions.ILike(x.Content, likePattern))
             .OrderByDescending(x => x.CreatedAtUtc)
+            .Take(500) // Guvenlik tavani: cok genis match olursa bile RAM patlamasin.
             .ToListAsync(cancellationToken);
 
-        var filteredPosts = matchingPosts
+        var filteredPosts = candidatePosts
             .Where(post => PostTrendAnalyzer.ExtractHashtags(post.Content)
                 .Any(hashtag => string.Equals(
                     hashtag.TrimStart('#'),
@@ -384,6 +388,7 @@ public sealed class PostsController(
     }
 
     [HttpPost]
+    [RequestSizeLimit(FileUploadValidation.MaxImageBytes + 64 * 1024)] // gorsel + metin paylasimi icin yeterli
     public async Task<ActionResult<PostResponse>> Create(
         [FromForm] CreatePostFormRequest form,
         CancellationToken cancellationToken)
@@ -410,6 +415,9 @@ public sealed class PostsController(
 
         if (image is not null)
         {
+            var imageValidationError = FileUploadValidation.ValidateImage(image);
+            if (imageValidationError is not null) return BadRequest(new { message = imageValidationError });
+
             await using var fileStream = image.OpenReadStream();
             imageUrl = await postMediaStorageService.SaveAsync(
                 userId.Value,
@@ -480,6 +488,7 @@ public sealed class PostsController(
     }
 
     [HttpPut("{id:guid}")]
+    [RequestSizeLimit(FileUploadValidation.MaxImageBytes + 64 * 1024)]
     public async Task<ActionResult<PostResponse>> Update(
         Guid id,
         [FromForm] UpdatePostFormRequest form,
@@ -523,6 +532,9 @@ public sealed class PostsController(
         }
         else if (image is not null)
         {
+            var imageValidationError = FileUploadValidation.ValidateImage(image);
+            if (imageValidationError is not null) return BadRequest(new { message = imageValidationError });
+
             await using var fileStream = image.OpenReadStream();
             post.ImageUrl = await postMediaStorageService.SaveAsync(
                 currentUserId.Value,

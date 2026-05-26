@@ -2,6 +2,7 @@ using EduConnect.Application.Contracts.Auth;
 using EduConnect.Application.Interfaces;
 using EduConnect.Domain.Entities;
 using EduConnect.Infrastructure.Data;
+using EduConnect.Infrastructure.Extensions;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Cryptography;
 using System.Text;
@@ -28,6 +29,30 @@ public sealed class AuthService(
         var university = await GetUniversityForRegistrationAsync(request.UniversityId, cancellationToken);
         EnsureEmailMatchesUniversityDomain(normalizedEmail, university.Domain);
 
+        // Iki paralel register istegi ayni email ile gelirse: ilkinin SaveChangesAsync'i basarili olur,
+        // ikincisi unique constraint violation alir. Catch + 1 kez retry ile ikincide "existing user" yoluna girer.
+        const int maxAttempts = 2;
+        for (var attempt = 1; attempt <= maxAttempts; attempt++)
+        {
+            try
+            {
+                return await ExecuteRegisterAsync(request, normalizedEmail, cancellationToken);
+            }
+            catch (DbUpdateException ex) when (ex.IsUniqueViolation() && attempt < maxAttempts)
+            {
+                // Paralel istek bu email'i once kaydetti. State'i temizleyip tekrar dene; bu kez existing-user yolu calisacak.
+                dbContext.ChangeTracker.Clear();
+            }
+        }
+
+        throw new InvalidOperationException("Kayit yapilamadi, lutfen tekrar deneyin.");
+    }
+
+    private async Task<EmailVerificationChallengeResult> ExecuteRegisterAsync(
+        RegisterRequest request,
+        string normalizedEmail,
+        CancellationToken cancellationToken)
+    {
         var existingUser = await dbContext.Users
             .Include(item => item.StudentProfile)
             .FirstOrDefaultAsync(item => item.Email == normalizedEmail, cancellationToken);
@@ -128,27 +153,50 @@ public sealed class AuthService(
             throw new UnauthorizedAccessException("Oturum yenilenemedi.");
         }
 
-        var existingRefreshToken = await dbContext.RefreshTokens
-            .Include(item => item.User)
-            .FirstOrDefaultAsync(item => item.Token == refreshToken, cancellationToken);
+        var nowUtc = DateTime.UtcNow;
 
-        if (existingRefreshToken is null ||
-            !existingRefreshToken.IsActive ||
-            !existingRefreshToken.User.IsActive)
+        // ATOMIK CLAIM: Token'i hala aktifse revoke et. Paralel iki refresh isteginde
+        // sadece birinin ExecuteUpdateAsync'i 1 satir guncelleyebilir; ikincisi 0 doner.
+        // Bu sayede TOCTOU race condition kapaniyor.
+        var revokedRows = await dbContext.RefreshTokens
+            .Where(rt =>
+                rt.Token == refreshToken
+                && rt.RevokedAtUtc == null
+                && rt.ExpiresAtUtc > nowUtc)
+            .ExecuteUpdateAsync(
+                s => s.SetProperty(rt => rt.RevokedAtUtc, nowUtc),
+                cancellationToken);
+
+        if (revokedRows == 0)
         {
             throw new UnauthorizedAccessException("Oturum yenilenemedi.");
         }
 
-        existingRefreshToken.RevokedAtUtc = DateTime.UtcNow;
+        // Token'i claim ettik, simdi user'i guvenle yukleyip aktif olup olmadigini dogrula.
+        var existingToken = await dbContext.RefreshTokens
+            .AsNoTracking()
+            .Include(rt => rt.User)
+            .FirstOrDefaultAsync(rt => rt.Token == refreshToken, cancellationToken);
 
-        var replacementToken = CreateRefreshToken(existingRefreshToken.UserId, ipAddress);
-        existingRefreshToken.ReplacedByToken = replacementToken.Token;
+        if (existingToken is null || !existingToken.User.IsActive)
+        {
+            throw new UnauthorizedAccessException("Oturum yenilenemedi.");
+        }
 
+        // Yeni token uret + yaz.
+        var replacementToken = CreateRefreshToken(existingToken.UserId, ipAddress);
         dbContext.RefreshTokens.Add(replacementToken);
         await dbContext.SaveChangesAsync(cancellationToken);
 
+        // Eski token'in ReplacedByToken alanini guncelle (audit trail).
+        await dbContext.RefreshTokens
+            .Where(rt => rt.Token == refreshToken)
+            .ExecuteUpdateAsync(
+                s => s.SetProperty(rt => rt.ReplacedByToken, replacementToken.Token),
+                cancellationToken);
+
         return await CreateAuthenticatedUserResultAsync(
-            existingRefreshToken.UserId,
+            existingToken.UserId,
             replacementToken,
             cancellationToken);
     }

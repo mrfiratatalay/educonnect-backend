@@ -116,6 +116,7 @@ public sealed class UsersController(
     }
 
     [HttpPost("me/avatar/upload")]
+    [RequestSizeLimit(EduConnect.Api.Common.FileUploadValidation.MaxImageBytes + 64 * 1024)]
     public async Task<ActionResult<UserProfileResponse>> UploadAvatarFile(
         [FromForm] UserImageUploadFormRequest request,
         [FromServices] IUserAvatarStorageService userAvatarStorageService,
@@ -128,10 +129,8 @@ public sealed class UsersController(
         }
 
         var file = request.File;
-        if (file is null)
-        {
-            return BadRequest(new { message = "Yüklenecek dosya bulunamadı." });
-        }
+        var validationError = EduConnect.Api.Common.FileUploadValidation.ValidateImage(file);
+        if (validationError is not null) return BadRequest(new { message = validationError });
 
         var user = await dbContext.Users
             .Include(x => x.StudentProfile)
@@ -153,7 +152,7 @@ public sealed class UsersController(
             };
         }
 
-        await using var fileStream = file.OpenReadStream();
+        await using var fileStream = file!.OpenReadStream();
         user.StudentProfile.AvatarUrl = await userAvatarStorageService.SaveAvatarAsync(
             user.Id,
             fileStream,
@@ -168,6 +167,7 @@ public sealed class UsersController(
     }
 
     [HttpPost("me/cover/upload")]
+    [RequestSizeLimit(EduConnect.Api.Common.FileUploadValidation.MaxImageBytes + 64 * 1024)]
     public async Task<ActionResult<UserProfileResponse>> UploadCoverFile(
         [FromForm] UserImageUploadFormRequest request,
         [FromServices] IUserAvatarStorageService userAvatarStorageService,
@@ -180,10 +180,8 @@ public sealed class UsersController(
         }
 
         var file = request.File;
-        if (file is null)
-        {
-            return BadRequest(new { message = "Yüklenecek dosya bulunamadı." });
-        }
+        var validationError = EduConnect.Api.Common.FileUploadValidation.ValidateImage(file);
+        if (validationError is not null) return BadRequest(new { message = validationError });
 
         var user = await dbContext.Users
             .Include(x => x.StudentProfile)
@@ -205,7 +203,7 @@ public sealed class UsersController(
             };
         }
 
-        await using var fileStream = file.OpenReadStream();
+        await using var fileStream = file!.OpenReadStream();
         user.StudentProfile.CoverImageUrl = await userAvatarStorageService.SaveCoverAsync(
             user.Id,
             fileStream,

@@ -39,6 +39,7 @@ public sealed class GroupsController(
 
     [HttpPost("upload-avatar")]
     [Consumes("multipart/form-data")]
+    [RequestSizeLimit(EduConnect.Api.Common.FileUploadValidation.MaxImageBytes + 64 * 1024)]
     public async Task<ActionResult<UploadImageResponse>> UploadAvatar(
         [FromForm] GroupImageUploadFormRequest request,
         [FromServices] IUserAvatarStorageService storageService,
@@ -47,15 +48,17 @@ public sealed class GroupsController(
         var userId = currentUserService.UserId;
         if (userId is null) return Unauthorized();
         var file = request.File;
-        if (file is null) return BadRequest(new { message = "Dosya bulunamadı." });
+        var validationError = EduConnect.Api.Common.FileUploadValidation.ValidateImage(file);
+        if (validationError is not null) return BadRequest(new { message = validationError });
 
-        await using var stream = file.OpenReadStream();
+        await using var stream = file!.OpenReadStream();
         var url = await storageService.SaveAvatarAsync(userId.Value, stream, file.FileName, file.ContentType, cancellationToken);
         return Ok(new UploadImageResponse(url));
     }
 
     [HttpPost("upload-banner")]
     [Consumes("multipart/form-data")]
+    [RequestSizeLimit(EduConnect.Api.Common.FileUploadValidation.MaxImageBytes + 64 * 1024)]
     public async Task<ActionResult<UploadImageResponse>> UploadBanner(
         [FromForm] GroupImageUploadFormRequest request,
         [FromServices] IUserAvatarStorageService storageService,
@@ -64,9 +67,10 @@ public sealed class GroupsController(
         var userId = currentUserService.UserId;
         if (userId is null) return Unauthorized();
         var file = request.File;
-        if (file is null) return BadRequest(new { message = "Dosya bulunamadı." });
+        var validationError = EduConnect.Api.Common.FileUploadValidation.ValidateImage(file);
+        if (validationError is not null) return BadRequest(new { message = validationError });
 
-        await using var stream = file.OpenReadStream();
+        await using var stream = file!.OpenReadStream();
         var url = await storageService.SaveCoverAsync(userId.Value, stream, file.FileName, file.ContentType, cancellationToken);
         return Ok(new UploadImageResponse(url));
     }

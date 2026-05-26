@@ -67,10 +67,12 @@ public sealed class VisualSearchController(
         var userId = currentUserService.UserId;
         if (userId.HasValue)
         {
+            // FileName user-controlled oldugu icin yola/loga gomulmesi guvensiz; UUID + uzanti olarak temizle.
+            var safeExtension = SanitizeExtension(image.FileName);
             var history = new VisualSearchHistory
             {
                 UserId = userId.Value,
-                QueryImageUrl = $"uploaded:{image.FileName}",
+                QueryImageUrl = $"uploaded:{Guid.NewGuid():N}{safeExtension}",
                 ResultCount = response.TotalFound
             };
 
@@ -118,6 +120,15 @@ public sealed class VisualSearchController(
             .ToListAsync(cancellationToken);
 
         return Ok(history.Select(item => item.ToResponse()).ToArray());
+    }
+
+    private static string SanitizeExtension(string? fileName)
+    {
+        if (string.IsNullOrWhiteSpace(fileName)) return string.Empty;
+        var ext = System.IO.Path.GetExtension(fileName);
+        if (string.IsNullOrEmpty(ext) || ext.Length > 8) return string.Empty;
+        // Sadece alfanumerik ve nokta; diger her sey atilir.
+        return new string(ext.Where(c => char.IsLetterOrDigit(c) || c == '.').ToArray()).ToLowerInvariant();
     }
 }
 
