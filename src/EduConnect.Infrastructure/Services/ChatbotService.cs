@@ -227,46 +227,65 @@ public sealed class ChatbotService(
     private string BuildGroundedPrompt(NlpClassifyResult nlpResult)
     {
         var kb = nlpResult.KbAnswer!;
-        var cautionLine = kb.TimeSensitive
-            ? "NOT: Bu konuda kesin tarih/ucret gibi degisken bilgi varsa cevabin sonunda kisaca 'guncel bilgi icin resmi kaynaktan dogrula' demek yeterli; ama cevabi bununla baslatma, asil bilgiyi ver.\n"
-            : string.Empty;
+        var isDeflecting = IsDeflectingKbAnswer(kb.Answer);
 
-        return
+        var kbBlock =
             $"\nBILGI TABANI ESLESMESI:\n" +
             $"  Konu: {kb.Topic}\n" +
-            $"  Kapsam: {kb.FacultyScope}\n" +
             $"  KB sorusu: {kb.Question}\n" +
             $"  KB cevabi: {kb.Answer}\n" +
-            (string.IsNullOrWhiteSpace(kb.SourceUrl) ? string.Empty : $"  Kaynak: {kb.SourceUrl}\n") +
-            cautionLine +
-            "\nGOREVIN:\n" +
-            "1. KB cevabini ANA kaynak olarak kullan, ama oldugu gibi kopyalama.\n" +
-            "2. Kullanicinin sordugu spesifik aciya odaklanarak, KB icerigini onun diliyle yeniden anlat.\n" +
-            "3. Kullanici takip sorusu soruyorsa (konusma gecmisine bak), ayni cevabi tekrarlama; " +
-            "KB cevabini farkli bir aciya gore genislet, ornek ver, somut adimlar sun.\n" +
-            "4. Eger KB cevabi kullanicinin asil sorusunu birebir karsilamiyorsa, neyi karsiladigini soyle " +
-            "ve ek olarak ne yapabilecegini de ekle.\n" +
-            "5. 'Kaynaktan kontrol et' diyerek kacma; once bildigin somut bilgiyi paylas. " +
-            "Kaynak URL'i KB'de varsa cevabin sonuna ekle, cevabin tamami kaynaga yonlendirme olmasin.\n" +
-            "6. Kisa, akici, dogrudan Turkce ver.\n";
+            (string.IsNullOrWhiteSpace(kb.SourceUrl) ? string.Empty : $"  Kaynak URL: {kb.SourceUrl}\n");
+
+        if (isDeflecting)
+        {
+            return kbBlock +
+                "\nDIKKAT: Yukaridaki KB cevabi gercekte SOMUT bilgi icermiyor, sadece bir yere yonlendiriyor. " +
+                "Bu durumda kullaniciya SADECE bu yonlendirmeyi tekrarlama. " +
+                "Kendi genel bilginle (Turk universitelerinde tipik durum, RTEU benzerleri, mantikli tahminler) " +
+                "kullaniciya somut bir cevap ver. Kaynak URL'i sondaki referans olarak kullan, ana cevabin olmasin.\n";
+        }
+
+        return kbBlock +
+            "\nGOREVIN: KB cevabini kullanicinin diliyle yeniden anlat. Gerekiyorsa genel bilginle genislet, " +
+            "somut ornek ver. Konusma gecmisine bak; takip sorusuysa aynisini tekrarlama, derinlestir.\n";
     }
 
     private string BuildFallbackPrompt(NlpClassifyResult nlpResult)
     {
-        var kbContext = nlpResult.KbAnswer is null
-            ? "Bilgi tabaninda spesifik eslesme bulunamadi.\n"
-            : $"Bilgi tabaninda zayif bir eslesme var (skor: {nlpResult.KbAnswer.Score:P0}). Ipucu olarak bakabilirsin ama tek dayanak yapma.\n";
+        var kbHint = nlpResult.KbAnswer is null
+            ? string.Empty
+            : $"\nNOT: KB'de zayif bir eslesme var (skor: {nlpResult.KbAnswer.Score:P0}): \"{nlpResult.KbAnswer.Answer}\". " +
+              "Ipucu olarak kullanabilirsin ama tek dayanak yapma.\n";
 
-        return
-            "\n" + kbContext +
-            "GOREVIN:\n" +
-            "1. Kullaniciya YARDIM ET. Geneliyle bildigin RTEU veya universite hayati bilgisini kullan.\n" +
-            "2. Konusma gecmisine bak; bu mesaj onceki konusmanin devamiysa o baglami koru, sifirdan baslama.\n" +
-            "3. Spesifik kesin bilmedigin bir sey (tam tarih, kesin ucret, oda numarasi gibi) varsa o tek noktayi " +
-            "'bunu kesin bilemiyorum, X biriminden teyit etmen lazim' diyerek isaretle - ama ust katmanda yardimci cevap ver.\n" +
-            "4. Tum cevabi 'bilgi tabaninda yok, birime sor' diye gecirstirme; bu kabul edilemez.\n" +
-            "5. Kullanici cidden bir cevap istiyor; en azindan baslangic, yon ve sorabilecegi sorulari ver.\n" +
-            "6. Kisa, net, samimi Turkce yaz.\n";
+        return kbHint +
+            "\nGOREVIN: Kullaniciya FAYDALI ol. Genel bildigin uzerinden somut bir cevap ver " +
+            "(Turkiye'deki tipik universite uygulamalari, RTEU benzerleri, mantikli tahmin). " +
+            "'Bilmiyorum, X biriminden ogren' DEME, bu kabul edilemez. " +
+            "Sadece gercekten kritik ve spesifik bir nokta (kesin tarih/ucret) bilmiyorsan, " +
+            "cevabin SONUNDA tek cumleyle teyit notu ekleyebilirsin.\n";
+    }
+
+    private static bool IsDeflectingKbAnswer(string? answer)
+    {
+        if (string.IsNullOrWhiteSpace(answer)) return false;
+        var lower = answer.ToLowerInvariant();
+
+        string[] deflectMarkers =
+        {
+            "duyurulardan takip", "duyurularindan takip", "duyurularından takip",
+            "duyurulari uzerinden", "duyuruları üzerinden",
+            "kontrol ediniz", "kontrol edilmesi", "kontrol etmek",
+            "iletisime gec", "iletişime geç",
+            "guncel bilgi icin", "güncel bilgi için",
+            "resmi kaynak", "resmî kaynak",
+            "resmi sks", "resmî sks", "resmi oidb", "resmî oidb",
+            "ziyaret edebilir", "kontrol et",
+        };
+
+        var markerCount = deflectMarkers.Count(m => lower.Contains(m));
+        // Kisa ve birden fazla deflect ifadesi varsa: pure deflection.
+        // Uzun cevaplar somut bilgi de iceriyor olabilir.
+        return markerCount >= 1 && answer.Length < 300;
     }
 
     private static string NormalizeResponseLinks(string content)
