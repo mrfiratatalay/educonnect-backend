@@ -1,6 +1,6 @@
 {
   "schema_version": "2.0",
-  "description": "RTEU EduAI knowledge base for grounded student support responses. Expanded in Faz A2 and quality-extended in Faz A3.",
+  "description": "RTEU EduAI knowledge base for grounded student support responses. Expanded in Faz A2 and quality-extended in Faz A3. | PDF-enriched 2026-05-27 from Ogrenci-El-Kitabi-2025, Akademik-Takvim-2025-2026, iletisim.pdf.",
   "entries": [
     {
       "id": "kb_exam_001",
@@ -4433,6 +4433,1349 @@
       "confidence": "medium",
       "time_sensitive": false,
       "faculty_scope": "general"
+    },
+    {
+      "intent": "student_services",
+      "intent_aliases": [],
+      "topic": "rteu_kurulus_yili",
+      "question": "RTEU ne zaman kuruldu?",
+      "answer": "Recep Tayyip Erdogan Universitesi 17 Mart 2006 tarihinde kuruldu. Yeni nesil bir devlet universitesidir ve 2012 yilinda Rize Universitesi adindan bugunku adina degistirildi.",
+      "keywords": [
+        "rteu kurulus",
+        "ne zaman kuruldu",
+        "tarihce",
+        "2006",
+        "17 mart"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_services_027"
+    },
+    {
+      "intent": "student_services",
+      "intent_aliases": [],
+      "topic": "rteu_akademik_yapi",
+      "question": "RTEU'de kac fakulte ve yuksekokul var?",
+      "answer": "RTEU'de 1 Enstitu, 15 Fakulte, 3 Yuksekokul, 6 Meslek Yuksekokulu, 18 Arastirma ve Uygulama Merkezi bulunmaktadir. 49 akademik birimde 500'den fazla ogretim uyesi ve 17 bin uzeri ogrenci vardir.",
+      "keywords": [
+        "fakulte sayisi",
+        "kac fakulte",
+        "yuksekokul",
+        "akademik yapi",
+        "kac ogrenci"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_services_028"
+    },
+    {
+      "intent": "student_services",
+      "intent_aliases": [],
+      "topic": "rteu_adres",
+      "question": "RTEU'nun adresi nedir?",
+      "answer": "RTEU Rektorlugu adresi: Fener Mahallesi Zihni Derin Yerleskesi, 53100 RIZE. Universite Rize sehir merkezine yakindir, sehir otobus hatlari ve dolmuslarla kolayca ulasilir.",
+      "keywords": [
+        "adres",
+        "nerede",
+        "rektorluk",
+        "fener mahallesi",
+        "zihni derin"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_services_029"
+    },
+    {
+      "intent": "student_services",
+      "intent_aliases": [],
+      "topic": "rteu_havaalani_ulasim",
+      "question": "RTEU'ye havaalanindan nasil gidilir?",
+      "answer": "Rize-Artvin Havaalanindan Rize sehir merkezine yaklasik yarim saatte ulasilir. Sehir merkezinden kampuse ise sehir otobus hatlari ve dolmuslarla rahatlikla gidilebilir. Rize'de toplu ulasimda 'Turkiye Kart' kullanilir.",
+      "keywords": [
+        "havaalani",
+        "ulasim",
+        "rize artvin",
+        "otobus",
+        "dolmus",
+        "turkiye kart"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_services_030"
+    },
+    {
+      "intent": "student_services",
+      "intent_aliases": [],
+      "topic": "rteu_kampus_otobus",
+      "question": "Kampuse hangi otobusler gidiyor?",
+      "answer": "Sehir merkezinden kampuse duzenli olarak calisan toplu tasima araclari mevcut. Otobus ve dolmus kalkis saatleri icin https://www.rize.bel.tr/otobus-saatleri adresine bakabilirsin. Odeme 'Turkiye Kart' ile yapilir.",
+      "keywords": [
+        "otobus saatleri",
+        "dolmus",
+        "kampus ulasim",
+        "sehir merkezi"
+      ],
+      "source_url": "https://www.rize.bel.tr/otobus-saatleri",
+      "source_title": "Rize Belediyesi Otobus Saatleri",
+      "confidence": "high",
+      "time_sensitive": true,
+      "faculty_scope": "general",
+      "id": "kb_services_031"
+    },
+    {
+      "intent": "student_services",
+      "intent_aliases": [],
+      "topic": "rteu_oidb_iletisim",
+      "question": "Ogrenci Isleri Daire Baskanligi telefon numarasi nedir?",
+      "answer": "OIDB santral: 0464 223 61 26. Lisans ogrencileri icin dahili 4210/4207/4239, onlisans ogrencileri icin 4219/4227/4231, ogrenim ucreti sorunlari icin 4263. E-posta: oidb@erdogan.edu.tr. Web: https://oidb.erdogan.edu.tr",
+      "keywords": [
+        "oidb telefon",
+        "ogrenci isleri",
+        "dahili numara",
+        "ucret sorunu"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/iletisim.pdf",
+      "source_title": "RTEU Iletisim Bilgileri",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_services_032"
+    },
+    {
+      "intent": "student_services",
+      "intent_aliases": [],
+      "topic": "rteu_fakulte_iletisim_genel",
+      "question": "Hangi fakultenin telefonu var?",
+      "answer": "Her fakultenin ayri telefonu var. Ornegin: Muhendislik Fakultesi 0464 223 7518 (foe@erdogan.edu.tr), Iktisadi ve Idari Bilimler 0464 223 5864 (iibf@erdogan.edu.tr), Tip Fakultesi 0464 212 3009, Hukuk Fakultesi 0464 222 0013. Hangi fakulteyi soruyorsan onun adini soyle, iletisim bilgisini paylasayim.",
+      "keywords": [
+        "fakulte telefon",
+        "iletisim",
+        "santral",
+        "dahili"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/iletisim.pdf",
+      "source_title": "RTEU Iletisim Bilgileri",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_services_033"
+    },
+    {
+      "intent": "student_services",
+      "intent_aliases": [],
+      "topic": "rteu_hastaneler",
+      "question": "Rize'de hangi hastaneler var?",
+      "answer": "RTEU Egitim ve Arastirma Hastanesi (universite hastanesi), Rize Devlet Hastanesi (sehir merkezi), Camlihemsin, Findikli, Iyidere, Ardesen, Pazar, Hemsin gibi ilcelerde devlet hastaneleri vardir. Ozel hastaneler: Rize Sar Hospital, Rize Tip Merkezi.",
+      "keywords": [
+        "hastane",
+        "saglik",
+        "devlet hastanesi",
+        "ozel hastane",
+        "tip"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_services_034"
+    },
+    {
+      "intent": "student_services",
+      "intent_aliases": [],
+      "topic": "rteu_acil_telefonlar",
+      "question": "Acil durumda hangi numaralari aramaliyim?",
+      "answer": "Acil Cagri Hatti: 112. Acil Trafik: 154. Jandarma Imdat: 156. Elektrik Ariza: 186. Dogalgaz Acil Mudahale: 187. Rize Belediyesi Cagri Merkezi: 444 50 53.",
+      "keywords": [
+        "acil telefon",
+        "112",
+        "154",
+        "156",
+        "ambulans",
+        "yangin"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_services_035"
+    },
+    {
+      "intent": "student_services",
+      "intent_aliases": [],
+      "topic": "rteu_belge_islemleri",
+      "question": "Transkriptimi nereden alabilirim?",
+      "answer": "Transkript (not dokum belgesi), disiplin durum belgesi ve benzeri ogrenci belgeleri iki yerden alinabilir: e-devlet uzerinden online veya kayitli oldugun akademik birim (Enstitu/Fakulte/Yuksekokul/MYO) ile Ogrenci Isleri Daire Baskanligindan.",
+      "keywords": [
+        "transkript",
+        "belge",
+        "e-devlet",
+        "not dokum"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_services_036"
+    },
+    {
+      "intent": "student_services",
+      "intent_aliases": [],
+      "topic": "rteu_disiplin_cezalari",
+      "question": "Disiplin cezalari neler?",
+      "answer": "2547 Sayili Kanunun 54. maddesinde tanimli cezalar: Kinama, yuksekogretim kurumundan bir haftadan bir aya kadar uzaklastirma, bir yariyil uzaklastirma, iki yariyil uzaklastirma, ve cikarma. Cezalar disiplin sorusturmasi sonrasinda ilgili kurul tarafindan verilir.",
+      "keywords": [
+        "disiplin",
+        "ceza",
+        "uzaklastirma",
+        "cikarma",
+        "kinama"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_services_037"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "guz_kayit_tarihi_2025",
+      "question": "2025-2026 guz donemi ders kayitlari ne zaman?",
+      "answer": "2025-2026 Guz Yariyili kayit ve kayit yenileme tarihleri: 8-14 Eylul 2025. Yariyil katki payi/ogrenim ucreti odeme: 8-12 Eylul 2025. Danisman onayi: 8-21 Eylul. Ders ekleme/cikarma: 15-17 Eylul. Derslerin baslamasi: 22 Eylul 2025.",
+      "keywords": [
+        "guz kayit",
+        "2025-2026",
+        "ders kayit tarihi",
+        "ucret odeme",
+        "danisman onay"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/2025-2026%20E%C4%9E%C4%B0T%C4%B0M%20%C3%96%C4%9ERET%C4%B0M%20YILI.pdf",
+      "source_title": "2025-2026 Akademik Takvim",
+      "confidence": "high",
+      "time_sensitive": true,
+      "faculty_scope": "general",
+      "id": "kb_course_039"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "bahar_kayit_tarihi_2026",
+      "question": "2025-2026 bahar donemi ders kayitlari ne zaman?",
+      "answer": "2025-2026 Bahar Yariyili kayit ve kayit yenileme tarihleri: 2-8 Subat 2026. Yariyil katki payi odeme: 2-6 Subat. Danisman onayi: 2-13 Subat. Ders ekleme/cikarma: 9-11 Subat. Derslerin baslamasi: 9 Subat 2026.",
+      "keywords": [
+        "bahar kayit",
+        "2026 bahar",
+        "ders kayit tarihi",
+        "subat"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/2025-2026%20E%C4%9E%C4%B0T%C4%B0M%20%C3%96%C4%9ERET%C4%B0M%20YILI.pdf",
+      "source_title": "2025-2026 Akademik Takvim",
+      "confidence": "high",
+      "time_sensitive": true,
+      "faculty_scope": "general",
+      "id": "kb_course_040"
+    },
+    {
+      "intent": "exam_and_grading",
+      "intent_aliases": [],
+      "topic": "guz_finalleri_2026",
+      "question": "2025-2026 guz donemi final sinavlari ne zaman?",
+      "answer": "Guz yariyili sonu (final) sinavlari: 3-16 Ocak 2026. Ara sinavlar: 8-16 Kasim 2025. Butunleme sinavlari: 24 Ocak-1 Subat 2026. Tek ders sinavi: 6 Subat 2026.",
+      "keywords": [
+        "guz final",
+        "ocak 2026 sinav",
+        "kasim ara sinav",
+        "butunleme"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/2025-2026%20E%C4%9E%C4%B0T%C4%B0M%20%C3%96%C4%9ERET%C4%B0M%20YILI.pdf",
+      "source_title": "2025-2026 Akademik Takvim",
+      "confidence": "high",
+      "time_sensitive": true,
+      "faculty_scope": "general",
+      "id": "kb_exam_026"
+    },
+    {
+      "intent": "exam_and_grading",
+      "intent_aliases": [],
+      "topic": "bahar_finalleri_2026",
+      "question": "2025-2026 bahar donemi final sinavlari ne zaman?",
+      "answer": "Bahar yariyili sonu (final) sinavlari: 1-14 Haziran 2026. Ara sinavlar: 28 Mart-5 Nisan 2026. Butunleme sinavlari: 20-26 Haziran 2026. Tek ders sinavi: 3 Temmuz 2026.",
+      "keywords": [
+        "bahar final",
+        "haziran 2026 sinav",
+        "mart ara sinav",
+        "butunleme bahar"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/2025-2026%20E%C4%9E%C4%B0T%C4%B0M%20%C3%96%C4%9ERET%C4%B0M%20YILI.pdf",
+      "source_title": "2025-2026 Akademik Takvim",
+      "confidence": "high",
+      "time_sensitive": true,
+      "faculty_scope": "general",
+      "id": "kb_exam_027"
+    },
+    {
+      "intent": "exam_and_grading",
+      "intent_aliases": [],
+      "topic": "ek_sinav_azami_sure",
+      "question": "Azami sure dolanlar icin ek sinavlar ne zaman?",
+      "answer": "Azami ogrenim suresini dolduran ogrenciler icin: 1. ek sinava basvuru 10-12 Agustos 2026, 1. ek sinavlar 24-29 Agustos 2026. 2. ek sinava basvuru 1-3 Eylul 2026, 2. ek sinavlar 7-13 Eylul 2026. Bu sinavlarda 100 uzerinden en az 60 almak gerekir.",
+      "keywords": [
+        "ek sinav",
+        "azami sure",
+        "uzatma"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/2025-2026%20E%C4%9E%C4%B0T%C4%B0M%20%C3%96%C4%9ERET%C4%B0M%20YILI.pdf",
+      "source_title": "2025-2026 Akademik Takvim",
+      "confidence": "high",
+      "time_sensitive": true,
+      "faculty_scope": "general",
+      "id": "kb_exam_028"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "ders_yuku_siniri",
+      "question": "Bir donemde en fazla kac saat ders alabilirim?",
+      "answer": "Bir ogrencinin bir donemde alabilecegi ders yuku toplami 40 saati asamaz. Istisna: Hukuk Fakultesi (90 AKTS); Onlisans 4. yil, Lisans 7. yil veya azami sureyi tamamlamak uzere olan ogrenciler 40 saat sinirina tabi tutulmaz. Mezun olabilecek son donemdeki ogrenciler de 40 saat sinirinden muaftir.",
+      "keywords": [
+        "ders yuku",
+        "40 saat",
+        "max ders",
+        "donemlik ders",
+        "hukuk 90 akts"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_041"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "ust_yariyildan_ders_alma",
+      "question": "Ust yariyildan ders alabilir miyim?",
+      "answer": "Evet, fakat sartlar var: En az bir yariyil okumus, GANO'su en az 3.00 olan onlisans ve lisans ogrencileri danismanlarinin olumlu gorusuyle bir ust yariyildan en fazla 3 ders alabilir. Tip ve Dis Hekimligi Fakultesi disindaki birimlerde gecerlidir. On kosul varsa ya onkosulu yerine getirmis olmali ya da onkosulsuz dersler olmali.",
+      "keywords": [
+        "ust yariyil",
+        "ust donemden ders",
+        "3 ders",
+        "gano 3.00"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_042"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "alt_yariyil_oncelik",
+      "question": "Once alt yariyildan kalmis dersleri mi almaliyim?",
+      "answer": "Evet, derse kayitta oncelikle alt siniflardan basarisiz oldugun ve hi  almadigin dersleri secersin. Sonra bulundugun donemin zorunlu ve secmeli derslerini secersin. Ders seciminde YANO (yariyil akademik not ortalamasi) dikkate alinir.",
+      "keywords": [
+        "alt yariyil oncelik",
+        "kalmis ders",
+        "basarisiz ders tekrar"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_043"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "dc_dersi_tekrar",
+      "question": "DC aldigim dersi tekrar almam gerekiyor mu?",
+      "answer": "DC harfli notun tekrar edilip edilmeyecegi YANO'na bagli: YANO'n 2.00 ve uzeriyse DC dersinden basarili sayilirsin ve tekrar zorunlu degilsin (sadece not yukseltmek istersen tekrar alabilirsin). YANO'n 2.00'nin altindaysa basarisiz sayilirsin ve dersi tekrar almak zorundasin.",
+      "keywords": [
+        "dc not",
+        "dc tekrar",
+        "yano 2.00",
+        "sartli basari"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_044"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "gano_150_alt_sinir",
+      "question": "GANO'm 1.50'nin altinda kaldi, ders alabilir miyim?",
+      "answer": "Hayir, dorduncu yariyilin sonunda GANO'su 1.50'nin altinda olan lisans ogrencileri ust yariyillardan ders alamaz. Sadece basarisiz olduklari ya da daha onceden alamadiklari dersleri alarak GANO'larini en az 1.50 seviyesine yukseltmekle yukumludurler.",
+      "keywords": [
+        "gano 1.50",
+        "alt limit",
+        "ders alamama",
+        "dorduncu yariyil"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_045"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "mazeretli_kayit",
+      "question": "Ders kayit suresini kacirdim, ne yapabilirim?",
+      "answer": "Suresinde ders kaydi yapmamis olan ogrencilerin kayitlarinin yenilenmesi icin, derslerin baslama tarihinden itibaren 5 is gunu icinde mazeretlerini dilekce ve belgeleriyle kayitli olduklari fakulte/yuksekokul/MYO'ya basvurmasi gerekir. Birim yonetim kurulu karar verir.",
+      "keywords": [
+        "mazeretli kayit",
+        "kayit kacirdim",
+        "5 is gunu",
+        "ders baslama"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_046"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "ders_muafiyeti_basvuru",
+      "question": "Onceki universitemden aldigim derslerden muafiyet alabilir miyim?",
+      "answer": "Evet. Daha onceki yuksekogretim kurumlarinda en az CC notu veya esdegeri almis oldugun dersler icin muafiyet basvurusu yapabilirsin. Basvuru: kesin kayittan sonra yariyilin/yilin derslerinin baslamasini izleyen 5 is gunu icinde, sadece bir kez, kayitli oldugun akademik birimin bolum baskanligina dilekce + transkript + ders icerikleri ile yapilir.",
+      "keywords": [
+        "ders muafiyet",
+        "cc notu",
+        "muafiyet basvuru",
+        "transkript"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_047"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "ders_devam_yuzdesi",
+      "question": "Derslere devam zorunlulugu nedir?",
+      "answer": "Teorik derslerde en az %70, uygulamali derslerde en az %80 devam zorunludur. Devam zorunlulugunu yerine getirmeyen ogrenci yariyil/yilsonu sinavina alinmaz, otomatik 'D' (devamsizliktan basarisiz) notu verilir. Saglik raporu suresi devam suresinden sayilmaz.",
+      "keywords": [
+        "devam zorunlulugu",
+        "yuzde 70",
+        "yuzde 80",
+        "devamsizlik",
+        "d notu"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_048"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "yatay_gecis_gano",
+      "question": "Yatay gecis icin GANO sartlari nedir?",
+      "answer": "Kurum ici yatay gecis: GANO en az 2.50 ve disiplin cezasi yok. Kurumlar arasi yatay gecis: GANO 100 uzerinden en az 60 veya 4'luk sistemde 2.29; Tip ve Dis Hekimligi'nde en az 75 veya 2.93. Merkezi puana gore yatay gecis (Ek Madde-1): GANO dikkate alinmaz, yerlestirme puanin geciliyse yapilabilir.",
+      "keywords": [
+        "yatay gecis",
+        "gano 2.50",
+        "gano 2.29",
+        "tip dis 2.93",
+        "ek madde 1"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_049"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "yatay_gecis_tarihleri_2025",
+      "question": "Yatay gecis basvuru tarihleri nedir?",
+      "answer": "2025-2026 Guz icin basari durumuna gore yatay gecis basvurusu: 14-23 Temmuz 2025; merkezi puana gore yatay gecis basvurusu: 1-14 Agustos 2025. Bahar icin (sadece onlisans): basari durumuna gore 19-23 Ocak 2026; merkezi puana gore 12-15 Ocak 2026.",
+      "keywords": [
+        "yatay gecis tarih",
+        "temmuz",
+        "agustos",
+        "basvuru"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/2025-2026%20E%C4%9E%C4%B0T%C4%B0M%20%C3%96%C4%9ERET%C4%B0M%20YILI.pdf",
+      "source_title": "2025-2026 Akademik Takvim",
+      "confidence": "high",
+      "time_sensitive": true,
+      "faculty_scope": "general",
+      "id": "kb_course_050"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "cap_kosullari",
+      "question": "Cift Anadal Programi (CAP) icin sartlar neler?",
+      "answer": "CAP basvurusu icin: GANO en az 2.71 (4 uzerinden) ve sinifin basari siralamasinda ilk %20'lik dilimde olmak. Veya: %20 disinda olan ama CAP'in ilgili yilindaki taban puanindan az olmamak. Anadalda tum derslerden basarili olunmasi gerekir. Lisansta en erken 3., en gec 5. yariyilin basinda; onlisansta en erken 2., en gec 3. yariyilin basinda basvurabilirsin.",
+      "keywords": [
+        "cap",
+        "cift anadal",
+        "gano 2.71",
+        "ilk yuzde 20",
+        "basvuru zamani"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_051"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "yandal_kosullari",
+      "question": "Yandal programi sartlari neler?",
+      "answer": "Yandal icin: GANO en az 2.50 (4 uzerinden, 100 uzerinden en az 65). Anadalda almakla yukumlu oldugun tum derslerden basarili olman, yariyil/yil kaybin olmamasi gerekir. Lisansta en erken 3., en gec 6. yariyilin basinda basvurabilirsin.",
+      "keywords": [
+        "yandal",
+        "gano 2.50",
+        "yan dal sertifika"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_052"
+    },
+    {
+      "intent": "exam_and_grading",
+      "intent_aliases": [],
+      "topic": "butunleme_kimler_girer",
+      "question": "Butunleme sinavina kimler girebilir?",
+      "answer": "Butunleme sinavina: (1) Yariyil/yilsonu sinavina girme sartlarini sagladigin halde basarisiz oldugun dersler, (2) Yariyil/yilsonu sinavina girme sartlarini sagladigin halde sinava girmedigin dersler, (3) DC harf notu ile basarili olup not yukseltmek istedigin dersler icin girebilirsin.",
+      "keywords": [
+        "butunleme sartlari",
+        "butunleme kim girer",
+        "dc yukseltme"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_exam_029"
+    },
+    {
+      "intent": "exam_and_grading",
+      "intent_aliases": [],
+      "topic": "mazeret_sinavi_basvuru",
+      "question": "Mazeret sinavi icin nasil basvurulur?",
+      "answer": "Hakli ve gecerli bir nedenden dolayi ara sinava (vize) giremeyen ogrencinin sinav tarihinden itibaren en gec 5 is gunu icinde mazeretini gosterir belge ile akademik birimine yazili olarak muracaat etmesi gerekir. Mazereti kabul edilirse mazeret sinavi yapilir. Mazeret sinavina girmeyene yeni mazeret sinavi yapilmaz.",
+      "keywords": [
+        "mazeret sinavi",
+        "vize kacirdim",
+        "5 is gunu",
+        "saglik raporu"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_exam_030"
+    },
+    {
+      "intent": "exam_and_grading",
+      "intent_aliases": [],
+      "topic": "tek_ders_sinavi",
+      "question": "Tek ders sinavi nedir?",
+      "answer": "Mezuniyetine tek dersi kalan ogrenciler, dersin donemine ve ders kaydina bakilmaksizin akademik takvimde belirtilen zamanda tek ders sinavina girer. Tek ders sinavinda basarili olabilmek icin 100 uzerinden en az 60 almak gerekir. Onkosul: yariyil sonu sinavina girme sartlarini yerine getirmis olmak.",
+      "keywords": [
+        "tek ders sinavi",
+        "mezuniyet tek ders",
+        "60 puan"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_exam_031"
+    },
+    {
+      "intent": "exam_and_grading",
+      "intent_aliases": [],
+      "topic": "sinav_notu_itiraz",
+      "question": "Sinav notuma nasil itiraz edebilirim?",
+      "answer": "Notlarin ilanindan itibaren en gec 5 is gunu icinde ilgili dekanliga/mudurluge yazili olarak maddi hata itirazinda bulunabilirsin. Ogretim elemani itirazi 1 hafta icinde degerlendirir ve sonucu ilgili birime bildirir. Birim yonetim kurulu kararla bildirir.",
+      "keywords": [
+        "sinav itiraz",
+        "not itiraz",
+        "5 is gunu",
+        "maddi hata"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_exam_032"
+    },
+    {
+      "intent": "exam_and_grading",
+      "intent_aliases": [],
+      "topic": "harf_notlari_katsayilar",
+      "question": "Harf notlari ve katsayilari neler?",
+      "answer": "Basarili harf notlari: AA (4.0), BA (3.5), BB (3.0), CB (2.5), CC (2.0), DC (1.5, sartli basari). Basarisiz harf notlari: DD (1.0), FD (0.5), FF (0.0). Diger: G (gecer), K (kalir), S (suren calisma), M (muaf).",
+      "keywords": [
+        "harf notu",
+        "aa",
+        "bb",
+        "katsayi",
+        "4lik sistem"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_exam_033"
+    },
+    {
+      "intent": "exam_and_grading",
+      "intent_aliases": [],
+      "topic": "yarisinav_katki_yuzde",
+      "question": "Ara sinav ve final yuzde kac etkiler?",
+      "answer": "Genel sistemde ara sinavlarin (vize + odev + uygulama vb.) toplam katkisi %40, yariyil/yilsonu sinavinin (final) katkisi %60'tir. Yarisinav sayisi ve katki oranlari dersin ogretim elemani tarafindan belirlenir.",
+      "keywords": [
+        "ara sinav yuzde",
+        "final yuzde",
+        "%40 %60",
+        "vize katki"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_exam_034"
+    },
+    {
+      "intent": "exam_and_grading",
+      "intent_aliases": [],
+      "topic": "final_minimum_puan",
+      "question": "Yariyilsonu (final) sinavindan en az kac almaliyim?",
+      "answer": "Yariyil/yilsonu sinavinda 100 uzerinden en az 50 puan almak zorundasin. Bu puanin altinda kalirsan FF harf notu verilir ve dersten kalirsin (kosulsuz basarisiz).",
+      "keywords": [
+        "final 50 puan",
+        "yarisonu minimum",
+        "ff"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_exam_035"
+    },
+    {
+      "intent": "exam_and_grading",
+      "intent_aliases": [],
+      "topic": "onur_yuksek_onur",
+      "question": "Onur ogrencisi olmak icin sartlar nedir?",
+      "answer": "Mezuniyet sirasinda GANO'su 3.00-3.49 olan ogrenciler onur ogrencisi, 3.50 ve uzeri olan ogrenciler yuksek onur ogrencisi olarak mezun olurlar. Onkosul: kinama disinda disiplin cezasi almamis olmak. Bu bilgi mezuniyet transkriptinde gosterilir.",
+      "keywords": [
+        "onur ogrencisi",
+        "yuksek onur",
+        "gano 3.00",
+        "gano 3.50",
+        "mezuniyet"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_exam_036"
+    },
+    {
+      "intent": "exam_and_grading",
+      "intent_aliases": [],
+      "topic": "mezuniyet_akts_kosulu",
+      "question": "Mezuniyet icin kac AKTS gerek?",
+      "answer": "Onlisans (2 yil): 120 AKTS. Lisans (4 yil): 240 AKTS. Bes yillik lisans (Dis Hekimligi vb): 300 AKTS. Alti yillik lisans (Tip): 360 AKTS. Ayrica GANO'nun en az 2.00 olmasi gerekir.",
+      "keywords": [
+        "mezuniyet akts",
+        "120 akts",
+        "240 akts",
+        "300 akts",
+        "360 akts"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_exam_037"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "hazirlik_devam_basari",
+      "question": "Hazirlik sinifinda devam ve basari sartlari neler?",
+      "answer": "Yabanci Dil Hazirlik egitiminde derslerin en az %85'ine devam etmek zorunludur, devam sartini saglamayan sinavlara katilamaz. Basari notu 100 uzerinden en az 70 olmalidir. Degerlendirme; sinavlar, odevler ve sinif ici aktivitelerle yapilir.",
+      "keywords": [
+        "hazirlik devam",
+        "yuzde 85",
+        "hazirlik basari",
+        "70 puan"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_053"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "yabanci_dil_muafiyet",
+      "question": "Yabanci dil dersinden nasil muaf olabilirim?",
+      "answer": "Zorunlu Yabanci Dil Hazirlik Egitimi bulunmayan programlarda okuyan ogrenciler 'Yabanci Dil Dersi Muafiyet Sinavi'na girebilir. Sinavdan 100 uzerinden 60 ve uzeri alanlar ortak zorunlu yabanci dil derslerinden muaf olur, alinan not harfli nota cevrilerek genel ortalamaya katilir.",
+      "keywords": [
+        "yabanci dil muafiyet",
+        "60 puan muafiyet",
+        "ingilizce muafiyet"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_054"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "hazirlik_zorunlu_programlar",
+      "question": "Hangi bolumlerde hazirlik zorunlu?",
+      "answer": "Zorunlu Yabanci Dil Hazirligi olan programlar: Fen Edebiyat Ingiliz Dili ve Edebiyati (%100), Fen Edebiyat Matematik (%100), Iktisadi Bilimler Uluslararasi Iliskiler (%100), Ilahiyat Fakultesi (%30 Arapca), Muhendislik Bilgisayar Muhendisligi (%30), Turgut Kiran Denizcilik Deniz Ulastirma Isletme Muhendisligi (%30).",
+      "keywords": [
+        "hazirlik zorunlu",
+        "ingilizce hazirlik",
+        "arapca hazirlik",
+        "yuzde 30 ingilizce"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_055"
+    },
+    {
+      "intent": "library",
+      "intent_aliases": [],
+      "topic": "kutuphane_saatleri_donem",
+      "question": "Kutuphane saatleri nedir?",
+      "answer": "Egitim ogretim donemi: hafta ici 08:00-22:00, hafta sonu 09:00-22:00. Yariyil tatili ve yaz donemi: 08:00-17:00. Calisma salonu donem ici surekli aciktir.",
+      "keywords": [
+        "kutuphane saat",
+        "calisma saati",
+        "hafta ici",
+        "hafta sonu",
+        "08 22"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_library_020"
+    },
+    {
+      "intent": "library",
+      "intent_aliases": [],
+      "topic": "kutuphane_konum",
+      "question": "Kutuphane nerede?",
+      "answer": "Merkez Kutuphane Fener Mahallesindeki Zihni Derin Yerleskesi icindedir. Ayrica bazi birimlerde de kutuphane var: Egitim Fakultesi (Cayeli), Ilahiyat Fakultesi (Merkez Yerleske), Ardesen MYO (Ardesen), Findikli MYO (Findikli), Ziraat ve Doga Bilimleri Fakultesi (Pazar).",
+      "keywords": [
+        "kutuphane nerede",
+        "merkez kutuphane",
+        "zihni derin",
+        "subeler"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_library_021"
+    },
+    {
+      "intent": "library",
+      "intent_aliases": [],
+      "topic": "kutuphane_odunc_alma",
+      "question": "Kutuphaneden kac kitap odunc alabilirim?",
+      "answer": "Lisans ve Onlisans ogrencileri: 4 kitap, 15 gunlugune. Lisansustu ogrencileri ve akademik personel: 7 kitap, 30 gunlugune. Idari personel: 5 kitap, 15 gunlugune. Cep Kutuphanem uygulamasi ile sureleri uzatabilirsin.",
+      "keywords": [
+        "kitap odunc",
+        "kac kitap",
+        "kac gun",
+        "uzatma"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_library_022"
+    },
+    {
+      "intent": "library",
+      "intent_aliases": [],
+      "topic": "kutuphane_web",
+      "question": "Kutuphane katalog tarama nasil yapilir?",
+      "answer": "Katalog tarama icin: https://kutuphane.erdogan.edu.tr veya https://kutuphanedb.erdogan.edu.tr adresleri. Cep Kutuphanem uygulamasiyla mobil tarama da yapabilir, odunc kitaplari gorebilir, sure uzatabilirsin. Kampus disindan da VETIS aracigiyla erisim mumkun.",
+      "keywords": [
+        "katalog",
+        "kutuphane web",
+        "vetis",
+        "cep kutuphane"
+      ],
+      "source_url": "https://kutuphanedb.erdogan.edu.tr",
+      "source_title": "RTEU Kutuphane",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_library_023"
+    },
+    {
+      "intent": "library",
+      "intent_aliases": [],
+      "topic": "kutuphane_e_kaynak",
+      "question": "E-kitap ve e-dergiye nasil erisirim?",
+      "answer": "ULAKBIM-EKUAL araciligiyla abone olunan veri tabanlari sayesinde cesitli konulardaki e-kitap, e-dergi ve e-tezlere kutuphane web sayfasi uzerinden erisebilirsin. Kampus disindan VETIS proxy ile de baglanabilirsin.",
+      "keywords": [
+        "e-kitap",
+        "e-dergi",
+        "ulakbim",
+        "ekual",
+        "e-tez"
+      ],
+      "source_url": "https://kutuphanedb.erdogan.edu.tr",
+      "source_title": "RTEU Kutuphane",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_library_024"
+    },
+    {
+      "intent": "student_life",
+      "intent_aliases": [],
+      "topic": "ogrenci_topluluklari_sayi",
+      "question": "RTEU'de kac ogrenci toplulugu var?",
+      "answer": "RTEU'de 88 ogrenci toplulugu vardir. Saglik, Kultur ve Spor Daire Baskanligi bunyesinde faaliyet gosterirler. Faaliyet alanlari: Akademik ve bilimsel (konferanslar, paneller, teknik geziler), sosyal ve kulturel (konserler, sergiler, festivaller), sportif (turnuvalar, doga yuruyusleri), sanatsal (tiyatro, sergiler).",
+      "keywords": [
+        "ogrenci toplulugu",
+        "88 toplulugu",
+        "kulup",
+        "sosyal aktivite"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_life_051"
+    },
+    {
+      "intent": "student_life",
+      "intent_aliases": [],
+      "topic": "topluluk_kurma",
+      "question": "Yeni bir ogrenci toplulugu nasil kurulur?",
+      "answer": "Bir ogrenci toplulugu kurmak icin en az 18 ogrencinin bir araya gelerek Saglik, Kultur ve Spor Daire Baskanligi Ogrenci Topluluklari Birimine basvurmasi gerekmektedir. Ogrenci Topluluklari Yonergesi cercevesinde degerlendirilir.",
+      "keywords": [
+        "topluluk kurma",
+        "18 ogrenci",
+        "kulup kur"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_life_052"
+    },
+    {
+      "intent": "student_life",
+      "intent_aliases": [],
+      "topic": "kulturel_sportif_kurslar",
+      "question": "RTEU'de hangi sosyal kurslar var?",
+      "answer": "RTEU'de 15-20 arasinda kulturel ve sportif kurs duzenlenir: Sanat (Halk Oyunlari, Tiyatro, Diksiyon), Muzik (Gitar, Baglama, Piyano, Ney, Keman, Kemence, Koro), Gorsel (Resim, Ebru, Tezhip, Kaligrafi, Fotograf), Akademik (Ileri Duzey Hafizlik, Hijyen, Ingilizce, Osmanlica, Kalorifer Atesleyicisi, Temel Canva), Sportif (Okculuk, Kick Boks, Dagcilik, Tenis, Latin Danslari).",
+      "keywords": [
+        "kurs",
+        "sosyal kurs",
+        "muzik kursu",
+        "spor kursu",
+        "sanat kursu"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_life_053"
+    },
+    {
+      "intent": "student_life",
+      "intent_aliases": [],
+      "topic": "spor_tesisleri_rezervasyon",
+      "question": "Spor tesislerini nasil rezerve ederim?",
+      "answer": "Hali Saha, Tenis Kortu, Basketbol Sahasi, Voleybol Sahasi ve Tirmanma Duvari rezervasyonu icin Yasam Hizmetleri Sistemi: https://yhs.erdogan.edu.tr/YHS/SahaRezervasyon adresinden hizli e-rezervasyon yapabilirsin. Fitness salonlari, kapali ve acik spor sahalari, yuruyus parkurlari da mevcuttur.",
+      "keywords": [
+        "spor rezervasyon",
+        "hali saha",
+        "tenis",
+        "basketbol",
+        "yhs"
+      ],
+      "source_url": "https://yhs.erdogan.edu.tr/YHS/SahaRezervasyon",
+      "source_title": "RTEU Yasam Hizmetleri",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_life_054"
+    },
+    {
+      "intent": "student_life",
+      "intent_aliases": [],
+      "topic": "bahar_senlikleri",
+      "question": "Bahar senlikleri ne zaman, ne var?",
+      "answer": "Bahar Senlikleri kapsaminda her yil cesitli kulturel, sanatsal ve sportif etkinlikler duzenlenir: konserler (canli muzik), geziler (kulturel ve doga gezileri), tiyatro gosterileri, sportif turnuvalar, ogrenci sanat sergileri.",
+      "keywords": [
+        "bahar senlikleri",
+        "konser",
+        "festival",
+        "etkinlik"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_life_055"
+    },
+    {
+      "intent": "student_life",
+      "intent_aliases": [],
+      "topic": "psikolojik_danisma",
+      "question": "Psikolojik danismadan nasil yararlanirim?",
+      "answer": "RTEU 'Yerinde Psikolojik Danisma ve Rehberlik' hizmeti veriyor — sadece merkez kampuste degil, ilcedeki fakultelerde de hizmet alabilirsin. Randevu icin: http://pdrmerrandevu.erdogan.edu.tr veya REBIS sisteminde 'Psikolojik Danisma Hizmeti' baslindan basvurabilirsin. Fakulte/Yuksekokul ve saat secerek uygun zaman ayarlayabilirsin.",
+      "keywords": [
+        "psikolojik danisma",
+        "rehberlik",
+        "pdr",
+        "randevu"
+      ],
+      "source_url": "http://pdrmerrandevu.erdogan.edu.tr",
+      "source_title": "RTEU Psikolojik Danisma",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_life_056"
+    },
+    {
+      "intent": "student_life",
+      "intent_aliases": [],
+      "topic": "engelli_ogrenci_birimi",
+      "question": "Engelli ogrenciler icin nasil destek var?",
+      "answer": "RTEU Engelli Ogrenci Birimi, Saglik Kultur ve Spor Daire Baskanligi bunyesinde faaliyet gosterir. Egitim-ogretim hayatini kolaylastirmak, akademik ve sosyal yasama tam katilim saglamak amaciyla cesitli destekler sunar. Birime basvurarak ihtiyacina uygun destegi talep edebilirsin.",
+      "keywords": [
+        "engelli ogrenci",
+        "engelli birimi",
+        "destek",
+        "erisilebilirlik"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_life_057"
+    },
+    {
+      "intent": "student_life",
+      "intent_aliases": [],
+      "topic": "kismi_zamanli_calisma",
+      "question": "Kismi zamanli ogrenci calismasi nasil basvurulur?",
+      "answer": "Universite, ders saatleri disindaki bos zamanlarinda ogrencilere kismi zamanli statude calisma imkani veriyor. Bu surec her egitim-ogretim yilinin Ekim ayi basinda veya birimlerin ihtiyaclari dogrultusunda Saglik, Kultur ve Spor Daire Baskanligi web sayfasinda duyurulur.",
+      "keywords": [
+        "kismi zamanli",
+        "ogrenci is",
+        "calisma",
+        "ekim duyuru"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_life_058"
+    },
+    {
+      "intent": "student_life",
+      "intent_aliases": [],
+      "topic": "barinma_yurt",
+      "question": "Yurtta kalmak icin nereye basvurmaliyim?",
+      "answer": "Kredi ve Yurtlar Kurumu (KYK): http://www.kyk.gov.tr — yurt, burs, ogrenim kredisi ve katki kredisi basvurusu burada yapilir. Ozel yurtlarin buyuk kismi sehir merkezi ve ilcelerde bulunur. Rize ilindeki KYK yurtlari: http://yurtkur.gsb.gov.tr/YurtMudurlukleri",
+      "keywords": [
+        "yurt",
+        "barinma",
+        "kyk",
+        "ozel yurt"
+      ],
+      "source_url": "http://www.kyk.gov.tr",
+      "source_title": "KYK",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_life_059"
+    },
+    {
+      "intent": "student_life",
+      "intent_aliases": [],
+      "topic": "rteu_kizilay_butik",
+      "question": "Kizilay Kackar Butik nedir?",
+      "answer": "Universite ile Turk Kizilayi Rize Sube Baskanligi tarafindan ortaklasa olusturulan, Kongre ve Kultur Merkezinde hizmet veren bir butik. Ihtiyac sahibi ogrencilerin yararlanmasi amaciyla acilmistir. Yararlanma kosullari icin SKS Daire Baskanligi web sayfasindan Ogrenci Yararlanma Formu'na bakabilirsin.",
+      "keywords": [
+        "kizilay",
+        "butik",
+        "ihtiyac",
+        "kackar"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_life_060"
+    },
+    {
+      "intent": "student_life",
+      "intent_aliases": [],
+      "topic": "logo_urun",
+      "question": "RTEU logolu urunler nereden alinir?",
+      "answer": "Recep Tayyip Erdogan Universitesi resmi logolu urunler Kongre ve Kultur Merkezi icindeki Hediyelik Esya satis magazasinda satilir. Anahtarlik, kalem, termos, t-shirt, USB bellek, cubbe ve kep gibi cesitler bulunur.",
+      "keywords": [
+        "logo",
+        "hediyelik",
+        "kep cubbe",
+        "magaza"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_life_061"
+    },
+    {
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "basari_bursu_kosullari",
+      "question": "RTEU basari bursu sartlari neler?",
+      "answer": "RTEU Gelistirme Vakfi tarafindan verilen Basari Bursu icin yerlestigin programin puan turune ve yerlesme basari siralamasina bakilir: Sayisal alanda ilk 10 bine, Esit Agirlik alaninda ilk 6 bine, Sozel alanda ilk 3 bine giren ogrencilere basari bursu verilir.",
+      "keywords": [
+        "basari bursu",
+        "sayisal 10 bin",
+        "ea 6 bin",
+        "sozel 3 bin",
+        "yerlestirme"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_burs_042"
+    },
+    {
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "ogrenim_bursu_kosullari",
+      "question": "Ogrenim bursu kimlere veriliyor?",
+      "answer": "RTEU Gelistirme Vakfi tarafindan belirlenen kontenjanlar dahilinde; ogrencilerin ogrenim durumu, ailevi durumu ve gelir durumu dikkate alinarak egitimlerine destek olmak amaciyla ogrenim bursu verilir. Burs kosullari her yil Vakif tarafindan guncellenir.",
+      "keywords": [
+        "ogrenim bursu",
+        "gelir",
+        "ihtiyac bursu",
+        "vakif"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_burs_043"
+    },
+    {
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "yemek_bursu",
+      "question": "Yemek bursu nasil alinir?",
+      "answer": "RTEU her egitim-ogretim yili icin butce imkanlari olcusunde ucretsiz yemek bursu verir. Burs basvurulari Ekim ayinda Saglik, Kultur ve Spor Daire Baskanligi web sayfasinda duyurulur. Hak kazanan ogrenciler yemekhanede gunde bir ogun ucretsiz yemek alabilir.",
+      "keywords": [
+        "yemek bursu",
+        "ucretsiz yemek",
+        "ekim basvuru",
+        "sks"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_burs_044"
+    },
+    {
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "doktora_bursu",
+      "question": "Doktora bursu hangi sartlarla veriliyor?",
+      "answer": "Doktora bursu, uluslararasi ogrenciler dahil olmak uzere; sigortali olarak herhangi bir iste calismayan, Rize ilinde ikamet eden ve universiteye ilk defa kayit yaptiran doktora programlarina kayitli ogrencilere asgari ucret tutarinda verilen burstur.",
+      "keywords": [
+        "doktora bursu",
+        "asgari ucret",
+        "rize ikamet",
+        "sigortasiz"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_burs_045"
+    },
+    {
+      "intent": "digital_systems",
+      "intent_aliases": [],
+      "topic": "rebis_obs_nedir",
+      "question": "REBIS ve OBS nedir?",
+      "answer": "REBIS = RTEU Bilgi Yonetim Sistemi. Icinde OBS (Ogrenci Bilgi Sistemi) bulunur. OBS uzerinden ders kayit, kayit yenileme, dersleri alan ogrenci sinif listeleri, ara sinavlar, donem sonu notlari, transkript, harc odeme islemleri yapilir. Adres: https://obs.erdogan.edu.tr (REBIS).",
+      "keywords": [
+        "rebis",
+        "obs",
+        "bilgi sistemi",
+        "ogrenci sistem"
+      ],
+      "source_url": "https://obs.erdogan.edu.tr",
+      "source_title": "RTEU OBS",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_digital_027"
+    },
+    {
+      "intent": "digital_systems",
+      "intent_aliases": [],
+      "topic": "ogrenci_numarasi_ogrenme",
+      "question": "Ogrenci numaramı nasil ogrenirim?",
+      "answer": "Ogrenci numaran: http://ogrenci.erdogan.edu.tr/OgrenciSorgulama/Index adresinden TC kimlik numaran ile ogrenebilirsin. Bu numara OBS giriste ve tum islemlerde kullanilan numaradir.",
+      "keywords": [
+        "ogrenci numarasi",
+        "numara ogrenme",
+        "tc ile sorgulama"
+      ],
+      "source_url": "http://ogrenci.erdogan.edu.tr/OgrenciSorgulama/Index",
+      "source_title": "RTEU Ogrenci Sorgulama",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_digital_028"
+    },
+    {
+      "intent": "digital_systems",
+      "intent_aliases": [],
+      "topic": "obs_sifresi_format",
+      "question": "OBS sifrem ne?",
+      "answer": "Ilk OBS sifren = TC kimlik numaranin ilk 4 hanesi + ogrenci numaranin son 4 hanesi. Ornek: TC=13548952300, ogrenci no=18090 7099 ise sifren 13547099 olur. Sonra istersen degistirebilirsin. Daha detayli bilgi icin REBIS yardim sayfasina bakabilirsin.",
+      "keywords": [
+        "obs sifre",
+        "ilk sifre",
+        "tc ilk 4",
+        "sifre format"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_digital_029"
+    },
+    {
+      "intent": "digital_systems",
+      "intent_aliases": [],
+      "topic": "kurumsal_email_ogrenme",
+      "question": "Kurumsal e-postam ne?",
+      "answer": "Universitemize ilk defa kayit olan ogrencilere kayit yillarina gore sistem tarafindan otomatik olarak verilir. Kurumsal e-posta REBIS ile giris yapilir. Kendi e-posta adresini ogrenmek icin REBIS'te 'Ogrenci eposta adresimi ogrenmek istiyorum' sayfasina gir. Ornek format: mert_yaz18@erdogan.edu.tr.",
+      "keywords": [
+        "kurumsal email",
+        "ogrenci mail",
+        "erdogan.edu.tr",
+        "eposta adresi"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_digital_030"
+    },
+    {
+      "intent": "digital_systems",
+      "intent_aliases": [],
+      "topic": "harc_odeme_sanal_pos",
+      "question": "Harci nasil oderim?",
+      "answer": "Ucretler 2 yolla odenebilir: 1) Ziraat Bankasi ATM'leri uzerinden 'Kartsiz Islem-Odeme Islemleri-Egitim Odemeleri-Universite Odemeleri-Recep Tayyip Erdogan Un.-Ogrenci Numarasi' yoluyla, 2) OBS uzerinden Sanal POS (mobil bankacilik kart bilgisiyle) ile.",
+      "keywords": [
+        "harc odeme",
+        "ucret odeme",
+        "ziraat atm",
+        "sanal pos",
+        "katki payi"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_digital_031"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "akts_ne_demek",
+      "question": "AKTS nedir, nasil hesaplanir?",
+      "answer": "AKTS (Avrupa Kredi Transfer Sistemi), bir dersle ilgili tum calismalar icin (teorik dersler, uygulama, seminer, bireysel calisma, sinavlar, odevler, kutuphane calismalari, proje) harcanan is yukune gore hesaplanan ders yukudur. Saat olarak miktar 25'e bolunup tam sayiya yuvarlanir. Lisans icin 240 AKTS mezuniyet sarti.",
+      "keywords": [
+        "akts",
+        "kredi",
+        "is yuku",
+        "avrupa kredi"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_056"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "yaz_okulu",
+      "question": "Yaz okulu nedir, sartlari?",
+      "answer": "Yaz Ogretimi normal donemde basarisiz olunan, alinamayan veya notunu yukseltmek istenen dersleri alma imkani verir. Yaz okulu normal donemden sayilmaz. Alabilecegin dersler: daha once gec/bahar yariyilinda alinip basarisiz olan dersler; aciligi halde almadigin dersler; GANO'n en az 3.00 ise bir ust yariyilin dersleri; GANO 2.00 alti ise sadece basarisiz veya ortalama ile basarili dersler.",
+      "keywords": [
+        "yaz okulu",
+        "yaz ogretimi",
+        "yaz donemi",
+        "ders tekrar"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_057"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "azami_ogrenim_suresi",
+      "question": "Programimin azami suresi kac yil?",
+      "answer": "Onlisans azami 4 yil (program 2 yil), Lisans azami 7 yil (program 4 yil), Dis Hekimligi azami 8 yil (program 5 yil), Tip azami 9 yil (program 6 yil), Tezli Yuksek Lisans azami 3 yil (program 2 yil), Tezsiz Yuksek Lisans azami 1.5 yil (program 1 yil), Doktora azami 6 yil (program 4 yil). Hazirlik sinifi haric.",
+      "keywords": [
+        "azami sure",
+        "kac yil",
+        "uzatma",
+        "program suresi"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_058"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "ogrenime_ara_verme",
+      "question": "Ogrenime ara vermek (kayit dondurma) mumkun mu?",
+      "answer": "Evet. Ogrencilik suresi boyunca en fazla 2 yil izin verilir. Rahatsizlik/tedavi durumunda kisitlama disindadir. Yariyil esasinda en az 1, en cok 2 yariyil; yillik esasta en az 1 yil verilebilir. Izinli ogrenci derslere devam edemez ve sinavlara giremez. Basvuru: dilekce + mazeret belgesi ile akademik birime.",
+      "keywords": [
+        "kayit dondurma",
+        "izin",
+        "ara verme",
+        "2 yil"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_059"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "kendi_istegiyle_ayrilma",
+      "question": "Universiteden kendi istegimle ayrilabilir miyim?",
+      "answer": "Evet. Kendi istegiyle ayrilmak isteyen ogrenci kayitli oldugu birime bizzat basvurabilir veya noter onayli vekaletname ile vekalet eden basvurabilir. Bu durumda kayit silme islemi yapilir. Odenen harc ve ucretler iade edilmez. Bu yolla ayrilan ogrencilerin yeniden kaydi yapilmaz.",
+      "keywords": [
+        "kayit silme",
+        "kendi istegiyle ayrilma",
+        "ilisik kesme"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_060"
     }
   ]
 }
