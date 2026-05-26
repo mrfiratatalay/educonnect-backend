@@ -6675,6 +6675,478 @@
       "time_sensitive": false,
       "faculty_scope": "general",
       "id": "kb_services_040"
+    },
+    {
+      "intent": "student_services",
+      "intent_aliases": [],
+      "topic": "akademik_danisman_kim",
+      "question": "Akademik danismanim kim, nasil atanir?",
+      "answer": "Akademik danisman, ogrencilik suresince universite yasamina uyum, mesleki gelisim, kariyer, dersler, derse kayitlar gibi konularda rehberlik yapan akademik personeldir. Atama: Onlisans/lisansta ilgili bolum baskaninin onerisi uzerine dekan/mudur tarafindan; Tip ve Dis Hekimligi Fakultesinde ise dekanlik tarafindan yapilir. Universiteye kesin kayit yaptiran her ogrenciye bir danisman atanir.",
+      "keywords": [
+        "akademik danisman",
+        "danisman atama",
+        "rehber hoca",
+        "danisman kim"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_services_041"
+    },
+    {
+      "intent": "student_services",
+      "intent_aliases": [],
+      "topic": "akademik_danisman_gorevleri",
+      "question": "Danismanim ne yapar, ne icin gorusurum?",
+      "answer": "Akademik danismaninin gorevleri: (1) Ders secimine onay vermek (kayit yenileme/ders kayit haftasinda), (2) Akademik konularda rehberlik, (3) Universite yasamina uyum desteği, (4) Mesleki gelisim ve kariyer planlama, (5) Yatay gecis, ÇAP, yandal gibi başvurularda yonlendirme. Ders kayit donemlerinde özellikle önemli — danisman onayi olmadan kayit gecersizdir.",
+      "keywords": [
+        "danisman ne yapar",
+        "rehberlik",
+        "ders onay",
+        "kariyer"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_services_042"
+    },
+    {
+      "intent": "student_services",
+      "intent_aliases": [],
+      "topic": "kimlik_karti_kayip",
+      "question": "Ogrenci kimlik kartimi kaybettim, ne yapayim?",
+      "answer": "Kimlik karti kaybi veya degisikligi durumunda RTEU Bilgi Yonetim Sistemi (REBIS) icindeki 'e-talep' sisteminden yeni kimlik karti talep edebilirsin. Eski karti bulursan iade etmen iyi olur.",
+      "keywords": [
+        "kimlik kayip",
+        "ogrenci karti yenileme",
+        "e-talep"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_services_043"
+    },
+    {
+      "intent": "student_services",
+      "intent_aliases": [],
+      "topic": "kimlik_karti_baskasina_yasak",
+      "question": "Ogrenci kimligimi arkadasimla paylasabilir miyim?",
+      "answer": "Hayir, kesinlikle yasaktir. Ogrenci kimlik kartinin baskalari tarafindan kullanimi 2547 sayili Kanunun 54. maddesi geregi disiplin sucudur. Yasal islem yapilir (kinama veya uzaklastirma cezasi). Kart sadece sana aittir.",
+      "keywords": [
+        "kimlik paylasimi",
+        "baskasinin kimligi",
+        "disiplin sucu"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_services_044"
+    },
+    {
+      "intent": "student_services",
+      "intent_aliases": [],
+      "topic": "kimlik_karti_kullanim_alanlari",
+      "question": "Ogrenci kimligimi nerelerde kullanabilirim?",
+      "answer": "Ogrenci kimlik karti Recep Tayyip Erdogan Universitesi yerlerleskelerine giriste, yemekhane odemelerinde, kutuphane islemlerinde (odunc kitap), ve benzeri yerlerde kullanilabilir. Kimligine yemekhane icin para yuklemelisin.",
+      "keywords": [
+        "kimlik nerede",
+        "kart kullanim",
+        "yemekhane karti"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_services_045"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "ders_turleri_zorunlu_secmeli",
+      "question": "Ders turleri nelerdir?",
+      "answer": "RTEU'de 5 tur ders vardir: (1) ZORUNLU: Mezun olmak icin alip basarmak zorunlu dersler. (2) ORTAK ZORUNLU: Ataturk Ilkeleri ve Inkilap Tarihi, Turk Dili, Yabanci Dil, Saglik ve Guvenligi (geregli fakultelerde). (3) SECMELI: Zorunlu disindaki tum dersler — Bolum Secmeli ve Universite Ortak Secmeli (USD) olarak ikiye ayrilir. (4) ISTEGE BAGLI: Ogrencinin serbest olarak alabilecegi dersler, basarmak zorunlu degil ama not ortalamasina dahildir. (5) ON KOSULLU: Once baska bir dersi gecmis veya devam etmis olmak gerekir.",
+      "keywords": [
+        "ders turleri",
+        "zorunlu ders",
+        "secmeli ders",
+        "ortak zorunlu",
+        "usd",
+        "istege bagli"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_086"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "universite_ortak_secmeli_usd",
+      "question": "Universite Ortak Secmeli Dersi (USD) nedir?",
+      "answer": "USD, ogrencinin kayitli oldugu programda yer almayan, farkli akademik birimler tarafindan alanin disindaki seçmeli derslerdir. Topluma hizmet uygulamalari, kultur, spor, saglik aktiviteleri, cevre duyarliligi, bilimi yayginlastirma, iletisim becerileri, yabanci dil becerileri gibi kazanimlara yoneliktir. Genelde 2 saat teori, 2 kredi, 2 AKTS olarak verilir. Akademik birimler guz ve bahar yariyilinda USD koduyla acabilir.",
+      "keywords": [
+        "usd",
+        "universite ortak secmeli",
+        "alandisi ders",
+        "kultur ders"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_087"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "staj_isletmede_egitim",
+      "question": "Stajimi nasil yapacagim?",
+      "answer": "Iki tur uygulama vardir: (1) ISLETMEDE MESLEKI EGITIM: Egitim ve ogretim donemlerinde yapilir. Ilgili yilin akademik takviminde belirlenen ders baslangic donemlerinde baslar ve donem sonunda biter. Belirli programlarda (MYO ozellikle) zorunludur. (2) STAJ: Yariyil tatilinde veya yaz doneminde yapilir. Detaylar kayitli oldugun akademik birimin internet sayfasindaki mevzuattan alinabilir.",
+      "keywords": [
+        "staj",
+        "isletmede mesleki egitim",
+        "yariyil tatili staj",
+        "yaz staj"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_088"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "kredi_kodlari_t_u_l_k",
+      "question": "Ders programimdaki T, U, L, K ne demek?",
+      "answer": "Ders saatlerini ve kredisini gosteren kodlar: T = Teorik ders saati, U = Uygulama, L = Laboratuvar, K = Ulusal kredi degeri. Bir dersin haftalik toplam saati = T + U + L. Kredi K = T saatleri + (U + L) saatlerinin yarisinin toplami. Transkriptte K olarak gosterilir. Bunun yaninda AKTS (Avrupa Kredi Transfer Sistemi) ayrica yazilir; tum is yuku 25'e bolunup yuvarlanarak hesaplanir.",
+      "keywords": [
+        "t u l k",
+        "kredi kodu",
+        "teorik uygulama laboratuvar",
+        "kredi hesaplama"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_089"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "sinif_belirleme_intibak",
+      "question": "Yatay gecisle geldim, hangi sinifa intibak yapilir?",
+      "answer": "Universiteye ilk kez kayit yaptiran ogrencilerin mevcut sinifi, kayitli olduklari programlara intibaklari soz konusu ise muafiyet alinan tum derslerinin kredi toplamina gore belirlenir. Lisans programlarinda intibak kurallari: Muafiyet alinan ders kredilerinin toplami; ust sinifin altinda olan derslerin toplam kredisinin en az %70'ine karsilik geliyorsa ogrenci bir ust sinifa intibak ettirilir. Onlisansta %60 olarak uygulanir. Bu kuralla 1. sinifta degil, dogrudan 2. veya 3. sinifa baslanabilir.",
+      "keywords": [
+        "intibak",
+        "sinif belirleme",
+        "%70 lisans",
+        "%60 onlisans",
+        "yatay gecis sinif"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_090"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "iliski_kesilme_nedenleri",
+      "question": "Universite ile iliskim hangi durumlarda kesilir?",
+      "answer": "Ogrencinin universite ile iliskigi kesilir: (1) Yuksekogretim kurumundan cikarma cezasi almis olmasi, (2) Kontenjan sinirlamasi olmayan acik ogretim programlari haric, ayni anda iki onlisans veya iki lisans programina kayitli oldugunun belirlenmesi, (3) Kesin kayit isleminin usulune uygun yapilmadiginin veya kayit hakki kazanilmadiginin anlasilmasi nedeniyle kayit iptali. Bu durumlarda birim yonetim kurulu karari ile iliski kesilir.",
+      "keywords": [
+        "iliski kesme",
+        "cikarma",
+        "iki program",
+        "kayit iptal"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_091"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "erasmus_programi_nedir",
+      "question": "Erasmus programina nasil basvururum?",
+      "answer": "Erasmus programi, AB ulkeleri ve aday ulkelerin yuksekogretim kurumlari ile is birligi yapmayi tesvik eden uluslararasi ogrenci degisim programidir. Yuksekogretim kurumlari arasinda kisa sureli ogrenci ve personel degisimi yapabilmek icin karsilıksiz mali destek saglar. Avrupa'da yuksekogretimin kalitesini artirmayi amacliyor. Basvuru icin RTEU Erasmus Koordinatorluk Birimi'ne ait sayfayi takip et.",
+      "keywords": [
+        "erasmus",
+        "yurtdisi egitim",
+        "ab degisim",
+        "mali destek"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_092"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "farabi_programi_nedir",
+      "question": "Farabi Degisim Programi nedir?",
+      "answer": "Farabi Degisim Programi, Turk Yuksek Ögretim Kurumlari arasinda ogrenci ve ogretim uyesi degisimi programidir. Bu program ile universite ve yuksek teknoloji enstituleri bunyesinde onlisans, lisans, yuksek lisans ve doktora duzeyinde egitim ogretim yapan yuksekogretim kurumlari arasinda ogrenci ve ogretim uyesi degisimi yapilir.",
+      "keywords": [
+        "farabi",
+        "yurt ici degisim",
+        "turk universite degisim"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_093"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "mevlana_degisim_programi",
+      "question": "Mevlana Degisim Programi nedir?",
+      "answer": "Mevlana Degisim Programi, yurtici egitim veren yuksekogretim kurumlari ile yurtdisi egitim veren yuksekogretim kurumlari arasinda ogrenci ve ogretim elemanı degisimini mumkun kilan bir programdir. Diger degisim programlarindan farkli olarak, hicbir cografi bolge ayrimi olmaksizin degisim programi bunyesindeki hareketlilik butun dunyadaki yuksekogretim kurumlarini kapsar.",
+      "keywords": [
+        "mevlana degisim",
+        "dunya degisim",
+        "yurtdisi yurtici"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_094"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "mezuniyet_kosullari_detay",
+      "question": "Mezun olmak icin tum kosullar nelerdir?",
+      "answer": "Mezuniyet icin 3 sart birlikte saglanmali: (1) Egitim-ogretim planinda yer alan tum dersler, uygulamalar, staj, is yeri egitimi ve benzeri calismalarin harf notu basarili olmasi, (2) AKTS sarti — Onlisans 120, Lisans 240, 5 yillik lisans 300, 6 yillik lisans 360 AKTS kredisinin basariyla tamamlanmasi, (3) GANO'nun en az 2.00 olmasi. Tum bunlar tamamlandiginda diplomayi almaya hak kazanirsin.",
+      "keywords": [
+        "mezuniyet sart",
+        "tum kosullar",
+        "gano 2.00",
+        "akts mezuniyet"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_095"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "diploma_eki_nedir",
+      "question": "Diploma Eki nedir, ne ise yarar?",
+      "answer": "Diploma Eki (Diploma Supplement), ogrenimin suresinde almis oldugun butun derslerin adlari ve AKTS kredileri ile standart diploma eki bilgilerini kapsayan, diploma ile birlikte verilen Ingilizce bir belgedir. AB ulkelerinde gecerlidir ve mezuniyet sonrasi yurt disinda ise basvuru veya yuksek lisans basvurularinda kullanilir. Diploma yerine kullanilmaz, sadece eki olarak verilir.",
+      "keywords": [
+        "diploma eki",
+        "diploma supplement",
+        "ingilizce belge",
+        "ab",
+        "yurtdisi basvuru"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_096"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "mezun_bilgi_sistemi",
+      "question": "Mezun olduktan sonra universite ile baglantim devam eder mi?",
+      "answer": "Evet. Mezun Bilgi Sistemi, mezunlarimiz ile universitemiz arasindaki bagi koparmamak ve iletisimi korumaya yonelik olusturulmus bir iletisim aracidir. Uye olmak tamamen ucretsizdir. Sistem uzerinden mezuniyet sonrasi egitim, iletisim, is ve benzeri bilgilerini guncelleyebilirsin. Universite olarak mezun ogrencilerine ulasmamiz icin kolaylik saglar.",
+      "keywords": [
+        "mezun sistem",
+        "alumni",
+        "mezun bagi",
+        "iletisim aglari"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_097"
+    },
+    {
+      "intent": "student_life",
+      "intent_aliases": [],
+      "topic": "sosyal_transkript_nedir",
+      "question": "Sosyal transkript nedir, nasil alirim?",
+      "answer": "Sosyal Transkript, ogrencilerin ogrenim sureleri boyunca universite icinde veya disindaki akademik faaliyetlerin yani sira sosyal, kulturel veya bilimsel faaliyetlerin yer aldigi belgedir. Kulup uyelikleri, etkinlik katilimlari, gonullu calismalar gibi aktiviteleri kayit altina alir. Kariyer basvurularinda ek belge olarak kullanabilirsin. OIDB veya kayitli oldugun akademik birimden talep edebilirsin.",
+      "keywords": [
+        "sosyal transkript",
+        "sosyal aktivite belge",
+        "kulup uyelik",
+        "etkinlik"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_life_064"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "kim_harc_oder",
+      "question": "Hangi ogrenciler ogrenim ucreti/katki payi oder?",
+      "answer": "Ucret odeyenler: (1) Ikinci ogretim programlarina kayitli ogrenciler (ogrenim ucreti), (2) Uluslararasi ogrenciler (ogrenim ucreti), (3) Normal sureyi asanlar (katki payi): onlisansta 2 yili, lisansta 4 yili, zorunlu hazirlikta 1 yili asanlar, (4) Bir yuksekogretim programina kayitliyken tekrar girip yerlesen ogrenciler. Yeni kayit ucreti odemesi normalde gerekmez (birinci ogretim) — sadece bu kategorilerdekiler oder.",
+      "keywords": [
+        "harc kim oder",
+        "ucret odeme",
+        "ikinci ogretim ucret",
+        "uluslararasi ucret",
+        "normal sure asma"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_098"
+    },
+    {
+      "intent": "exam_and_grading",
+      "intent_aliases": [],
+      "topic": "ara_sinav_yerine_gecenler",
+      "question": "Vize yerine proje, odev gibi seyler verilir mi?",
+      "answer": "Evet. Bir ders icin yariyil/yil ici en az bir ara sinav (vize) yapilir. Bununla birlikte ders icindeki PROJE, ODEV, LABORATUVAR, UYGULAMA ve benzeri calismalar yariyil/yil ici calismasi yerine gecebilir. Yani bazi derslerde klasik vize yerine proje, ödev veya laboratuvar performansi degerlendirilir. Ara sinavlarin/calismalarin sayisi ve harf notuna katki orani dersin ogretim elemani tarafindan belirlenir.",
+      "keywords": [
+        "vize yerine proje",
+        "odev ara sinav",
+        "laboratuvar puani",
+        "uygulama"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_exam_038"
+    },
+    {
+      "intent": "student_services",
+      "intent_aliases": [],
+      "topic": "belgeler_neler_e_devlet",
+      "question": "E-devletten hangi ogrenci belgelerini alabilirim?",
+      "answer": "E-devlet uzerinden alabileceğin belgeler: (1) Ogrenci belgesi, (2) Transkript (not dokum belgesi), (3) Disiplin durum belgesi, (4) Askerlik durum belgesi, (5) Lise mezuniyet belgesi. Bu belgeler kayitli oldugun akademik birimden (Enstitu, Fakulte, Yuksekokul veya MYO) ve Ogrenci Isleri Daire Baskanligindan da alinabilir. e-devlet 7/24 ulasilabilir, kuyrukta beklemek gerekmez.",
+      "keywords": [
+        "e-devlet belge",
+        "ogrenci belgesi",
+        "askerlik belge"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_services_046"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "ogrenme_ciktisi_nedir",
+      "question": "Ders icin 'ogrenme ciktisi' ne demek?",
+      "answer": "Ogrenme ciktilari, bir ogrenme surecini tamamlayan ogrencinin neleri bilecegi, anlayacagi ve/veya yapabilecegini aciklayan ifadelerdir. Ogrenme sureci bir ders veya bir modul olabilir. Ogrenme ciktilarinda bilgi ve beceri gozlenebilir ve olculebilir sekilde tanimlanir. Yeterlilik ise daha geniş kapsamlidir — bir yuksekogretim derecesini basari ile tamamlayan kisinin neleri bilebilecegini, neleri yapabilecegini ve nelere yetkin olacagini ifade eder.",
+      "keywords": [
+        "ogrenme ciktisi",
+        "yeterlilik",
+        "ders ciktilari",
+        "kazanim"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_099"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "ders_icerigi_ne_ise_yarar",
+      "question": "Ders icerigi belgesi ne icin gerekir?",
+      "answer": "Ders icerigi belgesi, bir programin egitim-ogretim planinda yer alan derslerin adi, kodu, AKTS/kredisi, amaci ve icerigi gibi bilgileri iceren belgedir. Ders ICERIGINE NE ZAMAN IHTIYACIN OLUR: Yatay gecis basvurusunda (eski universitenden), Cift Anadal Programi basvurusunda, Yandal basvurusunda, ve ders muafiyet basvurularinda kullanilir. Onceki universitenden almis oldugun derslerin RTEU'deki esdegerligini saglar.",
+      "keywords": [
+        "ders icerigi",
+        "icerik belgesi",
+        "yatay gecis belge",
+        "muafiyet belgesi"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_100"
+    },
+    {
+      "intent": "exam_and_grading",
+      "intent_aliases": [],
+      "topic": "kac_ara_sinav_yapilir",
+      "question": "Bir dersin kac vizesi olur?",
+      "answer": "Bir ders icin yariyil uygulamasinda yariyil icinde, yil uygulamasinda ise yil icinde en az BIR ara sinav yapilir. 'En az' onemli — bazi derslerde 2 vize, bazilarinda 3 vize olabilir; dersin ogretim elemani karar verir. Ayrica proje, odev, laboratuvar gibi calismalar ara sinav yerine veya yaninda kullanilabilir. Toplam ara sinav/yari yıl ici calismalar dersin harf notuna %40 etkide bulunur, final ise %60.",
+      "keywords": [
+        "kac vize",
+        "ara sinav sayisi",
+        "minimum bir vize"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_exam_039"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "saglik_raporu_devam",
+      "question": "Saglik raporlu olursam devamsiz mi sayilirim?",
+      "answer": "Saglik raporlu olunan sure DEVAM SURESINDEN SAYILMAZ. Yani rapor varsa devamsizlik olarak yazilmaz. Ancak, raporlu olunan toplam sure derslerin %30'unu veya uygulama/laboratuvarlarin %20'sini astigi takdirde ogrenci devamsizliktan kalir. Yani uzun sureli rapor devamsizlik gibi degerlendirilir ve dersten D harf notu alir.",
+      "keywords": [
+        "saglik raporu devam",
+        "rapor devamsizlik",
+        "raporlu kalma"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_101"
     }
   ]
 }
