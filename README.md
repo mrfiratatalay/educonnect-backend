@@ -2,7 +2,7 @@
 
 > Üniversite öğrencileri için yapay zekâ destekli sosyal medya, akademik etkileşim ve öğrenci pazaryeri platformu.
 
-Bu repo, EduConnect projesinin **.NET 10 tabanlı ana backend API**'sini ve **Python/FastAPI tabanlı doğal dil işleme servisini** içerir. TÜBİTAK 2209-A Üniversite Öğrencileri Araştırma Projeleri kapsamında, Recep Tayyip Erdoğan Üniversitesi Bilgisayar Mühendisliği bitirme tezim olarak geliştirdim.
+Bu repo, EduConnect projesinin **.NET 10 tabanlı ana backend API**'sini ve **Python/FastAPI tabanlı doğal dil işleme servisini** içerir. TÜBİTAK 2209-A Üniversite Öğrencileri Araştırma Projeleri kapsamında, Recep Tayyip Erdoğan Üniversitesi Bilgisayar Mühendisliği bitirme tezi olarak **Fırat Atalay** ve **Ayşe Mandıralı** olarak ikimiz birlikte geliştirdik.
 
 ---
 
@@ -21,9 +21,9 @@ Bu repo, EduConnect projesinin **.NET 10 tabanlı ana backend API**'sini ve **Py
 
 ## 🎯 Projenin Amacı
 
-Üniversiteye yeni başladığım dönemde, kampüsteki sosyal ortamı yakalamak, hangi etkinliğin nerede olduğunu öğrenmek, ders dışı toplulukları keşfetmek, kullanmadığım kitapları ihtiyacı olan arkadaşlarıma ulaştırmak gibi günlük gereksinimleri tek bir platformdan karşılayan bir yapı bulamadım. WhatsApp grupları çok dağınık, sosyal medyalar üniversite bağlamından kopuk, e-postalar ise eski usul kalıyordu.
+Üniversiteye yeni başladığımız dönemde, kampüsteki sosyal ortamı yakalamak, hangi etkinliğin nerede olduğunu öğrenmek, ders dışı toplulukları keşfetmek, kullanmadığımız kitapları ihtiyacı olan arkadaşlarımıza ulaştırmak gibi günlük gereksinimleri tek bir platformdan karşılayan bir yapı bulamadık. WhatsApp grupları çok dağınık, sosyal medyalar üniversite bağlamından kopuk, e-postalar ise eski usul kalıyordu.
 
-EduConnect'i, **üniversite öğrencilerinin tüm dijital ihtiyaçlarını tek bir noktada toplayan**, üstelik **kendi üniversitesi hakkında soruları yapay zekâ ile anında cevaplayabilen** bir sosyal platform olarak tasarladım. Hedef kullanıcı: lisans öğrencisi. Hedef üniversite: ilk etapta Recep Tayyip Erdoğan Üniversitesi (RTEU), sonrasında diğer üniversitelere genişletilebilir yapıda.
+EduConnect'i, **üniversite öğrencilerinin tüm dijital ihtiyaçlarını tek bir noktada toplayan**, üstelik **kendi üniversitesi hakkında soruları yapay zekâ ile anında cevaplayabilen** bir sosyal platform olarak tasarladık. Hedef kullanıcı: lisans öğrencisi. Hedef üniversite: ilk etapta Recep Tayyip Erdoğan Üniversitesi (RTEU), sonrasında diğer üniversitelere genişletilebilir yapıda.
 
 ---
 
@@ -76,7 +76,7 @@ EduConnect, **üç ayrı serviste deploy edilmiş**, gevşek bağlı (loosely co
                           └──────────────────┘
 ```
 
-Bu ayrıştırmayı bilinçli yaptım. Ana backend'in **yapay zekâ modellerini kendi içinde barındırması** hem RAM tüketimi açısından (~1.5GB ek yük) hem de bağımlılık karmaşası açısından sağlıklı değildi. NLP servisini ayrı bir HTTP servisi olarak çıkarınca **backend hafif kaldı**, **Python ekosistemi avantajı korundu** (Hugging Face Transformers, PyTorch, torchvision), **modeli güncellemek için ana backend'i deploy etmem gerekmiyor**, ve **NLP servisi başka projelerden de tüketilebilir** hale geldi.
+Bu ayrıştırmayı bilinçli yaptık. Ana backend'in **yapay zekâ modellerini kendi içinde barındırması** hem RAM tüketimi açısından (~1.5GB ek yük) hem de bağımlılık karmaşası açısından sağlıklı değildi. NLP servisini ayrı bir HTTP servisi olarak çıkarınca **backend hafif kaldı**, **Python ekosistemi avantajı korundu** (Hugging Face Transformers, PyTorch, torchvision), **modeli güncellemek için ana backend'i deploy etmemiz gerekmiyor**, ve **NLP servisi başka projelerden de tüketilebilir** hale geldi.
 
 ---
 
@@ -110,8 +110,8 @@ Bu ayrıştırmayı bilinçli yaptım. Ana backend'in **yapay zekâ modellerini 
 ### Mimari Desen
 - **Clean Architecture**: 4 katman (Domain, Application, Infrastructure, Api)
 - **Dependency Injection**: Built-in DI container
-- **Repository Pattern yerine doğrudan EF Core DbContext** kullanıyorum — bu kadar küçük bir projede gereksiz soyutlama olacaktı
-- **Result/Either pattern** yerine **klasik exception-based hata yönetimi** + custom middleware (GlobalExceptionHandler) — debug ve okunabilirlik açısından ekibimin (yani benim) hızlı ilerlemesini sağladı
+- **Repository Pattern yerine doğrudan EF Core DbContext** kullanıyoruz — bu kadar küçük bir projede gereksiz soyutlama olacaktı
+- **Result/Either pattern** yerine **klasik exception-based hata yönetimi** + custom middleware (GlobalExceptionHandler) — debug ve okunabilirlik açısından iki kişilik ekibimizin hızlı ilerlemesini sağladı
 
 ---
 
@@ -147,7 +147,7 @@ Kullanıcı sorusu
 
 Bu kademeli karar mekanizması sayesinde **kullanıcı her seferinde Gemini API kotamı tüketmiyor**, **yanlış bilgi riski azalıyor**, ve **kullanıcıya cevabın hangi kaynaktan geldiği şeffaf şekilde gösteriliyor** (confidence band: low/medium/high; needsReview bayrağı; kaynak URL'i).
 
-Her chat mesajını veritabanında saklıyorum (ChatMessages tablosu) — model performansını ileride iyileştirmek için. Ayrıca kullanıcı bir cevaba 👍/👎 feedback verebiliyor (ChatMessageFeedbacks tablosu).
+Her chat mesajını veritabanında saklıyoruz (ChatMessages tablosu) — model performansını ileride iyileştirmek için. Ayrıca kullanıcı bir cevaba 👍/👎 feedback verebiliyor (ChatMessageFeedbacks tablosu).
 
 ---
 
@@ -180,13 +180,13 @@ ER diyagramı ve detaylı tablo açıklamaları için ana monorepo'daki `Databas
 
 ### Önemli Tasarım Kararı: PostgreSQL'e Geçiş
 
-Projeye Microsoft SQL Server ile başlamıştım çünkü .NET ekosisteminde bu en yaygın seçim. Ancak production deploy aşamasında **Render'ın free tier'ında SQL Server bulunmaması**, ve **PostgreSQL'in açık kaynak olması + ücretsiz tier'larda her yerde olması** sebebiyle tüm sistemi PostgreSQL'e taşıdım. Geçiş süreci:
+Projeye Microsoft SQL Server ile başlamıştık çünkü .NET ekosisteminde bu en yaygın seçim. Ancak production deploy aşamasında **Render'ın free tier'ında SQL Server bulunmaması**, ve **PostgreSQL'in açık kaynak olması + ücretsiz tier'larda her yerde olması** sebebiyle tüm sistemi PostgreSQL'e taşıdık. Geçiş süreci:
 
-1. EF Core provider'ı `Microsoft.EntityFrameworkCore.SqlServer` → `Npgsql.EntityFrameworkCore.PostgreSQL` olarak değiştirdim
-2. 11 adet eski migration dosyasını tamamen sildim, yeni `InitialPostgresCreate` migration'ı oluşturdum
-3. `nvarchar(max)` → `text`, `float` → `double precision` gibi MS SQL'e özgü tip eşlemelerini düzelttim
-4. `Npgsql.EnableLegacyTimestampBehavior` switch'i ile DateTime uyumluluğunu sağladım (Npgsql 6+ varsayılan davranışı çok katı)
-5. Mevcut verileri taşımak için `backend/tools/MigrateData/` altında **kendi yazdığım ETL konsol uygulamasını** kullandım — EF Core ile MS SQL'den okuyor, FK trigger'ları geçici devre dışı bırakıp PostgreSQL'e yazıyor. Test ortamında 27 tablo, 815 satır sıfır hata ile taşındı.
+1. EF Core provider'ı `Microsoft.EntityFrameworkCore.SqlServer` → `Npgsql.EntityFrameworkCore.PostgreSQL` olarak değiştirdik
+2. 11 adet eski migration dosyasını tamamen silip, yeni `InitialPostgresCreate` migration'ı oluşturduk
+3. `nvarchar(max)` → `text`, `float` → `double precision` gibi MS SQL'e özgü tip eşlemelerini düzelttik
+4. `Npgsql.EnableLegacyTimestampBehavior` switch'i ile DateTime uyumluluğunu sağladık (Npgsql 6+ varsayılan davranışı çok katı)
+5. Mevcut verileri taşımak için `backend/tools/MigrateData/` altında **kendi yazdığımız ETL konsol uygulamasını** kullandık — EF Core ile MS SQL'den okuyor, FK trigger'ları geçici devre dışı bırakıp PostgreSQL'e yazıyor. Test ortamında 27 tablo, 815 satır sıfır hata ile taşındı.
 
 ---
 
@@ -382,12 +382,14 @@ Bu proje çok sayıda harika açık kaynak projeye dayanıyor. En önemlilerine 
 
 ---
 
-## 👤 Geliştirici
+## 👥 Geliştiriciler
 
-**Fırat Atalay**
-Bilgisayar Mühendisliği Lisans Öğrencisi
-Recep Tayyip Erdoğan Üniversitesi
-📧 firat_atalay21@erdogan.edu.tr
+Bu proje, Recep Tayyip Erdoğan Üniversitesi Bilgisayar Mühendisliği bölümünde yakın iki arkadaş olarak birlikte geliştirildi:
+
+- **Fırat Atalay** — Bilgisayar Mühendisliği Lisans Öğrencisi, RTEU
+- **Ayşe Mandıralı** — Bilgisayar Mühendisliği Lisans Öğrencisi, RTEU
+
+Tüm tasarım kararları, mimari seçimler, kod yazımı ve deploy süreci ikimizin ortak çalışmasının ürünüdür.
 
 TÜBİTAK 2209-A Üniversite Öğrencileri Araştırma Projeleri Programı bitirme tezi olarak geliştirildi.
 
