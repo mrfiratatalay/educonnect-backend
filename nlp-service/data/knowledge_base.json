@@ -5776,6 +5776,603 @@
       "time_sensitive": false,
       "faculty_scope": "general",
       "id": "kb_course_060"
+    },
+    {
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "basari_bursu_normal_sure",
+      "question": "Basari bursu kac yil verilir?",
+      "answer": "Basari bursu zorunlu hazirlik sinifi dahil olmak uzere universite programinin normal ogrenim suresi boyunca ve her ogretim yilinda 9 ay sureyle verilir. Lisansta normal sure 4 yil oldugu icin maksimum 4 yil x 9 ay = 36 ay burs alabilirsin.",
+      "keywords": [
+        "basari bursu sure",
+        "9 ay",
+        "4 yil",
+        "normal sure"
+      ],
+      "source_url": "https://erdogan.edu.tr/Files/ckFiles/erdogan-edu-tr/RTEU-Gelistirme-Vakfi-Burs-ve-Tesvik-Yonergesi.pdf",
+      "source_title": "RTEU Gelistirme Vakfi Burs ve Tesvik Yonergesi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_burs_046"
+    },
+    {
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "basari_bursu_kesilme_kosullari",
+      "question": "Basari bursum hangi durumda kesilir?",
+      "answer": "Basari bursu su durumlarda kesilir: (1) GANO 4.00 uzerinden 2.70'in (uluslararasi ogrencilerde 2.40) altina duser, (2) Birden fazla dersten basarisiz olursan, (3) Disiplin cezasi alirsan, (4) Programin normal sürcsini asarsan, (5) Kayit dondurursan, (6) Yatay gecis veya iliski kesilmesi olursa, (7) Ders kaydi yapmazsan veya derslerin yarisindan fazlasinda devamsizlik sinirini asarsan.",
+      "keywords": [
+        "basari bursu kesilir",
+        "burs kesilme",
+        "gano 2.70",
+        "disiplin",
+        "devamsizlik"
+      ],
+      "source_url": "https://erdogan.edu.tr/Files/ckFiles/erdogan-edu-tr/RTEU-Gelistirme-Vakfi-Burs-ve-Tesvik-Yonergesi.pdf",
+      "source_title": "RTEU Gelistirme Vakfi Burs ve Tesvik Yonergesi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_burs_047"
+    },
+    {
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "basari_bursu_kimler_alamaz",
+      "question": "Basari bursunu kimler alamaz?",
+      "answer": "Basari bursunu alamayanlar: (1) Dikey veya yatay gecisle universitemize gelen ogrenciler, (2) Ikinci ogretim ogrencileri, (3) Ek yerlestirme ile yerlesen ogrenciler, (4) Cift anadal veya yandal ogrencileri (sadece anadal kapsami), (5) Daha onceden baska bir lisans programindan mezun olan ogrenciler, (6) Cift vatandasligi olan uluslararasi ogrenciler.",
+      "keywords": [
+        "basari bursu kim alamaz",
+        "ikinci ogretim",
+        "dikey gecis",
+        "ek yerlestirme"
+      ],
+      "source_url": "https://erdogan.edu.tr/Files/ckFiles/erdogan-edu-tr/RTEU-Gelistirme-Vakfi-Burs-ve-Tesvik-Yonergesi.pdf",
+      "source_title": "RTEU Gelistirme Vakfi Burs ve Tesvik Yonergesi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_burs_048"
+    },
+    {
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "basari_bursu_a_milli",
+      "question": "A milli sporcu olarak burs alabilir miyim?",
+      "answer": "Evet. Futbol, basketbol, voleybol, hentbol, gures ve halter branslarinda A milli sporculardan universitemizin Spor Bilimleri Fakultesine kayit yaptiranlara basari bursu verilir.",
+      "keywords": [
+        "a milli sporcu",
+        "spor bursu",
+        "spor bilimleri",
+        "futbol basketbol"
+      ],
+      "source_url": "https://erdogan.edu.tr/Files/ckFiles/erdogan-edu-tr/RTEU-Gelistirme-Vakfi-Burs-ve-Tesvik-Yonergesi.pdf",
+      "source_title": "RTEU Gelistirme Vakfi Burs ve Tesvik Yonergesi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_burs_049"
+    },
+    {
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "basari_bursu_uluslararasi",
+      "question": "Uluslararasi ogrenciler basari bursu alabilir mi?",
+      "answer": "Evet. TR-YOS sinavi basari siralamasinda ilk 500'e giren uluslararasi ogrencilerden universitemizin herhangi bir programina kayit yaptiranlara basari bursu verilir. Ancak TC vatandasligi yaninda baska ulke vatandasligi olanlar bu burstan yararlanamaz. GANO 2.40 altina duserse burs kesilir.",
+      "keywords": [
+        "uluslararasi burs",
+        "tr-yos",
+        "ilk 500",
+        "yabanci ogrenci bursu"
+      ],
+      "source_url": "https://erdogan.edu.tr/Files/ckFiles/erdogan-edu-tr/RTEU-Gelistirme-Vakfi-Burs-ve-Tesvik-Yonergesi.pdf",
+      "source_title": "RTEU Gelistirme Vakfi Burs ve Tesvik Yonergesi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_burs_050"
+    },
+    {
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "ogrenim_bursu_kriterler",
+      "question": "Ogrenim bursu nasil kazanilir? Kriterleri nedir?",
+      "answer": "Ogrenim bursu ihtiyac sahibi ogrencilere verilir. Belirleyici kriterler: (1) Genel akademik not ortalamasi (GANO) veya yeni baslayanlarda OSYM yerlesme puani/sirasi, (2) Ogrenim suresi, (3) Kardes sayisi ve okuyan kardes sayisi, (4) Aile geliri ve sosyal guvenlik durumu, (5) Aile durumu (ebeveyn vefati/ayriligi), (6) Sehit veya gazi cocugu olmak, (7) Baska yerden burs/kredi almiyor olmak, (8) Disiplin cezasi yok, (9) Sigara/tutun/elektronik sigara kullanmiyor olmak.",
+      "keywords": [
+        "ogrenim bursu kriter",
+        "ihtiyac bursu",
+        "kardes sayisi",
+        "gelir",
+        "sehit gazi"
+      ],
+      "source_url": "https://erdogan.edu.tr/Files/ckFiles/erdogan-edu-tr/RTEU-Gelistirme-Vakfi-Burs-ve-Tesvik-Yonergesi.pdf",
+      "source_title": "RTEU Gelistirme Vakfi Burs ve Tesvik Yonergesi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_burs_051"
+    },
+    {
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "ogrenim_bursu_kesilme_yukseltme",
+      "question": "Ogrenim bursumun miktari neye gore degisir?",
+      "answer": "Ogrenim bursu su sekilde ayarlanir: (1) GANO 3.50 ve uzeri ise %50 artirilmis odenir. (2) GANO 1.50-2.00 arasinda ise %50 kesintili odenir. (3) GANO 1.50 altina duserse kesilir. (4) Tip/Dis Hekimligi/Hukuk sinif tekrari yaparsan %50 kesintili odenir, ikinci kez sinif tekrari yaparsan kesilir. Ayni hukum hazirlik sinifi tekrari icin de gecerlidir.",
+      "keywords": [
+        "ogrenim bursu miktar",
+        "gano 3.50",
+        "artirilmis",
+        "kesintili",
+        "sinif tekrari"
+      ],
+      "source_url": "https://erdogan.edu.tr/Files/ckFiles/erdogan-edu-tr/RTEU-Gelistirme-Vakfi-Burs-ve-Tesvik-Yonergesi.pdf",
+      "source_title": "RTEU Gelistirme Vakfi Burs ve Tesvik Yonergesi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_burs_052"
+    },
+    {
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "doktora_bursu_detay",
+      "question": "Doktora bursu sartlari nelerdir, ne kadar verir?",
+      "answer": "Doktora bursu, uluslararasi ogrenciler dahil, sigortali olarak bir iste calismayan ve universiteye ilk defa kayit yaptiran doktora ogrencilerine verilir. Miktar: net asgari ucret kadar. Sure: 4 yil boyunca 12 ay (yilda 12 ay). Sart: Rize ilinde ikamet etmek ve bunu belgelemek. Kesilme: GANO 3.50 altina duserse veya basarisiz dersin varsa kesilir.",
+      "keywords": [
+        "doktora bursu detay",
+        "asgari ucret",
+        "4 yil 12 ay",
+        "rize ikamet"
+      ],
+      "source_url": "https://erdogan.edu.tr/Files/ckFiles/erdogan-edu-tr/RTEU-Gelistirme-Vakfi-Burs-ve-Tesvik-Yonergesi.pdf",
+      "source_title": "RTEU Gelistirme Vakfi Burs ve Tesvik Yonergesi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_burs_053"
+    },
+    {
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "yurt_disi_egitim_bursu",
+      "question": "Yurt disi egitim bursu var mi?",
+      "answer": "Evet. Yurtdisi degisim programlari (Erasmus, Mevlana vs) haric olmak uzere gecici sureyle yurt disinda bir universiteye ogrenim icin gidecek ogrencilere Burs Komisyonunun onerisi ve Mutevelli Heyeti'nin onayi ile burs verilebilir. Basvuru icin Komisyona basvurman gerekir.",
+      "keywords": [
+        "yurt disi burs",
+        "yurtdisi egitim",
+        "yabanci universite"
+      ],
+      "source_url": "https://erdogan.edu.tr/Files/ckFiles/erdogan-edu-tr/RTEU-Gelistirme-Vakfi-Burs-ve-Tesvik-Yonergesi.pdf",
+      "source_title": "RTEU Gelistirme Vakfi Burs ve Tesvik Yonergesi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_burs_054"
+    },
+    {
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "basari_odulu_mezun_ilk_uc",
+      "question": "Mezuniyette ilk 3'e girersem ne kazanirim?",
+      "answer": "Fakulte, yuksekokul ve meslek yuksekokullarini ilk 3 siralamaya girerek derece ile bitiren ogrencilere, basari bursunun bir aylik tutarinin 2 katini asmayacak kadar nakdi veya ayni odul verilebilir. Yani 'birincilik' odulun var mezuniyette.",
+      "keywords": [
+        "mezuniyet odul",
+        "ilk uc",
+        "birincilik",
+        "basari odulu"
+      ],
+      "source_url": "https://erdogan.edu.tr/Files/ckFiles/erdogan-edu-tr/RTEU-Gelistirme-Vakfi-Burs-ve-Tesvik-Yonergesi.pdf",
+      "source_title": "RTEU Gelistirme Vakfi Burs ve Tesvik Yonergesi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_burs_055"
+    },
+    {
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "akademik_spor_kultur_odulu",
+      "question": "Akademik veya spor yarismasinda derece alirsam odul var mi?",
+      "answer": "Evet. Yapmis oldugun akademik calismalarda veya spor, kultur ve bilim alanlarinda ulusal veya uluslararasi yarismalarda ilk 3 siralamaya giren ogrencilere, basari bursunun bir aylik tutarinin 2 katini asmayacak kadar nakdi veya ayni odul verilebilir.",
+      "keywords": [
+        "yarisma odul",
+        "uluslararasi yarisma",
+        "spor odul",
+        "bilim yarismasi"
+      ],
+      "source_url": "https://erdogan.edu.tr/Files/ckFiles/erdogan-edu-tr/RTEU-Gelistirme-Vakfi-Burs-ve-Tesvik-Yonergesi.pdf",
+      "source_title": "RTEU Gelistirme Vakfi Burs ve Tesvik Yonergesi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_burs_056"
+    },
+    {
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "kayit_dondurma_burs",
+      "question": "Kayit dondurursam bursum ne olur?",
+      "answer": "Kayit dondurma veya izinli sayilma donemlerinde burs odenmez. Bu sure boyunca herhangi bir burs hakkindan yararlanamazsin. Doneme dondugunde, eger bursunla ilgili diger kosullari (GANO, normal sure, devam) hala karsiliyorsan tekrar burs alabilirsin.",
+      "keywords": [
+        "kayit dondurma burs",
+        "izinli burs",
+        "burs durumu"
+      ],
+      "source_url": "https://erdogan.edu.tr/Files/ckFiles/erdogan-edu-tr/RTEU-Gelistirme-Vakfi-Burs-ve-Tesvik-Yonergesi.pdf",
+      "source_title": "RTEU Gelistirme Vakfi Burs ve Tesvik Yonergesi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_burs_057"
+    },
+    {
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "yatay_gecis_burs",
+      "question": "Yatay gecis yaparsam basari bursum ne olur?",
+      "answer": "Dikey veya yatay gecisle universitemize gelen ogrenciler basari bursundan yararlanamaz. Bu kategorideki burslar yalnizca direkt yerlesme ile gelen ana dal ogrencilerine verilir.",
+      "keywords": [
+        "yatay gecis burs",
+        "dikey gecis burs",
+        "burs alamama"
+      ],
+      "source_url": "https://erdogan.edu.tr/Files/ckFiles/erdogan-edu-tr/RTEU-Gelistirme-Vakfi-Burs-ve-Tesvik-Yonergesi.pdf",
+      "source_title": "RTEU Gelistirme Vakfi Burs ve Tesvik Yonergesi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_burs_058"
+    },
+    {
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "burs_basvuru_genel",
+      "question": "Burslar nasil basvurulur?",
+      "answer": "Burslara iliskin kosullar, aciklamalar ve basvuru icin gerekli belgeler universitenin internet sayfasinda ilan edilir. Adaylar, duyuruda belirtilen belgelerle birlikte basvurularini Geliştirme Vakfi Burs Komisyonu'na yapar. Basvuru tarihleri her yil duyurularla belirlenir.",
+      "keywords": [
+        "burs basvuru",
+        "duyuru takip",
+        "burs komisyonu"
+      ],
+      "source_url": "https://erdogan.edu.tr/Files/ckFiles/erdogan-edu-tr/RTEU-Gelistirme-Vakfi-Burs-ve-Tesvik-Yonergesi.pdf",
+      "source_title": "RTEU Gelistirme Vakfi Burs ve Tesvik Yonergesi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_burs_059"
+    },
+    {
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "birden_fazla_burs",
+      "question": "Birden fazla burs kazanirsam ne olur?",
+      "answer": "Birden fazla burs kazanan ogrenciye, kazandigi en yuksek burs verilir. Bursu kesilen ogrenciye ayni burs tekrar verilmez. Yani bir kez kaybedersen, ayni kategoride bir daha alamazsin.",
+      "keywords": [
+        "birden fazla burs",
+        "en yuksek burs",
+        "burs kesilince"
+      ],
+      "source_url": "https://erdogan.edu.tr/Files/ckFiles/erdogan-edu-tr/RTEU-Gelistirme-Vakfi-Burs-ve-Tesvik-Yonergesi.pdf",
+      "source_title": "RTEU Gelistirme Vakfi Burs ve Tesvik Yonergesi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_burs_060"
+    },
+    {
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "normal_sure_asma_burs",
+      "question": "Normal ogrenim suresini asarsam bursum ne olur?",
+      "answer": "Programin normal ogrenim suresini (Lisans 4 yil, onlisans 2 yil) asan ogrenciye burs verilmez. Yani 5. yilina giren bir lisans ogrencisi mevcut burslarinin tumunu kaybeder. Hazirlik sinifi normal sureye dahildir.",
+      "keywords": [
+        "normal sure asma",
+        "5 yil burs",
+        "uzayan ogrenim burs"
+      ],
+      "source_url": "https://erdogan.edu.tr/Files/ckFiles/erdogan-edu-tr/RTEU-Gelistirme-Vakfi-Burs-ve-Tesvik-Yonergesi.pdf",
+      "source_title": "RTEU Gelistirme Vakfi Burs ve Tesvik Yonergesi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_burs_061"
+    },
+    {
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "disiplin_cezasi_burs",
+      "question": "Disiplin cezasi alirsam bursum kesilir mi?",
+      "answer": "Evet. Disiplin cezasi almis ogrenciye burs verilmez. Burs suresi icinde disiplin cezasi alan ogrencinin bursu kesilir. Kinama disindaki tum cezalar (uzaklastirma, cikarma) burs hakkini etkiler.",
+      "keywords": [
+        "disiplin burs",
+        "ceza burs",
+        "kinama"
+      ],
+      "source_url": "https://erdogan.edu.tr/Files/ckFiles/erdogan-edu-tr/RTEU-Gelistirme-Vakfi-Burs-ve-Tesvik-Yonergesi.pdf",
+      "source_title": "RTEU Gelistirme Vakfi Burs ve Tesvik Yonergesi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_burs_062"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "ders_kayit_3_asama",
+      "question": "Ders kayit sureci hangi asamalardan olusur?",
+      "answer": "Ders kayit/yenileme sureci 3 asamadan olusur akademik takvimde: (1) Ders Kayit/Kayit Yenileme Haftasi: REBIS uzerinden ders secimini yapip danisman onayina gonderirsin. (2) Yariyil Harc Odeme Haftasi: katki payi/ogrenim ucretini odersin. (3) Ders Ekleme-Cikarma: secmeli ders yetersizligi veya dersin acilmamasi durumunda danisman onayi ile bir dersi birakip baska seceblirsin.",
+      "keywords": [
+        "ders kayit asama",
+        "kayit sureci",
+        "harc odeme haftasi",
+        "ekleme cikarma"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-Derse-Kayit-Kayit-Yenileme-Kilavuzu.pdf",
+      "source_title": "Ogrenci Derse Kayit-Kayit Yenileme Kilavuzu",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_061"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "mazeret_durumu_kayit_10_isgunu",
+      "question": "Hangi mazeretle ders kaydim uzatilabilir?",
+      "answer": "Onceden ongorulemeyen mazeretler: hastalik, dogum, dogal afet, tutukluluk, mahkumiyet, askerlik. Bu durumlardan dolayi ders secimini veya harc odemesini suresinde yapamayan ogrenciler, derslerin baslama tarihinden itibaren 10 is gunu icerisinde ilgili birime yazili basvuru yapar. Mazereti uygun gorulen ogrencilerin yonetim kurulu karariyla ders kaydi yapilir.",
+      "keywords": [
+        "mazeretli kayit",
+        "10 is gunu",
+        "hastalik",
+        "askerlik",
+        "dogal afet"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-Derse-Kayit-Kayit-Yenileme-Kilavuzu.pdf",
+      "source_title": "Ogrenci Derse Kayit-Kayit Yenileme Kilavuzu",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_062"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "danisman_onayi_zorunlu",
+      "question": "Ders kaydim danisman onayi olmadan gecerli mi?",
+      "answer": "Hayir. Ders kaydi, danisman tarafindan kaydin onaylanmasi ile kesinlesir. Ogrenci, danisman onayini takip etmelidir. Danisman onayi olmayan kayitlar gecersizdir. Yapilan islemlerin danisman tarafindan onaylanip onaylanmadigi ogrencinin kendi sayfasindan transkriptine bakarak kontrol edilebilir.",
+      "keywords": [
+        "danisman onay",
+        "kayit gecersiz",
+        "transkript kontrol"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-Derse-Kayit-Kayit-Yenileme-Kilavuzu.pdf",
+      "source_title": "Ogrenci Derse Kayit-Kayit Yenileme Kilavuzu",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_063"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "ders_alma_sirasi",
+      "question": "Once hangi dersleri secmeliyim?",
+      "answer": "Ders secimi sirasi: (1) Once varsa alt siniflardan basarisiz oldugun dersler, (2) Alt siniflardan sorumlu olup hi  almadigin dersler, (3) Bulundugun donemin zorunlu dersleri, (4) Bulundugun donemin secmeli dersleri. Secimde YANO (yariyil akademik not ortalamasi) dikkate alinir.",
+      "keywords": [
+        "ders secim sirasi",
+        "alt sinif",
+        "zorunlu once",
+        "secmeli sonra"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-Derse-Kayit-Kayit-Yenileme-Kilavuzu.pdf",
+      "source_title": "Ogrenci Derse Kayit-Kayit Yenileme Kilavuzu",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_064"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "harc_borcu_ders_kayit",
+      "question": "Harc borcum varsa ders kaydi yapabilir miyim?",
+      "answer": "Hayir. Ogrenim ucreti/katki payi borcu odenmeden ders kaydi yapilamaz. Sistem 'X TL tutarinda harc borcunuz bulunmaktadir. Belirtilen tarihler arasinda yatirdiginiz takdirde ders secimi yapabilirsiniz' uyarisi verir. Borc odendikten sonra ders secimi acilabilir.",
+      "keywords": [
+        "harc borcu",
+        "ders kayit borc",
+        "ucret odeme"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-Derse-Kayit-Kayit-Yenileme-Kilavuzu.pdf",
+      "source_title": "Ogrenci Derse Kayit-Kayit Yenileme Kilavuzu",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_065"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "ucret_odeme_atm",
+      "question": "Harci nasil oderim?",
+      "answer": "Harci 2 yolla odeyebilirsin: (1) Ziraat Bankasi ATM'lerinden 'Kartsiz Islem-Odeme Islemleri-Egitim Odemeleri-Universite Odemeleri-Recep Tayyip Erdogan Un.-Ogrenci Numarasi' yoluyla. (2) OBS uzerinden Sanal POS (mobil bankacilik kart bilgisiyle) ile.",
+      "keywords": [
+        "harc odeme yontemi",
+        "ziraat atm",
+        "sanal pos"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-Derse-Kayit-Kayit-Yenileme-Kilavuzu.pdf",
+      "source_title": "Ogrenci Derse Kayit-Kayit Yenileme Kilavuzu",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_066"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "ders_yuku_40_saat_fazlasi",
+      "question": "40 saatten fazla ders almak istersem ne yapmaliyim?",
+      "answer": "Bir donemde 40 saatten fazla derse kayit yapacak ogrenciler, sistemden 40 saate kadar kayit yaparlar. 40 saatten fazlasi icin 'Ders Ekleme-Cikarma Formu'nu doldurup derse kayit haftasi icinde ilgili akademik birime teslim etmek zorundadirlar.",
+      "keywords": [
+        "40 saat fazla",
+        "ekleme cikarma formu",
+        "fazla ders"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-Derse-Kayit-Kayit-Yenileme-Kilavuzu.pdf",
+      "source_title": "Ogrenci Derse Kayit-Kayit Yenileme Kilavuzu",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_067"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "ucretsiz_ders_alma_haklari",
+      "question": "Belirli yillarda 40 saat sinirinden muafiyet var mi?",
+      "answer": "Evet. Su ogrenciler 40 saat sinirina tabi degildir: (1) Onlisans 4. yilinda, lisans 7. yilinda olanlar (azami surenin son yili), (2) Tum derslerini aldiginda yariyil sonunda mezun olabilecek ogrenciler, (3) Hukuk Fakultesi ogrencileri (90 AKTS sinirina tabi).",
+      "keywords": [
+        "40 saat muaf",
+        "azami sure son yil",
+        "mezun durumu"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-Derse-Kayit-Kayit-Yenileme-Kilavuzu.pdf",
+      "source_title": "Ogrenci Derse Kayit-Kayit Yenileme Kilavuzu",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_068"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "taslak_kaydet_sonra_gonder",
+      "question": "Ders kaydi taslak halinde nasil tutulur?",
+      "answer": "Ders secimi yapildiktan sonra 'Taslak Olarak Kaydet' butonu ile gecici kayit yapilir. Taslak asamasinda iken secilen derslerde (ilk defa alinan) degisiklik yapilabilir, basarisiz olunan derslerin cikarilmasina sistem izin vermez. Hazir oldugunda 'Danisman Onayina Gonder' butonu ile danisman onayina gonderirsin.",
+      "keywords": [
+        "taslak kayit",
+        "kayit duzenleme",
+        "danisman gonder"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-Derse-Kayit-Kayit-Yenileme-Kilavuzu.pdf",
+      "source_title": "Ogrenci Derse Kayit-Kayit Yenileme Kilavuzu",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_069"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "rebis_sifre_unutma",
+      "question": "REBIS sifremi unuttum ne yapayim?",
+      "answer": "REBIS giris sayfasinda 'Sifremi unuttum' butonundan sifre sifirlama yapabilirsin. Eger e-posta adresini de bilmiyorsan 'Ogrenci e-posta adresimi ogrenmek istiyorum' linkinden ogrenebilirsin. Sifre sifirlama da ise yaramazsa Bilgi Islem Daire Baskanligi ile iletisime gec: 0464 223 6126 dahili 1757.",
+      "keywords": [
+        "rebis sifre",
+        "sifre unuttum",
+        "sifre sifirlama",
+        "bidb"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-Derse-Kayit-Kayit-Yenileme-Kilavuzu.pdf",
+      "source_title": "Ogrenci Derse Kayit-Kayit Yenileme Kilavuzu",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_070"
+    },
+    {
+      "intent": "student_services",
+      "intent_aliases": [],
+      "topic": "rteu_engelli_destek_detay",
+      "question": "Engelli ogrencilere RTEU'de hangi destekler var?",
+      "answer": "RTEU Engelli Ogrenci Birimi Saglik, Kultur ve Spor Daire Baskanligi bunyesindedir. Egitim-ogretim hayatini kolaylastirmak, akademik ve sosyal yasama tam katilim saglamak icin: akademik destek (ders materyalleri uygunlastirilmasi), erisilebilir alan duzenlemeleri, ek sure hakki, kisisel danismanlik gibi destekler verir. Birime dilekce ile basvurursun.",
+      "keywords": [
+        "engelli destek",
+        "erisilebilirlik",
+        "ek sure",
+        "akademik destek"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-Derse-Kayit-Kayit-Yenileme-Kilavuzu.pdf",
+      "source_title": "Ogrenci Derse Kayit-Kayit Yenileme Kilavuzu",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_services_038"
+    },
+    {
+      "intent": "student_life",
+      "intent_aliases": [],
+      "topic": "mobil_kutuphane",
+      "question": "Mobil Kutuphane nedir, nasil kullanilir?",
+      "answer": "Mobil Kutuphane uygulamasi ile Merkez Yerleske disindaki akademik birimlere tasimali kitap odunc hizmeti verilir. Saglik Kultur ve Spor Daire Baskanligi takviminde, her iki haftada bir Carsamba gunu olmak uzere odunc almak istedigin kitaplar birimine teslim edilir.",
+      "keywords": [
+        "mobil kutuphane",
+        "tasimali kitap",
+        "ilce kutuphanesi"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-Derse-Kayit-Kayit-Yenileme-Kilavuzu.pdf",
+      "source_title": "Ogrenci Derse Kayit-Kayit Yenileme Kilavuzu",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_life_062"
+    },
+    {
+      "intent": "student_life",
+      "intent_aliases": [],
+      "topic": "konusan_kitaplik",
+      "question": "Gorme engelliler icin sesli kitap hizmeti var mi?",
+      "answer": "Evet. Milli Kutuphane tarafindan gorme engelli kullanicilara sunulan 'Konusan Kitaplik' hizmeti RTEU kutuphane web sayfasinda erisilebilir. Sesli kitap dinleme imkani saglar. Detay: https://kutuphanedb.erdogan.edu.tr/tr/veri-tabani/konusan-kitaplik/",
+      "keywords": [
+        "konusan kitaplik",
+        "sesli kitap",
+        "gorme engelli"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-Derse-Kayit-Kayit-Yenileme-Kilavuzu.pdf",
+      "source_title": "Ogrenci Derse Kayit-Kayit Yenileme Kilavuzu",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_life_063"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "yks_kayit_genel",
+      "question": "YKS ile yeni kayit nasil yapilir?",
+      "answer": "YKS ile RTEU'ye yerlesen yeni ogrenciler icin kayit sureci ÖSYM tarafindan belirlenen tarihlerde gerceklestirilir. Kayit duyurulari https://erdogan.edu.tr ve https://oidb.erdogan.edu.tr sayfalarinda yayimlanir. Belirtilen tarihlerde e-kayit yapmayan ogrencilerin kayit hakki kaybolur. Ozel Yetenek Sinavi ile gelen ogrenciler (Egitim ve Spor Bilimleri Fakultesi) e-kayit yapamaz, dogrudan fakulte sayfasini takip etmelidir.",
+      "keywords": [
+        "yks kayit",
+        "yeni ogrenci kayit",
+        "e-kayit",
+        "osym"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-Derse-Kayit-Kayit-Yenileme-Kilavuzu.pdf",
+      "source_title": "Ogrenci Derse Kayit-Kayit Yenileme Kilavuzu",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_071"
+    },
+    {
+      "intent": "student_services",
+      "intent_aliases": [],
+      "topic": "rteu_18_aum",
+      "question": "RTEU'de hangi arastirma merkezleri var?",
+      "answer": "RTEU'de 18 Arastirma ve Uygulama Merkezi (AUM) bulunur. Bu merkezler cay, su urunleri, biyoteknoloji, surdurulebilirlik, kadin calismalari, uzaktan egitim gibi cesitli alanlarda calismaktadir. Tam liste icin: https://erdogan.edu.tr universitemiz sayfasi.",
+      "keywords": [
+        "arastirma merkezi",
+        "aum",
+        "cay merkezi",
+        "rteu merkezler"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-Derse-Kayit-Kayit-Yenileme-Kilavuzu.pdf",
+      "source_title": "Ogrenci Derse Kayit-Kayit Yenileme Kilavuzu",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_services_039"
     }
   ]
 }
