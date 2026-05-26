@@ -7622,6 +7622,365 @@
       "time_sensitive": false,
       "faculty_scope": "general",
       "id": "kb_life_066"
+    },
+    {
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "burs_odeme_donemi",
+      "question": "Burslar kac ay odenir?",
+      "answer": "RTEU burslari (basari bursu ve ogrenim bursu) zorunlu hazirlik sinifi dahil olmak uzere universite programinin normal ogrenim suresi boyunca her ogretim yilinda 9 ay sureyle odenir (Ekim-Haziran araliginda). Doktora bursu ise 12 ay sureyle odenir, 4 yil boyunca devam eder. Yaz aylarinda (Temmuz, Agustos, Eylul) burs odemesi yapilmaz.",
+      "keywords": [
+        "burs ne kadar suren",
+        "9 ay burs",
+        "12 ay doktora",
+        "ekim haziran odeme"
+      ],
+      "source_url": "https://erdogan.edu.tr/Files/ckFiles/erdogan-edu-tr/RTEU-Gelistirme-Vakfi-Burs-ve-Tesvik-Yonergesi.pdf",
+      "source_title": "RTEU Gelistirme Vakfi Burs ve Tesvik Yonergesi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_burs_063"
+    },
+    {
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "burs_kayit_donem_kontrolu",
+      "question": "Bursumun devam edip etmedigi nasil belirlenir?",
+      "answer": "Egitim-ogretimin yariyil esasina gore yapildigi bolum ve programlarda her yariyil sonunda; yil esasina gore yapilanlarda ise yilsonunda ogrencilerin ders basari durumlari kontrol edilir. Bu kontrole gore: burs alimina devam mi edileceğine, ya da bursun kesilip kesilmeyecegine karar verilir. Yani her donem sonunda not durumunu degerlendiriliyor.",
+      "keywords": [
+        "burs kontrol",
+        "donem sonu kontrol",
+        "burs devam",
+        "not durumu"
+      ],
+      "source_url": "https://erdogan.edu.tr/Files/ckFiles/erdogan-edu-tr/RTEU-Gelistirme-Vakfi-Burs-ve-Tesvik-Yonergesi.pdf",
+      "source_title": "RTEU Gelistirme Vakfi Burs ve Tesvik Yonergesi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_burs_064"
+    },
+    {
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "burs_devamsizlik_kesilme",
+      "question": "Devamsizlik bursumu nasil etkiler?",
+      "answer": "Eger derslerin yarisindan fazlasinda devamsizlik sinirini asarsan (yani %50'den fazla dersinde devamsizliktan kalirsan), bursun kesilir. Ayrica ders kaydini hi  yapmadiysan ya da kayit dondurursan, o yariyilda burs odemesi yapilmaz.",
+      "keywords": [
+        "devamsizlik burs",
+        "ders kaydi yapmama",
+        "burs kesilme devamsizlik"
+      ],
+      "source_url": "https://erdogan.edu.tr/Files/ckFiles/erdogan-edu-tr/RTEU-Gelistirme-Vakfi-Burs-ve-Tesvik-Yonergesi.pdf",
+      "source_title": "RTEU Gelistirme Vakfi Burs ve Tesvik Yonergesi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_burs_065"
+    },
+    {
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "burs_kesilince_geri_alinmaz",
+      "question": "Bursum kesildi, tekrar alabilir miyim?",
+      "answer": "Hayir. Bursu kesilen ogrenciye AYNI burs yeniden verilmez. Yani bir kez kaybedersen, ayni kategoride bir daha basvuramazsin. Ancak ihtiyac sahibi durumun degisirse veya farkli kosullari saglarsan farkli bir burs turune basvurabilirsin (ornegin basari bursu kesildi, ogrenim bursuna basvurabilirsin).",
+      "keywords": [
+        "burs tekrar alabilir mi",
+        "burs kesilirse",
+        "ayni burs",
+        "burs hak kaybi"
+      ],
+      "source_url": "https://erdogan.edu.tr/Files/ckFiles/erdogan-edu-tr/RTEU-Gelistirme-Vakfi-Burs-ve-Tesvik-Yonergesi.pdf",
+      "source_title": "RTEU Gelistirme Vakfi Burs ve Tesvik Yonergesi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_burs_066"
+    },
+    {
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "lisansustu_tez_odulu",
+      "question": "En iyi yuksek lisans veya doktora tezi odulu var mi?",
+      "answer": "Evet. Fen, saglik ve sosyal bilimler alanlarinda olusturulan juri tarafindan dereceye layik gorulen lisansustu ogrencilerine, yilin en iyi yuksek lisans ve doktora tezi basari odulu verilebilir. Degerlendirmeleri yapacak juri uyeleri Mutevelli Heyeti tarafindan belirlenir. Tez basari oduluyle birlikte hem mali odul hem prestij kazaniliyor.",
+      "keywords": [
+        "tez odulu",
+        "yuksek lisans odul",
+        "doktora tezi odul",
+        "en iyi tez"
+      ],
+      "source_url": "https://erdogan.edu.tr/Files/ckFiles/erdogan-edu-tr/RTEU-Gelistirme-Vakfi-Burs-ve-Tesvik-Yonergesi.pdf",
+      "source_title": "RTEU Gelistirme Vakfi Burs ve Tesvik Yonergesi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_burs_067"
+    },
+    {
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "cap_yandal_burs_yasagi",
+      "question": "Cift anadal veya yandal yapiyorsam burs alabilir miyim?",
+      "answer": "Basari bursu YALNIZCA ana dal programi ogrencilerine verilir. Ikinci ana dal (CAP) ve yandal programi ogrencileri basari bursundan yararlanamaz. Yani CAP yaptigin ikinci programdan ek burs alamazsin — sadece anadalindaki burs gecerli kalir.",
+      "keywords": [
+        "cap burs",
+        "yandal burs",
+        "ikinci anadal burs",
+        "anadal burs"
+      ],
+      "source_url": "https://erdogan.edu.tr/Files/ckFiles/erdogan-edu-tr/RTEU-Gelistirme-Vakfi-Burs-ve-Tesvik-Yonergesi.pdf",
+      "source_title": "RTEU Gelistirme Vakfi Burs ve Tesvik Yonergesi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_burs_068"
+    },
+    {
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "ikili_anlasma_burs",
+      "question": "Universitenin ikili anlasmalari ile gelen ogrencilere burs var mi?",
+      "answer": "Evet. Universitemiz ile yurt ici veya yurt disindaki yuksekogretim kurumlari arasinda yapilan ikili anlasmalar kapsaminda universitemize kayit yaptiran ogrencilere yonergedeki hukumler cercevesinde burs verilebilir. Bursun kapsami, suresi, devam kosullari ve diger hususlar Burs Komisyonu tarafindan karara baglanir.",
+      "keywords": [
+        "ikili anlasma burs",
+        "anlasmali ogrenci",
+        "uluslararasi anlasma"
+      ],
+      "source_url": "https://erdogan.edu.tr/Files/ckFiles/erdogan-edu-tr/RTEU-Gelistirme-Vakfi-Burs-ve-Tesvik-Yonergesi.pdf",
+      "source_title": "RTEU Gelistirme Vakfi Burs ve Tesvik Yonergesi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_burs_069"
+    },
+    {
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "degisim_burs_devam",
+      "question": "Erasmus/Farabi'ye gidersem RTEU bursum devam eder mi?",
+      "answer": "Evet. Degisim programlarina (Erasmus, Farabi, Mevlana) katilan ogrenciler ile ozel ogrenci statusunde bulunanlar, RTEU burs haklarindan yararlanmaya devam ederler. Yani yurtdisinda da olsan, ozel ogrenci olsan da RTEU bursun kesilmez. Erasmus'un kendine ait mali destegi de ayrica alirsin.",
+      "keywords": [
+        "degisim burs",
+        "erasmus bursu devam",
+        "ozel ogrenci burs",
+        "mevlana farabi burs"
+      ],
+      "source_url": "https://erdogan.edu.tr/Files/ckFiles/erdogan-edu-tr/RTEU-Gelistirme-Vakfi-Burs-ve-Tesvik-Yonergesi.pdf",
+      "source_title": "RTEU Gelistirme Vakfi Burs ve Tesvik Yonergesi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_burs_070"
+    },
+    {
+      "intent": "scholarship_support",
+      "intent_aliases": [],
+      "topic": "burs_alimi_anadal_sart",
+      "question": "Mezun olduktan sonra ikinci defa universiteye yazilirsam burs alabilir miyim?",
+      "answer": "Baska bir orgun lisans programindan mezun olan ogrenci basari bursundan yararlanamaz. Yani daha onceden bir lisans diplomasi varsa ve simdi ikinci bir lisansa kayit yapiyorsan, basari bursuna basvuramazsin. Ogrenim bursu icin de bu kapsamda degerlendirme yapilir.",
+      "keywords": [
+        "ikinci lisans burs",
+        "mezun burs",
+        "diplomali burs"
+      ],
+      "source_url": "https://erdogan.edu.tr/Files/ckFiles/erdogan-edu-tr/RTEU-Gelistirme-Vakfi-Burs-ve-Tesvik-Yonergesi.pdf",
+      "source_title": "RTEU Gelistirme Vakfi Burs ve Tesvik Yonergesi",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_burs_071"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "ust_yariyil_ders_sayisi_gano",
+      "question": "Ust yariyildan kac ders alabilirim?",
+      "answer": "Ust yariyildan ders alma sayisi GANO'na gore degisir: GANO 2.50-3.00 arasinda olan ogrenciler en fazla 1 ders, GANO 3.00-3.49 arasinda olanlar en fazla 2 ders, GANO 3.50 ve uzeri olanlar en fazla 3 ders alabilir. Tum bu durumlarda dersin onkosulu olmamasi veya onkosulunun yerine getirilmis olmasi gerekir. Tip ve Dis Hekimligi Fakultesi disindaki birimlerde gecerlidir.",
+      "keywords": [
+        "ust yariyil kac ders",
+        "gano 2.50",
+        "gano 3.00",
+        "gano 3.50",
+        "ust ders sayisi"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-Derse-Kayit-Kayit-Yenileme-Kilavuzu.pdf",
+      "source_title": "Ogrenci Derse Kayit-Kayit Yenileme Kilavuzu",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_120"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "kontenjan_ders_secimi",
+      "question": "Secmeli ders kontenjani dolduysa ne olur?",
+      "answer": "Gruplandirilmis zorunlu veya secmeli derslere kontenjan tanimlanmaktadir. Tercihine sunulan tum derslerin kontenjanlari dolmadan herhangi bir nedenle kontenjan artirimi yapilmaz. Yani secmek istedigin dersin kontenjani doluysa, baska bir secmeli dersi tercih etmek zorundasin. Kontenjan kontrolu ders secim ekraninda otomatik yapilir.",
+      "keywords": [
+        "kontenjan",
+        "secmeli ders dolu",
+        "ders kontenjan",
+        "kontenjan artmaz"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-Derse-Kayit-Kayit-Yenileme-Kilavuzu.pdf",
+      "source_title": "Ogrenci Derse Kayit-Kayit Yenileme Kilavuzu",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_121"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "ders_cakisma_uyarisi",
+      "question": "Iki dersim ayni saatte cakisirsa ne yapayim?",
+      "answer": "Ders secimi sirasinda OBS sistem 'ders cakisma uyarisi' verir. Devam zorunlulugu olan derslerin (zorunlu, ortak zorunlu, ders devam sarti olan secmeli) ayni saatte cakistirilmasi yasaktir. Devam zorunlu dersleri cakistirmamak icin ders programini dikkatli incelemen ve gerekirse bir tanesini farkli gruba/dersine cekmen gerekir.",
+      "keywords": [
+        "ders cakisma",
+        "ayni saat ders",
+        "cakisma uyarisi",
+        "devam zorunlu cakisma"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-Derse-Kayit-Kayit-Yenileme-Kilavuzu.pdf",
+      "source_title": "Ogrenci Derse Kayit-Kayit Yenileme Kilavuzu",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_122"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "transkript_detayli_mezuniyet",
+      "question": "Detayli transkript ile mezuniyet transkripti farki nedir?",
+      "answer": "Iki tur transkript var: (1) DETAYLI TRANSKRIPT: Yariyil yariyil tum dersleri (basarili, basarisiz, tekrar alinanlar dahil) gosterir. Ders kayit doneminde mufredatla karsilastirmak icin kullanilir. (2) MEZUNIYET TRANSKRIPTI: Sadece basarili tamamlanmis dersleri ve mezuniyet ortalamasini gosterir, mezuniyet sonrasi kullanim icin. Her yariyil sonunda hazirlanan karnelerin birlestirilmis hali.",
+      "keywords": [
+        "transkript turleri",
+        "detayli transkript",
+        "mezuniyet transkripti",
+        "fark"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-Derse-Kayit-Kayit-Yenileme-Kilavuzu.pdf",
+      "source_title": "Ogrenci Derse Kayit-Kayit Yenileme Kilavuzu",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_123"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "obs_giris_email_sifre",
+      "question": "REBIS/OBS'ye nasil giris yapilir?",
+      "answer": "Bilgi Yonetim Sistemi (REBIS) adresi: https://ekampus.erdogan.edu.tr. Giris icin E-POSTA ADRESI ve SIFRE girilir. E-posta adresi sistem tarafindan otomatik atanir (ornek: mert_yaz18@erdogan.edu.tr). Sifre ilk olarak TC kimlik numaranin ilk 4 hanesi + ogrenci numaranin son 4 hanesi seklindedir (ornek: TC 1354... + Ogr No ...7099 = sifre 13547099). Sifre daha sonra degistirilebilir.",
+      "keywords": [
+        "rebis giris",
+        "obs giris",
+        "sisteme giris",
+        "e-posta sifre"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-Derse-Kayit-Kayit-Yenileme-Kilavuzu.pdf",
+      "source_title": "Ogrenci Derse Kayit-Kayit Yenileme Kilavuzu",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_124"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "tekrar_dersi_otomatik_eklenir",
+      "question": "Daha once basarisiz oldugum dersler sistem tarafindan otomatik eklenir mi?",
+      "answer": "Evet. Daha once alip basarisiz oldugun dersler OBS ders kayit sayfasinda 'Sectiginiz Dersler' kismina otomatik eklenir. Bu dersler basarisizliktan tekrar alinmasi gereken dersler oldugu icin sistem tarafindan zorunlu olarak yer alir, sistem cikarmaya izin vermez. Yani 'Hayir, bunu almak istemiyorum' demek mumkun degil — basarisiz dersi mutlaka tekrar almak zorundasin.",
+      "keywords": [
+        "basarisiz ders otomatik",
+        "tekrar ders ekleme",
+        "dersi cikaramama"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-Derse-Kayit-Kayit-Yenileme-Kilavuzu.pdf",
+      "source_title": "Ogrenci Derse Kayit-Kayit Yenileme Kilavuzu",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_125"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "ad_almadigi_ders",
+      "question": "Transkriptimde 'A.D.' ne demek?",
+      "answer": "A.D. = 'Almadigi Ders' kisaltmasidir. Mezuniyet transkripti alinmamis derslerin tespiti acisindan incelenir. Programin mufredatinda yer aldigi halde hi  almadigin dersler mezuniyet transkriptinde 'A.D.' olarak gorunur. Bir dersi dahi almazsan mezuniyet hakkini kazanamazsin — bu nedenle A.D. derslerini takip etmek ve almak gereklidir.",
+      "keywords": [
+        "a.d.",
+        "almadigi ders",
+        "almamis",
+        "mufredat ders",
+        "mezuniyet ders kontrol"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-Derse-Kayit-Kayit-Yenileme-Kilavuzu.pdf",
+      "source_title": "Ogrenci Derse Kayit-Kayit Yenileme Kilavuzu",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_126"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "danisman_onayina_gonderme",
+      "question": "Ders secimimi nasil danisman onayina gonderirim?",
+      "answer": "Ders secimi yaptiktan sonra OBS'de iki buton var: (1) 'Taslak Olarak Kaydet': Secimini saklar ama henuz onaya gondermez, daha sonra dönmeye devam etmek istersen kullanilir. (2) 'Danisman Onayina Gonder': Sectiklerini danismanina iletir. Bu butona basinca 'Sectiginiz dersler danisman onayina gonderilecektir. Devam etmek istiyor musunuz?' uyarisi gelir. Eksiklik yoksa 'Evet' tikla. Sonrasinda durum 'Danisman tarafindan inceleniyor' olur. Onaylanirsa transkriptine yansir.",
+      "keywords": [
+        "danisman onay",
+        "onaya gonder",
+        "taslak gonder",
+        "ders onay sureci"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-Derse-Kayit-Kayit-Yenileme-Kilavuzu.pdf",
+      "source_title": "Ogrenci Derse Kayit-Kayit Yenileme Kilavuzu",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_127"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "secmeli_ders_grup_havuzu",
+      "question": "Secmeli ders havuzlari nasil calisir?",
+      "answer": "Bir secmeli ders grubundan (orn: Secmeli Ders Grubu 05) alinmasi gereken belirli bir ders sayisi var (ornegin '2 ders'). Havuz icerisinden o sayida ders secersin. Onceki yariyilda alinmis ve basarisiz olan secmeli ders varsa 'Sectiginiz Dersler' kisminda gorunur — 'Dersi Degistir' butonuyla yerine baska bir secmeli ders alabilirsin. Bu sayede her donem secmeli ders kombinasyonunu yenileyebilirsin.",
+      "keywords": [
+        "secmeli grup",
+        "secmeli havuz",
+        "dersi degistir",
+        "secmeli alternatif"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-Derse-Kayit-Kayit-Yenileme-Kilavuzu.pdf",
+      "source_title": "Ogrenci Derse Kayit-Kayit Yenileme Kilavuzu",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_128"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "ders_kayit_yazdir",
+      "question": "Ders kaydi sonrasi yazdırma yapmali miyim?",
+      "answer": "Evet, oneriliyor. Ders kayit islemini tamamladiktan sonra sistemde 'yazdir' butonu ile ders kaydinin kesinlestigine dair ciktiyi almali, danismanina onaylatmali ve saklamali olmalisin. Herhangi bir ders kayit sorununda bu ciktiyi ibraz edemediginde sistemdeki kayitlar dikkate alinir. Yani yazici ciktisi yedek belge gibidir.",
+      "keywords": [
+        "ders kayit yazdir",
+        "kayit cikti",
+        "kayit belgesi",
+        "kayit kanit"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-Derse-Kayit-Kayit-Yenileme-Kilavuzu.pdf",
+      "source_title": "Ogrenci Derse Kayit-Kayit Yenileme Kilavuzu",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_129"
     }
   ]
 }
