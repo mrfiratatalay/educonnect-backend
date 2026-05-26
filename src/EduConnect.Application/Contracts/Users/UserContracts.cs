@@ -11,7 +11,7 @@ public sealed class UpdateMyProfileRequest
     [StringLength(150)]
     public string Department { get; init; } = string.Empty;
 
-    [Range(1, 8)]
+    [Range(1, 4)]
     public int Year { get; init; } = 1;
 
     [StringLength(500)]

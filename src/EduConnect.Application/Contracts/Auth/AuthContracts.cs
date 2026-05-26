@@ -20,7 +20,7 @@ public sealed class RegisterRequest
     [Required, StringLength(150, MinimumLength = 2)]
     public string Department { get; init; } = string.Empty;
 
-    [Range(1, 8)]
+    [Range(1, 4)]
     public int Year { get; init; } = 1;
 }
 
