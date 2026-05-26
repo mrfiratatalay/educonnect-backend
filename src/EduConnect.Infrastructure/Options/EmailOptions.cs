@@ -17,4 +17,7 @@ public sealed class EmailOptions
     public string? Username { get; init; }
 
     public string? Password { get; init; }
+
+    // Brevo (HTTPS API) - tercih edilen prod yolu. Set edilirse SMTP yerine bu kullanilir.
+    public string? BrevoApiKey { get; init; }
 }
