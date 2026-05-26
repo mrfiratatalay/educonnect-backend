@@ -7147,6 +7147,481 @@
       "time_sensitive": false,
       "faculty_scope": "general",
       "id": "kb_course_101"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "egitim_sekli_yillik_yariyil",
+      "question": "Hangi fakultelerde yillik, hangilerinde yariyil esasli egitim var?",
+      "answer": "RTEU'de iki tur egitim sekli var: (1) SINIF GECME ESASLI (YILLIK): Tip Fakultesi ve Dis Hekimligi Fakultesinde. Sinif gecmek icin tum derslerin basarili olmasi gerekir, bir dersten kalirsan sinifi tekrar edersin. (2) DERS GECME ESASLI (YARIYIL): Hukuk Fakultesi yillik, diger TUM akademik birimlerde yariyil esasli. Kalitin dersi bir sonraki donemde tekrar alirsin, sinif tekrari yok.",
+      "keywords": [
+        "egitim sekli",
+        "sinif gecme",
+        "ders gecme",
+        "yillik yariyil",
+        "tip dis yillik"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_102"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "tip_dis_ozellikleri",
+      "question": "Tip ve Dis Hekimligi'nin diger programlardan farki ne?",
+      "answer": "Tip (6 yil) ve Dis Hekimligi (5 yil) Fakulteleri'nde 'sinif gecme' esasli egitim var — bir dersten kalirsan tum sinifi tekrar edersin. Ust yarıyildan ders alma kurali farkli: Tip/Dis ogrencileri (GANO sarti olsa bile) ust yariyildan ders alamazlar. Mezuniyet icin DC sartli basari notu kabul EDILMEZ — sinif gecmek icin tum derslerin en az CC veya uzeri olmasi gerekir.",
+      "keywords": [
+        "tip ozel",
+        "dis hekimligi ozel",
+        "sinif gecme",
+        "dc kabul edilmez"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_103"
+    },
+    {
+      "intent": "student_services",
+      "intent_aliases": [],
+      "topic": "mevzuat_yonetmelik_erisim",
+      "question": "RTEU'nun yonetmelik ve yonergesine nereden ulasirim?",
+      "answer": "Universitemizin egitim ve ogretime iliskin tum uygulamalara, yonetmelik, yonergelere ve duyurulara https://oidb.erdogan.edu.tr (Ogrenci Isleri Daire Baskanligi) web adresinden 'Mevzuat' kismindan ulasabilirsin. Burada 'On Lisans ve Lisans Egitim-Ogretim ve Sinav Yonetmeligi' baslica referans belgedir.",
+      "keywords": [
+        "yonetmelik",
+        "yonerge",
+        "mevzuat",
+        "oidb mevzuat",
+        "egitim yonetmeligi"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_services_047"
+    },
+    {
+      "intent": "student_services",
+      "intent_aliases": [],
+      "topic": "akademik_takvim_onemi",
+      "question": "Akademik takvim niye onemli?",
+      "answer": "Akademik takvim her ogretim yili icin universitemiz Senatosu tarafindan onaylanir ve onlisans/lisans egitiminde ders kayitlari, sinavlar, ders muafiyeti, ogrenime ara verme izin, yatay gecis basvurulari ve benzeri faaliyetlerin hangi tarihlerde yapilacagini gosterir. Tum yil boyunca en buyuk planlayicin ve rehberindir. Belirtilen tarih disinda yapilan basvurular IGslem konulmaz — takvimi sik sik kontrol et.",
+      "keywords": [
+        "akademik takvim onemi",
+        "takvim planlama",
+        "tarih disi basvuru"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_services_048"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "kayit_yapmayan_haklari",
+      "question": "Ders kaydi yapmazsam ne olur?",
+      "answer": "Tum ogrencilerin kayit yenileme-derse kayit islemlerini her yariyilin/yilin basinda yapmasi zorunlu. Eger ders kaydini akademik takvimde belirtilen sureler icinde yapmaz veya mazeret bildirmezsen o yariyil/yil ders alamazsin ve OGRENCILIK HAKLARINDAN faydalanamazsin. Bu, o donemi tamamen kayipsayilman ve oğrenci kimlik kartinin kullanim hakki, kutuphane vb. tum haklarin askiya alinmasi demektir.",
+      "keywords": [
+        "kayit yapmazsam",
+        "ogrencilik hakki kaybi",
+        "donem kaybi",
+        "ogrenci hak"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_104"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "mufredat_kontrolu_onemli",
+      "question": "Ders kayitlarinda mufredat kontrolu nasil yapilir, neden onemli?",
+      "answer": "REBIS/OBS'de 'Ogrenci Bilgileri - Tum Ders Mufredati' ekrani uzerinden, mezuniyete kadar almak zorunda oldugun tum dersleri gorursun. Hangi dersleri aldıgini-basardigini, hangilerini hi  almadigini ve basarisiz oldugun dersleri bu ekrandan takip edersin. Bir dersi DAHI almazsan mezuniyet hakkini kazanamazsin — yariyildan once mufredat-transkript karsilastirmasi yaparak alinmamis dersleri tespit etmek ve mezuniyet asamasinda surpriz yasamamak icin onemlidir. Alinmamis dersler transkriptte 'A.D.' (Almadigi Ders) olarak gorunur.",
+      "keywords": [
+        "mufredat",
+        "ders mufredat",
+        "alinmamis ders",
+        "mezuniyet kontrol",
+        "a.d."
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_105"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "lisansustu_program_sayisi",
+      "question": "RTEU'da hangi lisansustu programlar var?",
+      "answer": "Universitemizde toplam 72 lisansustu program vardir: 20 Doktora, 41 Tezli Yuksek Lisans ve 11 Tezsiz Yuksek Lisans programi. Lisansustu Egitim Enstitusu tarafindan yurutulur. Tezli Yuksek Lisans ve Doktora programlarinin birine kayit yaptiran ogrencilere istekleri dogrultusunda ve seviyelerine gore iki yariyil sureyle Ingilizce hazirlik kursu verilir. Detayli bilgi Enstitu internet sayfasinda.",
+      "keywords": [
+        "lisansustu",
+        "doktora",
+        "yuksek lisans",
+        "72 program",
+        "enstitu"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_106"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "lisansustu_basvuru",
+      "question": "Yuksek lisans veya doktoraya nasil basvurulur?",
+      "answer": "Lisansustu programlara basvuru, yerlestirme ve kesin kayit islemleri Lisansustu Egitim Enstitusu tarafindan yapilir. Detayli bilgi (basvuru takvimi, sartlar, kontenjan, kabul puanlari) Enstitu internet sayfasinda yayimlanir. Basvurular genelde her yariyil basinda (Eylul ve Subat) acilir.",
+      "keywords": [
+        "lisansustu basvuru",
+        "doktora basvuru",
+        "yuksek lisans basvuru",
+        "enstitu basvuru"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_107"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "ozel_ogrenci_giden",
+      "question": "Baska universiteden RTEU'ye gelen 'ozel ogrenci' olabilir miyim?",
+      "answer": "Ozel ogrenci, bir yuksekogretim kurumunda kayitli olup farkli bir yuksekogretim ortamini, kulturunu veya kazanimini edinmek isteyen ya da ozel durumu (saglik, vb) nedenlerle kayit kendi universitesinde kalmak sartiyla farkli bir yuksekogretim kurumunda egitime devam imkani taninan ogrencidir. Bizim universitemize ozel ogrenci kapsaminda gelmek isteyen ogrencilerin kendi universitesinin yonetim kurulu karari ile basvuru tarihleri akademik takvimde belirlenmistir (Guz: 5 Eylul 2025 son gun, Bahar: 19 Ocak 2026).",
+      "keywords": [
+        "ozel ogrenci",
+        "misafir ogrenci",
+        "baska universite",
+        "kayit kendi"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_108"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "ortak_zorunlu_dersler_neler",
+      "question": "Ortak zorunlu dersler nelerdir?",
+      "answer": "Tum programlarda alinmasi gereken ortak zorunlu dersler: (1) Ataturk Ilkeleri ve Inkilap Tarihi (2 yariyil), (2) Turk Dili (2 yariyil), (3) Yabanci Dil (2 yariyil — programa gore Ingilizce, Almanca, vb), (4) Saglik ve Guvenligi (sadece is guvenligi uzmanı olabilecek mezunlari yetisteren fakultelerde — 20/6/2012 tarih ve 6331 sayili Kanuna gore). Bu dersler 'Z' (zorunlu) koduyla mufredata ekli olarak gelir.",
+      "keywords": [
+        "ortak zorunlu",
+        "ataturk ilkeleri",
+        "turk dili",
+        "yabanci dil",
+        "isg",
+        "saglik guvenligi"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_109"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "akts_yillik_hesap",
+      "question": "Bir yilda kac AKTS almam gerekiyor?",
+      "answer": "Standart yukleme: Bir egitim yili = 60 AKTS. Yani her dönem (guz/bahar) 30 AKTS almak normal hesaplamadir. Toplamda: Onlisans (2 yil) = 120 AKTS, Lisans (4 yil) = 240 AKTS, 5 yillik program (Dis Hekimligi) = 300 AKTS, 6 yillik program (Tip) = 360 AKTS. Cok ders aldigin yillarda yariyilda 35-40 AKTS'e kadar cikabilir; az ders alirsan AKTS du arak mezuniyet uzar.",
+      "keywords": [
+        "akts yilda",
+        "60 akts yil",
+        "30 akts donem",
+        "yillik akts"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_110"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "yatay_gecis_siralama_mantigi",
+      "question": "Yatay gecis siralamasi nasil yapilir?",
+      "answer": "Yatay gecis siralamasi puan agirliklari ile yapilir: KURUM ICI yatay gecis: Yerlestirme puaninin %40'i + GANO'nun %60'i toplamiyla siralanir, yuksekten dusuge dogru. KURUMLAR ARASI yatay gecis (diger universiteden): Tip ve Dis Hekimligi icin yerlestirme puaninin %70'i + GANO'nun %30'u. Diger programlar: yerlestirme puaninin %40'i + GANO'nun %60'i toplamı. Merkezi puana gore yatay gecis (Ek Madde 1) icin GANO dikkate alinmaz.",
+      "keywords": [
+        "yatay gecis siralama",
+        "yerlestirme gano",
+        "%40 %60",
+        "puan agirligi"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_111"
+    },
+    {
+      "intent": "exam_and_grading",
+      "intent_aliases": [],
+      "topic": "mazeret_sinavi_neye_alinmaz",
+      "question": "Hangi sinavlar icin mazeret sinavi yoktur?",
+      "answer": "Mazeret sinavi YALNIZCA ara sinav (vize) icin yapilir. Asagidaki sinavlar icin mazeret sinavi yapilmaz: (1) Yariyil/yilsonu (final) sinavi, (2) Butunleme sinavi, (3) Tek ders sinavi, (4) Ek sinavlar, (5) Yabanci dil yeterlilik sinavi. Mazeret sinavina da girmeyene yeni mazeret sinavi yapilmaz. Ayrica mazeret kabul kararini ilgili birimin yonetim kurulu verir.",
+      "keywords": [
+        "mazeret yok",
+        "mazeret hangi sinav",
+        "final mazeret yok",
+        "butunleme mazeret yok"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_exam_040"
+    },
+    {
+      "intent": "exam_and_grading",
+      "intent_aliases": [],
+      "topic": "butunleme_yillik_dersler",
+      "question": "Yillik egitim alan birimlerde butunleme nasil?",
+      "answer": "Hukuk Fakultesi gibi yillik egitim yapan birimlerde butunleme sinavlari iki dönemin sonunda toplu yapilir (Bahar yariyili sonu sinavlari icin Haziran sonrasi). Hukuk yillik derslerin butunleme sinavi: 20 Haziran-3 Temmuz 2026, tek ders sinavi: 9 Temmuz 2026. Yillik egitim ozelligi gereken yapildiği icin butunleme kosullari ve donem orijini biraz farkli olabilir.",
+      "keywords": [
+        "hukuk butunleme",
+        "yillik butunleme",
+        "haziran sinav"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_exam_041"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "diploma_alimi",
+      "question": "Diplomamı nasil alirim?",
+      "answer": "Diploma, yuksekogretim kurumuna kayitli ogrencilerin kayitli olduklari programi basari ile tamamlamasi durumunda almis olduklari belgedir. Universitemiz On Lisans ve Lisans Egitim-Ogretim ve Sinav Yonetmeligi'nin 37'nci maddesinde belirtilen sartlari saglayan ogrencilere verilir. Diploma teslimati mezuniyet sonrasi belirli surede yapilir. Detay icin OIDB ve birimine sor.",
+      "keywords": [
+        "diploma alma",
+        "diploma teslim",
+        "mezuniyet diplomasi"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_112"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "ders_programlari_nereden",
+      "question": "Ders programlarimi (haftalik program) nereden gorebilirim?",
+      "answer": "Ogrencilerin kayit yapmis olduklari derslerin gun ve saatlerinin yer aldigi haftalik ders programi, kayitli oldugun akademik birimin (Fakulte/Yuksekokul/MYO) internet sayfasindan ulasilabilir. Genelde donem basinda 'Ders Programi' veya 'Ogrenci Duyurulari' bolumunde yayimlanir. Mevcut akademik birimleri https://erdogan.edu.tr 'AKADEMIK BIRIMLER' sayfasindan inceleyebilirsin.",
+      "keywords": [
+        "ders programi",
+        "haftalik program",
+        "ders saatleri",
+        "akademik birim sayfasi"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_113"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "kayit_yenileme_zorunluluk",
+      "question": "Kayit yenileme zorunlu mu, atlamasak ne olur?",
+      "answer": "Evet, kesinlikle zorunlu. Universitemizde egitim-ogretim yili guz ve bahar olmak uzere iki yariyildan olusur. Tum ogrencilerin kayit yenileme-derse kayit islemlerini her yariyil basinda (yillik programlarda her egitim-ogretim yili basinda) yapmasi zorunludur. Ders kaydi yapmayan yariyilda/yilda Yuksekogretim Kanunu'na gore ogrencilik haklarindan faydalanamazsiniz — derslere giremezsiniz, sinavlara giremezsiniz, hicbir resmi islem yapilmaz.",
+      "keywords": [
+        "kayit zorunlu",
+        "kayit yenileme atlama",
+        "ogrencilik kanunu"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_114"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "uluslararasi_ogrenci_kabul",
+      "question": "Uluslararasi ogrenci nasil RTEU'ye basvurabilir?",
+      "answer": "Uluslararasi ogrenci kabulu (KKTC dahil) icin universitemizin internet sayfasinda (https://erdogan.edu.tr) ve uluslararasi ofisin sayfasinda basvuru duyurulari yayimlanir. YOS (Yabanci Uyruklu Ogrenci Sinavi) veya TR-YOS sinav sonuclari, lise mezuniyet notu veya esdeger uluslararasi sinav sonuclari ile basvurabilirsin. TR-YOS basari siralamasinda ilk 500'e giren ogrencilere RTEU basari bursu da verilir. Detaylar Uluslararasi Ofis tarafindan ilan edilir.",
+      "keywords": [
+        "uluslararasi ogrenci",
+        "yos",
+        "tr-yos",
+        "yabanci basvuru",
+        "kktc"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_115"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "ders_yuku_yano_etkisi",
+      "question": "YANO ders yukumu nasil etkiler?",
+      "answer": "Ders secimi yaparken Yariyil Akademik Not Ortalamasi (YANO) dikkate alinir: (1) YANO 2.00 ve uzeri ise alt yariyillardan DC notu ile gecilmis derslerden basarili sayilirsin, tekrar zorunlu degil. (2) YANO 2.00 altinda ise DC notu basarisiz sayilir, tekrar zorunludur. Bu da donemlik ders yukunu artirir. Ayrica GANO 3.00 ve uzeri olanlar bir ust yariyildan en fazla 3 ders alabilir; GANO 1.50 altina duserse ust yariyildan ders alamaz.",
+      "keywords": [
+        "yano etki",
+        "ders yuku yano",
+        "yano 2.00",
+        "ust yariyil yano"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_116"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "staj_zorunlu_programlar",
+      "question": "Hangi programlarda staj zorunlu?",
+      "answer": "Onlisans MYO programlarinin cogunda staj/isletmede mesleki egitim zorunludur — yariyil tatilinde veya yaz doneminde yapilir. Lisans programlarinin bir kısminda da (Muhendislik, Egitim, Saglik, vb.) yaz stajlari zorunludur. Staj tamamlanmadan mezuniyet hakki kazanilamaz. Detaylar kayitli oldugun akademik birimin internet sayfasindaki staj yönergesinden alinabilir.",
+      "keywords": [
+        "staj zorunlu",
+        "isletmede egitim zorunlu",
+        "myo staj",
+        "yaz staj"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_117"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "ders_ekleme_cikarma_durumlar",
+      "question": "Ders ekleme-cikarma haftasinda neyi degistirebilirim?",
+      "answer": "Ders ekleme-cikarma sirasinda danismanin onayi ile su islemleri yapabilirsin: (1) Almasi zorunlu iken almamis oldugun bir dersi alabilirsin. (2) Almasi zorunlu olan bir ders ile cakisan herhangi bir dersini degistirebilirsin. (3) Dersin acilmasi icin zorunlu asgari ogrenci sayisi sartinin saglanmamasi dolayisiyla kapanan dersin yerine yeni bir ders seceblirsin. Bu islemler akademik takvimde belirtilen 'Ders Ekleme-Cikarma' tarihlerinde yapilir.",
+      "keywords": [
+        "ders ekleme cikarma",
+        "ders degistir",
+        "dersi birak",
+        "secmeli degistir"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_118"
+    },
+    {
+      "intent": "student_services",
+      "intent_aliases": [],
+      "topic": "duyuru_takip_kanali",
+      "question": "Egitim-ogretimle ilgili duyurulari nereden takip ederim?",
+      "answer": "Egitim-ogretim ile ilgili tum duyurular asagidaki adreslerden yayimlanir, zaman zaman takip etmek onemlidir: (1) Universite ana sayfasi: https://erdogan.edu.tr, (2) Ogrenci Isleri Daire Baskanligi: https://oidb.erdogan.edu.tr, (3) Aday Ogrenciler sayfasi: https://erdogan.edu.tr/Website/Contents.aspx?PageID=276 (yeni gelecek ogrenciler icin). Ayrica REBIS uzerinden de duyurular gelir, kurumsal e-postani kontrol et.",
+      "keywords": [
+        "duyuru",
+        "haber takip",
+        "oidb duyuru",
+        "kurumsal mail"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_services_049"
+    },
+    {
+      "intent": "student_life",
+      "intent_aliases": [],
+      "topic": "kismi_zamanli_basvuru_zaman",
+      "question": "Kismi zamanli ogrenci calismasi ne zaman basvurulur?",
+      "answer": "Kismi zamanli ogrenci calismasi her egitim-ogretim yilinin Ekim ayi basinda veya birimlerin ihtiyaclari dogrultusunda Saglik, Kultur ve Spor Daire Baskanligi (SKS) internet sayfasinda duyurulur. Ilgi alaninda olabilecek pozisyonlar farkli birimlerde (kutuphane, idari ofisler, laboratuvarlar, vb) acilir. Sozlesme yapilir, mali odeme aylik olarak gerceklesir. RTEU Kismi Zamanli Ogrenci Calistirma Yonergesi hukumleri uygulanir.",
+      "keywords": [
+        "kismi zamanli ne zaman",
+        "ekim basi",
+        "is basvuru"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_life_065"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "yurtdisi_egitim_burs_devam",
+      "question": "Erasmus'a gidersem RTEU bursum devam eder mi?",
+      "answer": "Evet. Degisim programlarina (Erasmus, Farabi, Mevlana) katilan ogrenciler ile ozel ogrenci statusunde bulunanlar, RTEU burs haklarindan yararlanmaya devam ederler. Yani Erasmus'la yurtdisinda olsan da basari bursun veya ogrenim bursun kesilmez. Erasmus'un kendine ait mali destegi de ayrica alirsin.",
+      "keywords": [
+        "erasmus burs devam",
+        "degisim burs",
+        "yurtdisi burs kesintisiz"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_119"
+    },
+    {
+      "intent": "student_life",
+      "intent_aliases": [],
+      "topic": "rteu_topluluk_faaliyet_alanlari",
+      "question": "Ogrenci topluluklari hangi tur faaliyetler yapar?",
+      "answer": "RTEU'deki 88 ogrenci toplulugunun faaliyet alanlari 4 kategoride: (1) AKADEMIK VE BILIMSEL: Konferanslar, paneller, teknik geziler, sertifika programlari. (2) SOSYAL VE KULTUREL: Konserler, sergiler, festivaller, sosyal sorumluluk projeleri. (3) SPORTIF: Turnuvalar, doga yuruyusleri, kamplar. (4) SANATSAL: Tiyatro gosterileri, resim ve fotograf sergileri, muzik etkinlikleri. Bir topluluga uye olarak hem CV'ne katki saglar hem yeni arkadaslar edinir hem de sosyal transkriptini zenginlestirirsin.",
+      "keywords": [
+        "topluluk faaliyet",
+        "kulup aktivite",
+        "akademik sosyal sportif"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/Ogrenci-El-Kitabi-2025_20250610.pdf",
+      "source_title": "Ogrenci El Kitabi 2025",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_life_066"
     }
   ]
 }

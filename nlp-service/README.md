@@ -15,6 +15,8 @@ EduConnect projesi için intent classification (BERTurk) ve görsel benzerlik (R
 
 ## Endpoint'ler
 
+- `GET /` — servis bilgisi + endpoint listesi
+- `GET /docs` — Swagger UI (interaktif API dokümantasyonu)
 - `GET /health` — servis durumu
 - `POST /api/nlp/classify` — intent + entity + knowledge base lookup
 - `POST /api/vision/extract` — ResNet-50 görsel embedding
