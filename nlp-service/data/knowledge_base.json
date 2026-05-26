@@ -6373,6 +6373,308 @@
       "time_sensitive": false,
       "faculty_scope": "general",
       "id": "kb_services_039"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "yks_kayit_iki_yol",
+      "question": "YKS ile yerlestim, nasil kayit yaptiririm?",
+      "answer": "RTEU'ye YKS ile yerlesen aday 2 yolla kayit yaptirabilir: (1) ELEKTRONIK KAYIT (e-Devlet): 01-03 Eylul 2025 tarihlerinde www.turkiye.gov.tr'den 'Universite e-Kayit' yoluyla. Bizzat universiteye gelmen gerekmez, kayit kesindir. (2) SAHSEN BASVURU: 01-05 Eylul 2025 tarihlerinde 08:00-17:00 saatleri arasinda RTEU Rektorlugu Fener Mahallesi Zihni Derin Yerleskesi 53100 RIZE adresine bizzat gelerek.",
+      "keywords": [
+        "yks kayit",
+        "e-devlet kayit",
+        "elektronik kayit",
+        "sahsen basvuru"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/2025-yks-kayit-islemleri_20250826.pdf",
+      "source_title": "2025 YKS Kayit Islemleri Kilavuzu",
+      "confidence": "high",
+      "time_sensitive": true,
+      "faculty_scope": "general",
+      "id": "kb_course_072"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "e_devlet_kayit_adimlar",
+      "question": "e-Devlet uzerinden universite kaydi nasil yapilir?",
+      "answer": "e-Devlet kayit adimlari: (1) https://www.turkiye.gov.tr aciliyor, Sisteme Giris tiklaniyor. (2) e-Devlet sifresi, elektronik imza veya mobil imza ile giris. (3) 'e-Hizmetler' baglantisi. (4) YOK Baskanligi altinda 'Universite e-Kayit'. (5) Kisisel bilgi guncelleme. (6) e-Kayit alacak universitelerin listesinden RTEU se ilip 'Devam Et'. (7) Yerlestirme bilgileri ve duyuru 'Onayliyorum' tiklanip 'Evet' yazilir. (8) Cep telefonuna gelen 'Dogrulama Kodu' girilir. (9) Bittiginde Elektronik Kayit Belgesi pdf indirilir. e-Devlet sifresi yoksa nufus cuzdaninin asli ile PTT subesinden alinir.",
+      "keywords": [
+        "e-devlet adim",
+        "kayit nasil",
+        "turkiye.gov.tr",
+        "elektronik kayit belgesi"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/2025-yks-kayit-islemleri_20250826.pdf",
+      "source_title": "2025 YKS Kayit Islemleri Kilavuzu",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_073"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "e_devlet_kayit_olmayan",
+      "question": "Hangi durumlarda e-Devlet kayit yapamam?",
+      "answer": "Asagidaki durumlarda e-Devlet ile kayit yapamazsin, sahsen basvuru gerekir: (1) Yerlestirildigin program kayit icin saglik raporu istiyorsa (orn: Tip, Dis, Spor, Su Alti, Sivil Hava Ulastirma). (2) e-Devlet uzerinden lise mezuniyet bilgilerine ulasilamiyorsa. (3) Herhangi bir teknik sorun varsa. Bu durumlarda 01-05 Eylul 2025 tarihlerinde kayit evraklarinla birlikte universiteye sahsen veya vekaletname ile basvurursun.",
+      "keywords": [
+        "e-devlet yapamiyor",
+        "sahsen basvuru gerekli",
+        "saglik raporu",
+        "tip dis spor"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/2025-yks-kayit-islemleri_20250826.pdf",
+      "source_title": "2025 YKS Kayit Islemleri Kilavuzu",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_074"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "sahsen_kayit_belgeler",
+      "question": "Sahsen kayit icin hangi belgeler gerekiyor?",
+      "answer": "Sahsen kayit belgeleri: (1) Lise diplomasi veya mezuniyet belgesi (ASLI). (2) 2025 YKS Sonuc Belgesi (Spor Bilimleri Beden Egitimi icin OZYES belgesi). (3) Askerlik durum belgesi (29 yas ve uzeri erkek adaylar icin, e-Devlet'ten alinir). (4) Ogrenci katki payi muafiyeti varsa resmi belge (sehit/gazi cocuklari vb). (5) Adli sicil kaydi (Deniz Ulastirma ve Sivil Hava Ulastirma programlari icin). (6) Vesikalik fotograf 1 adet (Spor Bilimleri, Resim-Is icin). (7) TC kimlik karti orneği (Spor Bilimleri, Resim-Is icin). (8) Saglik raporu (Tip, Dis, Spor, Su Alti, Sivil Hava icin).",
+      "keywords": [
+        "kayit belgeleri",
+        "sahsen kayit evrak",
+        "lise diploma",
+        "askerlik belgesi"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/2025-yks-kayit-islemleri_20250826.pdf",
+      "source_title": "2025 YKS Kayit Islemleri Kilavuzu",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_075"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "yks_sahsen_kayit_zorunlu_programlar",
+      "question": "Hangi programlara mutlaka sahsen kayit yapmaliyim?",
+      "answer": "Sahsen basvuru yoluyla kayit yapilacak programlar: (1) Turgut Kiran Denizcilik Fakultesi - Deniz Ulastirma Isletme Muhendisligi. (2) Egitim Fakultesi - Resim-Is Ogretmenligi. (3) Spor Bilimleri Fakultesi - Beden Egitimi ve Spor Ogretmenligi. (4) Teknik Bilimler MYO - Su Alti Teknolojisi. (5) Sosyal Bilimler MYO - Sivil Hava Ulastirma Isletmeciligi. Bu programlarin kayit belgeleri ozel (saglik, adli sicil, vesikalik vb) gerektigi icin e-Devlet uzerinden kayit kabul edilmez.",
+      "keywords": [
+        "sahsen kayit zorunlu",
+        "deniz ulastirma",
+        "resim is",
+        "beden egitimi",
+        "su alti"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/2025-yks-kayit-islemleri_20250826.pdf",
+      "source_title": "2025 YKS Kayit Islemleri Kilavuzu",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_076"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "katki_payi_ilk_kayit",
+      "question": "Yeni kayit yaptigimda katki payi oder miyim?",
+      "answer": "Yeni kayit yaptiracak BIRINCI OGRETIM ogrencileri programin NORMAL ogrenim suresi icerisinde katki payi odemezler. Ucret odemen gereken durumlar: (1) Ikinci ogretim programi ogrencisi olmak. (2) Uluslararasi ogrenci olmak. (3) Mevcut basjka bir programda iken yeniden YKS girip yerlesmek. (4) Onlisans normal sure 2 yili, lisans normal sure 4-6 yili (program suresine gore) astigin durumda KATKI PAYI odenir.",
+      "keywords": [
+        "katki payi ilk kayit",
+        "ucret muaf",
+        "birinci ogretim",
+        "ikinci ogretim"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/2025-yks-kayit-islemleri_20250826.pdf",
+      "source_title": "2025 YKS Kayit Islemleri Kilavuzu",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_077"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "harc_borcu_ne_zaman_odenir",
+      "question": "Yeni kayit yaptiktan sonra ne zaman harc oderim?",
+      "answer": "2025-2026 Guz yariyili icin harc/katki payi odeme tarihi: 08-12 Eylul 2025 (1. taksit). Ziraat Bankasi'nin yurt icindeki herhangi bir subesinden, ATM'lerinden veya Ziraat Bankasi mobil uygulamasindan 9 haneli ogrenci numarani kullanarak ogrenebilir ve yatirabilirsin. Ders kayit yapabilmek icin harc/ucret borcunun yatirilmasi gerekir.",
+      "keywords": [
+        "harc tarihi",
+        "katki payi ne zaman",
+        "ziraat odeme",
+        "08-12 eylul"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/2025-yks-kayit-islemleri_20250826.pdf",
+      "source_title": "2025 YKS Kayit Islemleri Kilavuzu",
+      "confidence": "high",
+      "time_sensitive": true,
+      "faculty_scope": "general",
+      "id": "kb_course_078"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "ogrenci_kimlik_karti_alma",
+      "question": "Ogrenci kimlik kartimi ne zaman alabilirim?",
+      "answer": "Kayit islemleri tamamlanan tum ogrenciler, egitim-ogretimin basladigi haftadan itibaren ogrenci kimlik kartlarini kayitli olduklari akademik birimden (Fakulte, Yuksekokul, MYO) alabilirler. Yeni egitim yili 22 Eylul 2025'te basliyor. Bilgi Islem Daire Baskanligi tarafindan hazirlanir.",
+      "keywords": [
+        "kimlik karti",
+        "ogrenci kart",
+        "ne zaman alirim"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/2025-yks-kayit-islemleri_20250826.pdf",
+      "source_title": "2025 YKS Kayit Islemleri Kilavuzu",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_079"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "askerlik_durum_belgesi_29_yas",
+      "question": "Askerlik durum belgesi her erkek aday gerekir mi?",
+      "answer": "29 yasini dolduran ERKEK adaylar icin askerlik durum belgesi gereklidir (e-Devlet uzerinden alinir). Iki veya uc yillik yuksekogretim programindan mezun olup askerligini yapmamis olanlar, 4 yildan az sureli baska programa girmek isteyenlerden askerligini yapmamis olanlar 2025-YKS basvurusu yapamamis kabul edilir. 4 yil ve uzeri programa girenler 2025-YKS sonucu basvurabilir. Askerlik tecil edildiyse tecil suresinin bitimine kadar egitime devam edilebilir.",
+      "keywords": [
+        "askerlik belgesi",
+        "29 yas",
+        "yks askerlik",
+        "tecil"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/2025-yks-kayit-islemleri_20250826.pdf",
+      "source_title": "2025 YKS Kayit Islemleri Kilavuzu",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_080"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "yks_mezun_olmayan_2025",
+      "question": "Henuz lise mezun olmayan ogrenci kayit yaptirabilir mi?",
+      "answer": "Bir yuksekogretim programina kayit hakki kazanan ancak ortaögretim kurumlarinda, ön lisans veya lisans programlarinda mezun asamasinda olup, staj, butunleme veya tek ders sinavina girecek adaylar da 01-05 Eylul 2025 tarihleri arasinda universitemize bizzat gelerek gecici kayitlarini yaptirabilirler. Lise diploma belgesini en gec 31 Aralik 2025 tarihine kadar ibraz ederek asil kayitlarini tamamlamak gerekir, aksi halde gecici kayit silinir.",
+      "keywords": [
+        "mezun olmadan kayit",
+        "gecici kayit",
+        "lise diploma sonradan",
+        "31 aralik"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/2025-yks-kayit-islemleri_20250826.pdf",
+      "source_title": "2025 YKS Kayit Islemleri Kilavuzu",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_081"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "yabanci_dil_yeterlilik_sinavi_yeni",
+      "question": "Yeni kayit ogrencisi olarak yabanci dil yeterlilik sinavina girmek zorunda miyim?",
+      "answer": "Hayir, ZORUNLU degil. Hazirlik sinifi olan programlara (Ilahiyat, Deniz Ulastirma, Ingiliz Dili, Matematik Ing., Bilgisayar Muh., IIBF Uluslararasi Iliskiler Ing.) kayit yaptiran ogrenciler 16 Eylul 2025 10:00'da Yabanci Diller Yuksekokulu'nda Yeterlilik Sinavina girebilirler. 70 puan ve uzeri alanlar 1. sinifa devam eder, alamayan veya sinava girmeyenler hazirlik sinifi okur.",
+      "keywords": [
+        "yeterlilik sinavi",
+        "hazirlik muafiyet",
+        "70 puan",
+        "16 eylul"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/2025-yks-kayit-islemleri_20250826.pdf",
+      "source_title": "2025 YKS Kayit Islemleri Kilavuzu",
+      "confidence": "high",
+      "time_sensitive": true,
+      "faculty_scope": "general",
+      "id": "kb_course_082"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "isteğe_bagli_hazirlik_basvuru",
+      "question": "Istege bagli yabanci dil hazirlik okumak istiyorum, nasil basvururum?",
+      "answer": "Bu seceneği iki yolla isaretleyebilirsin: (1) e-Devlet uzerinden kayit yapanlar, 'Istege Bagli Hazirlik Sinifinda Okumak Istiyor musunuz?' sorusuna EVET yanitini verir. (2) Sahsen kayitta basvuru formuyla, veya egitim baslangic tarihine kadar ilgili fakulte/yuksekokul mudurluklerine sahsen veya e-posta ile bildirir. Programlar: Bilgisayar Muh., Elektrik-Elektronik Muh., Insaat Muh., Makine Muh., Mimarlik, Peyzaj Muh., Sivil Hava Ulastirma vb.",
+      "keywords": [
+        "istege bagli hazirlik",
+        "yabanci dil hazirlik basvuru",
+        "form teslim"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/2025-yks-kayit-islemleri_20250826.pdf",
+      "source_title": "2025 YKS Kayit Islemleri Kilavuzu",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_083"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "34_yas_ustu_kadin_kontenjan",
+      "question": "34 yas ustu kadin kontenjani nedir?",
+      "answer": "01 Ocak 2025 itibariyla 34 yasini tamamlamis kadinlar (1 Ocak 1991 tarihi ve oncesi dogumlu adaylar) 2025 YKS kayit islemlerinde '34 yasini tamamlamis kadinlar icin ayrilan kontenjandan' yararlanarak universitemize yerlesir. Sart: Herhangi bir lisans programindan mezun OLMAMAK (lisans icin) veya onlisans programindan mezun OLMAMAK (onlisans icin). Mezunlugun tespit edilirse kayit yapilmaz.",
+      "keywords": [
+        "34 yas kadin",
+        "kadin kontenjan",
+        "lisans mezun degil"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/2025-yks-kayit-islemleri_20250826.pdf",
+      "source_title": "2025 YKS Kayit Islemleri Kilavuzu",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_084"
+    },
+    {
+      "intent": "course_registration",
+      "intent_aliases": [],
+      "topic": "iki_program_yasagi",
+      "question": "Ayni anda iki universite okuyabilir miyim?",
+      "answer": "Kilavuzlarda yer alan yuksekogretim programlarinda ayni anda orgun iki onlisans veya iki lisans programina kayit yapilamaz (YOK Genel Kurulu karari). Bu durum yeni yerlestigin programa kayit yaptirmana engeldir. Mevcut programdan iliski kesilmedikce yeni programa kayit olamazsin. Acik ogretim kapsamindaki programlar ise bu kurala dahil degildir.",
+      "keywords": [
+        "iki universite",
+        "iki lisans",
+        "iliski kes",
+        "orgun program"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/2025-yks-kayit-islemleri_20250826.pdf",
+      "source_title": "2025 YKS Kayit Islemleri Kilavuzu",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_course_085"
+    },
+    {
+      "intent": "digital_systems",
+      "intent_aliases": [],
+      "topic": "ogrenci_sistem_listesi",
+      "question": "RTEU hangi ogrenci sistemlerini kullaniyor?",
+      "answer": "RTEU bir cok sistemi entegre kullanir: OBS/REBIS (kurum ici ogrenci surecleri), YOKSIS (YOK'e veri bildirimi), MERNIS (kimlik dogrulama), ABAYS (resmi veri sorgulama), ASAL (askerlik durum sorgulama), KBS/MYS (personel maas). Ogrenci olarak ana etkilesim noktan REBIS (https://ekampus.erdogan.edu.tr) ve OBS sayfasidir.",
+      "keywords": [
+        "sistem listesi",
+        "yoksis",
+        "mernis",
+        "abays",
+        "asal"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/2025-Faaliyet-Raporu.pdf",
+      "source_title": "Ogrenci Isleri 2025 Faaliyet Raporu",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_digital_032"
+    },
+    {
+      "intent": "student_services",
+      "intent_aliases": [],
+      "topic": "oidb_fiziksel_konum",
+      "question": "Ogrenci Isleri Daire Baskanligi nerede?",
+      "answer": "Ogrenci Isleri Daire Baskanligi, Recep Tayyip Erdogan Universitesi Zihni Derin Yerleskesi'nde Kongre ve Kultur Merkezi'nin 1. katindadir. Toplam 279.38 m² alan ile modern ofis ortaminda hizmet veriyor. Daire Baskani odasi, 3 sube mudurlugu (Egitim-Ogretim, Idari-Mali Isler, Yazi Isleri) bulunur.",
+      "keywords": [
+        "oidb nerede",
+        "ogrenci isleri konum",
+        "kongre kultur merkezi"
+      ],
+      "source_url": "https://oidb.erdogan.edu.tr/Files/ckFiles/oidb-erdogan-edu-tr/2025-Faaliyet-Raporu.pdf",
+      "source_title": "Ogrenci Isleri 2025 Faaliyet Raporu",
+      "confidence": "high",
+      "time_sensitive": false,
+      "faculty_scope": "general",
+      "id": "kb_services_040"
     }
   ]
 }
