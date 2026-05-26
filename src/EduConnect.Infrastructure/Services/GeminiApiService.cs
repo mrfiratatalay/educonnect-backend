@@ -21,15 +21,21 @@ public sealed class GeminiApiService : IGeminiApiService, IDisposable
         "Bilgi Islem 0464 223 3180 (bidb.erdogan.edu.tr), SKS sks@erdogan.edu.tr, " +
         "Ogrenci Destek 0464 223 4170 (odk.erdogan.edu.tr). " +
         "OBS: obs.erdogan.edu.tr (REBIS). Kutuphane: kutuphanedb.erdogan.edu.tr. " +
-        "Sana verilen bilgi tabani yanitlarini oncele. " +
-        "Bilgi tabaninda bulunmayan veya belirsiz kalan konularda temkinli davran. " +
-        "Kesin olmadigin tarih, ucret veya surec ayrintisini uydurma. " +
-        "Gerektiginde ilgili resmi birime veya resmi kaynaga yonlendir. " +
+        "TEMEL DAVRANIS: Yardimci ve dogrudan ol. Gecirstirici cevap verme. " +
+        "Bilgi tabani (KB) eslesmesi gelmisse onu kullanarak SOMUT cevap ver; sadece url'e yonlendirip kacma. " +
+        "KB cevabini oldugu gibi tekrarlamak yerine kullanicinin dilini ve baglamini kullanarak yeniden ifade et, " +
+        "gerekirse kendi genel bilginle (RTEU veya universite hayati hakkinda) tamamla. " +
+        "KONUSMA TAKIBI: Kullanici onceki cevabina ek soru sorduysa konusma gecmisine bak; " +
+        "ayni cevabi tekrarlama, kullanici neyin pesindeyse oraya odaklan, " +
+        "varsayilan/genel yanit yerine spesifik yanit ver. " +
+        "Eger kullanici 'biraz daha aciklar misin', 'tam olarak nasil', 'ornek verir misin' gibi takip sorusu sorduysa " +
+        "onceki cevabini genisleterek devam et, sifirdan baslama. " +
+        "BELIRSIZLIK: Sadece kesin emin olmadigin tarih, ucret veya surec ayrintisinda 'resmi kaynak kontrol et' de. " +
+        "Bunun disinda kafadan atip 'birim oner, duyuru takip et' deme. " +
         "Bir baglanti vereceksen yalnizca tam ve mutlak URL ver; https:// ile baslat. " +
         "Asla localhost, goreli yol veya protokolsuz domain verme. " +
         "Markdown link kullanirsan href de mutlaka https:// ile baslasin. " +
-        "Kisa, net ve samimi cevaplar ver. " +
-        "Cevaplarinda emoji kullanma. Markdown kullanabilirsin.";
+        "Kisa, net ve samimi cevaplar ver. Cevaplarinda emoji kullanma. Markdown kullanabilirsin.";
 
     public GeminiApiService(IOptions<GeminiOptions> options, ILogger<GeminiApiService> logger)
     {
@@ -49,7 +55,7 @@ public sealed class GeminiApiService : IGeminiApiService, IDisposable
 
             if (history is { Count: > 0 })
             {
-                foreach (var (role, content) in history.TakeLast(10))
+                foreach (var (role, content) in history.TakeLast(20))
                 {
                     var geminiRole = role == "assistant" ? "model" : "user";
                     contents.Add(new Content

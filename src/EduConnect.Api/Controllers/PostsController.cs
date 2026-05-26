@@ -7,6 +7,7 @@ using EduConnect.Application.Interfaces;
 using EduConnect.Domain.Entities;
 using EduConnect.Domain.Enums;
 using EduConnect.Infrastructure.Data;
+using EduConnect.Infrastructure.Extensions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -333,6 +334,7 @@ public sealed class PostsController(
 
         var posts = await bookmarkedQuery
             .OrderByDescending(p => p.Bookmarks.Where(b => b.UserId == userId.Value).Select(b => b.CreatedAtUtc).FirstOrDefault())
+            .ThenByDescending(p => p.Id) // Tie-breaker: ayni saniyede bookmark'lanan postlar icin stabil siralama.
             .Skip((page - 1) * pageSize)
             .Take(pageSize)
             .ToListAsync(cancellationToken);
@@ -367,6 +369,7 @@ public sealed class PostsController(
 
         var posts = await likedQuery
             .OrderByDescending(p => p.Likes.Where(l => l.UserId == targetUserId).Select(l => l.CreatedAtUtc).FirstOrDefault())
+            .ThenByDescending(p => p.Id) // Tie-breaker: ayni saniyede begenilen postlar icin stabil siralama.
             .Skip((page - 1) * pageSize)
             .Take(pageSize)
             .ToListAsync(cancellationToken);
@@ -571,10 +574,7 @@ public sealed class PostsController(
             return Unauthorized();
         }
 
-        var actorName = await GetCurrentUserDisplayNameAsync(userId.Value, cancellationToken);
-
         var post = await dbContext.Posts
-            .Include(x => x.Likes)
             .FirstOrDefaultAsync(x => x.Id == id && !x.IsDeleted, cancellationToken);
 
         if (post is null)
@@ -582,9 +582,12 @@ public sealed class PostsController(
             return NotFound();
         }
 
-        var like = post.Likes.FirstOrDefault(x => x.UserId == userId.Value);
-        if (like is null)
+        var existingLike = await dbContext.PostLikes
+            .FirstOrDefaultAsync(x => x.PostId == id && x.UserId == userId.Value, cancellationToken);
+
+        if (existingLike is null)
         {
+            var actorName = await GetCurrentUserDisplayNameAsync(userId.Value, cancellationToken);
             Notification? createdNotification = null;
 
             dbContext.PostLikes.Add(new PostLike
@@ -606,16 +609,24 @@ public sealed class PostsController(
                 dbContext.Notifications.Add(createdNotification);
             }
 
-            await dbContext.SaveChangesAsync(cancellationToken);
-
-            if (createdNotification is not null)
+            try
             {
-                await notificationPublisher.PublishAsync(createdNotification, cancellationToken);
+                await dbContext.SaveChangesAsync(cancellationToken);
+
+                if (createdNotification is not null)
+                {
+                    await notificationPublisher.PublishAsync(createdNotification, cancellationToken);
+                }
+            }
+            catch (DbUpdateException ex) when (ex.IsUniqueViolation())
+            {
+                // Race condition: ayni anda iki paralel like isteginde ikincisi gelirse 23505 doner.
+                // Idempotent: like zaten var, isimiz bitmis sayilir.
             }
         }
         else
         {
-            dbContext.PostLikes.Remove(like);
+            dbContext.PostLikes.Remove(existingLike);
             await dbContext.SaveChangesAsync(cancellationToken);
         }
         return NoContent();
@@ -630,32 +641,39 @@ public sealed class PostsController(
             return Unauthorized();
         }
 
-        var post = await dbContext.Posts
-            .Include(x => x.Bookmarks)
-            .FirstOrDefaultAsync(x => x.Id == id && !x.IsDeleted, cancellationToken);
-
-        if (post is null)
+        var postExists = await dbContext.Posts
+            .AnyAsync(x => x.Id == id && !x.IsDeleted, cancellationToken);
+        if (!postExists)
         {
             return NotFound();
         }
 
-        var bookmark = post.Bookmarks.FirstOrDefault(x => x.UserId == userId.Value);
-        var isBookmarked = bookmark is null;
+        var existingBookmark = await dbContext.PostBookmarks
+            .FirstOrDefaultAsync(x => x.PostId == id && x.UserId == userId.Value, cancellationToken);
+        var isBookmarked = existingBookmark is null;
 
-        if (bookmark is null)
+        if (existingBookmark is null)
         {
             dbContext.PostBookmarks.Add(new PostBookmark
             {
-                PostId = post.Id,
+                PostId = id,
                 UserId = userId.Value
             });
+
+            try
+            {
+                await dbContext.SaveChangesAsync(cancellationToken);
+            }
+            catch (DbUpdateException ex) when (ex.IsUniqueViolation())
+            {
+                // Idempotent: paralel istek zaten bookmark eklemis.
+            }
         }
         else
         {
-            dbContext.PostBookmarks.Remove(bookmark);
+            dbContext.PostBookmarks.Remove(existingBookmark);
+            await dbContext.SaveChangesAsync(cancellationToken);
         }
-
-        await dbContext.SaveChangesAsync(cancellationToken);
 
         return Ok(new PostBookmarkStateResponse
         {
@@ -672,29 +690,36 @@ public sealed class PostsController(
             return Unauthorized();
         }
 
-        var post = await dbContext.Posts
-            .Include(x => x.Views)
-            .FirstOrDefaultAsync(x => x.Id == id && !x.IsDeleted, cancellationToken);
-
-        if (post is null)
+        var postExists = await dbContext.Posts
+            .AnyAsync(x => x.Id == id && !x.IsDeleted, cancellationToken);
+        if (!postExists)
         {
             return NotFound();
         }
 
-        var existingView = post.Views.FirstOrDefault(x => x.UserId == userId.Value);
-        var viewsCount = post.Views.Count;
+        var alreadyViewed = await dbContext.PostViews
+            .AnyAsync(x => x.PostId == id && x.UserId == userId.Value, cancellationToken);
 
-        if (existingView is null)
+        if (!alreadyViewed)
         {
             dbContext.PostViews.Add(new PostView
             {
-                PostId = post.Id,
+                PostId = id,
                 UserId = userId.Value
             });
 
-            await dbContext.SaveChangesAsync(cancellationToken);
-            viewsCount += 1;
+            try
+            {
+                await dbContext.SaveChangesAsync(cancellationToken);
+            }
+            catch (DbUpdateException ex) when (ex.IsUniqueViolation())
+            {
+                // Idempotent: kullanici ayni anda paralel istek attiysa once o eklemis.
+            }
         }
+
+        // Inflated count tehlikesi olmasin: gercek satir sayisini DB'den say.
+        var viewsCount = await dbContext.PostViews.CountAsync(x => x.PostId == id, cancellationToken);
 
         return Ok(new PostViewTrackingResponse
         {

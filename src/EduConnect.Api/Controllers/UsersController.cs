@@ -4,6 +4,7 @@ using EduConnect.Application.Contracts.Users;
 using EduConnect.Application.Interfaces;
 using EduConnect.Domain.Entities;
 using EduConnect.Infrastructure.Data;
+using EduConnect.Infrastructure.Extensions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -494,8 +495,15 @@ public sealed class UsersController(
             };
             dbContext.Notifications.Add(createdNotification);
 
-            await dbContext.SaveChangesAsync(cancellationToken);
-            await notificationPublisher.PublishAsync(createdNotification, cancellationToken);
+            try
+            {
+                await dbContext.SaveChangesAsync(cancellationToken);
+                await notificationPublisher.PublishAsync(createdNotification, cancellationToken);
+            }
+            catch (DbUpdateException ex) when (ex.IsUniqueViolation())
+            {
+                // Idempotent: paralel istek zaten takip iliskisini eklemis. Bildirim de duplicate olmasin diye atlaniyor.
+            }
         }
 
         return Ok(new FollowStateResponse
