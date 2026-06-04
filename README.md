@@ -395,6 +395,19 @@ TÜBİTAK 2209-A Üniversite Öğrencileri Araştırma Projeleri Programı bitir
 
 ---
 
+## 📁 Ek Dokümantasyon
+
+Detaylı teknik belgeler için `docs/` klasörüne bakın:
+
+| Doküman | İçerik |
+|---------|--------|
+| [docs/architecture.md](docs/architecture.md) | Sistem mimarisi, katmanlar, servisler arası iletişim |
+| [docs/database-schema.md](docs/database-schema.md) | 27 tablonun açıklaması, tasarım kararları |
+| [docs/api-overview.md](docs/api-overview.md) | Controller listesi, kimlik doğrulama akışı, öne çıkan endpoint'ler |
+| [docs/nlp-service.md](docs/nlp-service.md) | NLP & Vision servisi yapısı, model detayları |
+
+---
+
 ## 📄 Lisans
 
 MIT License. Akademik ve eğitim amaçlı her kullanım serbesttir; ticari kullanım öncesi lütfen iletişime geçin.
