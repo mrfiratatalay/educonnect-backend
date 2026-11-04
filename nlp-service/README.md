@@ -32,4 +32,5 @@ curl -X POST https://firatatalay-educonnect-nlp.hf.space/api/nlp/classify \
 
 ## Environment Variables
 
-- `ALLOWED_ORIGINS` (opsiyonel): virgülle ayrılmış CORS origin listesi. Varsayılan: `http://localhost:5160`.
+- `ALLOWED_ORIGINS` (opsiyonel): virgülle ayrılmış CORS origin listesi. Verilmezse servis her kaynağa açık (`*`);
+  yayında mutlaka ayarlanmalı.
