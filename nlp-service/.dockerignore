@@ -6,7 +6,6 @@ __pycache__/
 *.pyo
 
 # Egitim ve test scriptleri - prod'a dahil edilmez
-augment_data.py
 smoke_test_cli.py
 training/
 
