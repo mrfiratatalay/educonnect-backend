@@ -10,9 +10,9 @@ A campus platform for university students: a feed, communities, events, a second
 assistant (EduAI) that answers university questions based on official sources.
 
 **What did you do on the team?**
-I built the project together with Ayşe Mandıralı, and we shared every responsibility. There was no captain or single
-owner; the backend, the AI service, the frontend and deployment were our joint work. The November 2026 revision (the
-demo mode, three bug fixes, these documents) is mine.
+Ayşe Mandıralı and I built it as a two-person team, and I was the team captain. We shared the work: the backend, the
+AI service, the frontend and deployment were our joint work. The November 2026 revision (the demo mode, three bug
+fixes, these documents) is mine.
 
 **Did you use an AI assistant?**
 Yes. I wrote a large part of the code together with AI (Claude Code), under rules I set myself. We decided the

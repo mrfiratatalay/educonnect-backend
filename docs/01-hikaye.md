@@ -19,10 +19,10 @@ seçilen üniversitenin kurumsal e-posta adresi gerekiyor; bu yüzden platformda
 
 ## Ekip
 
-Projeyi **Ayşe Mandıralı** ile birlikte geliştirdik. Sorumlulukları baştan sona paylaştık: tasarım kararları,
-backend, yapay zekâ servisi, arayüz ve yayına alma süreci ikimizin ortak işi oldu. Kaptan ya da tek bir sahip
-yoktu; zorlandığımız her noktadan birlikte geçtik. Bu dokümanlarda takım olarak verdiğimiz kararları "biz",
-kendi gözlemlerimi ve bu son düzenlemeyi "ben" diye anlatıyorum.
+Projeyi **Ayşe Mandıralı** ile iki kişilik bir takım olarak geliştirdik; takım kaptanı bendim. İşi baştan sona
+paylaştık: tasarım kararları, backend, yapay zekâ servisi, arayüz ve yayına alma süreci ikimizin ortak işi oldu ve
+zorlandığımız her noktadan birlikte geçtik. Bu dokümanlarda takım olarak verdiğimiz kararları "biz", kendi
+gözlemlerimi ve bu son düzenlemeyi "ben" diye anlatıyorum.
 
 Kodun önemli bir kısmını yapay zekâ kodlama asistanlarıyla (Claude Code) birlikte yazdım. Repo geçmişinde bu
 asistanlar için tuttuğumuz çalışma kuralı dosyaları da duruyor. Mimariyi, kuralları ve her değişikliğin

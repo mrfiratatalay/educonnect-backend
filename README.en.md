@@ -170,10 +170,9 @@ educonnect-backend/
 
 ## Team
 
-**Fırat Atalay** and **Ayşe Mandıralı** built EduConnect together. We shared every responsibility; there was no
-captain or single owner. Design decisions, the backend, the AI service, the frontend and deployment were our joint
-work. A large part of the code was written together with AI coding assistants (Claude Code); we decided the
-architecture, the rules and what counted as correct.
+**Fırat Atalay** (team captain) and **Ayşe Mandıralı**. As a two-person team we shared the work: design decisions,
+the backend, the AI service, the frontend and deployment were our joint work. A large part of the code was written
+together with AI coding assistants (Claude Code); we decided the architecture, the rules and what counted as correct.
 
 **Thanks** to the TÜBİTAK 2209-A programme for its support; to the [dbmdz](https://huggingface.co/dbmdz) team for
 sharing the BERTurk model; and to the people behind ASP.NET Core, EF Core, Npgsql, FastAPI, PyTorch, Transformers,
@@ -182,3 +181,7 @@ React and Ant Design.
 **Notice.** Recep Tayyip Erdoğan University, TÜBİTAK, Gemini and other names are trademarks of their owners.
 EduConnect is a student project, not an official service of the university. The knowledge base was compiled from
 official sources, but it is not guaranteed to be up to date. The people and data in the demo are made up.
+
+## License
+
+[MIT](LICENSE) © 2026 Fırat Atalay, Ayşe Mandıralı

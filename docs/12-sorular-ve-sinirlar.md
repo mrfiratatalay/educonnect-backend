@@ -10,9 +10,9 @@ bilinen sınırları ve yol haritası geliyor. Cevapların ayrıntısı bağlant
 üniversiteyle ilgili soruları resmî kaynaklara dayanarak cevaplayan bir asistan (EduAI).
 
 **Ekipte sen ne yaptın?**
-Projeyi Ayşe Mandıralı ile birlikte yaptık ve bütün sorumlulukları paylaştık. Kaptan ya da tek bir sahip yoktu;
-backend, yapay zekâ servisi, arayüz ve yayına alma ikimizin ortak işiydi. Kasım 2026'daki düzenlemeyi (demo modu,
-üç hata düzeltmesi, bu dokümanlar) ben yaptım.
+Projeyi Ayşe Mandıralı ile iki kişilik bir takım olarak yaptık; takım kaptanı bendim. İşi paylaştık: backend,
+yapay zekâ servisi, arayüz ve yayına alma ikimizin ortak işiydi. Kasım 2026'daki düzenlemeyi (demo modu, üç hata
+düzeltmesi, bu dokümanlar) ben yaptım.
 
 **Yapay zekâ asistanı kullandın mı?**
 Evet. Kodun önemli bir kısmını yapay zekâyla (Claude Code) birlikte, kendi koyduğum kurallar altında yazdım.
