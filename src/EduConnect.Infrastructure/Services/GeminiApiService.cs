@@ -11,7 +11,7 @@ public sealed class GeminiApiService : IGeminiApiService, IDisposable
 {
     private readonly GeminiOptions _options;
     private readonly ILogger<GeminiApiService> _logger;
-    private readonly Client _client;
+    private readonly Client? _client;
 
     private const string SystemPrompt =
         "Sen EduConnect platformunun yapay zeka asistanisin. " +
@@ -51,8 +51,14 @@ public sealed class GeminiApiService : IGeminiApiService, IDisposable
     {
         _options = options.Value;
         _logger = logger;
-        _client = new Client(apiKey: _options.ApiKey);
+        // The SDK throws on an empty key. Creating the client only when a key exists keeps this
+        // singleton constructible, so calls fail inside the try blocks and callers can fall back
+        // (EduAI answers from the local knowledge base, visual search uses heuristics only).
+        _client = string.IsNullOrWhiteSpace(_options.ApiKey) ? null : new Client(apiKey: _options.ApiKey);
     }
+
+    private Client RequireClient() =>
+        _client ?? throw new InvalidOperationException("Gemini API key is not configured.");
 
     public async Task<string> GenerateTextAsync(
         string userMessage,
@@ -92,7 +98,7 @@ public sealed class GeminiApiService : IGeminiApiService, IDisposable
                 Temperature = _options.Temperature
             };
 
-            var response = await _client.Models.GenerateContentAsync(
+            var response = await RequireClient().Models.GenerateContentAsync(
                 model: _options.ChatModel,
                 contents: contents,
                 config: config,
@@ -142,7 +148,7 @@ public sealed class GeminiApiService : IGeminiApiService, IDisposable
                 Temperature = 0.2
             };
 
-            var response = await _client.Models.GenerateContentAsync(
+            var response = await RequireClient().Models.GenerateContentAsync(
                 model: _options.VisionModel,
                 contents: contents,
                 config: config,
@@ -159,6 +165,6 @@ public sealed class GeminiApiService : IGeminiApiService, IDisposable
 
     public void Dispose()
     {
-        _client.Dispose();
+        _client?.Dispose();
     }
 }
