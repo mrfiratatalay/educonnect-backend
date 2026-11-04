@@ -6,7 +6,6 @@
 **/*.suo
 
 nlp-service/
-database/EduConnectDb.bak
 build-verify/
 scripts/
 swagger-check.*.log
