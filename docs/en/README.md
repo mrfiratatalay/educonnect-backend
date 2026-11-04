@@ -1,8 +1,9 @@
 # EduConnect documentation
 
-These documents explain EduConnect in my own words and in detail: how the project started, which problems we
-solved and why we made each technical decision. EduConnect is the graduation project Ayşe Mandıralı and I built in
-the Computer Engineering department of Recep Tayyip Erdoğan University, supported by TÜBİTAK 2209-A.
+I am Fırat Atalay. These documents explain EduConnect in my own words and in detail: how the project started, which
+problems we solved and why we made each technical decision. EduConnect is the graduation project my teammate Ayşe
+Mandıralı and I built in the Computer Engineering department of Recep Tayyip Erdoğan University, supported by
+TÜBİTAK 2209-A; I was the team captain.
 
 Next to every decision I also wrote down its cost. To me, half of explaining a decision is being able to say what
 you gave up for it.

@@ -19,10 +19,10 @@ institutional e-mail address of the chosen university, so everyone on the platfo
 
 ## Team
 
-I built the project with **Ayşe Mandıralı** as a two-person team, and I was the team captain. We shared the work from
-start to finish: design decisions, the backend, the AI service, the frontend and deployment were all our joint work,
-and we got through every hard part together. In these documents I write "we" for decisions we made as a team and "I"
-for my own observations and for this latest revision.
+The team had two people: **Fırat Atalay** (team captain) and **Ayşe Mandıralı**. We shared the work from start to
+finish: design decisions, the backend, the AI service, the frontend and deployment were all our joint work, and we got
+through every hard part together. I, Fırat Atalay, wrote these documents; I write "we" for decisions we made as a team
+and "I" for my own observations and for this latest revision.
 
 I wrote a large part of the code together with AI coding assistants (Claude Code). The rule files we kept for these
 assistants are still visible in the repository history. We decided the architecture, the rules and whether each

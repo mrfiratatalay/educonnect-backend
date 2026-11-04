@@ -19,9 +19,9 @@ seçilen üniversitenin kurumsal e-posta adresi gerekiyor; bu yüzden platformda
 
 ## Ekip
 
-Projeyi **Ayşe Mandıralı** ile iki kişilik bir takım olarak geliştirdik; takım kaptanı bendim. İşi baştan sona
-paylaştık: tasarım kararları, backend, yapay zekâ servisi, arayüz ve yayına alma süreci ikimizin ortak işi oldu ve
-zorlandığımız her noktadan birlikte geçtik. Bu dokümanlarda takım olarak verdiğimiz kararları "biz", kendi
+Ekip iki kişiydi: **Fırat Atalay** (takım kaptanı) ve **Ayşe Mandıralı**. İşi baştan sona paylaştık: tasarım
+kararları, backend, yapay zekâ servisi, arayüz ve yayına alma süreci ikimizin ortak işi oldu ve zorlandığımız her
+noktadan birlikte geçtik. Bu dokümanları ben, Fırat Atalay, yazdım; takım olarak verdiğimiz kararları "biz", kendi
 gözlemlerimi ve bu son düzenlemeyi "ben" diye anlatıyorum.
 
 Kodun önemli bir kısmını yapay zekâ kodlama asistanlarıyla (Claude Code) birlikte yazdım. Repo geçmişinde bu

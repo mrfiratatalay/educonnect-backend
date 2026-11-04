@@ -10,8 +10,8 @@ A campus platform for university students: a feed, communities, events, a second
 assistant (EduAI) that answers university questions based on official sources.
 
 **What did you do on the team?**
-Ayşe Mandıralı and I built it as a two-person team, and I was the team captain. We shared the work: the backend, the
-AI service, the frontend and deployment were our joint work. The November 2026 revision (the demo mode, three bug
+We were a two-person team: I, Fırat Atalay, was the team captain, and my teammate was Ayşe Mandıralı. We shared the
+work: the backend, the AI service, the frontend and deployment were our joint work. The November 2026 revision (the demo mode, three bug
 fixes, these documents) is mine.
 
 **Did you use an AI assistant?**

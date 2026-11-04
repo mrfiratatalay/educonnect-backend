@@ -1,8 +1,9 @@
 # EduConnect dokümanları
 
-Bu klasörde EduConnect'i kendi anlatımımla, ayrıntısıyla açıklıyorum: projenin nasıl doğduğunu, hangi problemi
-nasıl çözdüğümüzü ve her teknik kararın gerekçesini. EduConnect, Recep Tayyip Erdoğan Üniversitesi Bilgisayar
-Mühendisliği bölümünde Ayşe Mandıralı ile birlikte geliştirdiğimiz, TÜBİTAK 2209-A destekli bitirme projemiz.
+Ben Fırat Atalay. Bu klasörde EduConnect'i kendi anlatımımla, ayrıntısıyla açıklıyorum: projenin nasıl doğduğunu,
+hangi problemi nasıl çözdüğümüzü ve her teknik kararın gerekçesini. EduConnect, Recep Tayyip Erdoğan Üniversitesi
+Bilgisayar Mühendisliği bölümünde takım arkadaşım Ayşe Mandıralı ile birlikte geliştirdiğimiz, TÜBİTAK 2209-A
+destekli bitirme projemiz; takım kaptanı bendim.
 
 Her kararın yanına bedelini de yazdım. Bence bir kararı anlatmanın yarısı, neyden vazgeçtiğini söyleyebilmek.
 
