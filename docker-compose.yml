@@ -1,0 +1,61 @@
+# One command for the real system: PostgreSQL, the API and a mail catcher.
+#   docker compose up --build
+# Swagger: http://localhost:5160/swagger  ·  Verification e-mails: http://localhost:8025
+# The NLP service is optional because its PyTorch image is large:
+#   NLP_BASE_URL=http://nlp:7860 docker compose --profile ai up --build
+name: educonnect
+
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: educonnect
+      POSTGRES_USER: educonnect
+      POSTGRES_PASSWORD: educonnect_dev
+    ports:
+      - "5433:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U educonnect -d educonnect"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+
+  mail:
+    image: axllent/mailpit:v1.27
+    ports:
+      - "8025:8025"
+
+  api:
+    build:
+      context: .
+      dockerfile: src/EduConnect.Api/Dockerfile
+    depends_on:
+      db:
+        condition: service_healthy
+      mail:
+        condition: service_started
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ConnectionStrings__DefaultConnection: Host=db;Port=5432;Database=educonnect;Username=educonnect;Password=educonnect_dev
+      JwtSettings__SecretKey: ${JWT_SECRET:-local-only-signing-key-change-me-0123456789}
+      Cors__AllowedOrigins__0: http://localhost:5173
+      # Defaults to the public Hugging Face Space; point it to http://nlp:7860 with the "ai" profile.
+      NlpService__BaseUrl: ${NLP_BASE_URL:-https://firatatalay-educonnect-nlp.hf.space}
+      # Optional. Without a key EduAI answers from the local knowledge base.
+      GeminiSettings__ApiKey: ${GEMINI_API_KEY:-}
+      Email__SmtpHost: mail
+      Email__SmtpPort: "1025"
+      Email__SenderEmail: no-reply@educonnect.local
+    ports:
+      - "5160:8080"
+
+  nlp:
+    profiles: ["ai"]
+    build: ./nlp-service
+    ports:
+      - "8000:7860"
+
+volumes:
+  pgdata:
