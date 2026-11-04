@@ -71,8 +71,12 @@ builder.Services
                 var accessToken = context.Request.Query["access_token"];
                 var path = context.HttpContext.Request.Path;
 
+                // Browsers cannot set headers on a WebSocket handshake, so every hub reads the
+                // token from the query string. The notifications hub was missing here.
                 if (!string.IsNullOrWhiteSpace(accessToken) &&
-                    (path.StartsWithSegments("/hubs/chat") || path.StartsWithSegments("/hubs/direct-messages")))
+                    (path.StartsWithSegments("/hubs/chat") ||
+                     path.StartsWithSegments("/hubs/direct-messages") ||
+                     path.StartsWithSegments("/hubs/notifications")))
                 {
                     context.Token = accessToken;
                 }
